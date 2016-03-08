@@ -1,0 +1,4 @@
+<map id="kaco::Publisher" name="kaco::Publisher">
+<area shape="rect" id="node2" href="$classkaco_1_1EntryPublisher.html" title="This class provides a Publisher implementation for use with kaco::Bridge. It publishes a value from a..." alt="" coords="5,80,147,107"/>
+<area shape="rect" id="node3" href="$classkaco_1_1JointStatePublisher.html" title="This class provides a Publisher implementation for use with kaco::Bridge and a CiA 402 motor device..." alt="" coords="172,80,343,107"/>
+</map>

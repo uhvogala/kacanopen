@@ -1,0 +1,5 @@
+<map id="kaco::sdo_error" name="kaco::sdo_error">
+<area shape="rect" id="node2" href="$classkaco_1_1canopen__error.html" title="This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. " alt="" coords="5,155,144,181"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="13,80,136,107"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="23,5,127,32"/>
+</map>

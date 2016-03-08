@@ -1,0 +1,6 @@
+<map id="kaco::canopen_error" name="kaco::canopen_error">
+<area shape="rect" id="node4" href="$classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d..." alt="" coords="5,229,152,256"/>
+<area shape="rect" id="node5" href="$classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO..." alt="" coords="176,229,287,256"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="93,80,216,107"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="103,5,207,32"/>
+</map>
