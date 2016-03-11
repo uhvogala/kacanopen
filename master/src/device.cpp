@@ -67,6 +67,13 @@ Device::get_node_id() const {
   return m_node_id;
 }
 
+bool
+Device::has_entry(const std::string& entry_name) {
+  const std::string name = Utils::escape(entry_name);
+
+  return m_dictionary.count(name) != 0;
+}
+
 Value
 Device::get_entry_via_sdo(uint32_t index, uint8_t subindex, Type type) {
   std::vector<uint8_t> data = m_core.sdo.upload(m_node_id, index, subindex);
@@ -77,7 +84,7 @@ const Value&
 Device::get_entry(const std::string& entry_name, uint8_t array_index, ReadAccessMethod access_method) {
   const std::string name = Utils::escape(entry_name);
 
-  if (m_dictionary.count(name) == 0) {
+  if (!has_entry(name)) {
     throw dictionary_error(dictionary_error::type::unknown_entry, name);
   }
 
@@ -102,7 +109,7 @@ Type
 Device::get_entry_type(const std::string& entry_name) {
   const std::string name = Utils::escape(entry_name);
 
-  if (m_dictionary.count(name) == 0) {
+  if (!has_entry(name)) {
     throw dictionary_error(dictionary_error::type::unknown_entry, name);
   }
 
@@ -120,7 +127,7 @@ Device::set_entry(const std::string& entry_name, const Value& value, uint8_t arr
                   WriteAccessMethod access_method) {
   const std::string name = Utils::escape(entry_name);
 
-  if (m_dictionary.count(name) == 0) {
+  if (!has_entry(name)) {
     throw dictionary_error(dictionary_error::type::unknown_entry, name);
   }
 
@@ -153,7 +160,7 @@ Device::add_receive_pdo_mapping(uint16_t cob_id, const std::string& entry_name, 
 
   const std::string name = Utils::escape(entry_name);
 
-  if (m_dictionary.count(name) == 0) {
+  if (!has_entry(name)) {
     throw dictionary_error(dictionary_error::type::unknown_entry, name);
   }
 
