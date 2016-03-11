@@ -70,6 +70,8 @@ main(int argc, char** argv) {
     return EXIT_FAILURE;
   }
 
+  device.print_dictionary();
+
   DUMP(device.get_entry("Manufacturer device name"));
 
   // map PDOs (optional)
