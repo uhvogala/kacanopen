@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "master.h"
@@ -39,39 +39,34 @@
 #include <vector>
 #include <memory>
 
-
 namespace kaco {
 
-	/// This class is a bridge between a ROS network and a CanOpen network.
-	class Bridge {
+/// This class is a bridge between a ROS network and a CanOpen network.
+class Bridge {
+ public:
+  /// Constructor. Initializes a ROS node.
+  Bridge();
 
-	public:
+  ~Bridge();
 
-		/// Constructor. Initializes a ROS node.
-		Bridge();
+  /// Run the ROS loop, which publishes messages of all registered Publishers,
+  /// and allows ROS to call subscribed callbacks.
+  /// \param loop_rate Loop rate in hertz. Default is 10 Hz.
+  void run(double loop_rate = 10);
 
-		~Bridge();
+  /// Adds a Publisher, which can advertise itself and publish messages
+  /// inside Bridge::run().
+  void add_publisher(std::shared_ptr<Publisher> publisher);
 
-		/// Run the ROS loop, which publishes messages of all registered Publishers,
-		/// and allows ROS to call subscribed callbacks.
-		/// \param loop_rate Loop rate in hertz. Default is 10 Hz.
-		void run(double loop_rate = 10);
+  /// Adds a Subscriber, which can advertise itself and receive
+  /// messages on its own.
+  void add_subscriber(std::shared_ptr<Subscriber> subscriber);
 
-		/// Adds a Publisher, which can advertise itself and publish messages
-		/// inside Bridge::run().
-		void add_publisher(std::shared_ptr<Publisher> publisher);
+ private:
+  static const bool debug = true;
 
-		/// Adds a Subscriber, which can advertise itself and receive
-		/// messages on its own.
-		void add_subscriber(std::shared_ptr<Subscriber> subscriber);
+  std::vector<std::shared_ptr<Publisher>> m_publishers;
+  std::vector<std::shared_ptr<Subscriber>> m_subscribers;
+};
 
-	private:
-
-		static const bool debug = true;
-
-		std::vector<std::shared_ptr<Publisher>> m_publishers;
-		std::vector<std::shared_ptr<Subscriber>> m_subscribers;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

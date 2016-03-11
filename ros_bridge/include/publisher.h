@@ -28,27 +28,24 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 namespace kaco {
 
-	/// Interface, which provides methods for publishing topics.
-	class Publisher {
+/// Interface, which provides methods for publishing topics.
+class Publisher {
+ public:
+  /// Advertise the publisher to the network. This is called by
+  /// Bridge _after_ ros::init(). You should not call this
+  /// method by yourself.
+  virtual void advertise() = 0;
 
-	public:
-		
-		/// Advertise the publisher to the network. This is called by
-		/// Bridge _after_ ros::init(). You should not call this
-		/// method by yourself.
-		virtual void advertise() = 0;
-		
-		/// This will be called repeatedly by kaco::Bridge::run()
-		virtual void publish() = 0;
+  /// This will be called repeatedly by kaco::Bridge::run()
+  virtual void publish() = 0;
 
-		// Virtual destructor must be defined!
-    	virtual ~Publisher() { }
+  // Virtual destructor must be defined!
+  virtual ~Publisher() {}
+};
 
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

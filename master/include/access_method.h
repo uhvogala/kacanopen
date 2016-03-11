@@ -28,53 +28,53 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
 
 namespace kaco {
 
-	/// ReadAccessMethod lists methods on how to read from the dictionary of a device.
-	enum class ReadAccessMethod {
+/// ReadAccessMethod lists methods on how to read from the dictionary of a device.
+enum class ReadAccessMethod {
 
-		/// Use default access method from dictionary.
-		use_default,
+  /// Use default access method from dictionary.
+  use_default,
 
-		/// Return cached value.
-		cache,
+  /// Return cached value.
+  cache,
 
-		/// Send an SDO message (and wait for confirmation).
-		sdo,
+  /// Send an SDO message (and wait for confirmation).
+  sdo,
 
-		/// Return cached value and send a PDO request for a PDO
-		/// which is associated with this entry (if there is such
-		/// a mapping). 
-		cache_and_pdo_request,
+  /// Return cached value and send a PDO request for a PDO
+  /// which is associated with this entry (if there is such
+  /// a mapping).
+  cache_and_pdo_request,
 
-		/// Send a PDO request for a PDO which is associated with
-		/// this entry (if there is such a mapping), wait for the
-		// result and return it.
-		pdo_request_and_wait
+  /// Send a PDO request for a PDO which is associated with
+  /// this entry (if there is such a mapping), wait for the
+  // result and return it.
+  pdo_request_and_wait
 
-	};
+};
 
-	/// WriteAccessMethod lists methods on how to write to the dictionary of a device.
-	enum class WriteAccessMethod {
+/// WriteAccessMethod lists methods on how to write to the dictionary of a device.
+enum class WriteAccessMethod {
 
-		/// Use default access method from dictionary.
-		use_default,
+  /// Use default access method from dictionary.
+  use_default,
 
-		/// Just write value into cache.
-		cache,
+  /// Just write value into cache.
+  cache,
 
-		/// Send an SDO message (and wait for confirmation).
-		sdo,
+  /// Send an SDO message (and wait for confirmation).
+  sdo,
 
-		/// Send a PDO which is associated with this entry, if there is such
-		/// a mapping. 
-		pdo
+  /// Send a PDO which is associated with this entry, if there is such
+  /// a mapping.
+  pdo
 
-	};
+};
 
-} // end namespace kaco
+}  // end namespace kaco

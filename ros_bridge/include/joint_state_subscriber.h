@@ -28,70 +28,69 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "device.h"
 #include "subscriber.h"
 #include "ros/ros.h"
 #include "sensor_msgs/JointState.h"
- 
+
 #include <string>
 #include <cmath>
 
 namespace kaco {
 
-	/// This class provides a Subscriber implementation for
-	/// use with kaco::Bridge and a CiA 402 motor device.
-	/// It listens for JointState messages from ROS
-	/// common_messages package and updates the motor device
-	/// accordingly.
-	///
-	/// Currenty, only the motor angle is regarded.
-	/// You have to initialize the motor on your own.
-	/// The motor is expected to be in position mode and
-	/// operational state.
-	class JointStateSubscriber : public Subscriber {
+/// This class provides a Subscriber implementation for
+/// use with kaco::Bridge and a CiA 402 motor device.
+/// It listens for JointState messages from ROS
+/// common_messages package and updates the motor device
+/// accordingly.
+///
+/// Currenty, only the motor angle is regarded.
+/// You have to initialize the motor on your own.
+/// The motor is expected to be in position mode and
+/// operational state.
+class JointStateSubscriber : public Subscriber {
+ public:
+  /// Constructor
+  /// \param device a CiA 402 compliant motor device object
+  /// \param position_0_degree The motor position (dictionary
+  /// entry "Position actual value") which represents a
+  /// 0 degree angle.
+  /// \param position_360_degree Like position_0_degree for
+  /// 360 degree state.
+  /// \param topic_name Custom topic name. Leave out for default.
+  JointStateSubscriber(Device& device, int32_t position_0_degree, int32_t position_360_degree,
+                       std::string topic_name = "");
 
-	public:
+  /// \see interface Subscriber
+  void advertise() override;
 
-		/// Constructor
-		/// \param device a CiA 402 compliant motor device object
-		/// \param position_0_degree The motor position (dictionary
-		/// entry "Position actual value") which represents a
-		/// 0 degree angle.
-		/// \param position_360_degree Like position_0_degree for
-		/// 360 degree state.
-		/// \param topic_name Custom topic name. Leave out for default.
-		JointStateSubscriber(Device& device, int32_t position_0_degree,
-			int32_t position_360_degree, std::string topic_name = "");
+ private:
+  static const bool debug = true;
 
-		/// \see interface Subscriber
-		void advertise() override;
+  // TODO: let the user change this?
+  static const unsigned queue_size = 100;
 
-	private:
+  /// Callback "received ROS JointState message"
+  void receive(const sensor_msgs::JointState& msg);
 
-		static const bool debug = true;
+  /// converts radiant to "Target position" value from CanOpen using m_position_0_degree and m_position_360_degree
+  int32_t rad_to_pos(double pos) const;
 
-		// TODO: let the user change this?
-		static const unsigned queue_size = 100;
+  /// constant PI
+  static constexpr double
+  pi() {
+    return std::acos(-1);
+  }
 
-		/// Callback "received ROS JointState message"
-		void receive(const sensor_msgs::JointState& msg);
+  Device& m_device;
+  int32_t m_position_0_degree;
+  int32_t m_position_360_degree;
+  std::string m_topic_name;
 
-		/// converts radiant to "Target position" value from CanOpen using m_position_0_degree and m_position_360_degree
-		int32_t rad_to_pos(double pos) const;
+  ros::Subscriber m_subscriber;
+};
 
-		/// constant PI
-		static constexpr double pi() { return std::acos(-1); }
-
-		Device& m_device;
-		int32_t m_position_0_degree;
-		int32_t m_position_360_degree;
-		std::string m_topic_name;
-
-		ros::Subscriber m_subscriber;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

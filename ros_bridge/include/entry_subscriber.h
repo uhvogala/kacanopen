@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "device.h"
@@ -43,56 +43,52 @@
 #include "std_msgs/Int32.h"
 #include "std_msgs/Bool.h"
 #include "std_msgs/String.h"
- 
+
 #include <string>
 #include <thread>
 
 namespace kaco {
 
-	/// This class provides a Publisher implementation for
-	/// use with kaco::Bridge. It publishes a value from
-	/// a device's dictionary.
-	class EntrySubscriber : public Subscriber {
+/// This class provides a Publisher implementation for
+/// use with kaco::Bridge. It publishes a value from
+/// a device's dictionary.
+class EntrySubscriber : public Subscriber {
+ public:
+  /// Constructor
+  /// \param device The CanOpen device
+  /// \param entry_name The name of the entry. See device profile.
+  /// \param array_index If the entry is not an array, this should be zero, otherwise it's the array index
+  /// \param access_method You can choose default/sdo/pdo method. See kaco::Device docs.
+  EntrySubscriber(Device& device, std::string entry_name, uint8_t array_index = 0,
+                  WriteAccessMethod access_method = WriteAccessMethod::use_default);
 
-	public:
+  /// \see interface Subscriber
+  void advertise() override;
 
-		/// Constructor
-		/// \param device The CanOpen device
-		/// \param entry_name The name of the entry. See device profile.
-		/// \param array_index If the entry is not an array, this should be zero, otherwise it's the array index
-		/// \param access_method You can choose default/sdo/pdo method. See kaco::Device docs.
-		EntrySubscriber(Device& device, std::string entry_name,
-			uint8_t array_index=0, WriteAccessMethod access_method = WriteAccessMethod::use_default);
+ private:
+  void receive_uint8(const std_msgs::UInt8& msg);
+  void receive_uint16(const std_msgs::UInt16& msg);
+  void receive_uint32(const std_msgs::UInt32& msg);
+  void receive_int8(const std_msgs::Int8& msg);
+  void receive_int16(const std_msgs::Int16& msg);
+  void receive_int32(const std_msgs::Int32& msg);
+  void receive_boolean(const std_msgs::Bool& msg);
+  void receive_string(const std_msgs::String& msg);
 
-		/// \see interface Subscriber
-		void advertise() override;
+  static const bool debug = true;
 
-	private:
+  // TODO: let the user change this?
+  static const unsigned queue_size = 10000;
 
-		void receive_uint8(const std_msgs::UInt8& msg);
-		void receive_uint16(const std_msgs::UInt16& msg);
-		void receive_uint32(const std_msgs::UInt32& msg);
-		void receive_int8(const std_msgs::Int8& msg);
-		void receive_int16(const std_msgs::Int16& msg);
-		void receive_int32(const std_msgs::Int32& msg);
-		void receive_boolean(const std_msgs::Bool& msg);
-		void receive_string(const std_msgs::String& msg);
+  ros::Subscriber m_subscriber;
+  std::string m_device_prefix;
+  std::string m_name;
 
-		static const bool debug = true;
+  Device& m_device;
+  std::string m_entry_name;
+  uint8_t m_array_index;
+  WriteAccessMethod m_access_method;
+  Type m_type;
+};
 
-		// TODO: let the user change this?
-		static const unsigned queue_size = 10000;
-
-		ros::Subscriber m_subscriber;
-		std::string m_device_prefix;
-		std::string m_name;
-
-		Device& m_device;
-		std::string m_entry_name;
-		uint8_t m_array_index;
-		WriteAccessMethod m_access_method;
-		Type m_type;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

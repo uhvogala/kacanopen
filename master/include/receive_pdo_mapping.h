@@ -28,30 +28,28 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
 
 namespace kaco {
 
-	/// This struct represents a mapping from one receive PDO
-	/// to one dictionary entry. There may be multiple
-	/// ReceivePDOMapping instances for one PDO.
-	struct ReceivePDOMapping {
+/// This struct represents a mapping from one receive PDO
+/// to one dictionary entry. There may be multiple
+/// ReceivePDOMapping instances for one PDO.
+struct ReceivePDOMapping {
+  /// COB-ID of the PDO
+  uint16_t cob_id;
 
-		/// COB-ID of the PDO
-		uint16_t cob_id;
+  /// Name of the dictionary entry
+  std::string entry_name;
 
-		/// Name of the dictionary entry
-		std::string entry_name;
+  /// index of the first mapped byte in the PDO message
+  uint8_t offset;
 
-		/// index of the first mapped byte in the PDO message
-		uint8_t offset;
+  /// Array index (only relevant for arrays)
+  uint8_t array_index;
+};
 
-		/// Array index (only relevant for arrays)
-		uint8_t array_index;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

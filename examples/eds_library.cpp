@@ -35,54 +35,52 @@
 #include <tuple>
 #include <algorithm>
 
-void print_dictionary(const std::map<std::string, kaco::Entry>& map) {
+void
+print_dictionary(const std::map<std::string, kaco::Entry>& map) {
+  PRINT("\nHere is the dictionary:");
 
-	PRINT("\nHere is the dictionary:");
+  std::vector<kaco::Entry> entries;
 
-	std::vector< kaco::Entry > entries;
+  for (const auto& pair : map) {
+    entries.push_back(pair.second);
+  }
 
-	for (const auto& pair : map) {
-		entries.push_back(pair.second);
-	}
+  // sort by index and subindex
+  std::sort(entries.begin(), entries.end());
 
-	// sort by index and subindex
-	std::sort(entries.begin(), entries.end());
-
-	for (const auto& entry : entries) {
-		entry.print();
-	}
-
+  for (const auto& entry : entries) {
+    entry.print();
+  }
 }
 
-int main(int argc, char** argv) {
+int
+main(int argc, char** argv) {
+  PRINT("This example loads dictionaries from the EDS library.");
 
-	PRINT("This example loads dictionaries from the EDS library.");
+  std::map<std::string, kaco::Entry> map;
+  kaco::EDSLibrary library(map);
+  bool success = library.lookup_library();
 
-	std::map<std::string, kaco::Entry> map;
-	kaco::EDSLibrary library(map);
-	bool success = library.lookup_library();
+  if (!success) {
+    ERROR("EDS library not found.");
+    return EXIT_FAILURE;
+  }
 
-	if (!success) {
-		ERROR("EDS library not found.");
-		return EXIT_FAILURE;
-	}
+  success = library.load_default_eds(402);
+  if (!success) {
+    ERROR("load_default_eds(402) failed.");
+  } else {
+    print_dictionary(map);
+  }
 
-	success = library.load_default_eds(402);
-	if (!success) {
-		ERROR("load_default_eds(402) failed.");
-	} else {
-		print_dictionary(map);
-	}
+  // This should fail.
+  map.clear();
+  success = library.load_default_eds(405);
+  if (!success) {
+    ERROR("load_default_eds(405) failed.");
+  } else {
+    print_dictionary(map);
+  }
 
-	// This should fail.
-	map.clear();
-	success = library.load_default_eds(405);
-	if (!success) {
-		ERROR("load_default_eds(405) failed.");
-	} else {
-		print_dictionary(map);
-	}
-
-	return EXIT_SUCCESS;
-
+  return EXIT_SUCCESS;
 }

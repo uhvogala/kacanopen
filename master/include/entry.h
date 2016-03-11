@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
@@ -44,112 +44,107 @@
 
 namespace kaco {
 
-	/// \class Entry
-	///
-	/// This class represents an entry in the object dictionary of a device.
-	///
-	/// \todo Add missing fields like high and low limit.
-	/// \todo Array type entries are currently not used and may be deleted in future.
-	class Entry {
+/// \class Entry
+///
+/// This class represents an entry in the object dictionary of a device.
+///
+/// \todo Add missing fields like high and low limit.
+/// \todo Array type entries are currently not used and may be deleted in future.
+class Entry {
+ public:
+  /// Tag class for distinguishing constructors.
+  struct VariableTag {};
 
-	public:
+  /// Tag class for distinguishing constructors.
+  struct ArrayTag {};
 
-		/// Tag class for distinguishing constructors.
-		struct VariableTag {};
+  /// Tag for distinguishing constructors.
+  static const VariableTag variable_tag;
 
-		/// Tag class for distinguishing constructors.
-		struct ArrayTag {};
+  /// Tag for distinguishing constructors.
+  static const ArrayTag array_tag;
 
-		/// Tag for distinguishing constructors.
-		static const VariableTag variable_tag;
+  /// type of a callback for a value changed event
+  typedef std::function<void(const Value& value)> ValueChangedCallback;
 
-		/// Tag for distinguishing constructors.
-		static const ArrayTag array_tag;
+  /// Constructs an empty entry.
+  Entry();
 
-		/// type of a callback for a value changed event
-		typedef std::function< void(const Value& value) > ValueChangedCallback;
+  /// standard constructor
+  Entry(VariableTag tag, uint16_t _index, uint8_t _subindex, std::string _name, Type _type, AccessType _access);
 
-		/// Constructs an empty entry.
-		Entry();
+  /// array constructor
+  Entry(ArrayTag tag, uint16_t _index, std::string _name, Type _type, AccessType _access);
 
-		/// standard constructor
-		Entry(VariableTag tag, uint16_t _index, uint8_t _subindex, std::string _name, Type _type, AccessType _access);
+  /// Sets the value. If the entry is an array, array_index can be specified.
+  void set_value(const Value& value, uint8_t array_index = 0);
 
-		/// array constructor
-		Entry(ArrayTag tag, uint16_t _index, std::string _name, Type _type, AccessType _access);
+  /// Returns the value. If the entry is an array, array_index can be specified.
+  const Value& get_value(uint8_t array_index = 0) const;
 
-		/// Sets the value. If the entry is an array, array_index can be specified.
-		void set_value(const Value& value, uint8_t array_index=0);
+  /// Returns if the value is set/valid.  If the entry is an array, array_index can be specified.
+  bool valid(uint8_t array_index = 0) const;
 
-		/// Returns the value. If the entry is an array, array_index can be specified.
-		const Value& get_value(uint8_t array_index=0) const;
+  /// Returns the data type.
+  Type get_type() const;
 
-		/// Returns if the value is set/valid.  If the entry is an array, array_index can be specified.
-		bool valid(uint8_t array_index=0) const;
+  /// Registers a given function to be called when the value is changed.
+  void add_value_changed_callback(ValueChangedCallback callback);
 
-		/// Returns the data type.
-		Type get_type() const;
+  /// Prints relevant information concerning this entry on standard output - name, index, possibly value, ...
+  /// This is used by Device::print_dictionary()
+  void print() const;
 
-		/// Registers a given function to be called when the value is changed.
-		void add_value_changed_callback(ValueChangedCallback callback);
+  /// Compares entries by index and subindex.
+  /// This can be used for sorting the dictionary.
+  bool operator<(const Entry& other) const;
 
-		/// Prints relevant information concerning this entry on standard output - name, index, possibly value, ...
-		/// This is used by Device::print_dictionary()
-		void print() const;
+  /// index in dictionary
+  uint16_t index;
 
-		/// Compares entries by index and subindex.
-		/// This can be used for sorting the dictionary.
-		bool operator<(const Entry& other) const;
+  /// subindex in dictionary.
+  /// if is_array==true, this variable is not used
+  uint8_t subindex;  // only used if is_array==false
 
-		/// index in dictionary
-		uint16_t index;
+  /// Human-readable name
+  /// Should be escaped for consitency using Utils::escape().
+  std::string name;
 
-		/// subindex in dictionary.
-		/// if is_array==true, this variable is not used
-		uint8_t subindex; // only used if is_array==false
+  /// Data type of the value.
+  Type type;
 
-		/// Human-readable name
-		/// Should be escaped for consitency using Utils::escape().
-		std::string name;
+  /// Accessibility of the entry
+  AccessType access_type;
 
-		/// Data type of the value.
-		Type type;
+  /// Distinguishes arrays (index + dynamic array_index) from regular variables (index and subindex)
+  bool is_array = false;
 
-		/// Accessibility of the entry 
-		AccessType access_type;
+  /// Standard method for reading this entry.
+  /// Used by Device::get_entry().
+  ReadAccessMethod read_access_method = ReadAccessMethod::sdo;
 
-		/// Distinguishes arrays (index + dynamic array_index) from regular variables (index and subindex)
-		bool is_array = false;
+  /// Standard method for writing this entry.
+  /// Used by Device::set_entry().
+  WriteAccessMethod write_access_method = WriteAccessMethod::sdo;
 
-		/// Standard method for reading this entry.
-		/// Used by Device::get_entry().
-		ReadAccessMethod read_access_method = ReadAccessMethod::sdo;
+  // maybe supported in future:
+  // bool is_slice;
+  // uint8_t slice_first_bit;
+  // uint8_t slice_last_bit;
 
-		/// Standard method for writing this entry.
-		/// Used by Device::set_entry().
-		WriteAccessMethod write_access_method = WriteAccessMethod::sdo;
-		
-		// maybe supported in future:
-		//bool is_slice;
-		//uint8_t slice_first_bit;
-		//uint8_t slice_last_bit;
+  // TODO: Add fields for default, max and min value, pdo mapping boolean, object flags, and object type.
+  // TODO: Maybe the array functionality is obsolete when using EDS files...
 
-		// TODO: Add fields for default, max and min value, pdo mapping boolean, object flags, and object type.
-		// TODO: Maybe the array functionality is obsolete when using EDS files...
+ private:
+  std::vector<Value> m_value;
+  std::vector<bool> m_valid;
+  std::vector<ValueChangedCallback> m_value_changed_callbacks;
+  Value m_dummy_value;
 
-	private:
+  /// read_write_mutex locks get_value() and set_value() because a PDO
+  /// transmitter thread could read a value reference while it is
+  /// set by the main thread.
+  std::shared_ptr<std::mutex> read_write_mutex;
+};
 
-		std::vector<Value> m_value;
-		std::vector<bool> m_valid;
-		std::vector<ValueChangedCallback> m_value_changed_callbacks;
-		Value m_dummy_value;
-
-		/// read_write_mutex locks get_value() and set_value() because a PDO
-		/// transmitter thread could read a value reference while it is
-		/// set by the main thread.
-		std::shared_ptr<std::mutex> read_write_mutex;
-
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

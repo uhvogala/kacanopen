@@ -28,14 +28,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
 #include <map>
 #include <regex>
- 
-#include <boost/property_tree/ptree.hpp> // property_tree
+
+#include <boost/property_tree/ptree.hpp>  // property_tree
 
 #include "entry.h"
 #include "types.h"
@@ -47,46 +47,42 @@ namespace kaco {
 /// std::map<std::string, Entry>.
 /// It makes use of Boost's property_tree class.
 class EDSReader {
+ public:
+  /// Constructor.
+  /// \param target The dictionary, into which entries should be inserted.
+  EDSReader(std::map<std::string, Entry>& target);
 
-public:
+  /// Loads an EDS file from file system.
+  /// \returns true if successful
+  bool load_file(std::string filename);
 
-	/// Constructor.
-	/// \param target The dictionary, into which entries should be inserted.
-	EDSReader(std::map<std::string, Entry>& target);
+  /// Import entries from the EDS file into the given dictionary
+  /// \returns true if successful
+  bool import_entries();
 
-	/// Loads an EDS file from file system.
-	/// \returns true if successful
-	bool load_file(std::string filename);
+ private:
+  /// Enable debug logging.
+  static const bool debug = true;
 
-	/// Import entries from the EDS file into the given dictionary
-	/// \returns true if successful
-	bool import_entries();
+  /// reference to the dictionary
+  std::map<std::string, Entry>& m_map;
 
-private:
+  /// This property tree represents the EDS file imported in load_file().
+  /// EDS files have the same syntax like Windows INI files.
+  boost::property_tree::ptree m_ini;
 
-	/// Enable debug logging.
-	static const bool debug = true;
+  /// Parse an index section (e.g. [1000])
+  bool parse_index(const std::string& section, uint16_t index);
 
-	/// reference to the dictionary
-	std::map<std::string, Entry>& m_map;
-	
-	/// This property tree represents the EDS file imported in load_file().
-	/// EDS files have the same syntax like Windows INI files.
-	boost::property_tree::ptree m_ini;
+  /// Parse a section which represents a variable. Can be an index section like [1000] or a subindex section like
+  /// [1018sub0].
+  bool parse_var(const std::string& section, uint16_t index, uint8_t subindex, const std::string& name_prefix = "");
 
-	/// Parse an index section (e.g. [1000])
-	bool parse_index(const std::string& section, uint16_t index);
-	
-	/// Parse a section which represents a variable. Can be an index section like [1000] or a subindex section like [1018sub0].
-	bool parse_var(const std::string& section, uint16_t index, uint8_t subindex, const std::string& name_prefix = "");
-	
-	/// Parse an index section which has ObjectType array or record.
-	bool parse_array_or_record(const std::string& section, uint16_t index);
+  /// Parse an index section which has ObjectType array or record.
+  bool parse_array_or_record(const std::string& section, uint16_t index);
 
-	/// Parses a regex error. This is just for debugging purposes.
-	std::string parse_regex_error(const std::regex_constants::error_type& etype, const std::string element_name) const;
-
-
+  /// Parses a regex error. This is just for debugging purposes.
+  std::string parse_regex_error(const std::regex_constants::error_type& etype, const std::string element_name) const;
 };
 
-} // end namespace kaco
+}  // end namespace kaco

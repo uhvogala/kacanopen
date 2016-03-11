@@ -39,64 +39,59 @@
 //#define SHARE_SOURCE_PATH ...
 //#define SHARE_INSTALLED_PATH ...
 
-int main(int argc, char** argv) {
+int
+main(int argc, char** argv) {
+  PRINT("This example reads an EDS file and prints the resulting dictionary.");
 
-	PRINT("This example reads an EDS file and prints the resulting dictionary.");
+  std::map<std::string, kaco::Entry> map;
+  kaco::EDSReader reader(map);
 
-	std::map<std::string, kaco::Entry> map;
-	kaco::EDSReader reader(map);
+  bool success = false;
+  std::string path;
 
-	bool success = false;
-	std::string path;
-	
-	if (argc>1 && argv[1]) {
-		
-		path = std::string(argv[1]);
-		PRINT("Loading EDS file from "<<path);
-		success = reader.load_file(path);
+  if (argc > 1 && argv[1]) {
+    path = std::string(argv[1]);
+    PRINT("Loading EDS file from " << path);
+    success = reader.load_file(path);
 
-	} else {
+  } else {
+    path = SHARE_SOURCE_PATH "/example.eds";
+    PRINT("Loading default EDS file from " << path);
+    success = reader.load_file(path);
 
-		path = SHARE_SOURCE_PATH "/example.eds";
-		PRINT("Loading default EDS file from "<<path);
-		success = reader.load_file(path);
+    if (!success) {
+      path = SHARE_INSTALLED_PATH "/example.eds";
+      PRINT("Another try: Loading default EDS file from " << path);
+      success = reader.load_file(path);
+    }
+  }
 
-		if (!success) {
+  if (!success) {
+    ERROR("Loading file not successful. You can specify the path to the EDS file as command line argument.");
+    return EXIT_FAILURE;
+  }
 
-			path = SHARE_INSTALLED_PATH "/example.eds";
-			PRINT("Another try: Loading default EDS file from "<<path);
-			success = reader.load_file(path);
-		}
+  success = reader.import_entries();
 
-	}
+  if (!success) {
+    ERROR("Importing entries failed.");
+    return EXIT_FAILURE;
+  }
 
-	if (!success) {
-		ERROR("Loading file not successful. You can specify the path to the EDS file as command line argument.");
-		return EXIT_FAILURE;
-	}
+  PRINT("Here is the dictionary:");
 
-	success = reader.import_entries();
+  std::vector<kaco::Entry> entries;
 
-	if (!success) {
-		ERROR("Importing entries failed.");
-		return EXIT_FAILURE;
-	}
+  for (const auto& pair : map) {
+    entries.push_back(pair.second);
+  }
 
-	PRINT("Here is the dictionary:");
+  // sort by index and subindex
+  std::sort(entries.begin(), entries.end());
 
-	std::vector< kaco::Entry > entries;
+  for (const auto& entry : entries) {
+    entry.print();
+  }
 
-	for (const auto& pair : map) {
-		entries.push_back(pair.second);
-	}
-
-	// sort by index and subindex
-	std::sort(entries.begin(), entries.end());
-
-	for (const auto& entry : entries) {
-		entry.print();
-	}
-
-	return EXIT_SUCCESS;
-
+  return EXIT_SUCCESS;
 }

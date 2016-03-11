@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
@@ -38,18 +38,16 @@
 
 namespace kaco {
 
-	/// This struct represents one mapped entry inside a TransmitPDOMapping.
-	struct Mapping {
+/// This struct represents one mapped entry inside a TransmitPDOMapping.
+struct Mapping {
+  /// Name of the mapped dictionary entry.
+  std::string entry_name;
 
-		/// Name of the mapped dictionary entry.
-		std::string entry_name;
+  /// index of the first mapped byte in the PDO message
+  uint8_t offset;
 
-		/// index of the first mapped byte in the PDO message
-		uint8_t offset;
+  /// Array index (only relevant for arrays)
+  uint8_t array_index;
+};
 
-		/// Array index (only relevant for arrays)
-		uint8_t array_index;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

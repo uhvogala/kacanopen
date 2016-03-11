@@ -140,7 +140,7 @@ if (NOT(${NO_ROS}))
     add_subdirectory(ros_bridge)
 endif()
 
-add_subdirectory(drivers)
+add_subdirectory(third_party/drivers)
 add_subdirectory(core)
 add_subdirectory(master)
 add_subdirectory(examples)

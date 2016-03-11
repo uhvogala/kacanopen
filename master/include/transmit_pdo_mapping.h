@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
@@ -43,60 +43,58 @@
 
 namespace kaco {
 
-	// forward declarations
-	class Core;
-	class Entry;
+// forward declarations
+class Core;
+class Entry;
 
-	/// This class represents a mapping from one or more
-	/// dictionary entries to one transmit PDO, which will
-	/// be sent by an instance of this class repeatedly.
-	class TransmitPDOMapping {
+/// This class represents a mapping from one or more
+/// dictionary entries to one transmit PDO, which will
+/// be sent by an instance of this class repeatedly.
+class TransmitPDOMapping {
+ public:
+  /// Constructor.
+  /// \param core Reference to the Core instance (needed to send the PDO).
+  /// \param dictionary Reference to the object dictionary.
+  /// \param cob_id_ COB-ID of the PDO
+  /// \param transmission_type_ Transmission type
+  /// \param repeat_time_ Send repeat time , in case transmission_type_==TransmissionType::PERIODIC
+  /// \param mappings_ Mapped entries with offset (see Mapping class)
+  /// \throws dictionary_error if entry does not exist or mappings overlap (among others)
+  TransmitPDOMapping(Core& core, const std::map<std::string, Entry>& dictionary, uint16_t cob_id_,
+                     TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_,
+                     const std::vector<Mapping>& mappings_);
 
-	public:
+  /// Stops the transmitter thread if there is one.
+  ~TransmitPDOMapping();
 
-		/// Constructor.
-		/// \param core Reference to the Core instance (needed to send the PDO).
-		/// \param dictionary Reference to the object dictionary.
-		/// \param cob_id_ COB-ID of the PDO
-		/// \param transmission_type_ Transmission type
-		/// \param repeat_time_ Send repeat time , in case transmission_type_==TransmissionType::PERIODIC
-		/// \param mappings_ Mapped entries with offset (see Mapping class)
-		/// \throws dictionary_error if entry does not exist or mappings overlap (among others)
-		TransmitPDOMapping(Core& core, const std::map<std::string, Entry>& dictionary, uint16_t cob_id_,
-			TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector<Mapping>& mappings_);
+  /// COB-ID of the PDO
+  uint16_t cob_id;
 
-		/// Stops the transmitter thread if there is one.
-		~TransmitPDOMapping();
+  /// Transmission type
+  TransmissionType transmission_type;
 
-		/// COB-ID of the PDO
-		uint16_t cob_id;
+  /// Send repeat time
+  std::chrono::milliseconds repeat_time;
 
-		/// Transmission type
-		TransmissionType transmission_type;
+  /// Mapped entries with offset (see Mapping class)
+  std::vector<Mapping> mappings;
 
-		/// Send repeat time
-		std::chrono::milliseconds repeat_time;
+  /// The transmitter thread
+  /// \note This is a shared pointer because threads cannot be copied, but TransmitPDOMapping is
+  /// default-copy-constructed by std::vector.
+  std::shared_ptr<std::thread> transmitter;
 
-		/// Mapped entries with offset (see Mapping class)
-		std::vector<Mapping> mappings;
+  /// Sends the PDO
+  void send() const;
 
-		/// The transmitter thread
-		/// \note This is a shared pointer because threads cannot be copied, but TransmitPDOMapping is default-copy-constructed by std::vector.
-		std::shared_ptr<std::thread> transmitter;
+ private:
+  /// \throws dictionary_error
+  void check_correctness() const;
 
-		/// Sends the PDO
-		void send() const;
+  static const bool debug = false;
 
-	private:
+  Core& m_core;
+  const std::map<std::string, Entry>& m_dictionary;
+};
 
-		/// \throws dictionary_error
-		void check_correctness() const;
-
-		static const bool debug = false;
-
-		Core& m_core;
-		const std::map<std::string, Entry>& m_dictionary;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

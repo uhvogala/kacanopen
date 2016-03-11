@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "pdo.h"
 #include "logger.h"
 #include "core.h"
@@ -38,68 +38,62 @@
 
 namespace kaco {
 
-PDO::PDO(Core& core) 
-	: m_core(core)
-	{ }
+PDO::PDO(Core& core) : m_core(core) {}
 
-PDO::~PDO() 
-	{ }
+PDO::~PDO() {}
 
-void PDO::process_incoming_message(const Message& message) const {
+void
+PDO::process_incoming_message(const Message& message) const {
+  uint16_t cob_id = message.cob_id;
+  uint8_t node_id = message.get_node_id();
+  std::vector<uint8_t> data;
 
-	uint16_t cob_id = message.cob_id;
-	uint8_t node_id = message.get_node_id();
-	std::vector<uint8_t> data;
+  DEBUG_LOG("Received transmit PDO with cob_id 0x" << std::hex << cob_id << " (usually from node 0x" << node_id << ")");
 
-	DEBUG_LOG("Received transmit PDO with cob_id 0x"<<std::hex<<cob_id<<" (usually from node 0x"<<node_id<<")");
+  for (unsigned i = 0; i < message.len; ++i) {
+    data.push_back(message.data[i]);
+  }
 
-	for (unsigned i=0; i<message.len; ++i) {
-		data.push_back(message.data[i]);
-	}
+  // call registered callbacks
+  bool found_callback = false;
+  for (const PDOReceivedCallback& callback : m_receive_callbacks) {
+    if (callback.cob_id == cob_id) {
+      found_callback = true;
+      // This is not async because callbacks are only registered internally.
+      callback.callback(std::move(data));
+    }
+  }
 
-	// call registered callbacks
-	bool found_callback = false;
-	for (const PDOReceivedCallback& callback : m_receive_callbacks) {
-		if (callback.cob_id == cob_id) {
-			found_callback = true;
-			// This is not async because callbacks are only registered internally.
-			callback.callback(std::move(data));
-		}
-	}
-
-	DEBUG(
-		if (!found_callback) {
-			PRINT("PDO is unassigned. Here is the data (LSB):");
-			for (unsigned i=0; i<data.size(); ++i) {
-				std::cout << std::hex << (unsigned)data[i] << " ";
-			}
-			std::cout << std::endl;
-		}
-	)
-
+  DEBUG(if (!found_callback) {
+    PRINT("PDO is unassigned. Here is the data (LSB):");
+    for (unsigned i = 0; i < data.size(); ++i) {
+      std::cout << std::hex << (unsigned)data[i] << " ";
+    }
+    std::cout << std::endl;
+  })
 }
 
-void PDO::send(uint16_t cob_id, const std::vector<uint8_t>& data) {
-	
-	assert(data.size()<=8 && "[PDO::send] A PDO message can have at most 8 data bytes.");
+void
+PDO::send(uint16_t cob_id, const std::vector<uint8_t>& data) {
+  assert(data.size() <= 8 && "[PDO::send] A PDO message can have at most 8 data bytes.");
 
-	Message message;
-	message.cob_id = cob_id;
-	message.rtr = false;
-	message.len = data.size();
-	for (uint8_t i=0; i<data.size(); ++i) {
-		message.data[i] = data[i];
-	}
+  Message message;
+  message.cob_id = cob_id;
+  message.rtr = false;
+  message.len = data.size();
+  for (uint8_t i = 0; i < data.size(); ++i) {
+    message.data[i] = data[i];
+  }
 
-	DEBUG_LOG_EXHAUSTIVE("Sending the following PDO:");
-	DEBUG_EXHAUSTIVE(message.print();)
+  DEBUG_LOG_EXHAUSTIVE("Sending the following PDO:");
+  DEBUG_EXHAUSTIVE(message.print();)
 
-	m_core.send(message);
-
+  m_core.send(message);
 }
 
-void PDO::add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Function callback) {
-	m_receive_callbacks.push_back({cob_id,callback});
+void
+PDO::add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Function callback) {
+  m_receive_callbacks.push_back({cob_id, callback});
 }
 
-} // end namespace kaco
+}  // end namespace kaco

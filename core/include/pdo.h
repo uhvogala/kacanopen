@@ -38,61 +38,55 @@
 #include "message.h"
 
 namespace kaco {
-	
-	// forward declaration
-	class Core;
 
-	/// \class PDO
-	///
-	/// This class implements the CanOpen PDO protocol
-	class PDO {
+// forward declaration
+class Core;
 
-	public:
+/// \class PDO
+///
+/// This class implements the CanOpen PDO protocol
+class PDO {
+ public:
+  /// A PDO message receiver function
+  /// together with it's COB-ID
+  struct PDOReceivedCallback {
+    /// Type of the callback
+    typedef std::function<void(std::vector<uint8_t>)> Function;
 
-		/// A PDO message receiver function
-		/// together with it's COB-ID
-		struct PDOReceivedCallback {
+    /// The COB-ID of the PDO to receive
+    uint16_t cob_id;
 
-			/// Type of the callback
-			typedef std::function< void(std::vector<uint8_t>) > Function;
+    /// The callback
+    Function callback;
+  };
 
-			/// The COB-ID of the PDO to receive
-			uint16_t cob_id;
+  /// Constructor
+  /// \param core Reference to the Core
+  PDO(Core& core);
 
-			/// The callback
-			Function callback;
+  /// Destructor
+  ~PDO();
 
-		};
+  /// Handler for an incoming PDO message
+  /// \param message The message from the network
+  /// \todo Rename this to process_incoming_tpdo() and add process_incoming_rpdo()
+  void process_incoming_message(const Message& message) const;
 
-		/// Constructor
-		/// \param core Reference to the Core
-		PDO(Core& core);
+  /// Sends a PDO message
+  /// \param cob_id COB-ID of the message to send
+  /// \param data A vector containing the data bytes to send. PDOs can have most 8 bytes!
+  void send(uint16_t cob_id, const std::vector<uint8_t>& data);
 
-		/// Destructor
-		~PDO();
+  /// Adds a callback which will be called when a PDO has been received with the given COB-ID.
+  /// \param cob_id COB-ID to listen for
+  /// \param callback Callback function, which takes a const Message reference as argument.
+  /// \todo Rename this to add_tpdo_received_callback() and add add_rpdo_received_callback()
+  void add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Function callback);
 
-		/// Handler for an incoming PDO message
-		/// \param message The message from the network
-		/// \todo Rename this to process_incoming_tpdo() and add process_incoming_rpdo()
-		void process_incoming_message(const Message& message) const;
+ private:
+  static const bool debug = true;
+  Core& m_core;
+  std::vector<PDOReceivedCallback> m_receive_callbacks;
+};
 
-		/// Sends a PDO message
-		/// \param cob_id COB-ID of the message to send
-		/// \param data A vector containing the data bytes to send. PDOs can have most 8 bytes!
-		void send(uint16_t cob_id, const std::vector<uint8_t>& data);
-
-		/// Adds a callback which will be called when a PDO has been received with the given COB-ID.
-		/// \param cob_id COB-ID to listen for
-		/// \param callback Callback function, which takes a const Message reference as argument.
-		/// \todo Rename this to add_tpdo_received_callback() and add add_rpdo_received_callback()
-		void add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Function callback);
-
-	private:
-
-		static const bool debug = true;
-		Core& m_core;
-		std::vector<PDOReceivedCallback> m_receive_callbacks;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

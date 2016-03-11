@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "core.h"
@@ -38,47 +38,43 @@
 
 namespace kaco {
 
-	/// \class Master
-	/// 
-	/// This class represents a master node. It listens
-	/// for new slaves and provides access to them
-	/// via get_slaves().
-	class Master {
+/// \class Master
+///
+/// This class represents a master node. It listens
+/// for new slaves and provides access to them
+/// via get_slaves().
+class Master {
+ public:
+  /// Constructor.
+  /// Creates Core instance and adds NMT listener for new devices.
+  Master();
 
-	public:
+  /// Destructor.
+  ~Master();
 
-		/// Constructor.
-		/// Creates Core instance and adds NMT listener for new devices. 
-		Master();
+  /// Starts master, creates Core and resets all nodes.
+  ///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
+  ///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
+  /// \returns true if successful
+  bool start(const std::string busname, unsigned baudrate);
 
-		/// Destructor.
-		~Master();
+  /// Stops master and core.
+  void stop();
 
-		/// Starts master, creates Core and resets all nodes.
-		///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
-		///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
-		/// \returns true if successful
-		bool start(const std::string busname, unsigned baudrate);
-		
-		/// Stops master and core.
-		void stop();
+  /// Returns a reference to the device array.
+  std::vector<Device>& get_devices();
 
-		/// Returns a reference to the device array.
-		std::vector<Device>& get_devices();
+  /// Core instance.
+  Core core;
 
-		/// Core instance.
-		Core core;
+ private:
+  static const bool debug = true;
 
-	private:
+  std::vector<Device> m_devices;
+  NMT::NewDeviceCallback m_new_device_callback_functional;
+  bool m_running{false};
 
-		static const bool debug = true;
+  void new_device_callback(uint8_t node_id);
+};
 
-		std::vector<Device> m_devices;
-		NMT::NewDeviceCallback m_new_device_callback_functional;
-		bool m_running{false};
-
-		void new_device_callback(uint8_t node_id);
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "master.h"
 #include "core.h"
 #include "logger.h"
@@ -36,40 +36,41 @@
 namespace kaco {
 
 Master::Master() {
-	
-	m_new_device_callback_functional = std::bind(&Master::new_device_callback, this, std::placeholders::_1);
-	core.nmt.register_new_device_callback(m_new_device_callback_functional);
-
+  m_new_device_callback_functional = std::bind(&Master::new_device_callback, this, std::placeholders::_1);
+  core.nmt.register_new_device_callback(m_new_device_callback_functional);
 }
 
 Master::~Master() {
-	if (m_running) {
-		stop();
-	}
+  if (m_running) {
+    stop();
+  }
 }
 
-bool Master::start(const std::string busname, unsigned baudrate) {
-	bool success = core.start(busname, baudrate);
-	if (!success) {
-		return false;
-	}
-	m_running = true;
-    core.nmt.reset_all_nodes();
-    return true;
+bool
+Master::start(const std::string busname, unsigned baudrate) {
+  bool success = core.start(busname, baudrate);
+  if (!success) {
+    return false;
+  }
+  m_running = true;
+  core.nmt.reset_all_nodes();
+  return true;
 }
 
-void Master::stop() {
-	m_running = false;
-	core.stop();
+void
+Master::stop() {
+  m_running = false;
+  core.stop();
 }
 
-std::vector<Device>& Master::get_devices() {
-	return m_devices;
+std::vector<Device>&
+Master::get_devices() {
+  return m_devices;
 }
 
-void Master::new_device_callback(uint8_t node_id) {
-	m_devices.emplace_back(core, node_id);
+void
+Master::new_device_callback(uint8_t node_id) {
+  m_devices.emplace_back(core, node_id);
 }
 
-
-} // end namespace kaco
+}  // end namespace kaco

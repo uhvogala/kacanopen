@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <map>
@@ -37,55 +37,51 @@
 
 namespace kaco {
 
-	/// This class provides access to KaCanOpen's EDS library.
-	/// It manages device specific as well as generic CanOpen
-	/// dictionaries.
-	class EDSLibrary {
+/// This class provides access to KaCanOpen's EDS library.
+/// It manages device specific as well as generic CanOpen
+/// dictionaries.
+class EDSLibrary {
+ public:
+  /// Constructor.
+  /// \param target The dictionary, into which entries will be inserted.
+  EDSLibrary(std::map<std::string, Entry>& target);
 
-	public:
+  /// Finds EDS library on disk.
+  /// \param path optional custom path to EDS library
+  /// \returns true if successful
+  bool lookup_library(std::string path = "");
 
-		/// Constructor.
-		/// \param target The dictionary, into which entries will be inserted.
-		EDSLibrary(std::map<std::string, Entry>& target);
+  /// Loads mandatory dictionary entries defined in CiA 301 standard
+  /// \returns true if successful
+  bool load_mandatory_entries();
 
-		/// Finds EDS library on disk.
-		/// \param path optional custom path to EDS library
-		/// \returns true if successful
-		bool lookup_library(std::string path = "");
+  /// Loads entries defined in generic CiA profile EDS files
+  /// \param device_profile_number CiA standard profile number
+  /// \returns true if successful
+  bool load_default_eds(uint16_t device_profile_number);
 
-		/// Loads mandatory dictionary entries defined in CiA 301 standard
-		/// \returns true if successful
-		bool load_mandatory_entries();
+  /// Loads entries defined in device specific EDS files proviced by manufacturers.
+  /// \param vendor_id Vencor ID from identity object in dictionary (one of the mandatory entries)
+  /// \param product_code Product code from identity object in dictionary (one of the mandatory entries)
+  /// \param revision_number Revision number from identity object in dictionary (one of the mandatory entries)
+  /// \returns true if successful
+  bool load_manufacturer_eds(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number);
 
-		/// Loads entries defined in generic CiA profile EDS files
-		/// \param device_profile_number CiA standard profile number
-		/// \returns true if successful
-		bool load_default_eds(uint16_t device_profile_number);
+  /// Checks if lookup_library() was successful.
+  /// \returns true if ready
+  bool ready() const;
 
-		/// Loads entries defined in device specific EDS files proviced by manufacturers.
-		/// \param vendor_id Vencor ID from identity object in dictionary (one of the mandatory entries)
-		/// \param product_code Product code from identity object in dictionary (one of the mandatory entries)
-		/// \param revision_number Revision number from identity object in dictionary (one of the mandatory entries)
-		/// \returns true if successful
-		bool load_manufacturer_eds(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number);
+ private:
+  /// Enable debug logging.
+  static const bool debug = true;
 
-		/// Checks if lookup_library() was successful.
-		/// \returns true if ready
-		bool ready() const;
+  /// reference to the dictionary
+  std::map<std::string, Entry>& m_map;
 
-	private:
+  /// Path to the EDS library in filesystem. Set by lookup_library()
+  std::string m_library_path;
 
-		/// Enable debug logging.
-		static const bool debug = true;
+  bool m_ready;
+};
 
-		/// reference to the dictionary
-		std::map<std::string, Entry>& m_map;
-
-		/// Path to the EDS library in filesystem. Set by lookup_library()
-		std::string m_library_path;
-
-		bool m_ready;
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

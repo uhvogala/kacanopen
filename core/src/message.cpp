@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "message.h"
 #include "logger.h"
 
@@ -37,28 +37,28 @@
 
 namespace kaco {
 
-uint8_t Message::get_node_id() const {
-	return cob_id & 0x7F;
+uint8_t
+Message::get_node_id() const {
+  return cob_id & 0x7F;
 }
 
-uint8_t Message::get_function_code() const {
-	return cob_id >> 7;
+uint8_t
+Message::get_function_code() const {
+  return cob_id >> 7;
 }
 
-void Message::print() const {
+void
+Message::print() const {
+  DUMP_HEX(cob_id);
+  DUMP_HEX(rtr);
+  DUMP_HEX(len);
+  DUMP_HEX(get_function_code());
+  DUMP_HEX(get_node_id());
 
-	DUMP_HEX(cob_id);
-	DUMP_HEX(rtr);
-	DUMP_HEX(len);
-	DUMP_HEX(get_function_code());
-	DUMP_HEX(get_node_id());
-
-	for (unsigned i=0;i<len;++i) {
-		//if (data[i]>0) {
-			PRINT("data["<<i<<"] = 0x"<<std::hex<<(unsigned)data[i]);
-		//}
-	}
-
+  for (unsigned i = 0; i < len; ++i) {
+    // if (data[i]>0) {
+    PRINT("data[" << i << "] = 0x" << std::hex << (unsigned)data[i]);
+    //}
+  }
 }
-
 }

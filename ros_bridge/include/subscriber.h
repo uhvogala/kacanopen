@@ -28,24 +28,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 namespace kaco {
 
-	/// Interface, which provides methods for subscribing topics.
-	class Subscriber {
+/// Interface, which provides methods for subscribing topics.
+class Subscriber {
+ public:
+  /// Advertise the subscriber to the network. This is called by
+  /// Bridge _after_ ros::init(). You should not call this
+  /// method by yourself.
+  virtual void advertise() = 0;
 
-	public:
-		
-		/// Advertise the subscriber to the network. This is called by
-		/// Bridge _after_ ros::init(). You should not call this
-		/// method by yourself.
-		virtual void advertise() = 0;
+  // Virtual destructor must be defined!
+  virtual ~Subscriber() {}
+};
 
-		// Virtual destructor must be defined!
-    	virtual ~Subscriber() { }
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

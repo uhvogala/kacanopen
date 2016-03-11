@@ -28,22 +28,21 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 namespace kaco {
 
-	namespace cia_402 {
-		
-		enum ModeOfOperation : int8_t {
-			PROFILE_POSITION_MODE = 1,
-			VELOCITY_MODE = 2,
-			PROFILE_VELOCITY_MODE = 3,
-			TORQUE_PROFILE_MODE = 4,
-			HOMING_MODE = 6,
-			INTERPOLATED_POSITION_MODE = 7
-		};
+namespace cia_402 {
 
-	};
+enum ModeOfOperation : int8_t {
+  PROFILE_POSITION_MODE = 1,
+  VELOCITY_MODE = 2,
+  PROFILE_VELOCITY_MODE = 3,
+  TORQUE_PROFILE_MODE = 4,
+  HOMING_MODE = 6,
+  INTERPOLATED_POSITION_MODE = 7
+};
+};
 
-} // end namespace kaco
+}  // end namespace kaco

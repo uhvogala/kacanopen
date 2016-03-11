@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
@@ -36,23 +36,18 @@
 
 namespace kaco {
 
-	/// This is the base class of all types of exceptions
-	/// thrown by the KaCanOpen library. It can be used
-	/// directly like std::runtime_error if there isn't any
-	/// more specific error class.
-	class canopen_error : public std::runtime_error {
+/// This is the base class of all types of exceptions
+/// thrown by the KaCanOpen library. It can be used
+/// directly like std::runtime_error if there isn't any
+/// more specific error class.
+class canopen_error : public std::runtime_error {
+ public:
+  /// Constructor
+  /// \param what Error description
+  explicit canopen_error(std::string what) : runtime_error(what) {}
 
-	public:
+  /// Destructor
+  virtual ~canopen_error() {}
+};
 
-		/// Constructor
-		/// \param what Error description
-		explicit canopen_error(std::string what)
-			: runtime_error(what)
-			{ }
-
-		/// Destructor
-		virtual ~canopen_error() { }
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco

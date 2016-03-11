@@ -28,317 +28,307 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "value.h"
 #include "logger.h"
 
 namespace kaco {
 
 Value::Value() {
-	DEBUG_LOG("Creating empty value");
-	type = Type::invalid;
+  DEBUG_LOG("Creating empty value");
+  type = Type::invalid;
 }
 
 Value::Value(uint8_t value) {
-	DEBUG_LOG("Creating uint8 value");
-	type = Type::uint8;
-	uint8 = value;
+  DEBUG_LOG("Creating uint8 value");
+  type = Type::uint8;
+  uint8 = value;
 }
 
 Value::Value(uint16_t value) {
-	DEBUG_LOG("Creating uint16 value");
-	type = Type::uint16;
-	uint16 = value;
+  DEBUG_LOG("Creating uint16 value");
+  type = Type::uint16;
+  uint16 = value;
 }
 
 Value::Value(uint32_t value) {
-	DEBUG_LOG("Creating uint32 value");
-	type = Type::uint32;
-	uint32 = value;
+  DEBUG_LOG("Creating uint32 value");
+  type = Type::uint32;
+  uint32 = value;
 }
 
 Value::Value(int8_t value) {
-	DEBUG_LOG("Creating int8 value");
-	type = Type::int8;
-	int8 = value;
+  DEBUG_LOG("Creating int8 value");
+  type = Type::int8;
+  int8 = value;
 }
 
 Value::Value(int16_t value) {
-	DEBUG_LOG("Creating int16 value");
-	type = Type::int16;
-	int16 = value;
+  DEBUG_LOG("Creating int16 value");
+  type = Type::int16;
+  int16 = value;
 }
 
 Value::Value(int32_t value) {
-	DEBUG_LOG("Creating int32 value");
-	type = Type::int32;
-	int32 = value;
+  DEBUG_LOG("Creating int32 value");
+  type = Type::int32;
+  int32 = value;
 }
 
 Value::Value(float value) {
-	DEBUG_LOG("Creating real32 value");
-	type = Type::real32;
-	real32 = value;
+  DEBUG_LOG("Creating real32 value");
+  type = Type::real32;
+  real32 = value;
 }
 
 Value::Value(double value) {
-	DEBUG_LOG("Creating real64 value");
-	type = Type::real64;
-	real64 = value;
+  DEBUG_LOG("Creating real64 value");
+  type = Type::real64;
+  real64 = value;
 }
 
 Value::Value(bool value) {
-	DEBUG_LOG("Creating boolean value");
-	type = Type::boolean;
-	boolean = value;
+  DEBUG_LOG("Creating boolean value");
+  type = Type::boolean;
+  boolean = value;
 }
 
 Value::Value(const std::string& value) : string(value) {
-	DEBUG_LOG("Creating string value");
-	type = Type::string;
+  DEBUG_LOG("Creating string value");
+  type = Type::string;
 }
 
 Value::Value(Type type_, const std::vector<uint8_t>& data) {
+  type = type_;
 
-	type = type_;
-	
-	if (type != Type::string) {
-		// strings have variable size
-		const uint8_t type_size = Utils::get_type_size(type);
-		if (data.size() != type_size) {
-			ERROR("[Value constructor] Wrong byte vector size.");
-			DUMP(data.size());
-			DUMP(type_size);
-		}
-	}
+  if (type != Type::string) {
+    // strings have variable size
+    const uint8_t type_size = Utils::get_type_size(type);
+    if (data.size() != type_size) {
+      ERROR("[Value constructor] Wrong byte vector size.");
+      DUMP(data.size());
+      DUMP(type_size);
+    }
+  }
 
-	switch(type) {
-			
-		case Type::uint8: {
-			uint8 = data[0];
-			break;
-		}
-			
-		case Type::int8: {
-			int8 = data[0];
-			break;
-		}
+  switch (type) {
+    case Type::uint8: {
+      uint8 = data[0];
+      break;
+    }
 
-		case Type::uint16: {
-			uint16 = (uint16_t)data[0] + ((uint16_t)data[1] << 8);
-			break;
-		}
+    case Type::int8: {
+      int8 = data[0];
+      break;
+    }
 
-		case Type::int16: {
-			int16 = (int16_t)data[0] + ((int16_t)data[1] << 8);
-			break;
-		}
+    case Type::uint16: {
+      uint16 = (uint16_t)data[0] + ((uint16_t)data[1] << 8);
+      break;
+    }
 
-		case Type::uint32: {
-			uint32 = (uint32_t)data[0] + ((uint32_t)data[1] << 8) + ((uint32_t)data[2] << 16) + ((uint32_t)data[3] << 24);
-			break;
-		}
+    case Type::int16: {
+      int16 = (int16_t)data[0] + ((int16_t)data[1] << 8);
+      break;
+    }
 
-		case Type::int32: {
-			int32 = (int32_t)data[0] + ((int32_t)data[1] << 8) + ((int32_t)data[2] << 16) + ((int32_t)data[3] << 24);
-			break;
-		}
+    case Type::uint32: {
+      uint32 = (uint32_t)data[0] + ((uint32_t)data[1] << 8) + ((uint32_t)data[2] << 16) + ((uint32_t)data[3] << 24);
+      break;
+    }
 
-		case Type::real32: {
-			// TODO: test this
-			const uint32_t val = (uint32_t)data[0] + ((uint32_t)data[1] << 8) + ((uint32_t)data[2] << 16) + ((uint32_t)data[3] << 24);
-			real32 = reinterpret_cast<const float&>(val);
-			break;	
-		}
+    case Type::int32: {
+      int32 = (int32_t)data[0] + ((int32_t)data[1] << 8) + ((int32_t)data[2] << 16) + ((int32_t)data[3] << 24);
+      break;
+    }
 
-		case Type::real64: {
-			// TODO: test this
-			const uint64_t val = (uint64_t)data[0] + ((uint64_t)data[1] << 8) + ((uint64_t)data[2] << 16) + ((uint64_t)data[3] << 24)
-				+ ((uint64_t)data[4] << 32) + ((uint64_t)data[5] << 40) + ((uint64_t)data[6] << 48) + ((uint64_t)data[7] << 56);
-			real64 = reinterpret_cast<const double&>(val);
-			break;
-		}
+    case Type::real32: {
+      // TODO: test this
+      const uint32_t val =
+          (uint32_t)data[0] + ((uint32_t)data[1] << 8) + ((uint32_t)data[2] << 16) + ((uint32_t)data[3] << 24);
+      real32 = reinterpret_cast<const float&>(val);
+      break;
+    }
 
-		case Type::string: {
-			string = std::string(reinterpret_cast<char const*>(data.data()), data.size());
-			break;
-		}
-			
-		case Type::boolean: {
-			boolean = (data[0]>0);
-			break;
-		}
+    case Type::real64: {
+      // TODO: test this
+      const uint64_t val = (uint64_t)data[0] + ((uint64_t)data[1] << 8) + ((uint64_t)data[2] << 16) +
+                           ((uint64_t)data[3] << 24) + ((uint64_t)data[4] << 32) + ((uint64_t)data[5] << 40) +
+                           ((uint64_t)data[6] << 48) + ((uint64_t)data[7] << 56);
+      real64 = reinterpret_cast<const double&>(val);
+      break;
+    }
 
-		default: {
-			ERROR("[Value constructor] Unknown data type.");
-			break;
-		}
+    case Type::string: {
+      string = std::string(reinterpret_cast<char const*>(data.data()), data.size());
+      break;
+    }
 
-	}
+    case Type::boolean: {
+      boolean = (data[0] > 0);
+      break;
+    }
 
+    default: {
+      ERROR("[Value constructor] Unknown data type.");
+      break;
+    }
+  }
 }
 
-std::vector<uint8_t> Value::get_bytes() const {
+std::vector<uint8_t>
+Value::get_bytes() const {
+  std::vector<uint8_t> result;
 
-	std::vector<uint8_t> result;
+  switch (type) {
+    case Type::uint8: {
+      result.push_back(uint8);
+      break;
+    }
 
-	switch(type) {
+    case Type::uint16: {
+      result.push_back(uint16 & 0xFF);
+      result.push_back((uint16 >> 8) & 0xFF);
+      break;
+    }
 
-		case Type::uint8: {
-			result.push_back(uint8);
-			break;
-		}
+    case Type::uint32: {
+      result.push_back(uint32 & 0xFF);
+      result.push_back((uint32 >> 8) & 0xFF);
+      result.push_back((uint32 >> 16) & 0xFF);
+      result.push_back((uint32 >> 24) & 0xFF);
+      break;
+    }
 
-		case Type::uint16: {
-			result.push_back(uint16 & 0xFF);
-			result.push_back((uint16>>8) & 0xFF);
-			break;
-		}
+    case Type::int8: {
+      result.push_back(int8);
+      break;
+    }
 
-		case Type::uint32: {
-			result.push_back(uint32 & 0xFF);
-			result.push_back((uint32>>8) & 0xFF);
-			result.push_back((uint32>>16) & 0xFF);
-			result.push_back((uint32>>24) & 0xFF);
-			break;
-		}
-			
-		case Type::int8: {
-			result.push_back(int8);
-			break;
-		}
+    case Type::int16: {
+      result.push_back(int16 & 0xFF);
+      result.push_back((int16 >> 8) & 0xFF);
+      break;
+    }
 
-		case Type::int16: {
-			result.push_back(int16 & 0xFF);
-			result.push_back((int16>>8) & 0xFF);
-			break;
-		}
+    case Type::int32: {
+      result.push_back(int32 & 0xFF);
+      result.push_back((int32 >> 8) & 0xFF);
+      result.push_back((int32 >> 16) & 0xFF);
+      result.push_back((int32 >> 24) & 0xFF);
+      break;
+    }
 
-		case Type::int32: {
-			result.push_back(int32 & 0xFF);
-			result.push_back((int32>>8) & 0xFF);
-			result.push_back((int32>>16) & 0xFF);
-			result.push_back((int32>>24) & 0xFF);
-			break;
-		}
+    case Type::real32: {
+      // TODO: test this
+      const uint32_t val = reinterpret_cast<const uint32_t&>(real32);
+      result.push_back(val & 0xFF);
+      result.push_back((val >> 8) & 0xFF);
+      result.push_back((val >> 16) & 0xFF);
+      result.push_back((val >> 24) & 0xFF);
+      break;
+    }
 
-		case Type::real32: {
-			// TODO: test this
-			const uint32_t val = reinterpret_cast<const uint32_t&>(real32);
-			result.push_back(val & 0xFF);
-			result.push_back((val>>8) & 0xFF);
-			result.push_back((val>>16) & 0xFF);
-			result.push_back((val>>24) & 0xFF);
-			break;
-		}
+    case Type::real64: {
+      // TODO: test this
+      const uint64_t val = reinterpret_cast<const uint64_t&>(real64);
+      result.push_back(val & 0xFF);
+      result.push_back((val >> 8) & 0xFF);
+      result.push_back((val >> 16) & 0xFF);
+      result.push_back((val >> 24) & 0xFF);
+      result.push_back((val >> 32) & 0xFF);
+      result.push_back((val >> 40) & 0xFF);
+      result.push_back((val >> 48) & 0xFF);
+      result.push_back((val >> 56) & 0xFF);
+      break;
+    }
 
-		case Type::real64: {
-			// TODO: test this
-			const uint64_t val = reinterpret_cast<const uint64_t&>(real64);
-			result.push_back(val & 0xFF);
-			result.push_back((val>>8) & 0xFF);
-			result.push_back((val>>16) & 0xFF);
-			result.push_back((val>>24) & 0xFF);
-			result.push_back((val>>32) & 0xFF);
-			result.push_back((val>>40) & 0xFF);
-			result.push_back((val>>48) & 0xFF);
-			result.push_back((val>>56) & 0xFF);
-			break;
-		}
+    case Type::boolean: {
+      result.push_back(boolean ? 0x01 : 0x00);
+      break;
+    }
 
-		case Type::boolean: {
-			result.push_back(boolean?0x01:0x00);
-			break;
-		}
+    case Type::string: {
+      for (size_t i = 0; i < string.length(); ++i) {
+        result.push_back((uint8_t)string[i]);
+      }
+      break;
+    }
 
-		case Type::string: {
-			for (size_t i=0; i<string.length(); ++i) {
-				result.push_back((uint8_t)string[i]);
-			}
-			break;
-		}
+    default: {
+      ERROR("[Value::get_bytes] Unknown type.")
+      break;
+    }
+  }
 
-		default: {
-			ERROR("[Value::get_bytes] Unknown type.")
-			break;
-		}
-
-	}
-
-	return result;
-
+  return result;
 }
 
 bool Value::operator==(const Value& other) const {
+  DEBUG(
 
-	DEBUG(
+      if (type != other.type) {
+        ERROR("[Value::operator==] Comparing values of different type.");
+        // abort();
+        return false;
+      }
 
-		if (type != other.type) {
-			ERROR("[Value::operator==] Comparing values of different type.");
-			// abort();
-			return false;
-		}
+      if (type == Type::invalid) {
+        ERROR("[Value::operator==] Comparing invalid value.");
+        return false;
+      }
 
-		if (type == Type::invalid) {
-			ERROR("[Value::operator==] Comparing invalid value.");
-			return false;
-		}
+      )
 
-	)
+  switch (type) {
+    case Type::uint8: {
+      return uint8 == (uint8_t)other;
+    }
 
-	switch(type) {
+    case Type::uint16: {
+      return uint16 == (uint16_t)other;
+    }
 
-		case Type::uint8: {
-			return uint8 == (uint8_t) other;
-		}
+    case Type::uint32: {
+      return uint32 == (uint32_t)other;
+    }
 
-		case Type::uint16: {
-			return uint16 == (uint16_t) other;
-		}
+    case Type::int8: {
+      return int8 == (int8_t)other;
+    }
 
-		case Type::uint32: {
-			return uint32 == (uint32_t) other;
-		}
-			
-		case Type::int8: {
-			return int8 == (int8_t) other;
-		}
+    case Type::int16: {
+      return int16 == (int16_t)other;
+    }
 
-		case Type::int16: {
-			return int16 == (int16_t) other;
-		}
+    case Type::int32: {
+      return int32 == (int32_t)other;
+    }
 
-		case Type::int32: {
-			return int32 == (int32_t) other;
-		}
+    case Type::real32: {
+      return real32 == (float)real32;
+    }
 
-		case Type::real32: {
-			return real32 == (float) real32;
-		}
+    case Type::real64: {
+      return real64 == (double)real64;
+    }
 
-		case Type::real64: {
-			return real64 == (double) real64;
-		}
+    case Type::boolean: {
+      return boolean == (bool)boolean;
+    }
 
-		case Type::boolean: {
-			return boolean == (bool) boolean;
-		}
+    case Type::string: {
+      return string == (std::string)other;
+    }
 
-		case Type::string: {
-			return string == (std::string) other;
-		}
-
-		default: {
-			ERROR("[Value::operator==] Comparing values of unknown type.")
-			return false;
-		}
-
-	}
+    default: {
+      ERROR("[Value::operator==] Comparing values of unknown type.")
+      return false;
+    }
+  }
 }
 
-bool Value::operator!=(const Value& other) const {
-	return !(operator==(other));
-}
+bool Value::operator!=(const Value& other) const { return !(operator==(other)); }
 
 //----------------//
 // Cast operators //
@@ -346,13 +336,13 @@ bool Value::operator!=(const Value& other) const {
 
 /// converts a CanOpen type <mtypein> and a C++ type <mtypeout>
 /// to a cast operator
-#define CO_VALUE_TYPE_CAST_OP(mtypeout, mtypein) \
-	Value::operator mtypeout() const { \
-		if (type != Type::mtypein ) { \
-			WARN("[Value cast operator] Illegal conversion from "<<Utils::type_to_string(type)<<" to " #mtypein " !") \
-		} \
-		return mtypein; \
-	}
+#define CO_VALUE_TYPE_CAST_OP(mtypeout, mtypein)                                                                    \
+  Value::operator mtypeout() const {                                                                                \
+    if (type != Type::mtypein) {                                                                                    \
+      WARN("[Value cast operator] Illegal conversion from " << Utils::type_to_string(type) << " to " #mtypein " !") \
+    }                                                                                                               \
+    return mtypein;                                                                                                 \
+  }
 
 /// converts a CanOpen type <mtypein> to a cast method to
 /// the C++ output type <mtypein>_t
@@ -374,57 +364,53 @@ CO_VALUE_TYPE_CAST_OP(std::string, string);
 //-------------------//
 
 namespace value_printer {
-	std::ostream &operator<<(std::ostream &os, Value val) {
-		switch(val.type) {
-				
-			case Type::uint8: {
-				// 1-byte types are printed as char by default -> double casting.
-				return os << static_cast<uint32_t>(static_cast<uint8_t>(val));
-			}
+std::ostream& operator<<(std::ostream& os, Value val) {
+  switch (val.type) {
+    case Type::uint8: {
+      // 1-byte types are printed as char by default -> double casting.
+      return os << static_cast<uint32_t>(static_cast<uint8_t>(val));
+    }
 
-			case Type::uint16: {
-				return os << static_cast<uint16_t>(val);
-			}
+    case Type::uint16: {
+      return os << static_cast<uint16_t>(val);
+    }
 
-			case Type::uint32: {
-				return os << static_cast<uint32_t>(val);
-			}
-				
-			case Type::int8: {
-				// 1-byte types are printed as char by default -> double casting.
-				return os << static_cast<uint32_t>(static_cast<int8_t>(val));
-			}
+    case Type::uint32: {
+      return os << static_cast<uint32_t>(val);
+    }
 
-			case Type::int16: {
-				return os << static_cast<int16_t>(val);
-			}
+    case Type::int8: {
+      // 1-byte types are printed as char by default -> double casting.
+      return os << static_cast<uint32_t>(static_cast<int8_t>(val));
+    }
 
-			case Type::int32: {
-				return os << static_cast<int32_t>(val);
-			}
+    case Type::int16: {
+      return os << static_cast<int16_t>(val);
+    }
 
-			case Type::real32: {
-				return os << static_cast<float>(val);
-			}
+    case Type::int32: {
+      return os << static_cast<int32_t>(val);
+    }
 
-			case Type::real64: {
-				return os << static_cast<double>(val);
-			}
+    case Type::real32: {
+      return os << static_cast<float>(val);
+    }
 
-			case Type::boolean: {
-				return os << (static_cast<bool>(val)?"TRUE":"FALSE");
-			}
+    case Type::real64: {
+      return os << static_cast<double>(val);
+    }
 
-			case Type::string: {
-			    return os << static_cast<std::string>(val);
-			}
+    case Type::boolean: {
+      return os << (static_cast<bool>(val) ? "TRUE" : "FALSE");
+    }
 
-			default: {
-				return os << "[Unknown value type]";
-			}
+    case Type::string: {
+      return os << static_cast<std::string>(val);
+    }
 
-		}
-	}
+    default: { return os << "[Unknown value type]"; }
+  }
+}
 }
 
-} // end namespace kaco
+}  // end namespace kaco

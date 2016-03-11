@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
@@ -37,28 +37,26 @@ namespace kaco {
 
 /// This struct represents a CANOpen message.
 struct Message {
+  /// Message ID aka COB-ID
+  uint16_t cob_id;
 
-	/// Message ID aka COB-ID
-	uint16_t cob_id;
+  /// Remote transmission request (0 if it's not an RTR message, 1 if it is an RTR message)
+  uint8_t rtr;
 
-	/// Remote transmission request (0 if it's not an RTR message, 1 if it is an RTR message)
-	uint8_t rtr;
+  /// Message's length (0 to 8)
+  uint8_t len;
 
-	/// Message's length (0 to 8)
-	uint8_t len;
+  /// Data bytes
+  uint8_t data[8];
 
-	/// Data bytes
-	uint8_t data[8];
+  /// Extracts the node id from the COB-ID.
+  uint8_t get_node_id() const;
 
-	/// Extracts the node id from the COB-ID.
-	uint8_t get_node_id() const;
+  /// Extracts the function code from the COB-ID.
+  uint8_t get_function_code() const;
 
-	/// Extracts the function code from the COB-ID.
-	uint8_t get_function_code() const;
-
-	/// Prints the message to command line.
-	void print() const;
-
+  /// Prints the message to command line.
+  void print() const;
 };
 
-} // end namespace kaco
+}  // end namespace kaco

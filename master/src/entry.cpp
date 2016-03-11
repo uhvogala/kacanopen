@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "entry.h"
 #include "logger.h"
 
@@ -38,137 +38,130 @@
 
 namespace kaco {
 
-Entry::Entry()
-	: read_write_mutex(new std::mutex)
-	{ }
+Entry::Entry() : read_write_mutex(new std::mutex) {}
 
 // standard constructor
-Entry::Entry(Entry::VariableTag tag, uint16_t _index, uint8_t _subindex, std::string _name, Type _type, AccessType _access_type)
-	: index(_index),
-		subindex(_subindex),
-		name(_name),
-		type(_type),
-		access_type(_access_type),
-		read_write_mutex(new std::mutex)
-	{ }
+Entry::Entry(Entry::VariableTag tag, uint16_t _index, uint8_t _subindex, std::string _name, Type _type,
+             AccessType _access_type)
+    : index(_index),
+      subindex(_subindex),
+      name(_name),
+      type(_type),
+      access_type(_access_type),
+      read_write_mutex(new std::mutex) {}
 
 // array constructor
 Entry::Entry(Entry::ArrayTag tag, uint16_t _index, std::string _name, Type _type, AccessType _access_type)
-	: index(_index),
-		subindex(0),
-		name(_name),
-		type(_type),
-		access_type(_access_type),
-		is_array(true),
-		read_write_mutex(new std::mutex)
-	{ }
+    : index(_index),
+      subindex(0),
+      name(_name),
+      type(_type),
+      access_type(_access_type),
+      is_array(true),
+      read_write_mutex(new std::mutex) {}
 
-void Entry::set_value(const Value& value, uint8_t array_index) {
+void
+Entry::set_value(const Value& value, uint8_t array_index) {
+  if (value.type != type) {
+    ERROR("[Entry::set_value] You passed a value of wrong type.");
+    return;
+  }
 
-	if (value.type != type) {
-		ERROR("[Entry::set_value] You passed a value of wrong type.");
-		return;
-	}
+  if (array_index > 0 && !is_array) {
+    ERROR("[Entry::set_value] This is no array but you specified an array_index.");
+    return;
+  }
 
-	if (array_index>0 && !is_array) {
-		ERROR("[Entry::set_value] This is no array but you specified an array_index.");
-		return;
-	}
+  bool value_changed = false;
 
-	bool value_changed = false;
+  {
+    std::lock_guard<std::mutex> lock(*read_write_mutex);
 
-	{
-		std::lock_guard<std::mutex> lock(*read_write_mutex);
+    if (m_value.size() <= array_index) {
+      m_value.resize(array_index + 1);
+      value_changed = true;
+    }
 
-		if (m_value.size()<=array_index) { 
-			m_value.resize(array_index+1);
-			value_changed = true;
-		}
+    if (m_valid.size() <= array_index) {
+      m_valid.resize(array_index + 1, false);
+      value_changed = true;
+    }
 
-		if (m_valid.size()<=array_index) {
-			m_valid.resize(array_index+1, false);
-			value_changed = true;
-		}
+    if (!value_changed && (m_value[array_index].type != type || m_value[array_index] != value)) {
+      value_changed = true;
+    }
 
-		if (!value_changed && (m_value[array_index].type != type || m_value[array_index] != value) ) {
-			value_changed = true;
-		}
+    m_value[array_index] = value;
+    m_valid[array_index] = true;
+  }
 
-		m_value[array_index] = value;
-		m_valid[array_index] = true;
-	}
-
-	if (value_changed) {
-		for (auto& callback : m_value_changed_callbacks) {
-			// TODO: currently callbacks are only internal and it's ok to call them synchonously.
-			//std::async(std::launch::async, callback, value);
-			callback(value);
-		}
-	}
-
+  if (value_changed) {
+    for (auto& callback : m_value_changed_callbacks) {
+      // TODO: currently callbacks are only internal and it's ok to call them synchonously.
+      // std::async(std::launch::async, callback, value);
+      callback(value);
+    }
+  }
 }
 
-const Value& Entry::get_value(uint8_t array_index) const {
+const Value&
+Entry::get_value(uint8_t array_index) const {
+  std::lock_guard<std::mutex> lock(*read_write_mutex);
 
-	std::lock_guard<std::mutex> lock(*read_write_mutex);
-
-	if (valid(array_index)) {
-		return m_value[array_index];
-	} else {
-		ERROR("[Entry::get_value] Value not valid.");
-		return m_dummy_value;
-	}
-
+  if (valid(array_index)) {
+    return m_value[array_index];
+  } else {
+    ERROR("[Entry::get_value] Value not valid.");
+    return m_dummy_value;
+  }
 }
 
-bool Entry::valid(uint8_t array_index) const {
+bool
+Entry::valid(uint8_t array_index) const {
+  if (array_index > 0 && !is_array) {
+    ERROR("[Entry::valid] This is no array but you specified an array_index.");
+    return false;
+  }
 
-	if (array_index>0 && !is_array) {
-		ERROR("[Entry::valid] This is no array but you specified an array_index.");
-		return false;
-	}
+  if (array_index >= m_value.size() || array_index >= m_valid.size() || !m_valid[array_index]) {
+    return false;
+  }
 
-	if ( array_index>=m_value.size()
-		|| array_index>=m_valid.size()
-		|| !m_valid[array_index] ) {
-		return false;
-	}
-
-	return true;
-
+  return true;
 }
 
-Type Entry::get_type() const {
-	return type;
+Type
+Entry::get_type() const {
+  return type;
 }
 
-void Entry::add_value_changed_callback(ValueChangedCallback callback) {
-	m_value_changed_callbacks.push_back(std::move(callback));
+void
+Entry::add_value_changed_callback(ValueChangedCallback callback) {
+  m_value_changed_callbacks.push_back(std::move(callback));
 }
 
-void Entry::print() const {
+void
+Entry::print() const {
+  std::cout << "0x" << std::hex << index;
+  std::cout << "/";
+  std::cout << std::dec << (unsigned)subindex;
+  std::cout << "\t";
+  std::cout << Utils::access_type_to_string(access_type);
+  std::cout << "\t";
+  std::cout << std::setw(75) << std::left << name;
+  std::cout << " ";
 
-	std::cout << "0x"<<std::hex<<index;
-	std::cout << "/";
-	std::cout << std::dec<<(unsigned)subindex;
-	std::cout << "\t";
-	std::cout << Utils::access_type_to_string(access_type);
-	std::cout << "\t";
-	std::cout << std::setw(75) << std::left << name;
-	std::cout << " ";
+  if (valid()) {
+    std::cout << std::setw(10) << get_value();
+  } else {
+    std::cout << std::setw(10) << "empty";
+  }
 
-	if (valid()) {
-		std::cout << std::setw(10) << get_value();
-	} else {
-		std::cout << std::setw(10) << "empty";
-	}
-
-	std::cout << std::endl;
-
+  std::cout << std::endl;
 }
 
 bool Entry::operator<(const Entry& other) const {
-	return (index<other.index) || (index==other.index && subindex<other.subindex);
+  return (index < other.index) || (index == other.index && subindex < other.subindex);
 }
 
-} // end namespace kaco
+}  // end namespace kaco

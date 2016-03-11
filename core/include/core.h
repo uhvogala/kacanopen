@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <functional>
@@ -52,13 +52,12 @@
 /// busname and baudrate and is passed
 /// to a CAN driver
 typedef struct {
+  /// Bus name
+  const char* busname;
 
-	/// Bus name
-	const char * busname;
+  /// Baudrate
+  const char* baudrate;
 
-	/// Baudrate
-	const char * baudrate;
-	
 } CANBoard;
 
 /// This type is returned by the CAN driver
@@ -67,63 +66,58 @@ typedef void* CANHandle;
 
 namespace kaco {
 
-	/// \class Core
-	///
-	/// This class implements the Core of KaCanOpen
-	/// It communicates with the CAN driver, sends
-	/// CAN messages and listens for incoming
-	/// CAN messages. You can access CanOpen sub-
-	/// protocols using public members nmt, sdo and pdo.
-	class Core {
+/// \class Core
+///
+/// This class implements the Core of KaCanOpen
+/// It communicates with the CAN driver, sends
+/// CAN messages and listens for incoming
+/// CAN messages. You can access CanOpen sub-
+/// protocols using public members nmt, sdo and pdo.
+class Core {
+ public:
+  /// type of a message receiver function
+  typedef std::function<void(const Message&)> MessageReceivedCallback;
 
-	public:
-		
-		/// type of a message receiver function
-		typedef std::function< void(const Message&) > MessageReceivedCallback;
+  /// Constructor
+  Core();
 
-		/// Constructor
-		Core();
+  /// Destructor
+  ~Core();
 
-		/// Destructor
-		~Core();
-		
-		/// Opens CAN driver and starts CAN message receive loop.
-		///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
-		///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
-		/// \returns true if successful
-		bool start(const std::string busname, unsigned baudrate);
-		
-		/// Stops the receive loop and closes the driver.
-		void stop();
+  /// Opens CAN driver and starts CAN message receive loop.
+  ///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
+  ///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
+  /// \returns true if successful
+  bool start(const std::string busname, unsigned baudrate);
 
-		/// Sends a message
-		void send(const Message& message);
+  /// Stops the receive loop and closes the driver.
+  void stop();
 
-		/// Registers a callback function which is called when a message has been received.
-		void register_receive_callback(const MessageReceivedCallback& callback);
+  /// Sends a message
+  void send(const Message& message);
 
-		/// The NMT sub-protocol
-		NMT nmt;
+  /// Registers a callback function which is called when a message has been received.
+  void register_receive_callback(const MessageReceivedCallback& callback);
 
-		/// The SDO sub-protocol
-		SDO sdo;
+  /// The NMT sub-protocol
+  NMT nmt;
 
-		/// The PDO sub-protocol
-		PDO pdo;
+  /// The SDO sub-protocol
+  SDO sdo;
 
+  /// The PDO sub-protocol
+  PDO pdo;
 
-	private:
+ private:
+  static const bool debug = true;
 
-		static const bool debug = true;
+  std::atomic<bool> m_running{false};
+  std::vector<MessageReceivedCallback> m_receive_callbacks;
+  std::thread m_loop_thread;
+  CANHandle m_handle;
 
-		std::atomic<bool> m_running{false};
-		std::vector<MessageReceivedCallback> m_receive_callbacks;
-		std::thread m_loop_thread;
-		CANHandle m_handle;
+  void receive_loop(std::atomic<bool>& running);
+  void received_message(const Message& m);
+};
 
-		void receive_loop(std::atomic<bool>& running);
-		void received_message(const Message& m);
-
-	};
-
-} // end namespace kaco
+}  // end namespace kaco
