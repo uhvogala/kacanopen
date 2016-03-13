@@ -81,6 +81,8 @@ main(int argc, char** argv) {
   // set some output (optional)
   device.set_entry("Write output 8-bit/Digital Outputs 1-8", (uint8_t)0xFF, 0);
 
+  ros::init(argc, argv, "canopen_bridge");
+
   // Create bridge / init a ROS node
   kaco::Bridge bridge;
 

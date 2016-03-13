@@ -38,7 +38,7 @@ namespace kaco {
 Bridge::Bridge() {
   int argc = 0;
   char *argv[]{};
-  ros::init(argc, argv, "canopen_bridge");
+  // ros::init(argc, argv, "canopen_bridge");
 }
 
 Bridge::~Bridge() {}

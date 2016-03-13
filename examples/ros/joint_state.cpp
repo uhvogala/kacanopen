@@ -87,7 +87,9 @@ main(int argc, char** argv) {
   PRINT("Set position mode");
   device.set_entry("modes_of_operation", (int8_t)kaco::cia_402::ModeOfOperation::PROFILE_POSITION_MODE);
 
-  // Create bridge / init a ROS node
+  ros::init(argc, argv, "canopen_bridge");
+
+  // Create bridge
   kaco::Bridge bridge;
 
   auto jspub = std::make_shared<kaco::JointStatePublisher>(device, 0, 350000);
