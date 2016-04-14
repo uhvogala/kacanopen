@@ -133,7 +133,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">//#define SHARE_INSTALLED_PATH ...</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">namespace </span>fs = boost::filesystem;</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSLibrary.html#a746240d8ec4d2876a69feeec58a42a1c">   48</a></span>&#160;    <a class="code" href="classkaco_1_1EDSLibrary.html#a746240d8ec4d2876a69feeec58a42a1c">EDSLibrary::EDSLibrary</a>(std::map&lt;std::string, Entry&gt;&amp; target)</div>
@@ -188,76 +188,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        }</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <a class="code" href="classkaco_1_1EDSReader.html">EDSReader</a> reader(m_map);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordtype">bool</span> success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a>(path);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_default_eds] Loading file not successful.&quot;</span>);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">import_entries</a>();</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_default_eds] Importing entries failed.&quot;</span>);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        }</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        m_map.clear();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <a class="code" href="classkaco_1_1EDSReader.html">EDSReader</a> reader(m_map);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">bool</span> success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a>(path);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_default_eds] Loading file not successful.&quot;</span>);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[EDSLibrary::load_default_eds] Found EDS file: &quot;</span>&lt;&lt;path);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">import_entries</a>();</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_default_eds] Importing entries failed.&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">  119</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">EDSLibrary::load_manufacturer_eds</a>(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        assert(m_ready);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        </div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="comment">// check if there is an EDS file for this revision</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        std::string path = m_library_path + <span class="stringliteral">&quot;/&quot;</span>+std::to_string(vendor_id)+<span class="stringliteral">&quot;/&quot;</span>+std::to_string(product_code)+<span class="stringliteral">&quot;.&quot;</span>+std::to_string(revision_number)+<span class="stringliteral">&quot;.eds&quot;</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">if</span> (!fs::exists(path)) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="comment">// check if there is a generic EDS file for product</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            path = m_library_path + <span class="stringliteral">&quot;/&quot;</span>+std::to_string(vendor_id)+<span class="stringliteral">&quot;/&quot;</span>+std::to_string(product_code)+<span class="stringliteral">&quot;.eds&quot;</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="keywordflow">if</span> (!fs::exists(path)) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                DEBUG_LOG(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Manufacturer device specific EDS file not available: &quot;</span>&lt;&lt;path);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            }</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        }</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <a class="code" href="classkaco_1_1EDSReader.html">EDSReader</a> reader(m_map);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordtype">bool</span> success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a>(path);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Loading file not successful.&quot;</span>);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">  121</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">EDSLibrary::load_manufacturer_eds</a>(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        assert(m_ready);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="comment">// check if there is an EDS file for this revision</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        std::string path = m_library_path + <span class="stringliteral">&quot;/&quot;</span>+std::to_string(vendor_id)+<span class="stringliteral">&quot;/&quot;</span>+std::to_string(product_code)+<span class="stringliteral">&quot;.&quot;</span>+std::to_string(revision_number)+<span class="stringliteral">&quot;.eds&quot;</span>;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">if</span> (!fs::exists(path)) {</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            <span class="comment">// check if there is a generic EDS file for product</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            path = m_library_path + <span class="stringliteral">&quot;/&quot;</span>+std::to_string(vendor_id)+<span class="stringliteral">&quot;/&quot;</span>+std::to_string(product_code)+<span class="stringliteral">&quot;.eds&quot;</span>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">if</span> (!fs::exists(path)) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                DEBUG_LOG(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Manufacturer device specific EDS file not available: &quot;</span>&lt;&lt;path);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        }</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Found manufacturer EDS: &quot;</span>&lt;&lt;path);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        m_map.clear();</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <a class="code" href="classkaco_1_1EDSReader.html">EDSReader</a> reader(m_map);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="keywordtype">bool</span> success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a>(path);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">import_entries</a>();</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Importing entries failed.&quot;</span>);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        }</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Loading file not successful.&quot;</span>);</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        success = reader.<a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">import_entries</a>();</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        </div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">  152</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">EDSLibrary::ready</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> m_ready;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    }</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="ttc" id="classkaco_1_1EDSReader_html_a235b013dba934087b1d60ca4b9d09d71"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">kaco::EDSReader::import_entries</a></div><div class="ttdeci">bool import_entries()</div><div class="ttdoc">Import entries from the EDS file into the given dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00063">eds_reader.cpp:63</a></div></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSLibrary::load_manufacturer_eds] Importing entries failed.&quot;</span>);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        }</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        </div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">  157</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">EDSLibrary::ready</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        <span class="keywordflow">return</span> m_ready;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    }</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="ttc" id="classkaco_1_1EDSReader_html_a235b013dba934087b1d60ca4b9d09d71"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">kaco::EDSReader::import_entries</a></div><div class="ttdeci">bool import_entries()</div><div class="ttdoc">Import entries from the EDS file into the given dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00065">eds_reader.cpp:65</a></div></div>
 <div class="ttc" id="classkaco_1_1EDSReader_html"><div class="ttname"><a href="classkaco_1_1EDSReader.html">kaco::EDSReader</a></div><div class="ttdoc">This class allows reading EDS files (like standardized in CiA 306) and inserting all contained entrie...</div><div class="ttdef"><b>Definition:</b> <a href="eds__reader_8h_source.html#l00049">eds_reader.h:49</a></div></div>
 <div class="ttc" id="classkaco_1_1EDSLibrary_html_a9dc900f41efee0aaa6389553e4d54c31"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#a9dc900f41efee0aaa6389553e4d54c31">kaco::EDSLibrary::load_default_eds</a></div><div class="ttdeci">bool load_default_eds(uint16_t device_profile_number)</div><div class="ttdoc">Loads entries defined in generic CiA profile EDS files. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00090">eds_library.cpp:90</a></div></div>
 <div class="ttc" id="classkaco_1_1EDSLibrary_html_aafc12584558f96be8334988f0cd3b033"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#aafc12584558f96be8334988f0cd3b033">kaco::EDSLibrary::load_mandatory_entries</a></div><div class="ttdeci">bool load_mandatory_entries()</div><div class="ttdoc">Loads mandatory dictionary entries defined in CiA 301 standard. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00086">eds_library.cpp:86</a></div></div>
 <div class="ttc" id="classkaco_1_1EDSLibrary_html_a746240d8ec4d2876a69feeec58a42a1c"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#a746240d8ec4d2876a69feeec58a42a1c">kaco::EDSLibrary::EDSLibrary</a></div><div class="ttdeci">EDSLibrary(std::map&lt; std::string, Entry &gt; &amp;target)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00048">eds_library.cpp:48</a></div></div>
 <div class="ttc" id="classkaco_1_1EDSLibrary_html_afff34ef5c42366cfd5136317d3cb6ab4"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4">kaco::EDSLibrary::lookup_library</a></div><div class="ttdeci">bool lookup_library(std::string path=&quot;&quot;)</div><div class="ttdoc">Finds EDS library on disk. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00052">eds_library.cpp:52</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSLibrary_html_ae85cb575606bb7cb357eb74e70691140"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">kaco::EDSLibrary::ready</a></div><div class="ttdeci">bool ready() const </div><div class="ttdoc">Checks if lookup_library() was successful. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00152">eds_library.cpp:152</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSReader_html_a4fddd9036dc11f7a8812b0dd05533435"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">kaco::EDSReader::load_file</a></div><div class="ttdeci">bool load_file(std::string filename)</div><div class="ttdoc">Loads an EDS file from file system. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00051">eds_reader.cpp:51</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSLibrary_html_a8b32cf25c67e8b11a8e5837ea4fc5e58"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">kaco::EDSLibrary::load_manufacturer_eds</a></div><div class="ttdeci">bool load_manufacturer_eds(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number)</div><div class="ttdoc">Loads entries defined in device specific EDS files proviced by manufacturers. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00119">eds_library.cpp:119</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSLibrary_html_ae85cb575606bb7cb357eb74e70691140"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">kaco::EDSLibrary::ready</a></div><div class="ttdeci">bool ready() const </div><div class="ttdoc">Checks if lookup_library() was successful. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00157">eds_library.cpp:157</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSReader_html_a4fddd9036dc11f7a8812b0dd05533435"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">kaco::EDSReader::load_file</a></div><div class="ttdeci">bool load_file(std::string filename)</div><div class="ttdoc">Loads an EDS file from file system. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00052">eds_reader.cpp:52</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSLibrary_html_a8b32cf25c67e8b11a8e5837ea4fc5e58"><div class="ttname"><a href="classkaco_1_1EDSLibrary.html#a8b32cf25c67e8b11a8e5837ea4fc5e58">kaco::EDSLibrary::load_manufacturer_eds</a></div><div class="ttdeci">bool load_manufacturer_eds(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number)</div><div class="ttdoc">Loads entries defined in device specific EDS files proviced by manufacturers. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__library_8cpp_source.html#l00121">eds_library.cpp:121</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

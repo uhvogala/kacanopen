@@ -123,33 +123,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="comment">// #define BUSNAME ... // set by CMake</span></div>
 <div class="line"><span class="comment">// #define BAUDRATE ... // set by CMake</span></div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv) {</div>
+<div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"></div>
 <div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1Core.html">kaco::Core</a> core;</div>
+<div class="line">    <span class="keyword">const</span> uint8_t node_id = 10;</div>
 <div class="line"></div>
 <div class="line">    <span class="keyword">auto</span> callback = [] (<span class="keyword">const</span> uint8_t node_id) {</div>
 <div class="line">        PRINT(<span class="stringliteral">&quot;New device! ID = &quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span>)node_id);</div>
 <div class="line">    };</div>
 <div class="line">    core.<a name="a1"></a><a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a2"></a><a class="code" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a>(callback);</div>
 <div class="line"></div>
-<div class="line">    core.<a name="a3"></a><a class="code" href="classkaco_1_1Core.html#ae201c2d38fead33833b2cc9a3aae543a">start</a>(BUSNAME, BAUDRATE);</div>
-<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
-<div class="line">    </div>
-<div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a4"></a><a class="code" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a>();</div>
-<div class="line">    </div>
+<div class="line">    <span class="keywordtype">bool</span> success = core.<a name="a3"></a><a class="code" href="classkaco_1_1Core.html#ae201c2d38fead33833b2cc9a3aae543a">start</a>(BUSNAME, BAUDRATE);</div>
+<div class="line">    <span class="keywordflow">if</span> (!success) {</div>
+<div class="line">        ERROR(<span class="stringliteral">&quot;Starting core failed.&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">    }</div>
+<div class="line"></div>
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
-<div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a5"></a><a class="code" href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">send_nmt_message</a>(8,kaco::NMT::Command::start_node);</div>
-<div class="line">    </div>
+<div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a4"></a><a class="code" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a>();</div>
+<div class="line"></div>
+<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
+<div class="line"></div>
+<div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a5"></a><a class="code" href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">send_nmt_message</a>(node_id,kaco::NMT::Command::start_node);</div>
+<div class="line"></div>
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// set digital output</span></div>
-<div class="line">    core.<a name="a6"></a><a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a7"></a><a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">download</a>(8, 0x6200, 0x1, 1, {0x7F});</div>
-<div class="line">    </div>
+<div class="line">    core.<a name="a6"></a><a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a7"></a><a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">download</a>(node_id, 0x6200, 0x1, 1, {0x7F});</div>
+<div class="line"></div>
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// get device type (usually expedited transfer)</span></div>
-<div class="line">    std::vector&lt;uint8_t&gt; device_type = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a8"></a><a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(8,0x1000,0x0);</div>
+<div class="line">    std::vector&lt;uint8_t&gt; device_type = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a8"></a><a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(node_id,0x1000,0x0);</div>
 <div class="line">    <span class="keywordflow">for</span> (uint8_t device_type_byte : device_type) {</div>
 <div class="line">        DUMP_HEX(device_type_byte);</div>
 <div class="line">    }</div>
@@ -157,8 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// get device name (usually segmented transfer)</span></div>
-<div class="line">    <span class="comment">// TODO: check correct encoding</span></div>
-<div class="line">    std::vector&lt;uint8_t&gt; device_name = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(8,0x1008,0x0);</div>
+<div class="line">    std::vector&lt;uint8_t&gt; device_name = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(node_id,0x1008,0x0);</div>
 <div class="line">    std::string result(reinterpret_cast&lt;char const*&gt;(device_name.data()), device_name.size());</div>
 <div class="line">    PRINT(<span class="stringliteral">&quot;Device name: &quot;</span>&lt;&lt;result);</div>
 <div class="line"></div>
@@ -169,7 +174,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

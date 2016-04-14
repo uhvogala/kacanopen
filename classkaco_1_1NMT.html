@@ -115,21 +115,20 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:abbdee76a18089953243149c00577603a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> commands. <br /></td></tr>
 <tr class="separator:abbdee76a18089953243149c00577603a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4bfe040b3669790924962e3dd494da99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4bfe040b3669790924962e3dd494da99"></a>
-typedef std::function&lt; void(const <br class="typebreak" />
-uint8_t node_id) &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">NewDeviceCallback</a></td></tr>
-<tr class="memdesc:a4bfe040b3669790924962e3dd494da99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a new device callback function. <br /></td></tr>
-<tr class="separator:a4bfe040b3669790924962e3dd494da99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79e48b4e37a897aa0d2d00fce39c1c3c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> = std::function&lt; void(const uint8_t node_id) &gt;</td></tr>
+<tr class="memdesc:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a new device callback function Important: Never call <a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99" title="Registers a callback which will be called when a new slave device is discovered. ">register_new_device_callback()</a> from within (-&gt; deadlock)! <br /></td></tr>
+<tr class="separator:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aafd868d9b69778b3da4a5aeacb02267a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">NMT</a> (<a class="el" href="classkaco_1_1Core.html">Core</a> &amp;core)</td></tr>
 <tr class="memdesc:aafd868d9b69778b3da4a5aeacb02267a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#aafd868d9b69778b3da4a5aeacb02267a">More...</a><br /></td></tr>
 <tr class="separator:aafd868d9b69778b3da4a5aeacb02267a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abb926437f948304a800d153403292b01"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abb926437f948304a800d153403292b01"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#abb926437f948304a800d153403292b01">~NMT</a> ()</td></tr>
-<tr class="memdesc:abb926437f948304a800d153403292b01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
-<tr class="separator:abb926437f948304a800d153403292b01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7beb84de64f44864d28692f08f36b5f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7beb84de64f44864d28692f08f36b5f7"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a7beb84de64f44864d28692f08f36b5f7">NMT</a> (const <a class="el" href="classkaco_1_1NMT.html">NMT</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a7beb84de64f44864d28692f08f36b5f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor deleted because of mutexes. <br /></td></tr>
+<tr class="separator:a7beb84de64f44864d28692f08f36b5f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1e00a888e2fec4b3923f7e8105abd4e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a1e00a888e2fec4b3923f7e8105abd4e3">process_incoming_message</a> (const <a class="el" href="structkaco_1_1Message.html">Message</a> &amp;message)</td></tr>
 <tr class="memdesc:a1e00a888e2fec4b3923f7e8105abd4e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process incoming <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> message.  <a href="#a1e00a888e2fec4b3923f7e8105abd4e3">More...</a><br /></td></tr>
 <tr class="separator:a1e00a888e2fec4b3923f7e8105abd4e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -139,19 +138,20 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac6f2f29d96941892578da68565a2697a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#ac6f2f29d96941892578da68565a2697a">broadcast_nmt_message</a> (<a class="el" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> cmd)</td></tr>
 <tr class="memdesc:ac6f2f29d96941892578da68565a2697a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends a broadcast <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> message.  <a href="#ac6f2f29d96941892578da68565a2697a">More...</a><br /></td></tr>
 <tr class="separator:ac6f2f29d96941892578da68565a2697a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a10fcd018a1476c819873a60235bb2016"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10fcd018a1476c819873a60235bb2016"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a> ()</td></tr>
-<tr class="memdesc:a10fcd018a1476c819873a60235bb2016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets all nodes in the network. <br /></td></tr>
+<tr class="memitem:a10fcd018a1476c819873a60235bb2016"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a> ()</td></tr>
+<tr class="memdesc:a10fcd018a1476c819873a60235bb2016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets all nodes in the network.  <a href="#a10fcd018a1476c819873a60235bb2016">More...</a><br /></td></tr>
 <tr class="separator:a10fcd018a1476c819873a60235bb2016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af59fcb150db4858240b12be9b4ba7a99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af59fcb150db4858240b12be9b4ba7a99"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a> (const <a class="el" href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">NewDeviceCallback</a> &amp;callback)</td></tr>
-<tr class="memdesc:af59fcb150db4858240b12be9b4ba7a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback which will be called when a new slave device is discovered. <br /></td></tr>
+<tr class="memitem:a0cb3cf3b8f235efe2a97e17c72898215"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a0cb3cf3b8f235efe2a97e17c72898215">discover_nodes</a> ()</td></tr>
+<tr class="memdesc:a0cb3cf3b8f235efe2a97e17c72898215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovers nodes in the network via node guard protocol.  <a href="#a0cb3cf3b8f235efe2a97e17c72898215">More...</a><br /></td></tr>
+<tr class="separator:a0cb3cf3b8f235efe2a97e17c72898215"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59fcb150db4858240b12be9b4ba7a99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a> (const <a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> &amp;callback)</td></tr>
+<tr class="memdesc:af59fcb150db4858240b12be9b4ba7a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback which will be called when a new slave device is discovered.  <a href="#af59fcb150db4858240b12be9b4ba7a99">More...</a><br /></td></tr>
 <tr class="separator:af59fcb150db4858240b12be9b4ba7a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class implements the CanOpen <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> protocol. </p>
 
-<p>Definition at line <a class="el" href="nmt_8h_source.html#l00047">47</a> of file <a class="el" href="nmt_8h_source.html">nmt.h</a>.</p>
+<p>Definition at line <a class="el" href="nmt_8h_source.html#l00050">50</a> of file <a class="el" href="nmt_8h_source.html">nmt.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aafd868d9b69778b3da4a5aeacb02267a"></a>
 <div class="memitem">
@@ -175,7 +175,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00042">42</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00043">43</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,8 +201,29 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00055">55</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00053">53</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0cb3cf3b8f235efe2a97e17c72898215"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::NMT::discover_nodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Discovers nodes in the network via node guard protocol. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00067">67</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
 
 </div>
 </div>
@@ -227,8 +248,53 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00063">63</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00079">79</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af59fcb150db4858240b12be9b4ba7a99"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::NMT::register_new_device_callback </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a callback which will be called when a new slave device is discovered. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>rename to device_alive_callback <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+</dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a2">examples/core.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00181">181</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a10fcd018a1476c819873a60235bb2016"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::NMT::reset_all_nodes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets all nodes in the network. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a4">examples/core.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00057">57</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,9 +330,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a5">examples/core.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00049">49</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00047">47</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
 
 </div>
 </div>
@@ -277,7 +344,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

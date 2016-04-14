@@ -176,61 +176,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
 <div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <a class="code" href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">Value</a>(<span class="keyword">const</span> std::string&amp; value);</div>
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">Value</a>(Type type_, <span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <a class="code" href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">Value</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* value);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        std::vector&lt;uint8_t&gt; <a class="code" href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">get_bytes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        <a class="code" href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">Value</a>(Type type_, <span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data);</div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keyword">operator</span> uint8_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        std::vector&lt;uint8_t&gt; <a class="code" href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">get_bytes</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">operator</span> uint16_t() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        </div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keyword">operator</span> uint32_t() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        </div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">operator</span> int8_t() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">operator</span> int16_t() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        </div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">operator</span> int32_t() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keyword">operator</span> float() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keyword">operator</span> double() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        </div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        </div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">operator</span> std::string() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keyword">operator</span> uint8_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keyword">operator</span> uint16_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        <span class="keyword">operator</span> uint32_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keyword">operator</span> int8_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keyword">operator</span> int16_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keyword">operator</span> int32_t() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        <span class="keyword">operator</span> float() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keyword">operator</span> double() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;        <span class="keyword">operator</span> bool() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">operator==</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; other) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        <span class="keyword">operator</span> std::string() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">operator!=</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; other) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">operator==</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; other) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    };</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keyword">namespace </span>value_printer {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, Value val);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">// For correct usage of logger.h one should use the int8_printers, so</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">// the int8_printers namespace is automatically included. Because of</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment">// this, logger.h should not be included in library headers.</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="keyword">using namespace </span>kaco::value_printer;</div>
-<div class="ttc" id="structkaco_1_1Value_html_aa33d513aae7ad03543195d373641dc79"><div class="ttname"><a href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">kaco::Value::operator!=</a></div><div class="ttdeci">bool operator!=(const Value &amp;other) const </div><div class="ttdoc">Compares not equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00339">value.cpp:339</a></div></div>
-<div class="ttc" id="structkaco_1_1Value_html_a414258b408ef7cdacd86d9b683636d39"><div class="ttname"><a href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">kaco::Value::get_bytes</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; get_bytes() const </div><div class="ttdoc">Returns the byte representation (little-endian) as a vector. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00181">value.cpp:181</a></div></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">operator!=</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; other) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    };</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keyword">namespace </span>value_printer {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, Value val);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">// For correct usage of logger.h one should use the int8_printers, so</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">// the int8_printers namespace is automatically included. Because of</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">// this, logger.h should not be included in library headers.</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">using namespace </span>kaco::value_printer;</div>
+<div class="ttc" id="structkaco_1_1Value_html_aa33d513aae7ad03543195d373641dc79"><div class="ttname"><a href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">kaco::Value::operator!=</a></div><div class="ttdeci">bool operator!=(const Value &amp;other) const </div><div class="ttdoc">Compares not equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00344">value.cpp:344</a></div></div>
+<div class="ttc" id="structkaco_1_1Value_html_a414258b408ef7cdacd86d9b683636d39"><div class="ttname"><a href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">kaco::Value::get_bytes</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; get_bytes() const </div><div class="ttdoc">Returns the byte representation (little-endian) as a vector. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00186">value.cpp:186</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a97016a283a1e13b608406f6b3d205f09"><div class="ttname"><a href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">kaco::Value::Value</a></div><div class="ttdeci">Value()</div><div class="ttdoc">Constructs an invalid value. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00037">value.cpp:37</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a138244b24433baee213c66af60e86f91"><div class="ttname"><a href="structkaco_1_1Value.html#a138244b24433baee213c66af60e86f91">kaco::Value::type</a></div><div class="ttdeci">Type type</div><div class="ttdoc">Tyoe of the value. </div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00056">value.h:56</a></div></div>
-<div class="ttc" id="structkaco_1_1Value_html_a215bf4535d7a2f6144d52e8e485201fd"><div class="ttname"><a href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">kaco::Value::operator==</a></div><div class="ttdeci">bool operator==(const Value &amp;other) const </div><div class="ttdoc">Compares equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00272">value.cpp:272</a></div></div>
+<div class="ttc" id="structkaco_1_1Value_html_a215bf4535d7a2f6144d52e8e485201fd"><div class="ttname"><a href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">kaco::Value::operator==</a></div><div class="ttdeci">bool operator==(const Value &amp;other) const </div><div class="ttdoc">Compares equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00277">value.cpp:277</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_af5469d4e06ba38c5bcabe9736d1963a2"><div class="ttname"><a href="structkaco_1_1Value.html#af5469d4e06ba38c5bcabe9736d1963a2">kaco::Value::string</a></div><div class="ttdeci">std::string string</div><div class="ttdoc">The value if type==Type::string It&#39;s seperate because std::string is non-trivial and should not be pa...</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00065">value.h:65</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html"><div class="ttname"><a href="structkaco_1_1Value.html">kaco::Value</a></div><div class="ttdoc">This class contains a value to be stored in the object dictionary. The value can have one of the type...</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00053">value.h:53</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

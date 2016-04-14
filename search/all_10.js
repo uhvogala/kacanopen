@@ -1,8 +1,7 @@
 var searchData=
 [
   ['sdo',['SDO',['../classkaco_1_1SDO.html',1,'kaco']]],
-  ['sdo',['SDO',['../classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649',1,'kaco::SDO::SDO()'],['../classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4',1,'kaco::Core::sdo()']]],
-  ['sdo_5fcallback_5ffunction_5ftype',['sdo_callback_function_type',['../structkaco_1_1SDO_1_1SDOReceivedCallback.html#a6d2e94043dbabeda317caed8b9f24dc1',1,'kaco::SDO::SDOReceivedCallback']]],
+  ['sdo',['sdo',['../classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4',1,'kaco::Core::sdo()'],['../classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649',1,'kaco::SDO::SDO(Core &amp;core)'],['../classkaco_1_1SDO.html#a00db0514da84a80cb8b23f840595ad3f',1,'kaco::SDO::SDO(const SDO &amp;)=delete']]],
   ['sdo_5ferror',['sdo_error',['../classkaco_1_1sdo__error.html',1,'kaco']]],
   ['sdo_5ferror',['sdo_error',['../classkaco_1_1sdo__error.html#ab8acacb4d6de7eea8161015dc38aa3b1',1,'kaco::sdo_error::sdo_error(type error_type, const std::string &amp;additional_information=&quot;&quot;)'],['../classkaco_1_1sdo__error.html#a88303355f755161ae8baf151d09f6746',1,'kaco::sdo_error::sdo_error(uint32_t sdo_data, const std::string &amp;additional_information=&quot;&quot;)']]],
   ['sdoreceivedcallback',['SDOReceivedCallback',['../structkaco_1_1SDO_1_1SDOReceivedCallback.html',1,'kaco::SDO']]],

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['sdo',['SDO',['../classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649',1,'kaco::SDO']]],
+  ['sdo',['SDO',['../classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649',1,'kaco::SDO::SDO(Core &amp;core)'],['../classkaco_1_1SDO.html#a00db0514da84a80cb8b23f840595ad3f',1,'kaco::SDO::SDO(const SDO &amp;)=delete']]],
   ['sdo_5ferror',['sdo_error',['../classkaco_1_1sdo__error.html#ab8acacb4d6de7eea8161015dc38aa3b1',1,'kaco::sdo_error::sdo_error(type error_type, const std::string &amp;additional_information=&quot;&quot;)'],['../classkaco_1_1sdo__error.html#a88303355f755161ae8baf151d09f6746',1,'kaco::sdo_error::sdo_error(uint32_t sdo_data, const std::string &amp;additional_information=&quot;&quot;)']]],
   ['send',['send',['../classkaco_1_1Core.html#a8aa7f2cfa3e964ca03668ab1dc14815c',1,'kaco::Core::send()'],['../classkaco_1_1PDO.html#acfb2716b7cc538aa3c57f50125ae1730',1,'kaco::PDO::send()'],['../classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854',1,'kaco::TransmitPDOMapping::send()']]],
   ['send_5fnmt_5fmessage',['send_nmt_message',['../classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a',1,'kaco::NMT']]],

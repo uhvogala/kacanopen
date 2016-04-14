@@ -97,18 +97,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>Type of a sdo message receiver function with it's node id.  
+<p>Type of a sdo message receiver function with it's node id Important: Never call send_sdo_and_wait or process_incoming_message from within (-&gt; deadlock)!  
  <a href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="sdo_8h_source.html">sdo.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6d2e94043dbabeda317caed8b9f24dc1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d2e94043dbabeda317caed8b9f24dc1"></a>
-typedef std::function&lt; void(const <br class="typebreak" />
-<a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a> &amp;) &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#a6d2e94043dbabeda317caed8b9f24dc1">sdo_callback_function_type</a></td></tr>
-<tr class="memdesc:a6d2e94043dbabeda317caed8b9f24dc1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the callback. <br /></td></tr>
-<tr class="separator:a6d2e94043dbabeda317caed8b9f24dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76758775d1130e732a1a204f3f1a99d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad76758775d1130e732a1a204f3f1a99d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#ad76758775d1130e732a1a204f3f1a99d">Callback</a> = std::function&lt; void(const <a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a> &amp;) &gt;</td></tr>
+<tr class="memdesc:ad76758775d1130e732a1a204f3f1a99d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the callback. <br /></td></tr>
+<tr class="separator:ad76758775d1130e732a1a204f3f1a99d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -116,22 +115,22 @@ Public Attributes</h2></td></tr>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#ac3f9325e25e8d291b32b4e4fb5948805">node_id</a></td></tr>
 <tr class="memdesc:ac3f9325e25e8d291b32b4e4fb5948805"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node id. <br /></td></tr>
 <tr class="separator:ac3f9325e25e8d291b32b4e4fb5948805"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9a81638866fd86237cb9d1fc8cb9dca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af9a81638866fd86237cb9d1fc8cb9dca"></a>
-<a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#a6d2e94043dbabeda317caed8b9f24dc1">sdo_callback_function_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#af9a81638866fd86237cb9d1fc8cb9dca">callback</a></td></tr>
-<tr class="memdesc:af9a81638866fd86237cb9d1fc8cb9dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The callback. <br /></td></tr>
-<tr class="separator:af9a81638866fd86237cb9d1fc8cb9dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a658bf8ea5d8ceb9d6434deecc4adeed2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a658bf8ea5d8ceb9d6434deecc4adeed2"></a>
+<a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#ad76758775d1130e732a1a204f3f1a99d">Callback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#a658bf8ea5d8ceb9d6434deecc4adeed2">callback</a></td></tr>
+<tr class="memdesc:a658bf8ea5d8ceb9d6434deecc4adeed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The callback. <br /></td></tr>
+<tr class="separator:a658bf8ea5d8ceb9d6434deecc4adeed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Type of a sdo message receiver function with it's node id. </p>
+<div class="textblock"><p>Type of a sdo message receiver function with it's node id Important: Never call send_sdo_and_wait or process_incoming_message from within (-&gt; deadlock)! </p>
 
-<p>Definition at line <a class="el" href="sdo_8h_source.html#l00058">58</a> of file <a class="el" href="sdo_8h_source.html">sdo.h</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8h_source.html#l00064">64</a> of file <a class="el" href="sdo_8h_source.html">sdo.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>core/include/<a class="el" href="sdo_8h_source.html">sdo.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

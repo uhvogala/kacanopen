@@ -83,13 +83,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><p>This is a yet incomplete list of features which are planned for the future. Feel free to contact me you have any further ideas or if you want to contribute code.</p>
 <h2>Short-term</h2>
 <ul>
+<li><b>Bridge:</b> Rename ros_bridge to something that is not as easily confused with <em>the</em> rosbridge (<a href="http://wiki.ros.org/rosbridge_suite">http://wiki.ros.org/rosbridge_suite</a>), e.g. kacanopen_ros</li>
 <li><b>Bridge:</b> Implement a ROS service for accessing any dictionary entry of a slave by name.</li>
 <li><b>Bridge:</b> Subscribers / Publishers: Allow configuration of queue_size.</li>
 <li><b>Core:</b> Automatically map PDOs like they are configured in slave's dictionary.</li>
 <li><b>Core:</b> Add methods for manipulating PDO mapping configuration in slave's dictionary.</li>
 <li><b>Core:</b> Add ability to remove/change existing PDO transmitters / receivers / mappings.</li>
-<li><b>Project:</b> Fix/Improve Doxygen mainpage.</li>
-<li><b>Master:</b> Add profile specific convenience methods (using Lambda expressions). For example, CiA 402 control word manipulation methods are indicated.</li>
+<li><b>Master:</b> Device: Add methods print_operations(), print_constants() and read_complete_dictionary().</li>
 </ul>
 <h2>Long-term</h2>
 <ul>
@@ -104,7 +104,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

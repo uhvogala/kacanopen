@@ -126,65 +126,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;functional&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// forward declaration</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">class </span>Core;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html">   47</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classkaco_1_1NMT.html">NMT</a> {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">   52</a></span>&#160;        <span class="keyword">typedef</span> std::function&lt; void(const uint8_t node_id) &gt; <a class="code" href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">NewDeviceCallback</a>;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">   55</a></span>&#160;        <span class="keyword">enum class</span> <a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> : uint8_t {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            start_node = 0x01,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            stop_node = 0x02,</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            enter_preoperational = 0x80,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            reset_node = 0x81,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            reset_communication = 0x82</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        };</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">NMT</a>(<a class="code" href="classkaco_1_1Core.html">Core</a>&amp; core);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#abb926437f948304a800d153403292b01">~NMT</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#a1e00a888e2fec4b3923f7e8105abd4e3">process_incoming_message</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Message.html">Message</a>&amp; message);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">send_nmt_message</a>(uint8_t node_id, <a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> cmd);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#ac6f2f29d96941892578da68565a2697a">broadcast_nmt_message</a>(<a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> cmd);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;forward_list&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">namespace </span>kaco {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// forward declaration</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">class </span>Core;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html">   50</a></span>&#160;    <span class="keyword">class </span><a class="code" href="classkaco_1_1NMT.html">NMT</a> {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">   57</a></span>&#160;        <span class="keyword">using</span> <a class="code" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> = std::function&lt; void(const uint8_t node_id) &gt;;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">   60</a></span>&#160;        <span class="keyword">enum class</span> <a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> : uint8_t {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            start_node = 0x01,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            stop_node = 0x02,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            enter_preoperational = 0x80,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            reset_node = 0x81,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            reset_communication = 0x82</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        };</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">NMT</a>(<a class="code" href="classkaco_1_1Core.html">Core</a>&amp; core);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">NMT</a>(<span class="keyword">const</span> <a class="code" href="classkaco_1_1NMT.html">NMT</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#a1e00a888e2fec4b3923f7e8105abd4e3">process_incoming_message</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Message.html">Message</a>&amp; message);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">send_nmt_message</a>(uint8_t node_id, <a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> cmd);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a>(<span class="keyword">const</span> <a class="code" href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">NewDeviceCallback</a>&amp; callback);   </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#ac6f2f29d96941892578da68565a2697a">broadcast_nmt_message</a>(<a class="code" href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">Command</a> cmd);</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classkaco_1_1Core.html">Core</a>&amp; m_core;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        std::vector&lt;NewDeviceCallback&gt; m_new_device_callbacks;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a>();</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    };</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="ttc" id="classkaco_1_1NMT_html_aaa3a10b5f6157327490e30f75db7206a"><div class="ttname"><a href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">kaco::NMT::send_nmt_message</a></div><div class="ttdeci">void send_nmt_message(uint8_t node_id, Command cmd)</div><div class="ttdoc">Sends a NMT message to a given device. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00049">nmt.cpp:49</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_ac6f2f29d96941892578da68565a2697a"><div class="ttname"><a href="classkaco_1_1NMT.html#ac6f2f29d96941892578da68565a2697a">kaco::NMT::broadcast_nmt_message</a></div><div class="ttdeci">void broadcast_nmt_message(Command cmd)</div><div class="ttdoc">Sends a broadcast NMT message. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00055">nmt.cpp:55</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_abb926437f948304a800d153403292b01"><div class="ttname"><a href="classkaco_1_1NMT.html#abb926437f948304a800d153403292b01">kaco::NMT::~NMT</a></div><div class="ttdeci">~NMT()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00046">nmt.cpp:46</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_abbdee76a18089953243149c00577603a"><div class="ttname"><a href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">kaco::NMT::Command</a></div><div class="ttdeci">Command</div><div class="ttdoc">NMT commands. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00055">nmt.h:55</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html"><div class="ttname"><a href="classkaco_1_1NMT.html">kaco::NMT</a></div><div class="ttdoc">This class implements the CanOpen NMT protocol. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00047">nmt.h:47</a></div></div>
-<div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00077">core.h:77</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_af59fcb150db4858240b12be9b4ba7a99"><div class="ttname"><a href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">kaco::NMT::register_new_device_callback</a></div><div class="ttdeci">void register_new_device_callback(const NewDeviceCallback &amp;callback)</div><div class="ttdoc">Registers a callback which will be called when a new slave device is discovered. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00126">nmt.cpp:126</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_a1e00a888e2fec4b3923f7e8105abd4e3"><div class="ttname"><a href="classkaco_1_1NMT.html#a1e00a888e2fec4b3923f7e8105abd4e3">kaco::NMT::process_incoming_message</a></div><div class="ttdeci">void process_incoming_message(const Message &amp;message)</div><div class="ttdoc">Process incoming NMT message. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00063">nmt.cpp:63</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_aafd868d9b69778b3da4a5aeacb02267a"><div class="ttname"><a href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">kaco::NMT::NMT</a></div><div class="ttdeci">NMT(Core &amp;core)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00042">nmt.cpp:42</a></div></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#a0cb3cf3b8f235efe2a97e17c72898215">discover_nodes</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a>(<span class="keyword">const</span> <a class="code" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a>&amp; callback);   </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <a class="code" href="classkaco_1_1Core.html">Core</a>&amp; m_core;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        std::vector&lt;NewDeviceCallback&gt; m_new_device_callbacks;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">mutable</span> std::mutex m_new_device_callbacks_mutex;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> m_cleanup_futures = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        std::forward_list&lt;std::future&lt;void&gt;&gt; m_callback_futures; <span class="comment">// forward_list because of remove_if</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">mutable</span> std::mutex m_callback_futures_mutex;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    };</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="ttc" id="classkaco_1_1NMT_html_aaa3a10b5f6157327490e30f75db7206a"><div class="ttname"><a href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">kaco::NMT::send_nmt_message</a></div><div class="ttdeci">void send_nmt_message(uint8_t node_id, Command cmd)</div><div class="ttdoc">Sends a NMT message to a given device. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00047">nmt.cpp:47</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_ac6f2f29d96941892578da68565a2697a"><div class="ttname"><a href="classkaco_1_1NMT.html#ac6f2f29d96941892578da68565a2697a">kaco::NMT::broadcast_nmt_message</a></div><div class="ttdeci">void broadcast_nmt_message(Command cmd)</div><div class="ttdoc">Sends a broadcast NMT message. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00053">nmt.cpp:53</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_a79e48b4e37a897aa0d2d00fce39c1c3c"><div class="ttname"><a href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">kaco::NMT::NewDeviceCallback</a></div><div class="ttdeci">std::function&lt; void(const uint8_t node_id) &gt; NewDeviceCallback</div><div class="ttdoc">Type of a new device callback function Important: Never call register_new_device_callback() from with...</div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00057">nmt.h:57</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_abbdee76a18089953243149c00577603a"><div class="ttname"><a href="classkaco_1_1NMT.html#abbdee76a18089953243149c00577603a">kaco::NMT::Command</a></div><div class="ttdeci">Command</div><div class="ttdoc">NMT commands. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00060">nmt.h:60</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html"><div class="ttname"><a href="classkaco_1_1NMT.html">kaco::NMT</a></div><div class="ttdoc">This class implements the CanOpen NMT protocol. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00050">nmt.h:50</a></div></div>
+<div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00059">core.h:59</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_a0cb3cf3b8f235efe2a97e17c72898215"><div class="ttname"><a href="classkaco_1_1NMT.html#a0cb3cf3b8f235efe2a97e17c72898215">kaco::NMT::discover_nodes</a></div><div class="ttdeci">void discover_nodes()</div><div class="ttdoc">Discovers nodes in the network via node guard protocol. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00067">nmt.cpp:67</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_af59fcb150db4858240b12be9b4ba7a99"><div class="ttname"><a href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">kaco::NMT::register_new_device_callback</a></div><div class="ttdeci">void register_new_device_callback(const NewDeviceCallback &amp;callback)</div><div class="ttdoc">Registers a callback which will be called when a new slave device is discovered. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00181">nmt.cpp:181</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_a1e00a888e2fec4b3923f7e8105abd4e3"><div class="ttname"><a href="classkaco_1_1NMT.html#a1e00a888e2fec4b3923f7e8105abd4e3">kaco::NMT::process_incoming_message</a></div><div class="ttdeci">void process_incoming_message(const Message &amp;message)</div><div class="ttdoc">Process incoming NMT message. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00079">nmt.cpp:79</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_aafd868d9b69778b3da4a5aeacb02267a"><div class="ttname"><a href="classkaco_1_1NMT.html#aafd868d9b69778b3da4a5aeacb02267a">kaco::NMT::NMT</a></div><div class="ttdeci">NMT(Core &amp;core)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00043">nmt.cpp:43</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html"><div class="ttname"><a href="structkaco_1_1Message.html">kaco::Message</a></div><div class="ttdoc">This struct represents a CANOpen message. </div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00039">message.h:39</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_a4bfe040b3669790924962e3dd494da99"><div class="ttname"><a href="classkaco_1_1NMT.html#a4bfe040b3669790924962e3dd494da99">kaco::NMT::NewDeviceCallback</a></div><div class="ttdeci">std::function&lt; void(const uint8_t node_id) &gt; NewDeviceCallback</div><div class="ttdoc">Type of a new device callback function. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8h_source.html#l00052">nmt.h:52</a></div></div>
-<div class="ttc" id="classkaco_1_1NMT_html_a10fcd018a1476c819873a60235bb2016"><div class="ttname"><a href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">kaco::NMT::reset_all_nodes</a></div><div class="ttdeci">void reset_all_nodes()</div><div class="ttdoc">Resets all nodes in the network. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00059">nmt.cpp:59</a></div></div>
+<div class="ttc" id="classkaco_1_1NMT_html_a10fcd018a1476c819873a60235bb2016"><div class="ttname"><a href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">kaco::NMT::reset_all_nodes</a></div><div class="ttdeci">void reset_all_nodes()</div><div class="ttdoc">Resets all nodes in the network. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00057">nmt.cpp:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

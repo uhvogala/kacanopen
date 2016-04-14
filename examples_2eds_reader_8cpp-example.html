@@ -131,9 +131,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
 <div class="line">    std::string path;</div>
-<div class="line">    </div>
+<div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (argc&gt;1 &amp;&amp; argv[1]) {</div>
-<div class="line">        </div>
+<div class="line"></div>
 <div class="line">        path = std::string(argv[1]);</div>
 <div class="line">        PRINT(<span class="stringliteral">&quot;Loading EDS file from &quot;</span>&lt;&lt;path);</div>
 <div class="line">        success = reader.<a name="a1"></a><a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a>(path);</div>
@@ -167,17 +167,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    PRINT(<span class="stringliteral">&quot;Here is the dictionary:&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">    std::vector&lt; kaco::Entry &gt; entries;</div>
+<div class="line">    <span class="keyword">using</span> EntryRef = std::reference_wrapper&lt;const kaco::Entry&gt;;</div>
+<div class="line">    std::vector&lt;EntryRef&gt; entries;</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pair : map) {</div>
-<div class="line">        entries.push_back(pair.second);</div>
+<div class="line">        entries.push_back(std::ref(pair.second));</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// sort by index and subindex</span></div>
-<div class="line">    std::sort(entries.begin(), entries.end());</div>
+<div class="line">    std::sort(entries.begin(), entries.end(),</div>
+<div class="line">        [](<span class="keyword">const</span> EntryRef&amp; l, <span class="keyword">const</span> EntryRef&amp; r) { <span class="keywordflow">return</span> l.get()&lt;r.get(); });</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; entry : entries) {</div>
-<div class="line">        entry.print();</div>
+<div class="line">        entry.get().print();</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
@@ -186,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

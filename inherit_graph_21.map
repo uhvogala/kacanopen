@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classkaco_1_1TransmitPDOMapping.html" title="This class represents a mapping from one or more dictionary entries to one transmit PDO..." alt="" coords="5,5,192,32"/>
+<area shape="rect" id="node1" href="$classkaco_1_1Subscriber.html" title="Interface, which provides methods for subscribing topics. " alt="" coords="5,31,125,57"/>
+<area shape="rect" id="node2" href="$classkaco_1_1EntrySubscriber.html" title="This class provides a Publisher implementation for use with kaco::Bridge. It publishes a value from a..." alt="" coords="187,5,338,32"/>
+<area shape="rect" id="node3" href="$classkaco_1_1JointStateSubscriber.html" title="This class provides a Subscriber implementation for use with kaco::Bridge and a CiA 402 motor device..." alt="" coords="173,56,352,83"/>
 </map>

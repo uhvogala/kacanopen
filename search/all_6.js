@@ -1,9 +1,10 @@
 var searchData=
 [
   ['get_5fbytes',['get_bytes',['../structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39',1,'kaco::Value']]],
+  ['get_5fconstant',['get_constant',['../classkaco_1_1Device.html#ac8badd7c12208ebc46e6bd15914d338e',1,'kaco::Device']]],
   ['get_5fdata',['get_data',['../structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614',1,'kaco::SDOResponse']]],
+  ['get_5fdevice',['get_device',['../classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff',1,'kaco::Master']]],
   ['get_5fdevice_5fprofile_5fnumber',['get_device_profile_number',['../classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f',1,'kaco::Device']]],
-  ['get_5fdevices',['get_devices',['../classkaco_1_1Master.html#a4c6ed69f53fecacd9a590e75227e5181',1,'kaco::Master']]],
   ['get_5fentry',['get_entry',['../classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5',1,'kaco::Device']]],
   ['get_5fentry_5fname',['get_entry_name',['../classkaco_1_1dictionary__error.html#a893ba6eccccd75b182dddd849632c1e8',1,'kaco::dictionary_error']]],
   ['get_5fentry_5ftype',['get_entry_type',['../classkaco_1_1Device.html#aaaca32ec0a8fc95e4230e892f468f3b0',1,'kaco::Device']]],

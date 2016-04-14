@@ -123,11 +123,10 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:ae05e76be0b02f48c204b3f2c07d14074"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae05e76be0b02f48c204b3f2c07d14074"></a>
-typedef std::function&lt; void(const <br class="typebreak" />
-<a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value) &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#ae05e76be0b02f48c204b3f2c07d14074">ValueChangedCallback</a></td></tr>
-<tr class="memdesc:ae05e76be0b02f48c204b3f2c07d14074"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of a callback for a value changed event <br /></td></tr>
-<tr class="separator:ae05e76be0b02f48c204b3f2c07d14074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19410f74eb3f7b11d119bc9f964d4a4d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a19410f74eb3f7b11d119bc9f964d4a4d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a19410f74eb3f7b11d119bc9f964d4a4d">ValueChangedCallback</a> = std::function&lt; void(const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value) &gt;</td></tr>
+<tr class="memdesc:a19410f74eb3f7b11d119bc9f964d4a4d"><td class="mdescLeft">&#160;</td><td class="mdescRight">type of a callback for a value changed event Important: Never call <a class="el" href="classkaco_1_1Entry.html#a3e1f85ae583ecfe168c407576913d578" title="Registers a given function to be called when the value is changed. ">add_value_changed_callback()</a> from within (-&gt; deadlock)! <br /></td></tr>
+<tr class="separator:a19410f74eb3f7b11d119bc9f964d4a4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -143,33 +142,42 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a0ea70bd1e1004714c1988a17077c7297">Entry</a> (<a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag</a> tag, uint16_t _index, std::string _name, Type _type, AccessType _access)</td></tr>
 <tr class="memdesc:a0ea70bd1e1004714c1988a17077c7297"><td class="mdescLeft">&#160;</td><td class="mdescRight">array constructor <br /></td></tr>
 <tr class="separator:a0ea70bd1e1004714c1988a17077c7297"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6cbe84606d1f889aef8f3e33a7dd695"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af6cbe84606d1f889aef8f3e33a7dd695"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#af6cbe84606d1f889aef8f3e33a7dd695">set_value</a> (const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value, uint8_t array_index=0)</td></tr>
-<tr class="memdesc:af6cbe84606d1f889aef8f3e33a7dd695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value. If the entry is an array, array_index can be specified. <br /></td></tr>
+<tr class="memitem:a48e910c7f97212b1ccd615968e967b8a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48e910c7f97212b1ccd615968e967b8a"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a48e910c7f97212b1ccd615968e967b8a">Entry</a> (const <a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:a48e910c7f97212b1ccd615968e967b8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy constructor <br /></td></tr>
+<tr class="separator:a48e910c7f97212b1ccd615968e967b8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad207b27ce69a8e39c411dc33b7cd7444"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad207b27ce69a8e39c411dc33b7cd7444"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#ad207b27ce69a8e39c411dc33b7cd7444">Entry</a> (<a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;&amp;other)=default</td></tr>
+<tr class="memdesc:ad207b27ce69a8e39c411dc33b7cd7444"><td class="mdescLeft">&#160;</td><td class="mdescRight">move constructor <br /></td></tr>
+<tr class="separator:ad207b27ce69a8e39c411dc33b7cd7444"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bd67245a45734bfb490f28e25c2921f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1bd67245a45734bfb490f28e25c2921f"></a>
+<a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a1bd67245a45734bfb490f28e25c2921f">operator=</a> (const <a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;other)=delete</td></tr>
+<tr class="memdesc:a1bd67245a45734bfb490f28e25c2921f"><td class="mdescLeft">&#160;</td><td class="mdescRight">copy assignment <br /></td></tr>
+<tr class="separator:a1bd67245a45734bfb490f28e25c2921f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1afee46f00de49ff5eab2718c4294f0c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1afee46f00de49ff5eab2718c4294f0c"></a>
+<a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a1afee46f00de49ff5eab2718c4294f0c">operator=</a> (<a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;&amp;other)=default</td></tr>
+<tr class="memdesc:a1afee46f00de49ff5eab2718c4294f0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">move assignment <br /></td></tr>
+<tr class="separator:a1afee46f00de49ff5eab2718c4294f0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6cbe84606d1f889aef8f3e33a7dd695"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#af6cbe84606d1f889aef8f3e33a7dd695">set_value</a> (const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value, uint8_t array_index=0)</td></tr>
+<tr class="memdesc:af6cbe84606d1f889aef8f3e33a7dd695"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value. If the entry is an array, array_index can be specified.  <a href="#af6cbe84606d1f889aef8f3e33a7dd695">More...</a><br /></td></tr>
 <tr class="separator:af6cbe84606d1f889aef8f3e33a7dd695"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3457c922b9b85a8c97855230fe291bdd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3457c922b9b85a8c97855230fe291bdd"></a>
-const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a3457c922b9b85a8c97855230fe291bdd">get_value</a> (uint8_t array_index=0) const </td></tr>
-<tr class="memdesc:a3457c922b9b85a8c97855230fe291bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value. If the entry is an array, array_index can be specified. <br /></td></tr>
+<tr class="memitem:a3457c922b9b85a8c97855230fe291bdd"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a3457c922b9b85a8c97855230fe291bdd">get_value</a> (uint8_t array_index=0) const </td></tr>
+<tr class="memdesc:a3457c922b9b85a8c97855230fe291bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value. If the entry is an array, array_index can be specified.  <a href="#a3457c922b9b85a8c97855230fe291bdd">More...</a><br /></td></tr>
 <tr class="separator:a3457c922b9b85a8c97855230fe291bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2fc0e9719c0f08bebf9aafd8e4714ef3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2fc0e9719c0f08bebf9aafd8e4714ef3"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a2fc0e9719c0f08bebf9aafd8e4714ef3">valid</a> (uint8_t array_index=0) const </td></tr>
-<tr class="memdesc:a2fc0e9719c0f08bebf9aafd8e4714ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if the value is set/valid. If the entry is an array, array_index can be specified. <br /></td></tr>
+<tr class="memitem:a2fc0e9719c0f08bebf9aafd8e4714ef3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a2fc0e9719c0f08bebf9aafd8e4714ef3">valid</a> (uint8_t array_index=0) const </td></tr>
+<tr class="memdesc:a2fc0e9719c0f08bebf9aafd8e4714ef3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns if the value is set/valid. If the entry is an array, array_index can be specified.  <a href="#a2fc0e9719c0f08bebf9aafd8e4714ef3">More...</a><br /></td></tr>
 <tr class="separator:a2fc0e9719c0f08bebf9aafd8e4714ef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08271d968a1fd2136e558fc19bb9e1b4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08271d968a1fd2136e558fc19bb9e1b4"></a>
-Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a08271d968a1fd2136e558fc19bb9e1b4">get_type</a> () const </td></tr>
-<tr class="memdesc:a08271d968a1fd2136e558fc19bb9e1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data type. <br /></td></tr>
+<tr class="memitem:a08271d968a1fd2136e558fc19bb9e1b4"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a08271d968a1fd2136e558fc19bb9e1b4">get_type</a> () const </td></tr>
+<tr class="memdesc:a08271d968a1fd2136e558fc19bb9e1b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the data type.  <a href="#a08271d968a1fd2136e558fc19bb9e1b4">More...</a><br /></td></tr>
 <tr class="separator:a08271d968a1fd2136e558fc19bb9e1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e1f85ae583ecfe168c407576913d578"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e1f85ae583ecfe168c407576913d578"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a3e1f85ae583ecfe168c407576913d578">add_value_changed_callback</a> (<a class="el" href="classkaco_1_1Entry.html#ae05e76be0b02f48c204b3f2c07d14074">ValueChangedCallback</a> callback)</td></tr>
-<tr class="memdesc:a3e1f85ae583ecfe168c407576913d578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a given function to be called when the value is changed. <br /></td></tr>
+<tr class="memitem:a3e1f85ae583ecfe168c407576913d578"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a3e1f85ae583ecfe168c407576913d578">add_value_changed_callback</a> (<a class="el" href="classkaco_1_1Entry.html#a19410f74eb3f7b11d119bc9f964d4a4d">ValueChangedCallback</a> callback)</td></tr>
+<tr class="memdesc:a3e1f85ae583ecfe168c407576913d578"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a given function to be called when the value is changed.  <a href="#a3e1f85ae583ecfe168c407576913d578">More...</a><br /></td></tr>
 <tr class="separator:a3e1f85ae583ecfe168c407576913d578"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf0168c0b6bc527f41ebcbce328c88a6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf0168c0b6bc527f41ebcbce328c88a6"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#abf0168c0b6bc527f41ebcbce328c88a6">print</a> () const </td></tr>
-<tr class="memdesc:abf0168c0b6bc527f41ebcbce328c88a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints relevant information concerning this entry on standard output - name, index, possibly value, ... This is used by <a class="el" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789" title="Prints the dictionary together with currently cached values to command line. ">Device::print_dictionary()</a> <br /></td></tr>
+<tr class="memitem:abf0168c0b6bc527f41ebcbce328c88a6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#abf0168c0b6bc527f41ebcbce328c88a6">print</a> () const </td></tr>
+<tr class="memdesc:abf0168c0b6bc527f41ebcbce328c88a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints relevant information concerning this entry on standard output - name, index, possibly value, ... This is used by <a class="el" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789" title="Prints the dictionary together with currently cached values to command line. ">Device::print_dictionary()</a>  <a href="#abf0168c0b6bc527f41ebcbce328c88a6">More...</a><br /></td></tr>
 <tr class="separator:abf0168c0b6bc527f41ebcbce328c88a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a93f4e85e1bb8f00975696961cbc95f04"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a93f4e85e1bb8f00975696961cbc95f04"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a93f4e85e1bb8f00975696961cbc95f04">operator&lt;</a> (const <a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;other) const </td></tr>
-<tr class="memdesc:a93f4e85e1bb8f00975696961cbc95f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares entries by index and subindex. This can be used for sorting the dictionary. <br /></td></tr>
+<tr class="memitem:a93f4e85e1bb8f00975696961cbc95f04"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a93f4e85e1bb8f00975696961cbc95f04">operator&lt;</a> (const <a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;other) const </td></tr>
+<tr class="memdesc:a93f4e85e1bb8f00975696961cbc95f04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares entries by index and subindex. This can be used for sorting the dictionary.  <a href="#a93f4e85e1bb8f00975696961cbc95f04">More...</a><br /></td></tr>
 <tr class="separator:a93f4e85e1bb8f00975696961cbc95f04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -220,19 +228,175 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents an entry in the object dictionary of a device. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd><p class="startdd">Add missing fields like high and low limit. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd><p class="startdd">Add missing fields like high and low limit. </p>
 <p class="enddd">Array type entries are currently not used and may be deleted in future. </p>
 </dd></dl>
 
 <p>Definition at line <a class="el" href="entry_8h_source.html#l00053">53</a> of file <a class="el" href="entry_8h_source.html">entry.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a3e1f85ae583ecfe168c407576913d578"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::Entry::add_value_changed_callback </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classkaco_1_1Entry.html#a19410f74eb3f7b11d119bc9f964d4a4d">ValueChangedCallback</a>&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a given function to be called when the value is changed. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00153">153</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a08271d968a1fd2136e558fc19bb9e1b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Type kaco::Entry::get_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the data type. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00149">149</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3457c922b9b85a8c97855230fe291bdd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp; kaco::Entry::get_value </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>array_index</em> = <code>0</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the value. If the entry is an array, array_index can be specified. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00117">117</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a93f4e85e1bb8f00975696961cbc95f04"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kaco::Entry::operator&lt; </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkaco_1_1Entry.html">Entry</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compares entries by index and subindex. This can be used for sorting the dictionary. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00179">179</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abf0168c0b6bc527f41ebcbce328c88a6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::Entry::print </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Prints relevant information concerning this entry on standard output - name, index, possibly value, ... This is used by <a class="el" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789" title="Prints the dictionary together with currently cached values to command line. ">Device::print_dictionary()</a> </p>
+<dl class="section remark"><dt>Remarks</dt><dd>not thread-safe due to std::cout </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00158">158</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af6cbe84606d1f889aef8f3e33a7dd695"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::Entry::set_value </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>array_index</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the value. If the entry is an array, array_index can be specified. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00071">71</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2fc0e9719c0f08bebf9aafd8e4714ef3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kaco::Entry::valid </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>array_index</em> = <code>0</code></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns if the value is set/valid. If the entry is an array, array_index can be specified. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00130">130</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>master/include/<a class="el" href="entry_8h_source.html">entry.h</a></li>
 <li>master/src/<a class="el" href="entry_8cpp_source.html">entry.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -97,18 +97,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> message receiver function together with it's COB-ID.  
+<p>A <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> message receiver function together with it's COB-ID Important: Never call add_pdo_received_callback or process_incoming_message from within (-&gt; deadlock)!  
  <a href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="pdo_8h_source.html">pdo.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a6a28fffca3bda2ba039c9df267cba82f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a28fffca3bda2ba039c9df267cba82f"></a>
-typedef std::function&lt; void(std::vector<br class="typebreak" />
-&lt; uint8_t &gt;) &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#a6a28fffca3bda2ba039c9df267cba82f">Function</a></td></tr>
-<tr class="memdesc:a6a28fffca3bda2ba039c9df267cba82f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the callback. <br /></td></tr>
-<tr class="separator:a6a28fffca3bda2ba039c9df267cba82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae92155805f7c1f4ee3a0f617eec26e87"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae92155805f7c1f4ee3a0f617eec26e87"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#ae92155805f7c1f4ee3a0f617eec26e87">Callback</a> = std::function&lt; void(std::vector&lt; uint8_t &gt;) &gt;</td></tr>
+<tr class="memdesc:ae92155805f7c1f4ee3a0f617eec26e87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of the callback. <br /></td></tr>
+<tr class="separator:ae92155805f7c1f4ee3a0f617eec26e87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -116,22 +115,22 @@ Public Attributes</h2></td></tr>
 uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#a860f7f406461312c854101572068d996">cob_id</a></td></tr>
 <tr class="memdesc:a860f7f406461312c854101572068d996"><td class="mdescLeft">&#160;</td><td class="mdescRight">The COB-ID of the <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> to receive. <br /></td></tr>
 <tr class="separator:a860f7f406461312c854101572068d996"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfba6d88a1163b6536bbc02c62ee840f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adfba6d88a1163b6536bbc02c62ee840f"></a>
-<a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#a6a28fffca3bda2ba039c9df267cba82f">Function</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#adfba6d88a1163b6536bbc02c62ee840f">callback</a></td></tr>
-<tr class="memdesc:adfba6d88a1163b6536bbc02c62ee840f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The callback. <br /></td></tr>
-<tr class="separator:adfba6d88a1163b6536bbc02c62ee840f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a922999537c8961def3ce343c4061f33c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a922999537c8961def3ce343c4061f33c"></a>
+<a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#ae92155805f7c1f4ee3a0f617eec26e87">Callback</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1PDO_1_1PDOReceivedCallback.html#a922999537c8961def3ce343c4061f33c">callback</a></td></tr>
+<tr class="memdesc:a922999537c8961def3ce343c4061f33c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The callback. <br /></td></tr>
+<tr class="separator:a922999537c8961def3ce343c4061f33c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> message receiver function together with it's COB-ID. </p>
+<div class="textblock"><p>A <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> message receiver function together with it's COB-ID Important: Never call add_pdo_received_callback or process_incoming_message from within (-&gt; deadlock)! </p>
 
-<p>Definition at line <a class="el" href="pdo_8h_source.html#l00054">54</a> of file <a class="el" href="pdo_8h_source.html">pdo.h</a>.</p>
+<p>Definition at line <a class="el" href="pdo_8h_source.html#l00059">59</a> of file <a class="el" href="pdo_8h_source.html">pdo.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>core/include/<a class="el" href="pdo_8h_source.html">pdo.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 14 2016 11:21:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 14 2016 13:50:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

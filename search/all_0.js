@@ -2,7 +2,9 @@ var searchData=
 [
   ['access_5ftype',['access_type',['../classkaco_1_1Entry.html#ab2789091a1b87f329ee600b1f333bbf6',1,'kaco::Entry']]],
   ['access_5ftype_5fto_5fstring',['access_type_to_string',['../structkaco_1_1Utils.html#a1800a4e8e6e6074ab0ead6ff484a8819',1,'kaco::Utils']]],
-  ['add_5fpdo_5freceived_5fcallback',['add_pdo_received_callback',['../classkaco_1_1PDO.html#a7050e6297919136b212eda69fa200982',1,'kaco::PDO']]],
+  ['add_5fconstant',['add_constant',['../classkaco_1_1Device.html#a1d68ab02a9d63af513d3b6613c98bafd',1,'kaco::Device']]],
+  ['add_5foperation',['add_operation',['../classkaco_1_1Device.html#ae49c5f052c7844644406c317840c194c',1,'kaco::Device']]],
+  ['add_5fpdo_5freceived_5fcallback',['add_pdo_received_callback',['../classkaco_1_1PDO.html#a122c72b2e3cefe6943e0c0c4eafc3a2e',1,'kaco::PDO']]],
   ['add_5fpublisher',['add_publisher',['../classkaco_1_1Bridge.html#aca1ce4e62911797e261d998e7e1f57dc',1,'kaco::Bridge']]],
   ['add_5freceive_5fpdo_5fmapping',['add_receive_pdo_mapping',['../classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691',1,'kaco::Device']]],
   ['add_5fsubscriber',['add_subscriber',['../classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe',1,'kaco::Bridge']]],
