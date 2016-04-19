@@ -136,33 +136,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <a class="code" href="classkaco_1_1Master.html#aa4db45804962db296991d37c53044031">Master</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classkaco_1_1Master.html#af14ed4e564456b7de1e4c96adf8c28bd">~Master</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classkaco_1_1Master.html#aa4db45804962db296991d37c53044031">Master</a>(<span class="keyword">const</span> <a class="code" href="classkaco_1_1Master.html">Master</a>&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1Master.html#ac951f47dd3a8ac036a4e47448ac9f5f1">start</a>(<span class="keyword">const</span> std::string busname, <span class="keywordtype">unsigned</span> baudrate);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Master.html#ad41da2a0d23391db8c362317c3cc2e64">stop</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">num_devices</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classkaco_1_1Device.html">Device</a>&amp; <a class="code" href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">get_device</a>(<span class="keywordtype">size_t</span> index) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">   75</a></span>&#160;        <a class="code" href="classkaco_1_1Core.html">Core</a> <a class="code" href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">core</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classkaco_1_1Master.html#aa4db45804962db296991d37c53044031">Master</a>(<a class="code" href="classkaco_1_1Master.html">Master</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="classkaco_1_1Master.html#af14ed4e564456b7de1e4c96adf8c28bd">~Master</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1Master.html#ac951f47dd3a8ac036a4e47448ac9f5f1">start</a>(<span class="keyword">const</span> std::string busname, <span class="keywordtype">unsigned</span> baudrate);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Master.html#ad41da2a0d23391db8c362317c3cc2e64">stop</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">size_t</span> <a class="code" href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">num_devices</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::vector&lt;std::unique_ptr&lt;Device&gt;&gt; m_devices;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::bitset&lt;265&gt; m_device_alive;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NMT::NewDeviceCallback</a> m_new_device_callback_functional;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordtype">bool</span> m_running{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="classkaco_1_1Device.html">Device</a>&amp; <a class="code" href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">get_device</a>(<span class="keywordtype">size_t</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">   83</a></span>&#160;        <a class="code" href="classkaco_1_1Core.html">Core</a> <a class="code" href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">core</a>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">private</span>:</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordtype">void</span> new_device_callback(uint8_t node_id);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    };</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        std::vector&lt;std::unique_ptr&lt;Device&gt;&gt; m_devices;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        std::bitset&lt;265&gt; m_device_alive;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <a class="code" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NMT::NewDeviceCallback</a> m_new_device_callback_functional;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">bool</span> m_running{<span class="keyword">false</span>};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">void</span> new_device_callback(uint8_t node_id);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    };</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;} <span class="comment">// end namespace kaco</span></div>
 <div class="ttc" id="classkaco_1_1Master_html_a4431948c1f64d4ab144ede2355101aff"><div class="ttname"><a href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">kaco::Master::get_device</a></div><div class="ttdeci">Device &amp; get_device(size_t index) const </div><div class="ttdoc">Returns a reference to a slave device object. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00074">master.cpp:74</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_ac951f47dd3a8ac036a4e47448ac9f5f1"><div class="ttname"><a href="classkaco_1_1Master.html#ac951f47dd3a8ac036a4e47448ac9f5f1">kaco::Master::start</a></div><div class="ttdeci">bool start(const std::string busname, unsigned baudrate)</div><div class="ttdoc">Starts master, creates Core and resets all nodes. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00053">master.cpp:53</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_af14ed4e564456b7de1e4c96adf8c28bd"><div class="ttname"><a href="classkaco_1_1Master.html#af14ed4e564456b7de1e4c96adf8c28bd">kaco::Master::~Master</a></div><div class="ttdeci">~Master()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00047">master.cpp:47</a></div></div>
@@ -172,12 +176,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="ttc" id="classkaco_1_1Master_html_aa4db45804962db296991d37c53044031"><div class="ttname"><a href="classkaco_1_1Master.html#aa4db45804962db296991d37c53044031">kaco::Master::Master</a></div><div class="ttdeci">Master()</div><div class="ttdoc">Constructor. Creates Core instance and adds NMT listener for new devices. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00040">master.cpp:40</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00059">core.h:59</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html"><div class="ttname"><a href="classkaco_1_1Master.html">kaco::Master</a></div><div class="ttdoc">This class represents a master node. It listens for new slaves and provides access to them via get_sl...</div><div class="ttdef"><b>Definition:</b> <a href="master_8h_source.html#l00047">master.h:47</a></div></div>
-<div class="ttc" id="classkaco_1_1Master_html_a8f25aa1fd7460de7334045d4b1c248bf"><div class="ttname"><a href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">kaco::Master::core</a></div><div class="ttdeci">Core core</div><div class="ttdoc">Core instance. </div><div class="ttdef"><b>Definition:</b> <a href="master_8h_source.html#l00075">master.h:75</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html"><div class="ttname"><a href="classkaco_1_1Device.html">kaco::Device</a></div><div class="ttdoc">This class represents a CanOpen slave device in the network. </div><div class="ttdef"><b>Definition:</b> <a href="device_8h_source.html#l00064">device.h:64</a></div></div>
+<div class="ttc" id="classkaco_1_1Master_html_a8f25aa1fd7460de7334045d4b1c248bf"><div class="ttname"><a href="classkaco_1_1Master.html#a8f25aa1fd7460de7334045d4b1c248bf">kaco::Master::core</a></div><div class="ttdeci">Core core</div><div class="ttdoc">Core instance. </div><div class="ttdef"><b>Definition:</b> <a href="master_8h_source.html#l00083">master.h:83</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html"><div class="ttname"><a href="classkaco_1_1Device.html">kaco::Device</a></div><div class="ttdoc">This class represents a CanOpen slave device in the network. </div><div class="ttdef"><b>Definition:</b> <a href="device_8h_source.html#l00083">device.h:83</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 14 2016 13:56:44 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 12:57:18 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

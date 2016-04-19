@@ -103,52 +103,85 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a301b167e2513eb4053526f9bfed50ec8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a301b167e2513eb4053526f9bfed50ec8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#a301b167e2513eb4053526f9bfed50ec8">Bridge</a> ()</td></tr>
-<tr class="memdesc:a301b167e2513eb4053526f9bfed50ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Initializes a ROS node. <br /></td></tr>
-<tr class="separator:a301b167e2513eb4053526f9bfed50ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cded4d2a0d620d21095833ea776f981"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#a0cded4d2a0d620d21095833ea776f981">run</a> (double loop_rate=10)</td></tr>
-<tr class="memdesc:a0cded4d2a0d620d21095833ea776f981"><td class="mdescLeft">&#160;</td><td class="mdescRight">Run the ROS loop, which publishes messages of all registered Publishers, and allows ROS to call subscribed callbacks.  <a href="#a0cded4d2a0d620d21095833ea776f981">More...</a><br /></td></tr>
-<tr class="separator:a0cded4d2a0d620d21095833ea776f981"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca1ce4e62911797e261d998e7e1f57dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca1ce4e62911797e261d998e7e1f57dc"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#aca1ce4e62911797e261d998e7e1f57dc">add_publisher</a> (std::shared_ptr&lt; <a class="el" href="classkaco_1_1Publisher.html">Publisher</a> &gt; publisher)</td></tr>
-<tr class="memdesc:aca1ce4e62911797e261d998e7e1f57dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="classkaco_1_1Publisher.html" title="Interface, which provides methods for publishing topics. ">Publisher</a>, which can advertise itself and publish messages inside <a class="el" href="classkaco_1_1Bridge.html#a0cded4d2a0d620d21095833ea776f981" title="Run the ROS loop, which publishes messages of all registered Publishers, and allows ROS to call subsc...">Bridge::run()</a>. <br /></td></tr>
-<tr class="separator:aca1ce4e62911797e261d998e7e1f57dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af88bf1b04226aa80aa14299ee0eff4fe"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af88bf1b04226aa80aa14299ee0eff4fe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">add_subscriber</a> (std::shared_ptr&lt; <a class="el" href="classkaco_1_1Subscriber.html">Subscriber</a> &gt; subscriber)</td></tr>
-<tr class="memdesc:af88bf1b04226aa80aa14299ee0eff4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="classkaco_1_1Subscriber.html" title="Interface, which provides methods for subscribing topics. ">Subscriber</a>, which can advertise itself and receive messages on its own. <br /></td></tr>
+<tr class="memitem:a0c487871aa7ff8a4ae5f36f5cbed64c8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0c487871aa7ff8a4ae5f36f5cbed64c8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">run</a> ()</td></tr>
+<tr class="memdesc:a0c487871aa7ff8a4ae5f36f5cbed64c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Runs the ROS spinner and blocks until shutdown (e.g. via Ctrl+c). <br /></td></tr>
+<tr class="separator:a0c487871aa7ff8a4ae5f36f5cbed64c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a311a1df6d31180e596eab7b4f579e12f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">add_publisher</a> (std::shared_ptr&lt; <a class="el" href="classkaco_1_1Publisher.html">Publisher</a> &gt; publisher, double loop_rate=10)</td></tr>
+<tr class="memdesc:a311a1df6d31180e596eab7b4f579e12f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="classkaco_1_1Publisher.html" title="Interface, which provides methods for publishing topics. ">Publisher</a>, advertises it and publishes messages repeatedly.  <a href="#a311a1df6d31180e596eab7b4f579e12f">More...</a><br /></td></tr>
+<tr class="separator:a311a1df6d31180e596eab7b4f579e12f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af88bf1b04226aa80aa14299ee0eff4fe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">add_subscriber</a> (std::shared_ptr&lt; <a class="el" href="classkaco_1_1Subscriber.html">Subscriber</a> &gt; subscriber)</td></tr>
+<tr class="memdesc:af88bf1b04226aa80aa14299ee0eff4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a <a class="el" href="classkaco_1_1Subscriber.html" title="Interface, which provides methods for subscribing topics. ">Subscriber</a>, which can advertise itself and receive messages on its own.  <a href="#af88bf1b04226aa80aa14299ee0eff4fe">More...</a><br /></td></tr>
 <tr class="separator:af88bf1b04226aa80aa14299ee0eff4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class is a bridge between a ROS network and a CanOpen network. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2ros_8cpp-example.html#_a12">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="bridge_8h_source.html#l00046">46</a> of file <a class="el" href="bridge_8h_source.html">bridge.h</a>.</p>
+<p>Definition at line <a class="el" href="bridge_8h_source.html#l00048">48</a> of file <a class="el" href="bridge_8h_source.html">bridge.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a0cded4d2a0d620d21095833ea776f981"></a>
+<a class="anchor" id="a311a1df6d31180e596eab7b4f579e12f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void kaco::Bridge::run </td>
+          <td class="memname">void kaco::Bridge::add_publisher </td>
           <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classkaco_1_1Publisher.html">Publisher</a> &gt;&#160;</td>
+          <td class="paramname"><em>publisher</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>loop_rate</em> = <code>10</code></td><td>)</td>
+          <td class="paramname"><em>loop_rate</em> = <code>10</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds a <a class="el" href="classkaco_1_1Publisher.html" title="Interface, which provides methods for publishing topics. ">Publisher</a>, advertises it and publishes messages repeatedly. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">publisher</td><td>The publisher. It's a smart pointer because references to a publisher may never change after advertising it to ROS. </td></tr>
+    <tr><td class="paramname">loop_rate</td><td>Publishing rate in hertz. Default is 10 Hz. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2ros_8cpp-example.html#a13">examples/ros/ros.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="bridge_8cpp_source.html#l00040">40</a> of file <a class="el" href="bridge_8cpp_source.html">bridge.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af88bf1b04226aa80aa14299ee0eff4fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::Bridge::add_subscriber </td>
+          <td>(</td>
+          <td class="paramtype">std::shared_ptr&lt; <a class="el" href="classkaco_1_1Subscriber.html">Subscriber</a> &gt;&#160;</td>
+          <td class="paramname"><em>subscriber</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Run the ROS loop, which publishes messages of all registered Publishers, and allows ROS to call subscribed callbacks. </p>
+<p>Adds a <a class="el" href="classkaco_1_1Subscriber.html" title="Interface, which provides methods for subscribing topics. ">Subscriber</a>, which can advertise itself and receive messages on its own. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">loop_rate</td><td>Loop rate in hertz. Default is 10 Hz. </td></tr>
+    <tr><td class="paramname">subscriber</td><td>The subscriber. It's a smart pointer because references to a subscriber may never change after advertising it to ROS. </td></tr>
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2ros_8cpp-example.html#a15">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2ros_8cpp-example.html#a14">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="bridge_8cpp_source.html#l00057">57</a> of file <a class="el" href="bridge_8cpp_source.html">bridge.cpp</a>.</p>
+<p>Definition at line <a class="el" href="bridge_8cpp_source.html#l00054">54</a> of file <a class="el" href="bridge_8cpp_source.html">bridge.cpp</a>.</p>
 
 </div>
 </div>
@@ -159,7 +192,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 14 2016 13:56:44 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 12:57:18 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

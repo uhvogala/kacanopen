@@ -143,106 +143,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
 <div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classkaco_1_1TransmitPDOMapping.html#ac1c679f3efd73b308d87b37c131d55ce">   54</a></span>&#160;<a class="code" href="classkaco_1_1TransmitPDOMapping.html#ac1c679f3efd73b308d87b37c131d55ce">TransmitPDOMapping::~TransmitPDOMapping</a>() {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classkaco_1_1TransmitPDOMapping.html#a0db5c308ed2954c29fe887c807f75f27">transmitter</a>) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classkaco_1_1TransmitPDOMapping.html#a0db5c308ed2954c29fe887c807f75f27">transmitter</a>-&gt;detach();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classkaco_1_1TransmitPDOMapping.html#a0db5c308ed2954c29fe887c807f75f27">transmitter</a>.unique()) {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            WARN(<span class="stringliteral">&quot;Transmitter thread has been copied and cannot be deleted now!&quot;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classkaco_1_1TransmitPDOMapping.html#a45e8cbd9a304a7fe7f1ace2a285d3c4e">transmitter</a>) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <a class="code" href="classkaco_1_1TransmitPDOMapping.html#a45e8cbd9a304a7fe7f1ace2a285d3c4e">transmitter</a>-&gt;detach();</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">TransmitPDOMapping::send</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">   64</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">TransmitPDOMapping::send</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    std::vector&lt;uint8_t&gt; data(8,0);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">size_t</span> max_byte=0;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::vector&lt;uint8_t&gt; data(8,0);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">size_t</span> max_byte=0;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[TransmitPDOMapping::send] Sending transmit PDO with cob_id 0x&quot;</span>&lt;&lt;std::hex&lt;&lt;<a class="code" href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">cob_id</a>);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="structkaco_1_1Mapping.html">Mapping</a>&amp; mapping : <a class="code" href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">mappings</a>) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">const</span> std::string entry_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(mapping.entry_name);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">const</span> <a class="code" href="classkaco_1_1Entry.html">Entry</a>&amp; entry = m_dictionary.at(entry_name);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; value = entry.<a class="code" href="classkaco_1_1Entry.html#a3457c922b9b85a8c97855230fe291bdd">get_value</a>(mapping.array_index);</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; bytes = value.<a class="code" href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">get_bytes</a>();</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        assert(mapping.offset+bytes.size() &lt;= 8);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[TransmitPDOMapping::send] Mapping:&quot;</span>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        DEBUG_DUMP(mapping.offset);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        DEBUG_DUMP(entry_name);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        DEBUG_DUMP_HEX(value);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        uint8_t count = 0;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">for</span> (uint8_t i=mapping.offset; i&lt;mapping.offset+bytes.size(); ++i) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            data[i] = bytes[count++];</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        }</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        max_byte = std::max(max_byte, mapping.offset+bytes.size());</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[TransmitPDOMapping::send] Sending transmit PDO with cob_id 0x&quot;</span>&lt;&lt;std::hex&lt;&lt;<a class="code" href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">cob_id</a>);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="structkaco_1_1Mapping.html">Mapping</a>&amp; mapping : <a class="code" href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">mappings</a>) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> std::string entry_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(mapping.entry_name);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> <a class="code" href="classkaco_1_1Entry.html">Entry</a>&amp; entry = m_dictionary.at(entry_name);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; value = entry.<a class="code" href="classkaco_1_1Entry.html#a3457c922b9b85a8c97855230fe291bdd">get_value</a>(mapping.array_index);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">const</span> std::vector&lt;uint8_t&gt; bytes = value.<a class="code" href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">get_bytes</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        assert(mapping.offset+bytes.size() &lt;= 8);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[TransmitPDOMapping::send] Mapping:&quot;</span>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        DEBUG_DUMP(mapping.offset);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        DEBUG_DUMP(entry_name);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        DEBUG_DUMP_HEX(value);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        uint8_t count = 0;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">for</span> (uint8_t i=mapping.offset; i&lt;mapping.offset+bytes.size(); ++i) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            data[i] = bytes[count++];</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        max_byte = std::max(max_byte, mapping.offset+bytes.size());</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    }</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    data.resize(max_byte+1);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    m_core.<a class="code" href="classkaco_1_1Core.html#abededb377ed2af6ee168b174d30d0614">pdo</a>.<a class="code" href="classkaco_1_1PDO.html#acfb2716b7cc538aa3c57f50125ae1730">send</a>(<a class="code" href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">cob_id</a>, data);</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    data.resize(max_byte+1);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    m_core.<a class="code" href="classkaco_1_1Core.html#abededb377ed2af6ee168b174d30d0614">pdo</a>.<a class="code" href="classkaco_1_1PDO.html#acfb2716b7cc538aa3c57f50125ae1730">send</a>(<a class="code" href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">cob_id</a>, data);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">void</span> TransmitPDOMapping::check_correctness()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keywordtype">void</span> TransmitPDOMapping::check_correctness()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">unsigned</span> size = 0;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    std::vector&lt;bool&gt; byte_mapped(8,<span class="keyword">false</span>);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordtype">unsigned</span> size = 0;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::vector&lt;bool&gt; byte_mapped(8,<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="structkaco_1_1Mapping.html">Mapping</a>&amp; mapping : <a class="code" href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">mappings</a>) {</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">const</span> std::string entry_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(mapping.entry_name);</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        <span class="keywordflow">if</span> (m_dictionary.count(entry_name) == 0) {</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1dictionary__error.html">dictionary_error</a>(dictionary_error::type::unknown_entry, entry_name);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="structkaco_1_1Mapping.html">Mapping</a>&amp; mapping : <a class="code" href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">mappings</a>) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keyword">const</span> std::string entry_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(mapping.entry_name);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (m_dictionary.count(entry_name) == 0) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1dictionary__error.html">dictionary_error</a>(dictionary_error::type::unknown_entry, entry_name);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        <span class="keyword">const</span> Entry&amp; entry = m_dictionary.at(entry_name);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keyword">const</span> uint8_t type_size = <a class="code" href="structkaco_1_1Utils.html#a455e1be2dfdc6f9edc871560605807bc">Utils::get_type_size</a>(entry.type);</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">const</span> Entry&amp; entry = m_dictionary.at(entry_name);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        <span class="keyword">const</span> uint8_t type_size = <a class="code" href="structkaco_1_1Utils.html#a455e1be2dfdc6f9edc871560605807bc">Utils::get_type_size</a>(entry.type);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        <span class="keywordflow">if</span> (mapping.offset+type_size &gt; 8) {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;            <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_size, entry_name,</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                <span class="stringliteral">&quot;mapping.offset (&quot;</span>+std::to_string(mapping.offset)+<span class="stringliteral">&quot;) + type_size (&quot;</span>+std::to_string(type_size)+<span class="stringliteral">&quot;) &gt; 8.&quot;</span>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">if</span> (mapping.array_index &gt; 0 &amp;&amp; !entry.is_array) {</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::no_array, entry_name);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        }</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">for</span> (uint8_t i=mapping.offset; i&lt;mapping.offset+type_size; ++i) {</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keywordflow">if</span> (byte_mapped[i]) {</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_overlap, entry_name, <span class="stringliteral">&quot;Byte index: &quot;</span>+std::to_string(i));</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            }</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            byte_mapped[i] = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        size += type_size;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    <span class="keywordflow">if</span> (size &gt; 8) {</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_size, <span class="stringliteral">&quot;&quot;</span>,</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                <span class="stringliteral">&quot;total size (&quot;</span>+std::to_string(size)+<span class="stringliteral">&quot;) &gt; 8.&quot;</span>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;    }</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keywordflow">if</span> (mapping.offset+type_size &gt; 8) {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;            <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_size, entry_name,</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;                <span class="stringliteral">&quot;mapping.offset (&quot;</span>+std::to_string(mapping.offset)+<span class="stringliteral">&quot;) + type_size (&quot;</span>+std::to_string(type_size)+<span class="stringliteral">&quot;) &gt; 8.&quot;</span>);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        }</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">if</span> (mapping.array_index &gt; 0 &amp;&amp; !entry.is_array) {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;            <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::no_array, entry_name);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        <span class="keywordflow">for</span> (uint8_t i=mapping.offset; i&lt;mapping.offset+type_size; ++i) {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keywordflow">if</span> (byte_mapped[i]) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_overlap, entry_name, <span class="stringliteral">&quot;Byte index: &quot;</span>+std::to_string(i));</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            }</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            byte_mapped[i] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        size += type_size;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (size &gt; 8) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">throw</span> dictionary_error(dictionary_error::type::mapping_size, <span class="stringliteral">&quot;&quot;</span>,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;                <span class="stringliteral">&quot;total size (&quot;</span>+std::to_string(size)+<span class="stringliteral">&quot;) &gt; 8.&quot;</span>);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;}</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;} <span class="comment">// end namespace kaco</span></div>
 <div class="ttc" id="classkaco_1_1dictionary__error_html"><div class="ttname"><a href="classkaco_1_1dictionary__error.html">kaco::dictionary_error</a></div><div class="ttdoc">This type of exception is thrown if there are problems accessing the object dictionary or arguments d...</div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8h_source.html#l00049">dictionary_error.h:49</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_abededb377ed2af6ee168b174d30d0614"><div class="ttname"><a href="classkaco_1_1Core.html#abededb377ed2af6ee168b174d30d0614">kaco::Core::pdo</a></div><div class="ttdeci">PDO pdo</div><div class="ttdoc">The PDO sub-protocol. </div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00103">core.h:103</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a414258b408ef7cdacd86d9b683636d39"><div class="ttname"><a href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">kaco::Value::get_bytes</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; get_bytes() const </div><div class="ttdoc">Returns the byte representation (little-endian) as a vector. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00186">value.cpp:186</a></div></div>
 <div class="ttc" id="classkaco_1_1PDO_html_acfb2716b7cc538aa3c57f50125ae1730"><div class="ttname"><a href="classkaco_1_1PDO.html#acfb2716b7cc538aa3c57f50125ae1730">kaco::PDO::send</a></div><div class="ttdeci">void send(uint16_t cob_id, const std::vector&lt; uint8_t &gt; &amp;data)</div><div class="ttdoc">Sends a PDO message. </div><div class="ttdef"><b>Definition:</b> <a href="core_2src_2pdo_8cpp_source.html#l00083">pdo.cpp:83</a></div></div>
-<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_a0db5c308ed2954c29fe887c807f75f27"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#a0db5c308ed2954c29fe887c807f75f27">kaco::TransmitPDOMapping::transmitter</a></div><div class="ttdeci">std::shared_ptr&lt; std::thread &gt; transmitter</div><div class="ttdoc">The transmitter thread. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00085">transmit_pdo_mapping.h:85</a></div></div>
 <div class="ttc" id="classkaco_1_1Entry_html_a3457c922b9b85a8c97855230fe291bdd"><div class="ttname"><a href="classkaco_1_1Entry.html#a3457c922b9b85a8c97855230fe291bdd">kaco::Entry::get_value</a></div><div class="ttdeci">const Value &amp; get_value(uint8_t array_index=0) const </div><div class="ttdoc">Returns the value. If the entry is an array, array_index can be specified. </div><div class="ttdef"><b>Definition:</b> <a href="entry_8cpp_source.html#l00117">entry.cpp:117</a></div></div>
 <div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_ac1c679f3efd73b308d87b37c131d55ce"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#ac1c679f3efd73b308d87b37c131d55ce">kaco::TransmitPDOMapping::~TransmitPDOMapping</a></div><div class="ttdeci">~TransmitPDOMapping()</div><div class="ttdoc">Stops the transmitter thread if there is one. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8cpp_source.html#l00054">transmit_pdo_mapping.cpp:54</a></div></div>
-<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_a04ead930acc24bf8531a3894e23de854"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">kaco::TransmitPDOMapping::send</a></div><div class="ttdeci">void send() const </div><div class="ttdoc">Sends the PDO. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8cpp_source.html#l00064">transmit_pdo_mapping.cpp:64</a></div></div>
+<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_a45e8cbd9a304a7fe7f1ace2a285d3c4e"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#a45e8cbd9a304a7fe7f1ace2a285d3c4e">kaco::TransmitPDOMapping::transmitter</a></div><div class="ttdeci">std::unique_ptr&lt; std::thread &gt; transmitter</div><div class="ttdoc">The transmitter thread. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00091">transmit_pdo_mapping.h:91</a></div></div>
+<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_a04ead930acc24bf8531a3894e23de854"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">kaco::TransmitPDOMapping::send</a></div><div class="ttdeci">void send() const </div><div class="ttdoc">Sends the PDO. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8cpp_source.html#l00061">transmit_pdo_mapping.cpp:61</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00059">core.h:59</a></div></div>
-<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_ab30ee7028ff8d4f41aecd157c5cb376a"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">kaco::TransmitPDOMapping::cob_id</a></div><div class="ttdeci">uint16_t cob_id</div><div class="ttdoc">COB-ID of the PDO. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00072">transmit_pdo_mapping.h:72</a></div></div>
+<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_ab30ee7028ff8d4f41aecd157c5cb376a"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#ab30ee7028ff8d4f41aecd157c5cb376a">kaco::TransmitPDOMapping::cob_id</a></div><div class="ttdeci">uint16_t cob_id</div><div class="ttdoc">COB-ID of the PDO. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00078">transmit_pdo_mapping.h:78</a></div></div>
 <div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_a0b9e5f5f7aaab5b2c94f6f3337abef89"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#a0b9e5f5f7aaab5b2c94f6f3337abef89">kaco::TransmitPDOMapping::TransmitPDOMapping</a></div><div class="ttdeci">TransmitPDOMapping(Core &amp;core, const std::map&lt; std::string, Entry &gt; &amp;dictionary, uint16_t cob_id_, TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector&lt; Mapping &gt; &amp;mappings_)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8cpp_source.html#l00042">transmit_pdo_mapping.cpp:42</a></div></div>
 <div class="ttc" id="classkaco_1_1Entry_html"><div class="ttname"><a href="classkaco_1_1Entry.html">kaco::Entry</a></div><div class="ttdoc">This class represents an entry in the object dictionary of a device. </div><div class="ttdef"><b>Definition:</b> <a href="entry_8h_source.html#l00053">entry.h:53</a></div></div>
-<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_ae94619f79e47a6c10de32f6043a6267e"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">kaco::TransmitPDOMapping::mappings</a></div><div class="ttdeci">std::vector&lt; Mapping &gt; mappings</div><div class="ttdoc">Mapped entries with offset (see Mapping class) </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00081">transmit_pdo_mapping.h:81</a></div></div>
+<div class="ttc" id="classkaco_1_1TransmitPDOMapping_html_ae94619f79e47a6c10de32f6043a6267e"><div class="ttname"><a href="classkaco_1_1TransmitPDOMapping.html#ae94619f79e47a6c10de32f6043a6267e">kaco::TransmitPDOMapping::mappings</a></div><div class="ttdeci">std::vector&lt; Mapping &gt; mappings</div><div class="ttdoc">Mapped entries with offset (see Mapping class) </div><div class="ttdef"><b>Definition:</b> <a href="transmit__pdo__mapping_8h_source.html#l00087">transmit_pdo_mapping.h:87</a></div></div>
 <div class="ttc" id="structkaco_1_1Utils_html_ac86478870af7a31a7fe4c85f9bb058e4"><div class="ttname"><a href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">kaco::Utils::escape</a></div><div class="ttdeci">static std::string escape(std::string str)</div><div class="ttdoc">Converts entry names to lower case and replaces all spaces and &#39;-&#39; by underscores. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00152">utils.cpp:152</a></div></div>
 <div class="ttc" id="structkaco_1_1Mapping_html"><div class="ttname"><a href="structkaco_1_1Mapping.html">kaco::Mapping</a></div><div class="ttdoc">This struct represents one mapped entry inside a TransmitPDOMapping. </div><div class="ttdef"><b>Definition:</b> <a href="mapping_8h_source.html#l00042">mapping.h:42</a></div></div>
 <div class="ttc" id="structkaco_1_1Utils_html_a455e1be2dfdc6f9edc871560605807bc"><div class="ttname"><a href="structkaco_1_1Utils.html#a455e1be2dfdc6f9edc871560605807bc">kaco::Utils::get_type_size</a></div><div class="ttdeci">static uint8_t get_type_size(Type type)</div><div class="ttdoc">Returns the size of a data type in bytes. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00105">utils.cpp:105</a></div></div>
@@ -250,7 +247,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 14 2016 13:56:44 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 12:57:18 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

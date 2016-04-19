@@ -115,6 +115,14 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#aa4db45804962db296991d37c53044031">Master</a> ()</td></tr>
 <tr class="memdesc:aa4db45804962db296991d37c53044031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. Creates <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> instance and adds <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> listener for new devices. <br /></td></tr>
 <tr class="separator:aa4db45804962db296991d37c53044031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a168410d111e0c43f147a3e2d182325f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a168410d111e0c43f147a3e2d182325f5"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#a168410d111e0c43f147a3e2d182325f5">Master</a> (const <a class="el" href="classkaco_1_1Master.html">Master</a> &amp;)=delete</td></tr>
+<tr class="memdesc:a168410d111e0c43f147a3e2d182325f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor deleted because of callbacks with self-references. <br /></td></tr>
+<tr class="separator:a168410d111e0c43f147a3e2d182325f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ddd8b111e2d099186679ed5d0ff3f26"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ddd8b111e2d099186679ed5d0ff3f26"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#a7ddd8b111e2d099186679ed5d0ff3f26">Master</a> (<a class="el" href="classkaco_1_1Master.html">Master</a> &amp;&amp;)=delete</td></tr>
+<tr class="memdesc:a7ddd8b111e2d099186679ed5d0ff3f26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor deleted because of callbacks with self-references. <br /></td></tr>
+<tr class="separator:a7ddd8b111e2d099186679ed5d0ff3f26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af14ed4e564456b7de1e4c96adf8c28bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af14ed4e564456b7de1e4c96adf8c28bd"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#af14ed4e564456b7de1e4c96adf8c28bd">~Master</a> ()</td></tr>
 <tr class="memdesc:af14ed4e564456b7de1e4c96adf8c28bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor. <br /></td></tr>
@@ -126,9 +134,8 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#ad41da2a0d23391db8c362317c3cc2e64">stop</a> ()</td></tr>
 <tr class="memdesc:ad41da2a0d23391db8c362317c3cc2e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops master and core. <br /></td></tr>
 <tr class="separator:ad41da2a0d23391db8c362317c3cc2e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65216ea5835f864c776401e11ad7d2dd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a65216ea5835f864c776401e11ad7d2dd"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">num_devices</a> () const </td></tr>
-<tr class="memdesc:a65216ea5835f864c776401e11ad7d2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of slave devices in the network. <br /></td></tr>
+<tr class="memitem:a65216ea5835f864c776401e11ad7d2dd"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">num_devices</a> () const </td></tr>
+<tr class="memdesc:a65216ea5835f864c776401e11ad7d2dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the number of slave devices in the network.  <a href="#a65216ea5835f864c776401e11ad7d2dd">More...</a><br /></td></tr>
 <tr class="separator:a65216ea5835f864c776401e11ad7d2dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4431948c1f64d4ab144ede2355101aff"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classkaco_1_1Device.html">Device</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">get_device</a> (size_t index) const </td></tr>
 <tr class="memdesc:a4431948c1f64d4ab144ede2355101aff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a reference to a slave device object.  <a href="#a4431948c1f64d4ab144ede2355101aff">More...</a><br /></td></tr>
@@ -168,9 +175,31 @@ Public Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a4">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a4">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="master_8cpp_source.html#l00074">74</a> of file <a class="el" href="master_8cpp_source.html">master.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a65216ea5835f864c776401e11ad7d2dd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t kaco::Master::num_devices </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the number of slave devices in the network. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a2">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a2">examples/ros/ros.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="master_8cpp_source.html#l00070">70</a> of file <a class="el" href="master_8cpp_source.html">master.cpp</a>.</p>
 
 </div>
 </div>
@@ -220,7 +249,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 14 2016 13:56:44 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 12:57:18 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
