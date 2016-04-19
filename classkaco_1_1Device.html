@@ -205,7 +205,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>Methods in (3) as well as <a class="el" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef" title="Returns the node ID of the device. ">get_node_id()</a> are always thread-safe.</p>
 <p>Methods in (2) are thread-safe if they are not intermixed with methods in (1).</p>
 <p>Methods in (1) should be run in sequence before accessing dictionary entries (group 2). </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#_a3">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#_a3">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#_a3">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#_a3">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#_a7">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#_a3">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8h_source.html#l00083">83</a> of file <a class="el" href="device_8h_source.html">device.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -299,7 +299,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a10">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a10">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a10">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a14">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a10">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00169">169</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -409,7 +409,8 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a19">examples/ros/motor_and_io_bridge.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00372">372</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
@@ -435,7 +436,8 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </table>
   </dd>
 </dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a18">examples/ros/motor_and_io_bridge.cpp</a>.</dd>
+</dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00397">397</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
@@ -460,7 +462,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a6">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a7">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a6">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a11">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a7">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00284">284</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -515,7 +517,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd><p class="startdd">check access_type from dictionary </p>
 <p class="enddd">Overload with index+subindex. </p>
 </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a9">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a9">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#a8">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#a9">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a13">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a9">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00091">91</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -622,7 +624,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 
 <p>Returns the node ID of the device. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a7">examples/pdo.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#a5">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#a7">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a12">examples/ros/motor_and_io_bridge.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00073">73</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -718,7 +720,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 
 <p>Tries to load the most specific EDS file available in KaCanOpen's internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301. </p>
 <dl class="section return"><dt>Returns</dt><dd>true, if successful </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a8">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a6">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#a7">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#a8">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a10">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a6">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00289">289</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -800,7 +802,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd><p class="startdd">check access_type from dictionary </p>
 <p class="enddd">Overload with index+subindex. </p>
 </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a12">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a11">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a12">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a15">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a11">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00137">137</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -873,7 +875,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <p>Starts the node via <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> protocol and loads mandatory entries, operations, and constants. </p>
 <dl class="section return"><dt>Returns</dt><dd>True, if entries, operations, and constants are successfully loaded </dd></dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Add m_started member? </dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a5">examples/pdo.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a5">examples/ros/ros.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#a6">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#a5">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a9">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a5">examples/ros/ros.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00052">52</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
@@ -886,7 +888,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 12:57:18 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 13:06:10 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
