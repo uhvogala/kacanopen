@@ -107,31 +107,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">sudo apt-add-repository ppa:george-edison55/cmake-3.x</div>
 <div class="line">sudo apt-<span class="keyword">get</span> update</div>
 <div class="line">sudo apt-<span class="keyword">get</span> install ros-jade-ros-base cmake clang-3.6 libboost-all-dev doxygen graphviz</div>
+<div class="line">sudo apt-<span class="keyword">get</span> install cmake clang-3.6 libboost-system-dev libboost-filesystem-dev ros-jade-catkin ros-jade-roscpp ros-jade-std-msgs ros-jade-sensor-msgs ros-jade-message-runtime doxygen graphviz</div>
 </div><!-- fragment --><h2>CMake/Catkin Arguments</h2>
 <p>The following CMake/Catkin arguments are available:</p>
 <ul>
-<li><p class="startli">-DCAN_DRIVER_NAME=&lt;name&gt;</p>
+<li><p class="startli"><code>-DCAN_DRIVER_NAME=&lt;name&gt;</code></p>
 <p class="startli">Specify the driver to compile and use. At the moment, the following drivers are available: lincan, peak_linux, serial, socket, virtual.</p>
 </li>
-<li><p class="startli">DBUILD_ALL_DRIVERS=On</p>
+<li><p class="startli"><code>-DBUILD_ALL_DRIVERS=On</code></p>
 <p class="startli">Build all available drivers.</p>
 </li>
-<li><p class="startli">-DEXHAUSTIVE_DEBUGGING=On</p>
+<li><p class="startli"><code>-DEXHAUSTIVE_DEBUGGING=On</code></p>
 <p class="startli">Enable exhaustive debugging.</p>
 </li>
-<li><p class="startli">-DNO_ROS=On</p>
+<li><p class="startli"><code>-DNO_ROS=On</code></p>
 <p class="startli">Exclude anything depending on ROS.</p>
 </li>
-<li><p class="startli">-DINSTALL_EXAMPLES=On</p>
+<li><p class="startli"><code>-DINSTALL_EXAMPLES=On</code></p>
 <p class="startli">Install example programs when running make install.</p>
 </li>
-<li><p class="startli">-DSDO_RESPONSE_TIMEOUT_MS=&lt;timeout&gt;</p>
+<li><p class="startli"><code>-DSDO_RESPONSE_TIMEOUT_MS=&lt;timeout&gt;</code></p>
 <p class="startli">Timeout in milliseconds when waiting for an SDO response.</p>
 </li>
-<li><p class="startli">-DBUSNAME=&lt;busname&gt;</p>
+<li><p class="startli"><code>-DBUSNAME=&lt;busname&gt;</code></p>
 <p class="startli">CAN driver busname used by the examples.</p>
 </li>
-<li><p class="startli">-DBAUDRATE=&lt;baudrate&gt;</p>
+<li><p class="startli"><code>-DBAUDRATE=&lt;baudrate&gt;</code></p>
 <p class="startli">CAN driver baudrate used by the examples.</p>
 </li>
 </ul>
@@ -168,11 +169,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>When building with Catkin, you can excute example programs like that:</p>
 <div class="fragment"><div class="line">cd your_catkin_workspace</div>
 <div class="line">source devel/setup.bash</div>
-<div class="line">./devel/lib/kacanopen/kacanopen_example_ros</div>
+<div class="line">rosrun kacanopen kacanopen_example_motor_and_io_bridge # roscore needs to be running</div>
 </div><!-- fragment --><p>Otherwise just run them from <code>build/examples/</code>:</p>
-<div class="fragment"><div class="line">./build/examples/kacanopen_example_ros</div>
+<div class="fragment"><div class="line">./build/examples/kacanopen_example_listdevices</div>
 </div><!-- fragment --><h2>Drivers</h2>
-<p>KaCanOpen provides several CAN drivers (currently only for Linux):</p>
+<p>KaCanOpen provides several CAN drivers (currently only for Linux).</p>
 <ul>
 <li><p class="startli">socket (default)</p>
 <p class="startli">For use with <a href="https://en.wikipedia.org/wiki/SocketCAN">SocketCAN</a>, formerly known as LLCF. It's a CAN networking stack being part of the Linux kernel. It's probably the most popular CAN driver infrastructure and there are many devices supporting SocketCAN.</p>
@@ -193,7 +194,12 @@ sudo ip link set slcan0 up
 <p class="startli">This driver can be used without any CAN hardware. It spans a virtual CAN network using POSIX pipes.</p>
 </li>
 <li><p class="startli">peak_linux</p>
-<p class="startli">For use with CAN hardware by <a href="http://www.peak-system.com/fileadmin/media/linux/index.htm">PEAK-System</a>. You will need <a href="http://www.peak-system.com/fileadmin/media/linux/index.htm#download">PCAN drivers</a> installed for successful compilation.</p>
+<p class="startli">For use with CAN hardware by <a href="http://www.peak-system.com/fileadmin/media/linux/index.htm">PEAK-System</a>. You will need <a href="http://www.peak-system.com/fileadmin/media/linux/index.htm#download">PCAN drivers</a> installed for successful compilation: </p><pre class="fragment">wget http://www.peak-system.com/fileadmin/media/linux/files/peak-linux-driver-7.15.2.tar.gz
+tar -xzf peak-linux-driver-7.15.2.tar.gz
+mv peak-linux-driver-7.15.2 ~/peak
+cd ~/peak
+make
+</pre><p class="startli">Then build KaCanOpen with the CMake/Catkin flag <code>-DPCAN_PREFIX="~/peak"</code>. You can replace <code>~/peak</code> as you wish.</p>
 </li>
 <li><p class="startli">lincan</p>
 <p class="startli">For use with <a href="http://ortcan.sourceforge.net/lincan/">LinCan</a> kernel drivers.</p>
@@ -203,7 +209,7 @@ sudo ip link set slcan0 up
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 13:06:10 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Apr 19 2016 13:41:48 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
