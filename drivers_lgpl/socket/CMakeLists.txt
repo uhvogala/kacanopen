@@ -8,7 +8,7 @@ file(GLOB TARGET_SRC
 	"*.c"
 )
 
-add_library(${LIB_NAME} SHARED ${TARGET_SRC})
+add_library(${LIB_NAME} MODULE ${TARGET_SRC})
 
 # Install
 kacanopen_install(${LIB_NAME} FALSE)

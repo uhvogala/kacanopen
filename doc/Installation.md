@@ -43,7 +43,7 @@ The following CMake/Catkin arguments are available:
 
 - `-DDRIVER=<name>`
 	
-	Specify the driver to compile and use. At the moment, the following drivers are available: lincan, peak_linux, serial, socket, virtual, dummy.
+	Specify the driver to compile and use. At the moment, the following drivers are available: lincan, peak_linux, serial, socket, virtual, dummy, dynamic_posix.
 
 - `-DBUILD_DRIVERS=<;-separated-list of names>`
 
@@ -198,5 +198,13 @@ KaCanOpen provides several CAN drivers (currently only for Linux).
 - lincan
 
 	For use with [LinCan](http://ortcan.sourceforge.net/lincan/) kernel drivers.
+
+- dummy
+
+	Dummy driver with explanatory comments to be used as a stub for custom drivers.
+
+- dynamic_posix
+
+	This meta driver links to an arbitrary CanFestival-compatible driver at runtime. You can choose the driver by setting the environment variable CAN to the full path to the binary. dynamic_posix works on [POSIX](https://en.wikipedia.org/wiki/POSIX)-compatible operating systems.
 
 You can also use any driver from the [CanFestival](http://www.canfestival.org/), as they are binary-compatible. They also have Windows drivers.

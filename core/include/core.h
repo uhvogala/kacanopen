@@ -63,7 +63,7 @@ namespace kaco {
 		/// Type of a message receiver function
 		/// Important: Never call register_receive_callback()
 		///   from within (-> deadlock)!
-		using MessageReceivedCallback = std::function< void(const Message&) >;
+		using MessageReceivedCallback = std::function< void(Message) >;
 
 		/// Constructor
 		Core();

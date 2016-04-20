@@ -9,13 +9,15 @@ macro(driver_switch)
 	if (("${DRIVER}" MATCHES "${ARGV0}") OR (${build_this} GREATER -1) OR (${BUILD_ALL_DRIVERS}))
 
 		set(TARGET_NAME "can_${ARGV0}")
-		add_library(${TARGET_NAME} SHARED "${ARGV0}.cpp")
+		add_library(${TARGET_NAME} STATIC "${ARGV0}.cpp")
 		set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 14)
 		target_link_libraries(${TARGET_NAME} ${CMAKE_DL_LIBS})
-		kacanopen_install("${TARGET_NAME}" FALSE)
+		target_link_libraries(${TARGET_NAME} ${CMAKE_THREAD_LIBS_INIT})
+		#kacanopen_install("${TARGET_NAME}" FALSE)
 
 	endif()
 endmacro()
 
 ### List of drivers ###
 driver_switch("dummy")
+driver_switch("dynamic_posix")

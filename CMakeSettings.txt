@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(SUPPORTED_DRIVERS "lincan;peak_linux;serial;socket;virtual;dummy")
+set(SUPPORTED_DRIVERS "lincan;peak_linux;serial;socket;virtual;dummy;dynamic_posix")
 
 # CAN_DRIVER_NAME is deprecated and has been replaced by DRIVER.
 

@@ -64,6 +64,8 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #define CAN_SETSOCKOPT setsockopt
 #endif
 
+#define DEBUG_MSG_CONSOLE_ON 1
+
 #include "can_driver.h"
 
 /*********functions which permit to communicate with the board****************/
@@ -72,14 +74,19 @@ canReceive_driver (CAN_HANDLE fd0, Message * m)
 {
   int res;
   struct can_frame frame;
-
+  printf("1\n");
   res = CAN_RECV (*(int *) fd0, &frame, sizeof (frame), 0);
+  printf("2\n");
+  if (res<0) {
+    printf("res<0");
+  }
   if (res < 0)
     {
       fprintf (stderr, "Recv failed: %s\n", strerror (CAN_ERRNO (res)));
       return 1;
     }
 
+  printf("3\n");
   m->cob_id = frame.can_id & CAN_EFF_MASK;
   m->len = frame.can_dlc;
   if (frame.can_id & CAN_RTR_FLAG)
