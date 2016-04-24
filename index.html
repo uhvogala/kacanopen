@@ -80,9 +80,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">KaCanOpen Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>KaCanOpen is an easy-to-use <a href="https://en.wikipedia.org/wiki/CANopen">CanOpen</a> stack, which consists of four parts:</p>
+<div class="textblock"><p><a href="https://opensource.org/licenses/BSD-3-Clause">![Licence](https://img.shields.io/badge/licence-BSD%203--Clause-blue.svg)</a> <a href="https://opensource.org/licenses/LGPL-2.1">![drivers_lgpl Licence](https://img.shields.io/badge/drivers__lgpl%20licence-LGPL%202.1%2B-blue.svg)</a> <a href="https://travis-ci.org/KITmedical/kacanopen">![Build Status](https://api.travis-ci.org/KITmedical/kacanopen.svg?branch=master)</a></p>
+<h1>KaCanOpen</h1>
+<p>KaCanOpen is an easy-to-use <a href="https://en.wikipedia.org/wiki/CANopen">CanOpen</a> stack, which consists of four parts:</p>
 <ul>
-<li><b>Drivers:</b> A wide range of hardware is supported using different CAN drivers. They have been developed by the <a href="http://www.canfestival.org/">CanFestival project</a>. Read <a href="drivers/README">this</a> for details.</li>
+<li><b>Drivers:</b> A wide range of hardware is supported using different CAN drivers. They have been developed by the <a href="http://www.canfestival.org/">CanFestival project</a>. Read <a href="drivers_lgpl/README">this</a> for details.</li>
 <li><b>Core:</b> This is a library which implements basic CANOpen protocols like <a href="https://en.wikipedia.org/wiki/CANopen#Network_management_.28NMT.29_protocols">NMT</a>, <a href="https://en.wikipedia.org/wiki/CANopen#Service_Data_Object_.28SDO.29_protocol">SDO</a> and <a href="https://en.wikipedia.org/wiki/CANopen#Process_Data_Object_.28PDO.29_protocol">PDO</a>. As an example, you can easily fetch a value from a device (<em>uploading</em> in CanOpen terminology) via <code>core.sdo.upload(node_id, index, subindex)</code>. It furthermore allows you to register callbacks on certain events or any incoming messages, so one can build arbitrary CanOpen nodes (master or slave) using this library.</li>
 <li><b>Master:</b> This library is intended to be used for a master node. It detects all nodes in a network and allows to access them via standardized <a href="http://www.can-cia.org/can-knowledge/canopen/canopen-profiles/">CiA® profiles</a>. For example, on a motor device (profile CiA® 402) you can simply call <code>mymotor.set_entry("Target velocity", 500)</code>. A main feature of this library is transparent SDO/PDO access to dictionary entries: By default a value is fetched and set via SDO. But you can configure PDO mappings to instead keep the value up-to-date in background via (more lightweight) PDO messages. The call itself (<code>mymotor.set_entry("Target velocity", 500)</code>) keeps unchanged.</li>
 <li><b>ROS Bridge:</b> This library provides a bridge to a <a href="http://www.ros.org/">ROS</a> network, which makes KaCanOpen especially interesting for Robotics. After setting up the CanOpen network, the library can publish slave nodes so they are accessible through ROS messages. Special effort is put into the use of standardized message types which allows interaction with other software from the ROS universe. For example, motors can be operated using JointState messages.</li>
@@ -95,7 +97,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">cd kacanopen</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
-<div class="line">cmake -DCAN_DRIVER_NAME=&lt;driver&gt; -DNO_ROS=On ..</div>
+<div class="line">cmake -DDRIVER=&lt;driver&gt; -DNO_ROS=On ..</div>
 <div class="line">make</div>
 </div><!-- fragment --><p><code>&lt;driver&gt;</code> can be one of the following: serial, socket, virtual, lincan, peak_linux.</p>
 <p>The <code>examples</code> directory lists some examples on how to use KaCanOpen libraries. You can run them from the <code>build/examples</code> directory.</p>
@@ -103,11 +105,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line">cd your_catkin_workspace/src</div>
 <div class="line">git clone git@gitlab.ira.uka.de:thomaskeh/kacanopen.git</div>
 <div class="line">cd ..</div>
-<div class="line">catkin_make -DCAN_DRIVER_NAME=&lt;driver&gt;</div>
+<div class="line">catkin_make -DDRIVER=&lt;driver&gt;</div>
 </div><!-- fragment --><p>When building with Catkin, you can excute example programs like that:</p>
 <div class="fragment"><div class="line">cd your_catkin_workspace</div>
 <div class="line">source devel/setup.bash</div>
-<div class="line">./devel/lib/kacanopen/kacanopen_example_ros</div>
+<div class="line">rosrun kacanopen kacanopen_example_motor_and_io_bridge # roscore needs to be running</div>
 </div><!-- fragment --><p>Complete build instructions can be found <a class="el" href="md_doc_Installation.html">here</a>.</p>
 <h2>Documentation</h2>
 <p>Full documentation can be found at <a href="https://kitmedical.github.io/kacanopen/">https://kitmedical.github.io/kacanopen/</a>.</p>
@@ -116,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 13:41:48 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

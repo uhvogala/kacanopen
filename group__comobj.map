@@ -1,0 +1,10 @@
+<map id="Communication Objects" name="Communication Objects">
+<area shape="rect" id="node1" href="$group__pdo.html" title="PDO is a communication object defined by the DPO communication parameter and PDA mapping parameter ob..." alt="" coords="348,5,492,46"/>
+<area shape="rect" id="node2" href="$group__synco.html" title="SYNC object is a CANopen message forcing the receiving nodes to sample the inputs mapped into synchro..." alt="" coords="341,71,499,97"/>
+<area shape="rect" id="node3" href="$group__lss.html" title="LSS offers the possibility to inquire and change the settings of certain parameters of the local laye..." alt="" coords="343,122,497,163"/>
+<area shape="rect" id="node4" href="$group__emcyo.html" title="Emergency Object is used to communicate device and application failures. " alt="" coords="355,188,485,215"/>
+<area shape="rect" id="node5" href="$group__heartbeato.html" title="The heartbeat mechanism for a device is established through cyclically transmitting a message by a he..." alt="" coords="359,239,481,265"/>
+<area shape="rect" id="node6" href="$group__userapi.html" title="User API" alt="" coords="6,188,82,215"/>
+<area shape="rect" id="node7" href="$group__nodeguardo.html" title="The node&#45;guarding mechanism for a device is established through cyclically polling all slaves by the ..." alt="" coords="346,289,494,316"/>
+<area shape="rect" id="node8" href="$group__sdo.html" title="SDOs provide the access to entries in the CANopen Object Dictionary. " alt="" coords="350,341,490,382"/>
+</map>

@@ -111,11 +111,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --><h2>CMake/Catkin Arguments</h2>
 <p>The following CMake/Catkin arguments are available:</p>
 <ul>
-<li><p class="startli"><code>-DCAN_DRIVER_NAME=&lt;name&gt;</code></p>
-<p class="startli">Specify the driver to compile and use. At the moment, the following drivers are available: lincan, peak_linux, serial, socket, virtual.</p>
+<li><p class="startli"><code>-DDRIVER=&lt;name&gt;</code></p>
+<p class="startli">Specify the driver to compile and use. At the moment, the following drivers are available: lincan, peak_linux, serial, socket, virtual, dummy.</p>
+</li>
+<li><p class="startli"><code>-DBUILD_DRIVERS=&lt;;-separated-list of names&gt;</code></p>
+<p class="startli">Semicolon-separated list of additional CAN drivers to build. You can use the same values as for DRIVER.</p>
 </li>
 <li><p class="startli"><code>-DBUILD_ALL_DRIVERS=On</code></p>
 <p class="startli">Build all available drivers.</p>
+</li>
+<li><p class="startli"><code>-DPCAN_PREFIX=&lt;path&gt;</code></p>
+<p class="startli">Path to the <a href="http://www.peak-system.com/fileadmin/media/linux/index.htm#download">PCAN drivers</a> needed by the peak_linux driver. See <a href="#drivers">Drivers section</a>.</p>
 </li>
 <li><p class="startli"><code>-DEXHAUSTIVE_DEBUGGING=On</code></p>
 <p class="startli">Enable exhaustive debugging.</p>
@@ -154,7 +160,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">cd kacanopen</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
-<div class="line">cmake -DCAN_DRIVER_NAME=&lt;driver&gt; -DNO_ROS=On ..</div>
+<div class="line">cmake -DDRIVER=&lt;driver&gt; -DNO_ROS=On ..</div>
 <div class="line">make</div>
 </div><!-- fragment --><p>Replace <code>&lt;driver&gt;</code> by a CAN driver name (see section Drivers).</p>
 <h2>Build process including ROS Bridge</h2>
@@ -162,8 +168,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="fragment"><div class="line">cd ~/arbitrary_path/catkin_ws/src</div>
 <div class="line">git clone git@gitlab.ira.uka.de:thomaskeh/kacanopen.git</div>
 </div><!-- fragment --><p>Now you can build it:</p>
-<div class="fragment"><div class="line">catkin_make -DCAN_DRIVER_NAME=&lt;driver&gt;</div>
-</div><!-- fragment --><p>Replace <code>&lt;driver&gt;</code> by a CAN driver name (see section Drivers).</p>
+<div class="fragment"><div class="line">catkin_make -DDRIVER=&lt;driver&gt;</div>
+</div><!-- fragment --><p>Replace <code>&lt;driver&gt;</code> by a CAN driver name (see section <a href="#drivers">Drivers</a>).</p>
 <h2>Examples</h2>
 <p>There are several examples on how to use KaCanOpen. Source files are in the <code>examples/</code> dictionary.</p>
 <p>When building with Catkin, you can excute example programs like that:</p>
@@ -209,7 +215,7 @@ make
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Apr 19 2016 13:41:48 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

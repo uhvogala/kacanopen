@@ -1,0 +1,8 @@
+<map id="User API" name="User API">
+<area shape="rect" id="node1" href="$group__statemachine.html" title="State Machine" alt="" coords="179,5,285,32"/>
+<area shape="rect" id="node2" href="$group__can.html" title="CAN management" alt="" coords="167,56,297,83"/>
+<area shape="rect" id="node4" href="$group__od.html" title="The Object Dictionary is the heart of each CANopen device containing all communication and applicatio..." alt="" coords="131,107,333,133"/>
+<area shape="rect" id="node5" href="$group__networkmanagement.html" title="Network Management" alt="" coords="157,157,307,184"/>
+<area shape="rect" id="node6" href="$group__timer.html" title="Timer Management" alt="" coords="165,208,299,235"/>
+<area shape="rect" id="node7" href="$group__comobj.html" title="Communication Objects" alt="" coords="151,259,313,285"/>
+</map>

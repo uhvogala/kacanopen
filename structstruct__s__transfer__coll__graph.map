@@ -1,0 +1,10 @@
+<map id="struct_s_transfer" name="struct_s_transfer">
+<area shape="rect" id="node2" href="$structstruct__CO__Data.html" title="This structure contains all necessary informations to define a CANOpen node. " alt="" coords="313,283,429,309"/>
+<area shape="rect" id="node3" href="$structstruct__s__PDO__status.html" title="The PDO structure. " alt="" coords="150,96,297,123"/>
+<area shape="rect" id="node4" href="$structMessage.html" title="The CAN message structure. " alt="" coords="187,5,260,32"/>
+<area shape="rect" id="node5" href="$structtd__indextable.html" title="Struct for creating entries in the communictaion profile. " alt="" coords="323,96,421,123"/>
+<area shape="rect" id="node6" href="$structtd__subindex.html" title="This are some structs which are neccessary for creating the entries of the object dictionary..." alt="" coords="326,5,417,32"/>
+<area shape="rect" id="node7" href="$structs__quick__index.html" title="s_quick_index" alt="" coords="446,96,551,123"/>
+<area shape="rect" id="node8" href="$structs__errors.html" title="s_errors" alt="" coords="576,96,645,123"/>
+<area shape="rect" id="node9" href="$structs__state__communication.html" title="s_state_communication" alt="" coords="669,96,828,123"/>
+</map>
