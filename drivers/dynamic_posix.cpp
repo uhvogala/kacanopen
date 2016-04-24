@@ -77,6 +77,9 @@ struct Instance {
 	uint8_t (*send)            (void*, Message const*);
 	uint8_t (*change_baudrate) (void*, char*);
 
+	std::mutex mutex_receive;
+	std::mutex mutex_send;
+
 };
 
 template<typename F>
@@ -147,6 +150,10 @@ extern "C" void* canOpen_driver(CANBoard* board) {
 	ERROR(dlerror());
 
 	instance->handle = instance->open(board);
+
+	PRINT("init instance=0x"<<std::hex<<instance);
+	PRINT("init handle=0x"<<std::hex<<instance->handle);
+
 	return instance;
 
 }
@@ -164,13 +171,34 @@ extern "C" int32_t canClose_driver(void* handle) {
 extern "C" uint8_t canReceive_driver(void* handle, Message* message) {
 	assert(handle);
 	Instance* instance = (Instance*) handle;
-	return instance->receive(instance->handle, message);
+	uint8_t result;
+	{
+		std::lock_guard<std::mutex> scoped_lock(instance->mutex_send);
+		PRINT("r instance=0x"<<std::hex<<instance);
+		PRINT("r handle=0x"<<std::hex<<instance->handle);
+		printf("r send=0x%p\n", (void *)(size_t) instance->send);
+		printf("r receive=0x%p\n", (void *)(size_t) instance->receive);
+	}
+	{
+		std::lock_guard<std::mutex> scoped_lock(instance->mutex_receive);
+		result = instance->receive(instance->handle, message);
+	}
+	return result;
 }
 
 extern "C" uint8_t canSend_driver(void* handle, Message const* message) {
 	assert(handle);
 	Instance* instance = (Instance*) handle;
-	return instance->send(instance->handle, message);
+	uint8_t result;
+	{
+		std::lock_guard<std::mutex> scoped_lock(instance->mutex_send);
+		PRINT("s instance=0x"<<std::hex<<instance);
+		PRINT("s handle=0x"<<std::hex<<instance->handle);
+		printf("s send=0x%p\n", (void *)(size_t) instance->send);
+		printf("s receive=0x%p\n", (void *)(size_t) instance->receive);
+		result = instance->send(instance->handle, message);
+	}
+	return result;
 }
 
 extern "C" uint8_t canChangeBaudRate_driver(void* handle, char* baudrate) {
