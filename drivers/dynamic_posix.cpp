@@ -40,7 +40,9 @@
 #include <string>
 #include <cassert>
 #include <dlfcn.h>
-#include <mutex>
+#include <atomic>
+#include <thread>
+#include <chrono>
 
 //extern "C" typedef kaco::Message Message;
 
@@ -77,8 +79,7 @@ struct Instance {
 	uint8_t (*send)            (void*, Message const*);
 	uint8_t (*change_baudrate) (void*, char*);
 
-	std::mutex mutex_receive;
-	std::mutex mutex_send;
+	std::atomic_int receive_counter {0};
 
 };
 
@@ -159,30 +160,35 @@ extern "C" void* canOpen_driver(CANBoard* board) {
 }
 
 extern "C" int32_t canClose_driver(void* handle) {
+	
 	assert(handle);
 	Instance* instance = (Instance*) handle;
 	int32_t result = instance->close(instance->handle);
+	
+	// We do this since receive() is a blocking call and
+	// after close() it is probably just about to finish.
+	// TODO: Do we need to consider send()? I think it's not worth it...
+	while (instance->receive_counter>0) {
+		PRINT("[dynamic_posix canClose_driver] Waiting for "<<instance->receive_counter<<" receiver(s) to finish. ");
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	}
+
 	dlclose(instance->lib);
 	delete instance;
 	handle = nullptr;
 	return result;
+
 }
 
 extern "C" uint8_t canReceive_driver(void* handle, Message* message) {
 	assert(handle);
 	Instance* instance = (Instance*) handle;
 	uint8_t result;
-	{
-		std::lock_guard<std::mutex> scoped_lock(instance->mutex_send);
-		PRINT("r instance=0x"<<std::hex<<instance);
-		PRINT("r handle=0x"<<std::hex<<instance->handle);
-		printf("r send=0x%p\n", (void *)(size_t) instance->send);
-		printf("r receive=0x%p\n", (void *)(size_t) instance->receive);
-	}
-	{
-		std::lock_guard<std::mutex> scoped_lock(instance->mutex_receive);
-		result = instance->receive(instance->handle, message);
-	}
+	PRINT("before="<<instance->receive_counter);
+	++instance->receive_counter;
+	result = instance->receive(instance->handle, message);
+	--instance->receive_counter;
+	PRINT("after="<<instance->receive_counter);
 	return result;
 }
 
@@ -190,14 +196,7 @@ extern "C" uint8_t canSend_driver(void* handle, Message const* message) {
 	assert(handle);
 	Instance* instance = (Instance*) handle;
 	uint8_t result;
-	{
-		std::lock_guard<std::mutex> scoped_lock(instance->mutex_send);
-		PRINT("s instance=0x"<<std::hex<<instance);
-		PRINT("s handle=0x"<<std::hex<<instance->handle);
-		printf("s send=0x%p\n", (void *)(size_t) instance->send);
-		printf("s receive=0x%p\n", (void *)(size_t) instance->receive);
-		result = instance->send(instance->handle, message);
-	}
+	result = instance->send(instance->handle, message);
 	return result;
 }
 

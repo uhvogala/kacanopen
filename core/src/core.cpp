@@ -35,6 +35,12 @@
 #include <string>
 #include <cassert>
 
+#ifdef __unix__
+	#include <pthread.h>
+#elif defined(_WIN32) || defined(WIN32)
+	#include <windows.h>
+#endif
+
 #include "logger.h"
 #include "core.h"
 
@@ -100,15 +106,10 @@ bool Core::start(const std::string busname, unsigned baudrate) {
 }
 
 void Core::stop() {
-
 	assert(m_running);
-
 	m_running = false;
-	m_loop_thread.detach();
-
-	DEBUG_LOG("Calling canClose.");
 	canClose_driver(m_handle);
-
+	m_loop_thread.join();
 }
 
 void Core::receive_loop(std::atomic<bool>& running) {
@@ -117,9 +118,61 @@ void Core::receive_loop(std::atomic<bool>& running) {
 
 	while (running) {
 
-		canReceive_driver(m_handle, &message);
-		received_message(message);
+		std::promise<uint8_t> promise;
+		std::future<uint8_t> future = promise.get_future();
 
+		std::thread receiver([&] {
+			promise.set_value(canReceive_driver(m_handle, &message));
+		});
+
+		std::future_status status = std::future_status::deferred;
+		const auto shutdown_timeout = std::chrono::milliseconds(1000);
+
+		// This loop allows interruption when Core::stop() has been called.
+		while (running && status != std::future_status::ready) {
+			status = future.wait_for(shutdown_timeout);
+		}
+
+		if (status == std::future_status::ready) {
+
+			const uint8_t success = future.get();
+			if (success>0) {
+				received_message(message);
+			} else {
+				ERROR("[Core::receive_loop] Receive failed. Error code: "<<(unsigned)success);
+			}
+			receiver.join();
+
+		} else {
+
+			assert(!running);
+			
+			WARN("[Core::receive_loop] canReceive_driver has been blocked "<<shutdown_timeout.count()<<"ms since shutdown. Killing receive thread now.");
+
+			#ifdef __unix__
+				PRINT(5);
+				pthread_cancel(receiver.native_handle());
+				PRINT(6);
+				pthread_join(receiver.native_handle(), NULL);
+				PRINT(7);
+				receiver.join();
+				PRINT(8);
+			#elif defined(_WIN32) || defined(WIN32)
+				WARN("[Core::receive_loop] Untested functionality (on WIN32).");
+				TerminateThread(receiver.native_handle(), 0);
+				CloseHandle(receiver.native_handle());
+			#else
+				ERROR("[Core::receive_loop] Unsupported platform: Cannot kill receiver thread after Core::stop(). Detaching instead -> zombi.");
+				receiver.detach();
+			#endif
+
+		}
+
+
+
+		//if (canReceive_driver(m_handle, &message)) {
+		//	received_message(message);
+		//}
 	}
 
 }
