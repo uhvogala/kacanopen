@@ -62,9 +62,12 @@ void SDO::download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t s
 							| Flag::size_indicated
 							| Flag::expedited_transfer;
 
-		SDOResponse response;
-		send_sdo_and_wait(command, node_id, index, subindex,
-			data[0], data[1], data[2], data[3], response);
+		SDOResponse response = send_sdo_and_wait(command, node_id, index, subindex, {
+			data[0],
+			(size>1) ? data[1] : (uint8_t) 0,
+			(size>2) ? data[2] : (uint8_t) 0,
+			(size>3) ? data[3] : (uint8_t) 0
+		});
 
 		if (response.failed()) {
 			throw sdo_error(response.get_data());
@@ -84,9 +87,7 @@ std::vector<uint8_t> SDO::upload(uint8_t node_id, uint16_t index, uint8_t subind
 	std::vector<uint8_t> result;
 
 	uint8_t command = Flag::initiate_upload_request;
-	SDOResponse response;
-	send_sdo_and_wait(command, node_id, index, subindex,
-		0, 0, 0, 0, response);
+	SDOResponse response = send_sdo_and_wait(command, node_id, index, subindex, {0,0,0,0});
 
 	if (response.failed()) {
 		throw sdo_error(response.get_data());
@@ -120,8 +121,7 @@ std::vector<uint8_t> SDO::upload(uint8_t node_id, uint16_t index, uint8_t subind
 
 			uint8_t command = Flag::upload_segment_request
 								| toggle_bit;
-			SDOResponse response;
-			send_sdo_and_wait(command, node_id, 0, 0, 0, 0, 0, 0, response);
+			SDOResponse response = send_sdo_and_wait(command, node_id, 0, 0, {0,0,0,0});
 
 			if (response.failed()) {
 				throw sdo_error(response.get_data());
@@ -172,10 +172,13 @@ void SDO::process_incoming_message(const Message& message) {
 	{
 		std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
 		for (const SDOReceivedCallback& callback : m_receive_callbacks) {
+			// TODO: check for correct server command specifier?
+			// INFO: We should not check for index/subindex because this fails
+			//       for segmented transfer (or otherwise identify segmented transfers).
 			if (callback.node_id == response.node_id) {
 				found_callback = true;
 				// This is not async because callbacks are only registered internally.
-				// and it cannot be async because response is taken by reference
+				// response is passed by value so it could be called asynchronously.
 				callback.callback(response);
 			}
 		}
@@ -188,22 +191,23 @@ void SDO::process_incoming_message(const Message& message) {
 
 }
 
-void SDO::send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex,
-	uint8_t byte0, uint8_t byte1, uint8_t byte2, uint8_t byte3,
-	SDOResponse& response) {
-	
+SDOResponse SDO::send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array<uint8_t,4>& data) {
+
+	// We lock this method so responses are not mixed up.
+	// TODO: We could relax this and lock only requests to the same node
+	//       since callbacks check for the correct node ID.
 	std::lock_guard<std::mutex> scoped_lock(m_send_and_wait_mutex);
 
-	std::promise<void> received_promise;
-	std::future<void> received_future = received_promise.get_future();
+	std::promise<SDOResponse> received_promise;
+	std::future<SDOResponse> received_future = received_promise.get_future();
 
-	SDOReceivedCallback receiver = { node_id, [&] (const SDOResponse& _response) {
-		//f (_response.node_id == node_id) { //&& _response.get_index() == index && _response.get_subindex() == subindex) {
-			// We should not check for index/subindex because this fails for segmented transfer.
-			// TODO: check for correct server command specifier?
-			response = _response;
-			received_promise.set_value();
-		//}
+	SDOReceivedCallback receiver = { node_id, [&] (SDOResponse response) {
+		// This is only called if the response comes from the correct node
+		//   (process_incoming_message takes care of this).
+		// The reference to received_promise is assured to be alive
+		//   since the receiver is removed before this method returns
+		//   and the callback loop is synchronized with the removal.
+		received_promise.set_value(response);
 	} };
 	
 	std::list<SDOReceivedCallback>::const_iterator receiver_handle;
@@ -222,24 +226,26 @@ void SDO::send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, ui
 	message.data[1] = index & 0xFF;
 	message.data[2] = (index >> 8) & 0xFF;
 	message.data[3] = subindex;
-	message.data[4] = byte0;
-	message.data[5] = byte1;
-	message.data[6] = byte2;
-	message.data[7] = byte3;
+	message.data[4] = data[0];
+	message.data[5] = data[1];
+	message.data[6] = data[2];
+	message.data[7] = data[3];
 	m_core.send(message);
 
 	const auto timeout = std::chrono::milliseconds(SDO_RESPONSE_TIMEOUT_MS);
 	const auto status = received_future.wait_for(timeout);
-	
-	if (status == std::future_status::timeout) {
-		throw sdo_error(sdo_error::type::response_timeout, "Timeout was "+std::to_string(timeout.count())+"ms.");
-	}
 
 	{
 		std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
 		// std::list iterators to existing elements are never invalidated
 		m_receive_callbacks.erase(receiver_handle);
 	}
+
+	if (status == std::future_status::timeout) {
+		throw sdo_error(sdo_error::type::response_timeout, "Timeout was "+std::to_string(timeout.count())+"ms.");
+	}
+
+	return received_future.get();
 
 }
 

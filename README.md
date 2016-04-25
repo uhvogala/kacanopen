@@ -1,3 +1,7 @@
+[![Licence](https://img.shields.io/badge/licence-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![drivers_lgpl Licence](https://img.shields.io/badge/drivers__lgpl%20licence-LGPL%202.1%2B-blue.svg)](https://opensource.org/licenses/LGPL-2.1)
+[![Build Status](https://api.travis-ci.org/KITmedical/kacanopen.svg?branch=master)](https://travis-ci.org/KITmedical/kacanopen)
+
 # KaCanOpen
 
 KaCanOpen is an easy-to-use [CanOpen](https://en.wikipedia.org/wiki/CANopen) stack, which consists of  four parts:
@@ -45,7 +49,7 @@ When building with Catkin, you can excute example programs like that:
 ~~~bash
 cd your_catkin_workspace
 source devel/setup.bash
-./devel/lib/kacanopen/kacanopen_example_ros
+rosrun kacanopen kacanopen_example_motor_and_io_bridge # roscore needs to be running
 ~~~
 
 Complete build instructions can be found [here](doc/Installation.md).

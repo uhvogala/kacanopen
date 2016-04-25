@@ -64,7 +64,7 @@ namespace kaco {
 		struct SDOReceivedCallback {
 
 			/// Type of the callback
-			using Callback = std::function< void(const SDOResponse&) >;
+			using Callback = std::function< void(SDOResponse) >;
 			
 			/// Node id
 			uint8_t node_id;
@@ -109,17 +109,10 @@ namespace kaco {
 		/// \param node_id Node id of remote device
 		/// \param index Dictionary index
 		/// \param subindex Subindex
-		/// \param byte0 first data byte (little endian!)
-		/// \param byte1 second data byte
-		/// \param byte2 third data byte
-		/// \param byte3 fourth data byte
-		/// \param response Will contain the response.
-		/// \todo Make response a return value.
-		/// \todo Make byte0 - byte3 arguments an array
+		/// \param data bytes to send in little endian order
+		/// \returns The response message.
 		/// \remark thread-safe
-		void send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex,
-			uint8_t byte0, uint8_t byte1, uint8_t byte2, uint8_t byte3,
-			SDOResponse& response);
+		SDOResponse send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array<uint8_t,4>& data);
 
 	private:
 
