@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_7ed2fa8a581bc60c79682054065fd684.html">examples</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -175,23 +175,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    PRINT(<span class="stringliteral">&quot;Device name: &quot;</span>&lt;&lt;result);</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::this_thread::sleep_for(std::chrono::seconds(3));</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    core.<a class="code" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772">stop</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
 <div class="ttc" id="classkaco_1_1NMT_html_aaa3a10b5f6157327490e30f75db7206a"><div class="ttname"><a href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">kaco::NMT::send_nmt_message</a></div><div class="ttdeci">void send_nmt_message(uint8_t node_id, Command cmd)</div><div class="ttdoc">Sends a NMT message to a given device. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00047">nmt.cpp:47</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_a9565e5e44dab134f6dc7e494bd290382"><div class="ttname"><a href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">kaco::Core::nmt</a></div><div class="ttdeci">NMT nmt</div><div class="ttdoc">The NMT sub-protocol. </div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00097">core.h:97</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_aa5c425805390cf0fba8b357367295ddc"><div class="ttname"><a href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">kaco::SDO::download</a></div><div class="ttdeci">void download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, const std::vector&lt; uint8_t &gt; &amp;bytes)</div><div class="ttdoc">SDO download: Write value into remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00051">sdo.cpp:51</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_aa5c425805390cf0fba8b357367295ddc"><div class="ttname"><a href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">kaco::SDO::download</a></div><div class="ttdeci">void download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, const std::vector&lt; uint8_t &gt; &amp;bytes)</div><div class="ttdoc">SDO download: Write value into remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00050">sdo.cpp:50</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_ae201c2d38fead33833b2cc9a3aae543a"><div class="ttname"><a href="classkaco_1_1Core.html#ae201c2d38fead33833b2cc9a3aae543a">kaco::Core::start</a></div><div class="ttdeci">bool start(const std::string busname, unsigned baudrate)</div><div class="ttdoc">Opens CAN driver and starts CAN message receive loop. </div><div class="ttdef"><b>Definition:</b> <a href="core_2src_2core_8cpp_source.html#l00084">core.cpp:84</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00059">core.h:59</a></div></div>
 <div class="ttc" id="classkaco_1_1NMT_html_af59fcb150db4858240b12be9b4ba7a99"><div class="ttname"><a href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">kaco::NMT::register_new_device_callback</a></div><div class="ttdeci">void register_new_device_callback(const NewDeviceCallback &amp;callback)</div><div class="ttdoc">Registers a callback which will be called when a new slave device is discovered. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00181">nmt.cpp:181</a></div></div>
-<div class="ttc" id="classkaco_1_1Core_html_a381bc436589b3709e644f2fd97ea9772"><div class="ttname"><a href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772">kaco::Core::stop</a></div><div class="ttdeci">void stop()</div><div class="ttdoc">Stops the receive loop and closes the driver. </div><div class="ttdef"><b>Definition:</b> <a href="core_2src_2core_8cpp_source.html#l00102">core.cpp:102</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_a107572c3b5d4f8e580ab507fd01c96c4"><div class="ttname"><a href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">kaco::Core::sdo</a></div><div class="ttdeci">SDO sdo</div><div class="ttdoc">The SDO sub-protocol. </div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00100">core.h:100</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_a61c08f4eccf09cf9d9f03ca92c1d692f"><div class="ttname"><a href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">kaco::SDO::upload</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; upload(uint8_t node_id, uint16_t index, uint8_t subindex)</div><div class="ttdoc">SDO download: Get value from remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00082">sdo.cpp:82</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_a61c08f4eccf09cf9d9f03ca92c1d692f"><div class="ttname"><a href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">kaco::SDO::upload</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; upload(uint8_t node_id, uint16_t index, uint8_t subindex)</div><div class="ttdoc">SDO download: Get value from remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00084">sdo.cpp:84</a></div></div>
 <div class="ttc" id="classkaco_1_1NMT_html_a10fcd018a1476c819873a60235bb2016"><div class="ttname"><a href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">kaco::NMT::reset_all_nodes</a></div><div class="ttdeci">void reset_all_nodes()</div><div class="ttdoc">Resets all nodes in the network. </div><div class="ttdef"><b>Definition:</b> <a href="nmt_8cpp_source.html#l00057">nmt.cpp:57</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

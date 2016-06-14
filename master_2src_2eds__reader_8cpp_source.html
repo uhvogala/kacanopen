@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_c1346cf4828efdd0d2baf0d391d01b77.html">master</a></li><li class="navelem"><a class="el" href="dir_f8136827385f5b46d20e4fb1e88aea06.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_a19176d770fcc3b6048f73d12489c11c.html">master</a></li><li class="navelem"><a class="el" href="dir_231f1239b7555a51f67d241b19e7ad5f.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -94,7 +94,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * All rights reserved.</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * Redistribution and use in source and binary forms, with or without</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * modification, are permitted provided that the following conditions are met:</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * modification, are permitted provided that the following conditions are met:M</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> *    1. Redistributions of source code must retain the above copyright</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *       notice, this list of conditions and the following disclaimer.</span></div>
@@ -133,286 +133,297 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;boost/property_tree/ptree.hpp&gt;</span> <span class="comment">// property_tree</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#include &lt;boost/property_tree/ini_parser.hpp&gt;</span></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#include &lt;boost/algorithm/string/predicate.hpp&gt;</span> <span class="comment">// string::starts_with()</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">   48</a></span>&#160;<a class="code" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">EDSReader::EDSReader</a>(std::map&lt;std::string, Entry&gt;&amp; target)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    : m_map(target)</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    { }</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">   52</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">EDSReader::load_file</a>(std::string filename) {</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;Trying to read EDS file &quot;</span> &lt;&lt; filename);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        boost::property_tree::ini_parser::read_ini(filename, m_ini);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::load_file] Could not open file: &quot;</span>&lt;&lt;e.what());</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">   65</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">EDSReader::import_entries</a>() {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">bool</span> success = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; section_node : m_ini) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">const</span> std::string&amp; section_name = section_node.first;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="comment">//const boost::property_tree::ptree&amp; section = section_node.second;</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            std::smatch matches;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordflow">if</span> (std::regex_match(section_name, std::regex(<span class="stringliteral">&quot;[[:xdigit:]]{1,4}&quot;</span>))) {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                uint16_t index = (uint16_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(section_name);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;Section &quot;</span>&lt;&lt;section_name&lt;&lt;<span class="stringliteral">&quot; corresponds to index &quot;</span>&lt;&lt;index&lt;&lt;<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                success = parse_index(section_name, index) &amp;&amp; success; <span class="comment">// mind order!</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            }</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="comment">/*</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">            else if (std::regex_match(section_name, matches, std::regex(&quot;([[:xdigit:]]{1,4})sub([[:xdigit:]]{1,2})&quot;))) {</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">                // Ignoring subindex entries here!</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">            } else {</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">                // Ignoring metadata entries here!</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">                DEBUG_LOG_EXHAUSTIVE(&quot;Section &quot;&lt;&lt;section_name&lt;&lt;&quot; contains meta data. Doing nothing.&quot;);</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">            }</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">            */</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSReader::import_entries] &quot;</span> &lt;&lt; parse_regex_error(e.code(), section_name));</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            success = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordflow">return</span> success;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keywordtype">bool</span> EDSReader::parse_index(<span class="keyword">const</span> std::string&amp; section, uint16_t index) {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::string str_object_type = m_ini.get(section+<span class="stringliteral">&quot;.ObjectType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    uint8_t object_code = (uint8_t) ObjectType::VAR;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordflow">if</span> (str_object_type.empty()) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;Field ObjectType missing. Assuming ObjectType::VAR (according to DS 306 V1.3 page 16).&quot;</span>);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        object_code = (uint8_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(str_object_type);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    </div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">if</span> (object_code == (uint8_t) ObjectType::VAR) {</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        <span class="keywordflow">return</span> parse_var(section, index, 0);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((object_code == (uint8_t) ObjectType::RECORD) || (object_code == (uint8_t) ObjectType::ARRAY)) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        <span class="keywordflow">return</span> parse_array_or_record(section, index);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    }</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;This is not a variable and no array. Ignoring.&quot;</span>)</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    return true;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">EDSReader</a>::parse_var(const std::<span class="keywordtype">string</span>&amp; section, uint16_t index, uint8_t subindex, const std::<span class="keywordtype">string</span>&amp; name_prefix) {</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    std::string var_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(m_ini.get(section+<span class="stringliteral">&quot;.ParameterName&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">if</span> (var_name.empty()) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_var] Field ParameterName missing&quot;</span>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    }</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="keywordflow">if</span> (!name_prefix.empty()) {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        var_name = name_prefix + <span class="stringliteral">&quot;/&quot;</span> + var_name;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    }</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] Parsing variable &quot;</span>&lt;&lt;section&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;var_name);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    std::string str_sub_number = m_ini.get(section+<span class="stringliteral">&quot;.SubNumber&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    std::string str_object_type = m_ini.get(section+<span class="stringliteral">&quot;.ObjectType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    std::string str_data_type = m_ini.get(section+<span class="stringliteral">&quot;.DataType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    std::string str_low_limit = m_ini.get(section+<span class="stringliteral">&quot;.LowLimit&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::string str_high_limit = m_ini.get(section+<span class="stringliteral">&quot;.HighLimit&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    std::string str_access_type = m_ini.get(section+<span class="stringliteral">&quot;.AccessType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    std::string str_default_value = m_ini.get(section+<span class="stringliteral">&quot;.DefaultValue&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    std::string str_pdo_mapping = m_ini.get(section+<span class="stringliteral">&quot;.PDOMapping&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::string str_obj_flags = m_ini.get(section+<span class="stringliteral">&quot;.ObjFlags&quot;</span>, <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    Entry entry;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    entry.name = var_name;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    entry.type = <a class="code" href="structkaco_1_1Utils.html#abf3de089f56acf8b5ce2580c29811120">Utils::type_code_to_type</a>((uint16_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(str_data_type));</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    entry.index = index;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    entry.subindex = subindex;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">if</span> (entry.type == Type::invalid) {</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_var] &quot;</span>&lt;&lt;entry.name&lt;&lt;<span class="stringliteral">&quot;: Ignoring entry due to unsupported data type.&quot;</span>);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="comment">// TODO: return false; ? At the moment, unsupported entries are not considered as error.</span></div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    entry.access_type = <a class="code" href="structkaco_1_1Utils.html#ae0716f767a463557f15b551f0563d33b">Utils::string_to_access_type</a>(str_access_type);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="comment">// --- insert entry --- //</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">while</span> (m_map.count(var_name)&gt;0) {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        WARN(<span class="stringliteral">&quot;[EDSReader::parse_var] Entry &quot;</span>&lt;&lt;var_name&lt;&lt;<span class="stringliteral">&quot; already exists. Adding or increasing counter.&quot;</span>);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;            std::smatch matches;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            <span class="keywordflow">if</span> (std::regex_match(var_name, matches, std::regex(<span class="stringliteral">&quot;^(.+)_([[:xdigit:]]{1,3})$&quot;</span>))) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                assert(matches.size()&gt;2);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                uint8_t count = <a class="code" href="structkaco_1_1Utils.html#af93e46db54dafae6d0b021d6d2067f32">Utils::decstr_to_uint</a>(matches[2]);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                ++count;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                var_name = std::string(matches[1])+<span class="stringliteral">&quot;_&quot;</span>+std::to_string(count);</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;                var_name = var_name+<span class="stringliteral">&quot;_1&quot;</span>;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;            }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            WARN(<span class="stringliteral">&quot;[EDSReader::parse_var] &quot;</span>&lt;&lt;parse_regex_error(e.code(), var_name));</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        }</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] New entry name: &quot;</span>&lt;&lt;var_name);</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        entry.name = var_name;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    }</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] Inserting entry &quot;</span>&lt;&lt;var_name&lt;&lt;<span class="stringliteral">&quot;.&quot;</span>);</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="comment">// This isn&#39;t possible because STL would require copy constructor:</span></div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// m_map[var_name] = std::move(entry);</span></div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    m_map.insert(std::make_pair(var_name, std::move(entry)));</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;}</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="keywordtype">bool</span> EDSReader::parse_array_or_record(<span class="keyword">const</span> std::string&amp; section, uint16_t index) {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    std::string array_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(m_ini.get(section+<span class="stringliteral">&quot;.ParameterName&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    <span class="keywordflow">if</span> (array_name.empty()) {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Field ParameterName missing&quot;</span>);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Parsing array/record &quot;</span>&lt;&lt;section&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;array_name);</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; section_node : m_ini) {</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        <span class="keyword">const</span> std::string&amp; section_name = section_node.first;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="comment">//const boost::property_tree::ptree&amp; parameters = section_node.second;</span></div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span> (boost::starts_with(section_name, section)) {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;            DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Found record/array entry: &quot;</span>&lt;&lt;section_name);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;            <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;                std::smatch matches;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;                <span class="keywordflow">if</span> (std::regex_match(section_name, matches, std::regex(<span class="stringliteral">&quot;([[:xdigit:]]{1,4})sub([[:xdigit:]]{1,2})&quot;</span>))) {</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;                    assert(matches.size()&gt;2);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    assert(<a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(matches[1])==index);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    uint8_t subindex = <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(matches[2]);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    <span class="keywordtype">bool</span> success = parse_var(section_name, index, subindex, array_name);</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    <span class="keywordflow">if</span> (!success) {</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Malformed variable entry: &quot;</span>&lt;&lt;section_name);</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                    }</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (section_name == section) {</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                    <span class="comment">// ignore own entry</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                    ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Malformed array entry: &quot;</span>&lt;&lt;section_name);</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                }</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;            } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] &quot;</span>&lt;&lt;parse_regex_error(e.code(), section_name));</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;            }</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include  &lt;boost/algorithm/string/trim.hpp&gt;</span> <span class="comment">// trim()</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">namespace </span>kaco {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">   49</a></span>&#160;<a class="code" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">EDSReader::EDSReader</a>(std::map&lt;std::string, Entry&gt;&amp; target)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    : m_map(target)</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    { }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">   53</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">EDSReader::load_file</a>(std::string filename) {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;Trying to read EDS file &quot;</span> &lt;&lt; filename);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        boost::property_tree::ini_parser::read_ini(filename, m_ini);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> std::exception&amp; e) {</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::load_file] Could not open file: &quot;</span>&lt;&lt;e.what());</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">   66</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">EDSReader::import_entries</a>() {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">bool</span> success = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; section_node : m_ini) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keyword">const</span> std::string&amp; section_name = section_node.first;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="comment">//const boost::property_tree::ptree&amp; section = section_node.second;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            std::smatch matches;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">if</span> (std::regex_match(section_name, std::regex(<span class="stringliteral">&quot;[[:xdigit:]]{1,4}&quot;</span>))) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                uint16_t index = (uint16_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(section_name);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;Section &quot;</span>&lt;&lt;section_name&lt;&lt;<span class="stringliteral">&quot; corresponds to index &quot;</span>&lt;&lt;index&lt;&lt;<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                success = parse_index(section_name, index) &amp;&amp; success; <span class="comment">// mind order!</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            <span class="comment">/*</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">            else if (std::regex_match(section_name, matches, std::regex(&quot;([[:xdigit:]]{1,4})sub([[:xdigit:]]{1,2})&quot;))) {</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">                // Ignoring subindex entries here!</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">            } else {</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment">                // Ignoring metadata entries here!</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">                DEBUG_LOG_EXHAUSTIVE(&quot;Section &quot;&lt;&lt;section_name&lt;&lt;&quot; contains meta data. Doing nothing.&quot;);</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">            }</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">            */</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            ERROR(<span class="stringliteral">&quot;[EDSReader::import_entries] &quot;</span> &lt;&lt; parse_regex_error(e.code(), section_name));</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            success = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordflow">return</span> success;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">bool</span> EDSReader::parse_index(<span class="keyword">const</span> std::string&amp; section, uint16_t index) {</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::string str_object_type = trim(m_ini.get(section+<span class="stringliteral">&quot;.ObjectType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    uint8_t object_code = (uint8_t) ObjectType::VAR;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordflow">if</span> (str_object_type.empty()) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;Field ObjectType missing. Assuming ObjectType::VAR (according to DS 306 V1.3 page 16).&quot;</span>);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        object_code = (uint8_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(str_object_type);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <span class="keywordflow">if</span> (object_code == (uint8_t) ObjectType::VAR) {</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        <span class="keywordflow">return</span> parse_var(section, index, 0);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    } <span class="keywordflow">else</span> <span class="keywordflow">if</span> ((object_code == (uint8_t) ObjectType::RECORD) || (object_code == (uint8_t) ObjectType::ARRAY)) {</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;        <span class="keywordflow">return</span> parse_array_or_record(section, index);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;This is not a variable and no array. Ignoring.&quot;</span>)</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    return true;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;}</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">EDSReader</a>::parse_var(const std::<span class="keywordtype">string</span>&amp; section, uint16_t index, uint8_t subindex, const std::<span class="keywordtype">string</span>&amp; name_prefix) {</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    std::string var_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(trim(m_ini.get(section+<span class="stringliteral">&quot;.ParameterName&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">if</span> (var_name.empty()) {</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_var] Field ParameterName missing&quot;</span>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    }</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">if</span> (!name_prefix.empty()) {</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        var_name = name_prefix + <span class="stringliteral">&quot;/&quot;</span> + var_name;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] Parsing variable &quot;</span>&lt;&lt;section&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;var_name);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    std::string str_sub_number = trim(m_ini.get(section+<span class="stringliteral">&quot;.SubNumber&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    std::string str_object_type = trim(m_ini.get(section+<span class="stringliteral">&quot;.ObjectType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    std::string str_data_type = trim(m_ini.get(section+<span class="stringliteral">&quot;.DataType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    std::string str_low_limit = trim(m_ini.get(section+<span class="stringliteral">&quot;.LowLimit&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    std::string str_high_limit = trim(m_ini.get(section+<span class="stringliteral">&quot;.HighLimit&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    std::string str_access_type = trim(m_ini.get(section+<span class="stringliteral">&quot;.AccessType&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    std::string str_default_value = trim(m_ini.get(section+<span class="stringliteral">&quot;.DefaultValue&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    std::string str_pdo_mapping = trim(m_ini.get(section+<span class="stringliteral">&quot;.PDOMapping&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    std::string str_obj_flags = trim(m_ini.get(section+<span class="stringliteral">&quot;.ObjFlags&quot;</span>, <span class="stringliteral">&quot;&quot;</span>));</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    Entry entry;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    entry.name = var_name;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    entry.type = <a class="code" href="structkaco_1_1Utils.html#abf3de089f56acf8b5ce2580c29811120">Utils::type_code_to_type</a>((uint16_t) <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(str_data_type));</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    entry.index = index;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    entry.subindex = subindex;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">if</span> (entry.type == Type::invalid) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_var] &quot;</span>&lt;&lt;entry.name&lt;&lt;<span class="stringliteral">&quot;: Ignoring entry due to unsupported data type.&quot;</span>);</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="comment">// TODO: return false; ? At the moment, unsupported entries are not considered as error.</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    entry.access_type = <a class="code" href="structkaco_1_1Utils.html#ae0716f767a463557f15b551f0563d33b">Utils::string_to_access_type</a>(str_access_type);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="comment">// --- insert entry --- //</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">while</span> (m_map.count(var_name)&gt;0) {</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        WARN(<span class="stringliteral">&quot;[EDSReader::parse_var] Entry &quot;</span>&lt;&lt;var_name&lt;&lt;<span class="stringliteral">&quot; already exists. Adding or increasing counter.&quot;</span>);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;            std::smatch matches;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;            <span class="keywordflow">if</span> (std::regex_match(var_name, matches, std::regex(<span class="stringliteral">&quot;^(.+)_([[:xdigit:]]{1,3})$&quot;</span>))) {</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;                assert(matches.size()&gt;2);</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                uint8_t count = <a class="code" href="structkaco_1_1Utils.html#af93e46db54dafae6d0b021d6d2067f32">Utils::decstr_to_uint</a>(matches[2]);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;                ++count;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;                var_name = std::string(matches[1])+<span class="stringliteral">&quot;_&quot;</span>+std::to_string(count);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;                var_name = var_name+<span class="stringliteral">&quot;_1&quot;</span>;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;            WARN(<span class="stringliteral">&quot;[EDSReader::parse_var] &quot;</span>&lt;&lt;parse_regex_error(e.code(), var_name));</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        }</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] New entry name: &quot;</span>&lt;&lt;var_name);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        entry.name = var_name;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    }</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;[EDSReader::parse_var] Inserting entry &quot;</span>&lt;&lt;var_name&lt;&lt;<span class="stringliteral">&quot;.&quot;</span>);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    <span class="comment">// This isn&#39;t possible because STL would require copy constructor:</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="comment">// m_map[var_name] = std::move(entry);</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    m_map.insert(std::make_pair(var_name, std::move(entry)));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="keywordtype">bool</span> EDSReader::parse_array_or_record(<span class="keyword">const</span> std::string&amp; section, uint16_t index) {</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    std::string array_name = <a class="code" href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">Utils::escape</a>(trim(m_ini.get(section+<span class="stringliteral">&quot;.ParameterName&quot;</span>, <span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">if</span> (array_name.empty()) {</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Field ParameterName missing&quot;</span>);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Parsing array/record &quot;</span>&lt;&lt;section&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;array_name);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; section_node : m_ini) {</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        <span class="keyword">const</span> std::string&amp; section_name = section_node.first;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="comment">//const boost::property_tree::ptree&amp; parameters = section_node.second;</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span> (boost::starts_with(section_name, section)) {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;            DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Found record/array entry: &quot;</span>&lt;&lt;section_name);</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;            <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;                std::smatch matches;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;                <span class="keywordflow">if</span> (std::regex_match(section_name, matches, std::regex(<span class="stringliteral">&quot;([[:xdigit:]]{1,4})sub([[:xdigit:]]{1,2})&quot;</span>))) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;                    assert(matches.size()&gt;2);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;                    assert(<a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(matches[1])==index);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;                    uint8_t subindex = <a class="code" href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">Utils::hexstr_to_uint</a>(matches[2]);</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;                    <span class="keywordtype">bool</span> success = parse_var(section_name, index, subindex, array_name);</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;                    <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;                        ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Malformed variable entry: &quot;</span>&lt;&lt;section_name);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;                        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;                    }</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (section_name == section) {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;                    <span class="comment">// ignore own entry</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;                    ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] Malformed array entry: &quot;</span>&lt;&lt;section_name);</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;                    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;                }</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            } <span class="keywordflow">catch</span> (std::regex_error&amp; e) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                ERROR(<span class="stringliteral">&quot;[EDSReader::parse_array_or_record] &quot;</span>&lt;&lt;parse_regex_error(e.code(), section_name));</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;            }</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;std::string EDSReader::parse_regex_error(<span class="keyword">const</span> std::regex_constants::error_type&amp; etype, <span class="keyword">const</span> std::string element_name)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    std::string result;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    <span class="keywordflow">switch</span> (etype) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_collate:</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            result = <span class="stringliteral">&quot;error_collate: invalid collating element request&quot;</span>;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_ctype:</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            result = <span class="stringliteral">&quot;error_ctype: invalid character class&quot;</span>;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_escape:</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            result = <span class="stringliteral">&quot;error_escape: invalid escape character or trailing escape&quot;</span>;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_backref:</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            result = <span class="stringliteral">&quot;error_backref: invalid back reference&quot;</span>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_brack:</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            result = <span class="stringliteral">&quot;error_brack: mismatched bracket([ or ])&quot;</span>;</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_paren:</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;            result = <span class="stringliteral">&quot;error_paren: mismatched parentheses(( or ))&quot;</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_brace:</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            result = <span class="stringliteral">&quot;error_brace: mismatched brace({ or })&quot;</span>;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_badbrace:</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;            result = <span class="stringliteral">&quot;error_badbrace: invalid range inside a { }&quot;</span>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_range:</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;            result = <span class="stringliteral">&quot;erro_range: invalid character range(e.g., [z-a])&quot;</span>;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_space:</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;            result = <span class="stringliteral">&quot;error_space: insufficient memory to handle this regular expression&quot;</span>;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_badrepeat:</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;            result = <span class="stringliteral">&quot;error_badrepeat: a repetition character (*, ?, +, or {) was not preceded by a valid regular expression&quot;</span>;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_complexity:</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            result = <span class="stringliteral">&quot;error_complexity: the requested match is too complex&quot;</span>;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_stack:</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;            result = <span class="stringliteral">&quot;error_stack: insufficient memory to evaluate a match&quot;</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;        <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            result = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    }</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    result += <span class="stringliteral">&quot; in element &quot;</span> + element_name;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="ttc" id="structkaco_1_1Utils_html_a3d807705acde38a393b15b25ede73d2d"><div class="ttname"><a href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">kaco::Utils::hexstr_to_uint</a></div><div class="ttdeci">static unsigned long long hexstr_to_uint(std::string str)</div><div class="ttdoc">Converts a string containing a hexadecimal numer to unsigned. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00160">utils.cpp:160</a></div></div>
-<div class="ttc" id="structkaco_1_1Utils_html_abf3de089f56acf8b5ce2580c29811120"><div class="ttname"><a href="structkaco_1_1Utils.html#abf3de089f56acf8b5ce2580c29811120">kaco::Utils::type_code_to_type</a></div><div class="ttdeci">static Type type_code_to_type(uint16_t code)</div><div class="ttdoc">Maps type codes from an EDS file to a data type. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00127">utils.cpp:127</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSReader_html_a235b013dba934087b1d60ca4b9d09d71"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">kaco::EDSReader::import_entries</a></div><div class="ttdeci">bool import_entries()</div><div class="ttdoc">Import entries from the EDS file into the given dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00065">eds_reader.cpp:65</a></div></div>
-<div class="ttc" id="structkaco_1_1Utils_html_ae0716f767a463557f15b551f0563d33b"><div class="ttname"><a href="structkaco_1_1Utils.html#ae0716f767a463557f15b551f0563d33b">kaco::Utils::string_to_access_type</a></div><div class="ttdeci">static AccessType string_to_access_type(std::string str)</div><div class="ttdoc">Converts a string representation of AccessType from an EDS file to AccessType. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00178">utils.cpp:178</a></div></div>
-<div class="ttc" id="structkaco_1_1Utils_html_af93e46db54dafae6d0b021d6d2067f32"><div class="ttname"><a href="structkaco_1_1Utils.html#af93e46db54dafae6d0b021d6d2067f32">kaco::Utils::decstr_to_uint</a></div><div class="ttdeci">static unsigned long long decstr_to_uint(std::string str)</div><div class="ttdoc">Converts a string containing a decimal numer to unsigned. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00169">utils.cpp:169</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSReader_html_a4fddd9036dc11f7a8812b0dd05533435"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">kaco::EDSReader::load_file</a></div><div class="ttdeci">bool load_file(std::string filename)</div><div class="ttdoc">Loads an EDS file from file system. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00052">eds_reader.cpp:52</a></div></div>
-<div class="ttc" id="structkaco_1_1Utils_html_ac86478870af7a31a7fe4c85f9bb058e4"><div class="ttname"><a href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">kaco::Utils::escape</a></div><div class="ttdeci">static std::string escape(std::string str)</div><div class="ttdoc">Converts entry names to lower case and replaces all spaces and &#39;-&#39; by underscores. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00152">utils.cpp:152</a></div></div>
-<div class="ttc" id="classkaco_1_1EDSReader_html_a7ccabb78a63e20c879560c57774b156c"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">kaco::EDSReader::EDSReader</a></div><div class="ttdeci">EDSReader(std::map&lt; std::string, Entry &gt; &amp;target)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00048">eds_reader.cpp:48</a></div></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        }</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;}</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;std::string EDSReader::parse_regex_error(<span class="keyword">const</span> std::regex_constants::error_type&amp; etype, <span class="keyword">const</span> std::string element_name)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    std::string result;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    <span class="keywordflow">switch</span> (etype) {</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_collate:</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            result = <span class="stringliteral">&quot;error_collate: invalid collating element request&quot;</span>;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_ctype:</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            result = <span class="stringliteral">&quot;error_ctype: invalid character class&quot;</span>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_escape:</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            result = <span class="stringliteral">&quot;error_escape: invalid escape character or trailing escape&quot;</span>;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_backref:</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            result = <span class="stringliteral">&quot;error_backref: invalid back reference&quot;</span>;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_brack:</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            result = <span class="stringliteral">&quot;error_brack: mismatched bracket([ or ])&quot;</span>;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_paren:</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            result = <span class="stringliteral">&quot;error_paren: mismatched parentheses(( or ))&quot;</span>;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_brace:</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;            result = <span class="stringliteral">&quot;error_brace: mismatched brace({ or })&quot;</span>;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_badbrace:</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;            result = <span class="stringliteral">&quot;error_badbrace: invalid range inside a { }&quot;</span>;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_range:</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;            result = <span class="stringliteral">&quot;erro_range: invalid character range(e.g., [z-a])&quot;</span>;</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_space:</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            result = <span class="stringliteral">&quot;error_space: insufficient memory to handle this regular expression&quot;</span>;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_badrepeat:</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            result = <span class="stringliteral">&quot;error_badrepeat: a repetition character (*, ?, +, or {) was not preceded by a valid regular expression&quot;</span>;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_complexity:</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;            result = <span class="stringliteral">&quot;error_complexity: the requested match is too complex&quot;</span>;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;        <span class="keywordflow">case</span> std::regex_constants::error_stack:</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            result = <span class="stringliteral">&quot;error_stack: insufficient memory to evaluate a match&quot;</span>;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;        <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;            result = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;    result += <span class="stringliteral">&quot; in element &quot;</span> + element_name;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;std::string EDSReader::trim(<span class="keyword">const</span> std::string&amp; str) {</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    std::string result = str;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    <span class="keywordtype">size_t</span> found = result.find(<span class="stringliteral">&quot;#&quot;</span>);</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;    <span class="keywordflow">if</span> (found!=std::string::npos) {</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        result = result.substr(0,found);</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    }</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    boost::algorithm::trim(result);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;}</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="ttc" id="structkaco_1_1Utils_html_a3d807705acde38a393b15b25ede73d2d"><div class="ttname"><a href="structkaco_1_1Utils.html#a3d807705acde38a393b15b25ede73d2d">kaco::Utils::hexstr_to_uint</a></div><div class="ttdeci">static unsigned long long hexstr_to_uint(std::string str)</div><div class="ttdoc">Converts a string containing a hexadecimal numer to unsigned. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00173">utils.cpp:173</a></div></div>
+<div class="ttc" id="structkaco_1_1Utils_html_abf3de089f56acf8b5ce2580c29811120"><div class="ttname"><a href="structkaco_1_1Utils.html#abf3de089f56acf8b5ce2580c29811120">kaco::Utils::type_code_to_type</a></div><div class="ttdeci">static Type type_code_to_type(uint16_t code)</div><div class="ttdoc">Maps type codes from an EDS file to a data type. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00136">utils.cpp:136</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSReader_html_a235b013dba934087b1d60ca4b9d09d71"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a235b013dba934087b1d60ca4b9d09d71">kaco::EDSReader::import_entries</a></div><div class="ttdeci">bool import_entries()</div><div class="ttdoc">Import entries from the EDS file into the given dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00066">eds_reader.cpp:66</a></div></div>
+<div class="ttc" id="structkaco_1_1Utils_html_ae0716f767a463557f15b551f0563d33b"><div class="ttname"><a href="structkaco_1_1Utils.html#ae0716f767a463557f15b551f0563d33b">kaco::Utils::string_to_access_type</a></div><div class="ttdeci">static AccessType string_to_access_type(std::string str)</div><div class="ttdoc">Converts a string representation of AccessType from an EDS file to AccessType. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00191">utils.cpp:191</a></div></div>
+<div class="ttc" id="structkaco_1_1Utils_html_af93e46db54dafae6d0b021d6d2067f32"><div class="ttname"><a href="structkaco_1_1Utils.html#af93e46db54dafae6d0b021d6d2067f32">kaco::Utils::decstr_to_uint</a></div><div class="ttdeci">static unsigned long long decstr_to_uint(std::string str)</div><div class="ttdoc">Converts a string containing a decimal numer to unsigned. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00182">utils.cpp:182</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSReader_html_a4fddd9036dc11f7a8812b0dd05533435"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">kaco::EDSReader::load_file</a></div><div class="ttdeci">bool load_file(std::string filename)</div><div class="ttdoc">Loads an EDS file from file system. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00053">eds_reader.cpp:53</a></div></div>
+<div class="ttc" id="structkaco_1_1Utils_html_ac86478870af7a31a7fe4c85f9bb058e4"><div class="ttname"><a href="structkaco_1_1Utils.html#ac86478870af7a31a7fe4c85f9bb058e4">kaco::Utils::escape</a></div><div class="ttdeci">static std::string escape(std::string str)</div><div class="ttdoc">Converts entry names to lower case and replaces all spaces and &#39;-&#39; by underscores. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00165">utils.cpp:165</a></div></div>
+<div class="ttc" id="classkaco_1_1EDSReader_html_a7ccabb78a63e20c879560c57774b156c"><div class="ttname"><a href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">kaco::EDSReader::EDSReader</a></div><div class="ttdeci">EDSReader(std::map&lt; std::string, Entry &gt; &amp;target)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="master_2src_2eds__reader_8cpp_source.html#l00049">eds_reader.cpp:49</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

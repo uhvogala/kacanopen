@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2e7644bab2ba0afe65dd38dbac0a51b7.html">ros_bridge</a></li><li class="navelem"><a class="el" href="dir_dd9f05ab30428cf1d9e023fde78e85b3.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c4f51afc3968b6f8687747cc0d57353.html">ros_bridge</a></li><li class="navelem"><a class="el" href="dir_38ced3109d1af5325b0025a75dc6cce6.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -122,45 +122,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;bridge.h&quot;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;logger.h&quot;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">   40</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">Bridge::add_publisher</a>(std::shared_ptr&lt;Publisher&gt; publisher, <span class="keywordtype">double</span> loop_rate) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    m_publishers.push_back(publisher);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    publisher-&gt;advertise();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    m_futures.push_front(</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        std::async(std::launch::async, [publisher,loop_rate,<span class="keyword">this</span>](){</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            ros::Rate rate(loop_rate);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">while</span>(ros::ok()) {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                publisher-&gt;publish();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                rate.sleep();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        })</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    );</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;}</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">   54</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">Bridge::add_subscriber</a>(std::shared_ptr&lt;Subscriber&gt; subscriber) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    m_subscribers.push_back(subscriber);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    subscriber-&gt;advertise();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;}</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">   59</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">Bridge::run</a>() {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    ros::AsyncSpinner spinner(0);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    spinner.start();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    ros::waitForShutdown();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="ttc" id="classkaco_1_1Bridge_html_a0c487871aa7ff8a4ae5f36f5cbed64c8"><div class="ttname"><a href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">kaco::Bridge::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Runs the ROS spinner and blocks until shutdown (e.g. via Ctrl+c). </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00059">bridge.cpp:59</a></div></div>
-<div class="ttc" id="classkaco_1_1Bridge_html_a311a1df6d31180e596eab7b4f579e12f"><div class="ttname"><a href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">kaco::Bridge::add_publisher</a></div><div class="ttdeci">void add_publisher(std::shared_ptr&lt; Publisher &gt; publisher, double loop_rate=10)</div><div class="ttdoc">Adds a Publisher, advertises it and publishes messages repeatedly. </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00040">bridge.cpp:40</a></div></div>
-<div class="ttc" id="classkaco_1_1Bridge_html_af88bf1b04226aa80aa14299ee0eff4fe"><div class="ttname"><a href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">kaco::Bridge::add_subscriber</a></div><div class="ttdeci">void add_subscriber(std::shared_ptr&lt; Subscriber &gt; subscriber)</div><div class="ttdoc">Adds a Subscriber, which can advertise itself and receive messages on its own. </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00054">bridge.cpp:54</a></div></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;sdo_error.h&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">namespace </span>kaco {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">   41</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">Bridge::add_publisher</a>(std::shared_ptr&lt;Publisher&gt; publisher, <span class="keywordtype">double</span> loop_rate) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    m_publishers.push_back(publisher);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    publisher-&gt;advertise();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    m_futures.push_front(</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        std::async(std::launch::async, [publisher,loop_rate,<span class="keyword">this</span>](){</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            ros::Rate rate(loop_rate);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">while</span>(ros::ok()) {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                publisher-&gt;publish();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                rate.sleep();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        })</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    );</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;}</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">   55</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">Bridge::add_subscriber</a>(std::shared_ptr&lt;Subscriber&gt; subscriber) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    m_subscribers.push_back(subscriber);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    subscriber-&gt;advertise();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">   60</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">Bridge::run</a>() {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    ros::AsyncSpinner spinner(0);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    spinner.start();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    ros::waitForShutdown();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="ttc" id="classkaco_1_1Bridge_html_a0c487871aa7ff8a4ae5f36f5cbed64c8"><div class="ttname"><a href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">kaco::Bridge::run</a></div><div class="ttdeci">void run()</div><div class="ttdoc">Runs the ROS spinner and blocks until shutdown (e.g. via Ctrl+c). </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00060">bridge.cpp:60</a></div></div>
+<div class="ttc" id="classkaco_1_1Bridge_html_a311a1df6d31180e596eab7b4f579e12f"><div class="ttname"><a href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">kaco::Bridge::add_publisher</a></div><div class="ttdeci">void add_publisher(std::shared_ptr&lt; Publisher &gt; publisher, double loop_rate=10)</div><div class="ttdoc">Adds a Publisher, advertises it and publishes messages repeatedly. </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00041">bridge.cpp:41</a></div></div>
+<div class="ttc" id="classkaco_1_1Bridge_html_af88bf1b04226aa80aa14299ee0eff4fe"><div class="ttname"><a href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">kaco::Bridge::add_subscriber</a></div><div class="ttdeci">void add_subscriber(std::shared_ptr&lt; Subscriber &gt; subscriber)</div><div class="ttdoc">Adds a Subscriber, which can advertise itself and receive messages on its own. </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8cpp_source.html#l00055">bridge.cpp:55</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -94,25 +94,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;* __Bridge:__ Rename ros_bridge to something that is not as easily confused with _the_ rosbridge (http:<span class="comment">//wiki.ros.org/rosbridge_suite), e.g. kacanopen_ros</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;* __Bridge:__ Implement a ROS service <span class="keywordflow">for</span> accessing any dictionary entry of a slave by name.</div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;* __Bridge:__ Subscribers / Publishers: Allow configuration of queue_size.</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;* __Core:__ Automatically map PDOs like they are configured in slave<span class="stringliteral">&#39;s dictionary.</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="stringliteral">* __Core:__ Add methods for manipulating PDO mapping configuration in slave&#39;</span>s dictionary.</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;* __Core:__ Add ability to <span class="keyword">remove</span>/change existing PDO transmitters / receivers / mappings.</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;* __Master:__ Device: Add methods print_operations(), print_constants() and read_complete_dictionary().</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;## Long-term</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;* __Master:__ Make master a CiA 301 compliant node. This means it has to implement some slave functionality. Changes in core library are necessary in order to parse SDO request messages.</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;* __Project:__ Implement a slave node library.</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;* __Project:__ Check thread safety. Should be achievable with very few changes (mutexes on driver and callback vectors).</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;* __Bridge:__ Have a look into ros_control. Can we use it <span class="keywordflow">for</span> controlling CiA 402 devices?</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;* __Core:__ Support multiple device profiles per slave.</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;* __Core:__ Improve error handling.</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;* __Core:__ Implement missing protocol parts like LSS, EMERGENCY and SYNC master.</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;* __Bridge:__ Trigger publishing on entry change.</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;* __Core:__ Automatically map PDOs like they are configured in slave<span class="stringliteral">&#39;s dictionary.</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="stringliteral">* __Core:__ Add methods for manipulating PDO mapping configuration in slave&#39;</span>s dictionary.</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;* __Core:__ Add ability to <span class="keyword">remove</span>/change existing PDO transmitters / receivers / mappings.</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;* __Master:__ Device: Add methods print_operations(), print_constants() and read_complete_dictionary().</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;## Long-term</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;* __Master:__ Make master a CiA 301 compliant node. This means it has to implement some slave functionality. Changes in core library are necessary in order to parse SDO request messages.</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;* __Project:__ Implement a slave node library.</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;* __Project:__ Check thread safety. Should be achievable with very few changes (mutexes on driver and callback vectors).</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;* __Bridge:__ Have a look into ros_control. Can we use it <span class="keywordflow">for</span> controlling CiA 402 devices?</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;* __Core:__ Support multiple device profiles per slave.</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;* __Core:__ Improve error handling.</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;* __Core:__ Implement missing protocol parts like LSS, EMERGENCY and SYNC master.</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

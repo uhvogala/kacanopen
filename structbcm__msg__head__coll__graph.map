@@ -1,0 +1,4 @@
+<map id="bcm_msg_head" name="bcm_msg_head">
+<area shape="rect" id="node2" href="$structcan__frame.html" title="struct can_frame &#45; basic CAN frame structure : CAN ID of the frame and CAN_*_FLAG flags..." alt="" coords="5,5,87,32"/>
+<area shape="rect" id="node3" href="$structbcm__timeval.html" title="bcm_timeval" alt="" coords="112,5,208,32"/>
+</map>

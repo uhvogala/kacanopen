@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_7ed2fa8a581bc60c79682054065fd684.html">examples</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -161,26 +161,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="comment">//PRINT(&quot;Dictionary:&quot;);</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="comment">//device.print_dictionary();</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        DUMP(device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Manufacturer device name&quot;</span>));</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        PRINT(<span class="stringliteral">&quot;Dictionary:&quot;</span>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        device.<a class="code" href="classkaco_1_1Device.html#a7194db502148640db62048b422d29488">read_complete_dictionary</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        device.<a class="code" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789">print_dictionary</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">//DUMP(device.get_entry(&quot;Manufacturer device name&quot;));</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    }</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
+<div class="ttc" id="classkaco_1_1Device_html_a80ef09e9c89b9182ec7112d3df862789"><div class="ttname"><a href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789">kaco::Device::print_dictionary</a></div><div class="ttdeci">void print_dictionary() const </div><div class="ttdoc">Prints the dictionary together with currently cached values to command line. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00440">device.cpp:440</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_a4431948c1f64d4ab144ede2355101aff"><div class="ttname"><a href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">kaco::Master::get_device</a></div><div class="ttdeci">Device &amp; get_device(size_t index) const </div><div class="ttdoc">Returns a reference to a slave device object. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00074">master.cpp:74</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_a4da9e38f519e6351bab7ee1f4bb5525a"><div class="ttname"><a href="classkaco_1_1Device.html#a4da9e38f519e6351bab7ee1f4bb5525a">kaco::Device::start</a></div><div class="ttdeci">bool start()</div><div class="ttdoc">Starts the node via NMT protocol and loads mandatory entries, operations, and constants. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00052">device.cpp:52</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_a4da9e38f519e6351bab7ee1f4bb5525a"><div class="ttname"><a href="classkaco_1_1Device.html#a4da9e38f519e6351bab7ee1f4bb5525a">kaco::Device::start</a></div><div class="ttdeci">bool start()</div><div class="ttdoc">Starts the node via NMT protocol and loads mandatory entries, operations, and constants. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00054">device.cpp:54</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_ac951f47dd3a8ac036a4e47448ac9f5f1"><div class="ttname"><a href="classkaco_1_1Master.html#ac951f47dd3a8ac036a4e47448ac9f5f1">kaco::Master::start</a></div><div class="ttdeci">bool start(const std::string busname, unsigned baudrate)</div><div class="ttdoc">Starts master, creates Core and resets all nodes. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00053">master.cpp:53</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_a65216ea5835f864c776401e11ad7d2dd"><div class="ttname"><a href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">kaco::Master::num_devices</a></div><div class="ttdeci">size_t num_devices() const </div><div class="ttdoc">Returns the number of slave devices in the network. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00070">master.cpp:70</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html"><div class="ttname"><a href="classkaco_1_1Master.html">kaco::Master</a></div><div class="ttdoc">This class represents a master node. It listens for new slaves and provides access to them via get_sl...</div><div class="ttdef"><b>Definition:</b> <a href="master_8h_source.html#l00047">master.h:47</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_aee57e882584ccf70748ae906c71af2ef"><div class="ttname"><a href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">kaco::Device::get_node_id</a></div><div class="ttdeci">uint8_t get_node_id() const </div><div class="ttdoc">Returns the node ID of the device. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00073">device.cpp:73</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_a5602593cc6999cfe2282499cbd0971a5"><div class="ttname"><a href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">kaco::Device::get_entry</a></div><div class="ttdeci">const Value &amp; get_entry(const std::string &amp;entry_name, uint8_t array_index=0, ReadAccessMethod access_method=ReadAccessMethod::use_default)</div><div class="ttdoc">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is ...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00091">device.cpp:91</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_aee57e882584ccf70748ae906c71af2ef"><div class="ttname"><a href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">kaco::Device::get_node_id</a></div><div class="ttdeci">uint8_t get_node_id() const </div><div class="ttdoc">Returns the node ID of the device. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00075">device.cpp:75</a></div></div>
 <div class="ttc" id="classkaco_1_1Device_html"><div class="ttname"><a href="classkaco_1_1Device.html">kaco::Device</a></div><div class="ttdoc">This class represents a CanOpen slave device in the network. </div><div class="ttdef"><b>Definition:</b> <a href="device_8h_source.html#l00083">device.h:83</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_a7194db502148640db62048b422d29488"><div class="ttname"><a href="classkaco_1_1Device.html#a7194db502148640db62048b422d29488">kaco::Device::read_complete_dictionary</a></div><div class="ttdeci">void read_complete_dictionary()</div><div class="ttdoc">Fetches all dictionary entries from the device. Afterwards, all values exist in cache and can for exa...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00461">device.cpp:461</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -89,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classkaco_1_1SDO-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -102,11 +102,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p><code>#include &lt;<a class="el" href="sdo_8h_source.html">sdo.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
-Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html">SDOReceivedCallback</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a sdo message receiver function with it's node id Important: Never call send_sdo_and_wait or process_incoming_message from within (-&gt; deadlock)!  <a href="structkaco_1_1SDO_1_1SDOReceivedCallback.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3352b35151c25c0f47f5be15906a3caf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3352b35151c25c0f47f5be15906a3caf"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1SDO.html#a3352b35151c25c0f47f5be15906a3caf">SDOReceivedCallback</a> = std::function&lt; void(<a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a>) &gt;</td></tr>
+<tr class="memdesc:a3352b35151c25c0f47f5be15906a3caf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a sdo message receiver function Important: Never call send_sdo_and_wait or process_incoming_message from within (-&gt; deadlock)! <br /></td></tr>
+<tr class="separator:a3352b35151c25c0f47f5be15906a3caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -126,9 +127,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3fa6015a41a5ce660d26fe0cd112dc89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">process_incoming_message</a> (const <a class="el" href="structkaco_1_1Message.html">Message</a> &amp;message)</td></tr>
 <tr class="memdesc:a3fa6015a41a5ce660d26fe0cd112dc89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process incoming <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> message.  <a href="#a3fa6015a41a5ce660d26fe0cd112dc89">More...</a><br /></td></tr>
 <tr class="separator:a3fa6015a41a5ce660d26fe0cd112dc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65a1ee70129078ff4e696b6afa896251"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">send_sdo_and_wait</a> (uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, uint8_t byte0, uint8_t byte1, uint8_t byte2, uint8_t byte3, <a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a> &amp;response)</td></tr>
-<tr class="memdesc:a65a1ee70129078ff4e696b6afa896251"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> message and waits for the response.  <a href="#a65a1ee70129078ff4e696b6afa896251">More...</a><br /></td></tr>
-<tr class="separator:a65a1ee70129078ff4e696b6afa896251"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf4cad295cf4342df40ccadcfb1cf8e9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">send_sdo_and_wait</a> (uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array&lt; uint8_t, 4 &gt; &amp;data)</td></tr>
+<tr class="memdesc:aaf4cad295cf4342df40ccadcfb1cf8e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sends an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> message and waits for the response.  <a href="#aaf4cad295cf4342df40ccadcfb1cf8e9">More...</a><br /></td></tr>
+<tr class="separator:aaf4cad295cf4342df40ccadcfb1cf8e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class implements the CanOpen <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> protocol. </p>
@@ -138,7 +139,7 @@ Public Member Functions</h2></td></tr>
 </dd></dl>
 <p>All methods are thread-safe. </p>
 
-<p>Definition at line <a class="el" href="sdo_8h_source.html#l00057">57</a> of file <a class="el" href="sdo_8h_source.html">sdo.h</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8h_source.html#l00058">58</a> of file <a class="el" href="sdo_8h_source.html">sdo.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9763e9b71ef8496c929aad419afb9649"></a>
 <div class="memitem">
@@ -162,7 +163,7 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00047">47</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00045">45</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
 
 </div>
 </div>
@@ -223,7 +224,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a7">examples/core.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00051">51</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00050">50</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
 
 </div>
 </div>
@@ -251,16 +252,16 @@ Public Member Functions</h2></td></tr>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">Todo:</a></b></dt><dd>Rename this to process_incoming_server_sdo() and add process_incoming_client_sdo() <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 </dd></dl>
 
-<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00157">157</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00156">156</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a65a1ee70129078ff4e696b6afa896251"></a>
+<a class="anchor" id="aaf4cad295cf4342df40ccadcfb1cf8e9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void kaco::SDO::send_sdo_and_wait </td>
+          <td class="memname"><a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a> kaco::SDO::send_sdo_and_wait </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>command</em>, </td>
@@ -286,32 +287,8 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>byte0</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>byte1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>byte2</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>byte3</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="structkaco_1_1SDOResponse.html">SDOResponse</a> &amp;&#160;</td>
-          <td class="paramname"><em>response</em>&#160;</td>
+          <td class="paramtype">const std::array&lt; uint8_t, 4 &gt; &amp;&#160;</td>
+          <td class="paramname"><em>data</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -328,19 +305,14 @@ Public Member Functions</h2></td></tr>
     <tr><td class="paramname">node_id</td><td>Node id of remote device </td></tr>
     <tr><td class="paramname">index</td><td>Dictionary index </td></tr>
     <tr><td class="paramname">subindex</td><td>Subindex </td></tr>
-    <tr><td class="paramname">byte0</td><td>first data byte (little endian!) </td></tr>
-    <tr><td class="paramname">byte1</td><td>second data byte </td></tr>
-    <tr><td class="paramname">byte2</td><td>third data byte </td></tr>
-    <tr><td class="paramname">byte3</td><td>fourth data byte </td></tr>
-    <tr><td class="paramname">response</td><td>Will contain the response. </td></tr>
+    <tr><td class="paramname">data</td><td>bytes to send in little endian order </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000007">Todo:</a></b></dt><dd><p class="startdd">Make response a return value. </p>
-<p class="enddd">Make byte0 - byte3 arguments an array </p><dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
-</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The response message. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00191">191</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00178">178</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
 
 </div>
 </div>
@@ -387,7 +359,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a8">examples/core.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00082">82</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
+<p>Definition at line <a class="el" href="sdo_8cpp_source.html#l00084">84</a> of file <a class="el" href="sdo_8cpp_source.html">sdo.cpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +370,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_4270bfced15e0e73154b13468c7c9ad9.html">core</a></li><li class="navelem"><a class="el" href="dir_90fd98a0ba30abf7a6068a44995d2d6b.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_cd2d7a63b5cc424001c320399f5dc115.html">core</a></li><li class="navelem"><a class="el" href="dir_3404b212d7f744c10374c944649b8011.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -124,60 +124,60 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;core.h&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;logger.h&quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;sdo_error.h&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">// Set by CMake:</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">// #define SDO_RESPONSE_TIMEOUT_MS ...</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;global_config.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;cassert&gt;</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;future&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>kaco {</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">   47</a></span>&#160;<a class="code" href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">SDO::SDO</a>(<a class="code" href="classkaco_1_1Core.html">Core</a>&amp; core) </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    : m_core(core)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    { }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">SDO::download</a>(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, <span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data) {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    assert(size&gt;0);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    assert(data.size()&gt;=size);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (size&lt;=4) {</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// expedited transfer</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        uint8_t command = Flag::initiate_download_request</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                            | size_flag(size)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                            | Flag::size_indicated</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                            | Flag::expedited_transfer;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">send_sdo_and_wait</a>(command, node_id, index, subindex,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            data[0], data[1], data[2], data[3], response);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (response.<a class="code" href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">failed</a>()) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(response.<a class="code" href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">get_data</a>());</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">   45</a></span>&#160;<a class="code" href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">SDO::SDO</a>(<a class="code" href="classkaco_1_1Core.html">Core</a>&amp; core)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    : m_core(core) {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    m_send_and_wait_receivers.fill(received_unassigned_sdo);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;}</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">   50</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">SDO::download</a>(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, <span class="keyword">const</span> std::vector&lt;uint8_t&gt;&amp; data) {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    assert(size&gt;0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    assert(data.size()&gt;=size);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordflow">if</span> (size&lt;=4) {</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// expedited transfer</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        uint8_t command = Flag::initiate_download_request</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                            | size_flag(size)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                            | Flag::size_indicated</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                            | Flag::expedited_transfer;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response = <a class="code" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">send_sdo_and_wait</a>(command, node_id, index, subindex, {{</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            data[0],</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            (size&gt;1) ? data[1] : (uint8_t) 0,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            (size&gt;2) ? data[2] : (uint8_t) 0,</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            (size&gt;3) ? data[3] : (uint8_t) 0</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }});</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (response.<a class="code" href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">failed</a>()) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(response.<a class="code" href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">get_data</a>());</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        }</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// segmented transfer</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::segmented_download);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <span class="comment">// segmented transfer</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::segmented_download);</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    }</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">   82</a></span>&#160;std::vector&lt;uint8_t&gt; <a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">SDO::upload</a>(uint8_t node_id, uint16_t index, uint8_t subindex) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    std::vector&lt;uint8_t&gt; result;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    uint8_t command = Flag::initiate_upload_request;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <a class="code" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">send_sdo_and_wait</a>(command, node_id, index, subindex,</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        0, 0, 0, 0, response);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">   84</a></span>&#160;std::vector&lt;uint8_t&gt; <a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">SDO::upload</a>(uint8_t node_id, uint16_t index, uint8_t subindex) {</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    std::vector&lt;uint8_t&gt; result;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    uint8_t command = Flag::initiate_upload_request;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response = <a class="code" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">send_sdo_and_wait</a>(command, node_id, index, subindex, {{0,0,0,0}});</div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (response.<a class="code" href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">failed</a>()) {</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(response.<a class="code" href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">get_data</a>());</div>
@@ -211,170 +211,173 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            uint8_t command = Flag::upload_segment_request</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                | toggle_bit;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <a class="code" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">send_sdo_and_wait</a>(command, node_id, 0, 0, 0, 0, 0, 0, response);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            <span class="keywordflow">if</span> (response.<a class="code" href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">failed</a>()) {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(response.<a class="code" href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">get_data</a>());</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            }</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;            <span class="keywordflow">if</span> (toggle_bit != (response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> &amp; Flag::toggle_bit)) {</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::response_toggle_bit);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            }</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordtype">unsigned</span> i=0;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;            <span class="keywordflow">while</span>(i&lt;7 &amp;&amp; size&gt;0) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                result.push_back(response.<a class="code" href="structkaco_1_1SDOResponse.html#accd04d0656a71e717ac68062b5e294db">data</a>[i]);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                ++i;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                --size;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            }</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            toggle_bit = (toggle_bit&gt;0) ? 0 : Flag::toggle_bit;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            more_segments = (response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> &amp; Flag::no_more_segments)==0;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        <span class="keywordflow">if</span> (size&gt;0) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            WARN(<span class="stringliteral">&quot;[SDO::upload] [Restrictive] Uploaded just &quot;</span>&lt;&lt;(original_size-size)&lt;&lt;<span class="stringliteral">&quot; of &quot;</span>&lt;&lt;original_size&lt;&lt;<span class="stringliteral">&quot; bytes but there are no more segments. Ignore...&quot;</span>);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;            <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        }</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    }</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;}</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">  157</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">SDO::process_incoming_message</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Message.html">Message</a>&amp; message) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a> = message.<a class="code" href="structkaco_1_1Message.html#a14ddbe7099c9d4edeaae6a642d7ac2a8">get_node_id</a>();</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> = message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[0];</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i=0; i&lt;7; ++i) {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        response.<a class="code" href="structkaco_1_1SDOResponse.html#accd04d0656a71e717ac68062b5e294db">data</a>[i] = message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[1+i];</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Received SDO (transmit/server) from node &quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span>)response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a>);</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="comment">// call registered callbacks</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordtype">bool</span> found_callback = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_receive_callbacks_mutex);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">const</span> <a class="code" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html">SDOReceivedCallback</a>&amp; callback : m_receive_callbacks) {</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;            <span class="keywordflow">if</span> (callback.node_id == response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a>) {</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                found_callback = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                <span class="comment">// This is not async because callbacks are only registered internally.</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;                <span class="comment">// and it cannot be async because response is taken by reference</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;                callback.callback(response);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;    }</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keywordflow">if</span> (!found_callback) {</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;Received unassigned SDO (transmit/server)&quot;</span>);</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        DEBUG(response.<a class="code" href="structkaco_1_1SDOResponse.html#a9f07bf0fa9e37e36ccd77feddac3b6da">print</a>();)</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response = <a class="code" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">send_sdo_and_wait</a>(command, node_id, 0, 0, {{0,0,0,0}});</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            <span class="keywordflow">if</span> (response.<a class="code" href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">failed</a>()) {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(response.<a class="code" href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">get_data</a>());</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;            }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            <span class="keywordflow">if</span> (toggle_bit != (response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> &amp; Flag::toggle_bit)) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;                <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::response_toggle_bit);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            }</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">unsigned</span> i=0;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">while</span>(i&lt;7 &amp;&amp; size&gt;0) {</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                result.push_back(response.<a class="code" href="structkaco_1_1SDOResponse.html#accd04d0656a71e717ac68062b5e294db">data</a>[i]);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                ++i;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;                --size;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;            toggle_bit = (toggle_bit&gt;0) ? 0 : Flag::toggle_bit;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            more_segments = (response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> &amp; Flag::no_more_segments)==0;</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> (size&gt;0) {</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;            WARN(<span class="stringliteral">&quot;[SDO::upload] [Restrictive] Uploaded just &quot;</span>&lt;&lt;(original_size-size)&lt;&lt;<span class="stringliteral">&quot; of &quot;</span>&lt;&lt;original_size&lt;&lt;<span class="stringliteral">&quot; bytes but there are no more segments. Ignore...&quot;</span>);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">  156</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">SDO::process_incoming_message</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Message.html">Message</a>&amp; message) {</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a> = message.<a class="code" href="structkaco_1_1Message.html#a14ddbe7099c9d4edeaae6a642d7ac2a8">get_node_id</a>();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    response.<a class="code" href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">command</a> = message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[0];</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i=0; i&lt;7; ++i) {</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        response.<a class="code" href="structkaco_1_1SDOResponse.html#accd04d0656a71e717ac68062b5e294db">data</a>[i] = message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[1+i];</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Received SDO (transmit/server) from node &quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span>)response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a>&lt;&lt;<span class="stringliteral">&quot;. thread=&quot;</span> &lt;&lt; std::this_thread::get_id()) ;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <span class="comment">// This calls either a callback which was registered by send_sdo_and_wait or received_unassigned_sdo().</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    {</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_send_and_wait_receiver_mutexes[response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a>]);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        m_send_and_wait_receivers[response.<a class="code" href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">node_id</a>](response);</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="comment">// TODO: Also call custom callbacks, not only internal ones.</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">  178</a></span>&#160;<a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> <a class="code" href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">SDO::send_sdo_and_wait</a>(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, <span class="keyword">const</span> std::array&lt;uint8_t,4&gt;&amp; data) {</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;SDO::send_sdo_and_wait: thread=&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot; node_id=&quot;</span> &lt;&lt; node_id</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        &lt;&lt; <span class="stringliteral">&quot; command=&quot;</span> &lt;&lt; command &lt;&lt; <span class="stringliteral">&quot; index=&quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; subindex=&quot;</span> &lt;&lt; subindex &lt;&lt; <span class="stringliteral">&quot; START.&quot;</span>);</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;    <span class="comment">// We lock this method so requests and responses to/from the same node are not mixed up</span></div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="comment">// and m_send_and_wait_receivers[node_id] manipulation is safe.</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="comment">// SDO callbacks are specific to their node id.</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    <span class="comment">// assert: m_send_and_wait_mutex.size() == 256 &gt; std::numeric_limits&lt;uint8_t&gt;::max()</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    std::lock_guard&lt;std::mutex&gt; scoped_lock(m_send_and_wait_mutex[node_id]);</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="line" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">  191</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">SDO::send_sdo_and_wait</a>(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex,</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    uint8_t byte0, uint8_t byte1, uint8_t byte2, uint8_t byte3,</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a>&amp; response) {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    </div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    std::lock_guard&lt;std::mutex&gt; scoped_lock(m_send_and_wait_mutex);</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    std::promise&lt;void&gt; received_promise;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    std::future&lt;void&gt; received_future = received_promise.get_future();</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <a class="code" href="structkaco_1_1SDO_1_1SDOReceivedCallback.html">SDOReceivedCallback</a> receiver = { node_id, [&amp;] (<span class="keyword">const</span> <a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a>&amp; _response) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="comment">//f (_response.node_id == node_id) { //&amp;&amp; _response.get_index() == index &amp;&amp; _response.get_subindex() == subindex) {</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;            <span class="comment">// We should not check for index/subindex because this fails for segmented transfer.</span></div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;            <span class="comment">// TODO: check for correct server command specifier?</span></div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;            response = _response;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;            received_promise.set_value();</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="comment">//}</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    } };</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    </div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    std::list&lt;SDOReceivedCallback&gt;::const_iterator receiver_handle;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_receive_callbacks_mutex);</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        m_receive_callbacks.push_front(std::move(receiver));</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        receiver_handle = m_receive_callbacks.cbegin();</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    }</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    <span class="comment">// send message</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    <a class="code" href="structkaco_1_1Message.html">Message</a> message;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#afbd99652824dd82c6854606ebb402641">cob_id</a> = 0x600+node_id;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#afeff5827cc9f815f99333a0fb736ea41">rtr</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#a106c3be0450772ac16c1300279c9d8d9">len</a> = 8;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[0] = command;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[1] = index &amp; 0xFF;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[2] = (index &gt;&gt; 8) &amp; 0xFF;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[3] = subindex;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[4] = byte0;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[5] = byte1;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[6] = byte2;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[7] = byte3;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    m_core.<a class="code" href="classkaco_1_1Core.html#a8aa7f2cfa3e964ca03668ab1dc14815c">send</a>(message);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> timeout = std::chrono::milliseconds(SDO_RESPONSE_TIMEOUT_MS);</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> status = received_future.wait_for(timeout);</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    <span class="keywordflow">if</span> (status == std::future_status::timeout) {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::response_timeout, <span class="stringliteral">&quot;Timeout was &quot;</span>+std::to_string(timeout.count())+<span class="stringliteral">&quot;ms.&quot;</span>);</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    }</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    {</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_receive_callbacks_mutex);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;        <span class="comment">// std::list iterators to existing elements are never invalidated</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        m_receive_callbacks.erase(receiver_handle);</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    }</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;uint8_t SDO::size_flag(uint8_t size) {</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    assert(size&gt;0);</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    assert(size&lt;=4);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;    <span class="keywordflow">switch</span>(size) {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;        <span class="keywordflow">case</span> 1: <span class="keywordflow">return</span> 0x0C;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;        <span class="keywordflow">case</span> 2: <span class="keywordflow">return</span> 0x08;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">case</span> 3: <span class="keywordflow">return</span> 0x04;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">case</span> 4: <span class="keywordflow">return</span> 0x00;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    }</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    assert(<span class="keyword">false</span> &amp;&amp; <span class="stringliteral">&quot;Dead code!&quot;</span>);</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;}</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;}</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    std::promise&lt;SDOResponse&gt; received_promise;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    std::future&lt;SDOResponse&gt; received_future = received_promise.get_future();</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    {</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_send_and_wait_receiver_mutexes[node_id]);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        m_send_and_wait_receivers[node_id] = [&amp;] (<a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response) {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;            <span class="comment">// This is only called if the response comes from the correct node</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;            <span class="comment">//   (process_incoming_message takes care of this).</span></div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            <span class="comment">// The reference to received_promise is assured to be alive</span></div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="comment">//   since the receiver is removed before this method returns.</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;            received_promise.set_value(response);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        };</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="comment">// send message</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <a class="code" href="structkaco_1_1Message.html">Message</a> message;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#afbd99652824dd82c6854606ebb402641">cob_id</a> = 0x600+node_id;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#afeff5827cc9f815f99333a0fb736ea41">rtr</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#a106c3be0450772ac16c1300279c9d8d9">len</a> = 8;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[0] = command;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[1] = index &amp; 0xFF;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[2] = (index &gt;&gt; 8) &amp; 0xFF;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[3] = subindex;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[4] = data[0];</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[5] = data[1];</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[6] = data[2];</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    message.<a class="code" href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">data</a>[7] = data[3];</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    m_core.<a class="code" href="classkaco_1_1Core.html#a8aa7f2cfa3e964ca03668ab1dc14815c">send</a>(message);</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;SDO::send_sdo_and_wait: thread=&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot; node_id=&quot;</span> &lt;&lt; node_id</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        &lt;&lt; <span class="stringliteral">&quot; command=&quot;</span> &lt;&lt; command &lt;&lt; <span class="stringliteral">&quot; index=&quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; subindex=&quot;</span> &lt;&lt; subindex &lt;&lt; <span class="stringliteral">&quot; WAIT.&quot;</span>);</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> timeout = std::chrono::milliseconds(<a class="code" href="classkaco_1_1Config.html#a95a2b5cec4ab8f87edad15a3d8cf5fee">Config::sdo_response_timeout_ms</a>);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;    <span class="keyword">const</span> <span class="keyword">auto</span> status = received_future.wait_for(timeout);</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    <span class="comment">// remove receiver</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        std::lock_guard&lt;std::mutex&gt; scoped_lock(m_send_and_wait_receiver_mutexes[node_id]);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        m_send_and_wait_receivers[node_id] = received_unassigned_sdo;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;    }</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    <span class="keywordflow">if</span> (status == std::future_status::timeout) {</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;SDO::send_sdo_and_wait: thread=&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot; node_id=&quot;</span> &lt;&lt; node_id</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;            &lt;&lt; <span class="stringliteral">&quot; command=&quot;</span> &lt;&lt; command &lt;&lt; <span class="stringliteral">&quot; index=&quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; subindex=&quot;</span> &lt;&lt; subindex &lt;&lt; <span class="stringliteral">&quot; TIMEOUT.&quot;</span>);</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        <span class="keywordflow">throw</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>(sdo_error::type::response_timeout, <span class="stringliteral">&quot;Timeout was &quot;</span>+std::to_string(timeout.count())+<span class="stringliteral">&quot;ms.&quot;</span>);</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;    }</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    DEBUG_LOG_EXHAUSTIVE(<span class="stringliteral">&quot;SDO::send_sdo_and_wait: thread=&quot;</span> &lt;&lt; std::this_thread::get_id() &lt;&lt; <span class="stringliteral">&quot; node_id=&quot;</span> &lt;&lt; node_id</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        &lt;&lt; <span class="stringliteral">&quot; command=&quot;</span> &lt;&lt; command &lt;&lt; <span class="stringliteral">&quot; index=&quot;</span> &lt;&lt; index &lt;&lt; <span class="stringliteral">&quot; subindex=&quot;</span> &lt;&lt; subindex &lt;&lt; <span class="stringliteral">&quot; DONE.&quot;</span>);</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">return</span> received_future.get();</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keywordtype">void</span> SDO::received_unassigned_sdo(<a class="code" href="structkaco_1_1SDOResponse.html">SDOResponse</a> response) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Received unassigned SDO (transmit/server):&quot;</span>);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    DEBUG(response.<a class="code" href="structkaco_1_1SDOResponse.html#a9f07bf0fa9e37e36ccd77feddac3b6da">print</a>();)</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;}</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;uint8_t SDO::size_flag(uint8_t size) {</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    assert(size&gt;0);</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    assert(size&lt;=4);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <span class="keywordflow">switch</span>(size) {</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;        <span class="keywordflow">case</span> 1: <span class="keywordflow">return</span> 0x0C;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;        <span class="keywordflow">case</span> 2: <span class="keywordflow">return</span> 0x08;</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        <span class="keywordflow">case</span> 3: <span class="keywordflow">return</span> 0x04;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;        <span class="keywordflow">case</span> 4: <span class="keywordflow">return</span> 0x00;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    }</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    assert(<span class="keyword">false</span> &amp;&amp; <span class="stringliteral">&quot;Dead code!&quot;</span>);</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;}</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;}</div>
 <div class="ttc" id="structkaco_1_1Message_html_afbd99652824dd82c6854606ebb402641"><div class="ttname"><a href="structkaco_1_1Message.html#afbd99652824dd82c6854606ebb402641">kaco::Message::cob_id</a></div><div class="ttdeci">uint16_t cob_id</div><div class="ttdoc">Message ID aka COB-ID. </div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00042">message.h:42</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html_a106c3be0450772ac16c1300279c9d8d9"><div class="ttname"><a href="structkaco_1_1Message.html#a106c3be0450772ac16c1300279c9d8d9">kaco::Message::len</a></div><div class="ttdeci">uint8_t len</div><div class="ttdoc">Message&#39;s length (0 to 8) </div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00048">message.h:48</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_a9763e9b71ef8496c929aad419afb9649"><div class="ttname"><a href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">kaco::SDO::SDO</a></div><div class="ttdeci">SDO(Core &amp;core)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00047">sdo.cpp:47</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_a9763e9b71ef8496c929aad419afb9649"><div class="ttname"><a href="classkaco_1_1SDO.html#a9763e9b71ef8496c929aad419afb9649">kaco::SDO::SDO</a></div><div class="ttdeci">SDO(Core &amp;core)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00045">sdo.cpp:45</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_a9f07bf0fa9e37e36ccd77feddac3b6da"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#a9f07bf0fa9e37e36ccd77feddac3b6da">kaco::SDOResponse::print</a></div><div class="ttdeci">void print() const </div><div class="ttdoc">Prints the response to command line. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8cpp_source.html#l00063">sdo_response.cpp:63</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_a8aa7f2cfa3e964ca03668ab1dc14815c"><div class="ttname"><a href="classkaco_1_1Core.html#a8aa7f2cfa3e964ca03668ab1dc14815c">kaco::Core::send</a></div><div class="ttdeci">void send(const Message &amp;message)</div><div class="ttdoc">Sends a message. </div><div class="ttdef"><b>Definition:</b> <a href="core_2src_2core_8cpp_source.html#l00233">core.cpp:233</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_a936fd201097b771a6020015a1b9ca3c4"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#a936fd201097b771a6020015a1b9ca3c4">kaco::SDOResponse::get_length</a></div><div class="ttdeci">uint8_t get_length() const </div><div class="ttdoc">Returns the number of data bytes. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8cpp_source.html#l00048">sdo_response.cpp:48</a></div></div>
-<div class="ttc" id="structkaco_1_1SDO_1_1SDOReceivedCallback_html"><div class="ttname"><a href="structkaco_1_1SDO_1_1SDOReceivedCallback.html">kaco::SDO::SDOReceivedCallback</a></div><div class="ttdoc">Type of a sdo message receiver function with it&#39;s node id Important: Never call send_sdo_and_wait or ...</div><div class="ttdef"><b>Definition:</b> <a href="sdo_8h_source.html#l00064">sdo.h:64</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_a11710924affd885ba7c1c589b072793e"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#a11710924affd885ba7c1c589b072793e">kaco::SDOResponse::failed</a></div><div class="ttdeci">uint8_t failed() const </div><div class="ttdoc">Check if the transfer failed. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8cpp_source.html#l00052">sdo_response.cpp:52</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_aa5c425805390cf0fba8b357367295ddc"><div class="ttname"><a href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">kaco::SDO::download</a></div><div class="ttdeci">void download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, const std::vector&lt; uint8_t &gt; &amp;bytes)</div><div class="ttdoc">SDO download: Write value into remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00051">sdo.cpp:51</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_aa5c425805390cf0fba8b357367295ddc"><div class="ttname"><a href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">kaco::SDO::download</a></div><div class="ttdeci">void download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, const std::vector&lt; uint8_t &gt; &amp;bytes)</div><div class="ttdoc">SDO download: Write value into remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00050">sdo.cpp:50</a></div></div>
 <div class="ttc" id="classkaco_1_1sdo__error_html"><div class="ttname"><a href="classkaco_1_1sdo__error.html">kaco::sdo_error</a></div><div class="ttdoc">This type of exception is thrown when there are problems while accessing devices via SDO...</div><div class="ttdef"><b>Definition:</b> <a href="sdo__error_8h_source.html#l00048">sdo_error.h:48</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html"><div class="ttname"><a href="structkaco_1_1SDOResponse.html">kaco::SDOResponse</a></div><div class="ttdoc">This struct contains the response of a SDO request. Note that there are two types of response - segme...</div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8h_source.html#l00043">sdo_response.h:43</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_aaf4cad295cf4342df40ccadcfb1cf8e9"><div class="ttname"><a href="classkaco_1_1SDO.html#aaf4cad295cf4342df40ccadcfb1cf8e9">kaco::SDO::send_sdo_and_wait</a></div><div class="ttdeci">SDOResponse send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array&lt; uint8_t, 4 &gt; &amp;data)</div><div class="ttdoc">Sends an SDO message and waits for the response. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00178">sdo.cpp:178</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html"><div class="ttname"><a href="classkaco_1_1Core.html">kaco::Core</a></div><div class="ttdoc">This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...</div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00059">core.h:59</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_a3fa6015a41a5ce660d26fe0cd112dc89"><div class="ttname"><a href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">kaco::SDO::process_incoming_message</a></div><div class="ttdeci">void process_incoming_message(const Message &amp;message)</div><div class="ttdoc">Process incoming SDO message. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00157">sdo.cpp:157</a></div></div>
+<div class="ttc" id="classkaco_1_1Config_html_a95a2b5cec4ab8f87edad15a3d8cf5fee"><div class="ttname"><a href="classkaco_1_1Config.html#a95a2b5cec4ab8f87edad15a3d8cf5fee">kaco::Config::sdo_response_timeout_ms</a></div><div class="ttdeci">static size_t sdo_response_timeout_ms</div><div class="ttdoc">Timeout in milliseconds when waiting for an SDO response. </div><div class="ttdef"><b>Definition:</b> <a href="global__config_8h_source.html#l00044">global_config.h:44</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_a3fa6015a41a5ce660d26fe0cd112dc89"><div class="ttname"><a href="classkaco_1_1SDO.html#a3fa6015a41a5ce660d26fe0cd112dc89">kaco::SDO::process_incoming_message</a></div><div class="ttdeci">void process_incoming_message(const Message &amp;message)</div><div class="ttdoc">Process incoming SDO message. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00156">sdo.cpp:156</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html_a14ddbe7099c9d4edeaae6a642d7ac2a8"><div class="ttname"><a href="structkaco_1_1Message.html#a14ddbe7099c9d4edeaae6a642d7ac2a8">kaco::Message::get_node_id</a></div><div class="ttdeci">uint8_t get_node_id() const </div><div class="ttdoc">Extracts the node id from the COB-ID. </div><div class="ttdef"><b>Definition:</b> <a href="message_8cpp_source.html#l00040">message.cpp:40</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_a8e16dd1a4a65e0f9165f9a96189232b0"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#a8e16dd1a4a65e0f9165f9a96189232b0">kaco::SDOResponse::command</a></div><div class="ttdeci">uint8_t command</div><div class="ttdoc">SDO command specifier. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8h_source.html#l00049">sdo_response.h:49</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html_afeff5827cc9f815f99333a0fb736ea41"><div class="ttname"><a href="structkaco_1_1Message.html#afeff5827cc9f815f99333a0fb736ea41">kaco::Message::rtr</a></div><div class="ttdeci">uint8_t rtr</div><div class="ttdoc">Remote transmission request (0 if it&#39;s not an RTR message, 1 if it is an RTR message) ...</div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00045">message.h:45</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html"><div class="ttname"><a href="structkaco_1_1Message.html">kaco::Message</a></div><div class="ttdoc">This struct represents a CANOpen message. </div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00039">message.h:39</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_a61c08f4eccf09cf9d9f03ca92c1d692f"><div class="ttname"><a href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">kaco::SDO::upload</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; upload(uint8_t node_id, uint16_t index, uint8_t subindex)</div><div class="ttdoc">SDO download: Get value from remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00082">sdo.cpp:82</a></div></div>
+<div class="ttc" id="classkaco_1_1SDO_html_a61c08f4eccf09cf9d9f03ca92c1d692f"><div class="ttname"><a href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">kaco::SDO::upload</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; upload(uint8_t node_id, uint16_t index, uint8_t subindex)</div><div class="ttdoc">SDO download: Get value from remote device&#39;s object dictionary. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00084">sdo.cpp:84</a></div></div>
 <div class="ttc" id="structkaco_1_1Message_html_ad5bb3ed29f2bbce837d26daf53ebfcf9"><div class="ttname"><a href="structkaco_1_1Message.html#ad5bb3ed29f2bbce837d26daf53ebfcf9">kaco::Message::data</a></div><div class="ttdeci">uint8_t data[8]</div><div class="ttdoc">Data bytes. </div><div class="ttdef"><b>Definition:</b> <a href="message_8h_source.html#l00051">message.h:51</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_a30bf03a2fe3ed1bee3452ed7c46a5614"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#a30bf03a2fe3ed1bee3452ed7c46a5614">kaco::SDOResponse::get_data</a></div><div class="ttdeci">uint32_t get_data() const </div><div class="ttdoc">Returns the data as a single 4-byte value (only for expedited transfer). </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8cpp_source.html#l00056">sdo_response.cpp:56</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_af98c234c3b03f255d65c25c62394b9e5"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#af98c234c3b03f255d65c25c62394b9e5">kaco::SDOResponse::node_id</a></div><div class="ttdeci">uint8_t node_id</div><div class="ttdoc">Node id. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8h_source.html#l00046">sdo_response.h:46</a></div></div>
-<div class="ttc" id="classkaco_1_1SDO_html_a65a1ee70129078ff4e696b6afa896251"><div class="ttname"><a href="classkaco_1_1SDO.html#a65a1ee70129078ff4e696b6afa896251">kaco::SDO::send_sdo_and_wait</a></div><div class="ttdeci">void send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, uint8_t byte0, uint8_t byte1, uint8_t byte2, uint8_t byte3, SDOResponse &amp;response)</div><div class="ttdoc">Sends an SDO message and waits for the response. </div><div class="ttdef"><b>Definition:</b> <a href="sdo_8cpp_source.html#l00191">sdo.cpp:191</a></div></div>
 <div class="ttc" id="structkaco_1_1SDOResponse_html_accd04d0656a71e717ac68062b5e294db"><div class="ttname"><a href="structkaco_1_1SDOResponse.html#accd04d0656a71e717ac68062b5e294db">kaco::SDOResponse::data</a></div><div class="ttdeci">uint8_t data[7]</div><div class="ttdoc">Data bytes. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__response_8h_source.html#l00062">sdo_response.h:62</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

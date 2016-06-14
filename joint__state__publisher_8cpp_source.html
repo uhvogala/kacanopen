@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_2e7644bab2ba0afe65dd38dbac0a51b7.html">ros_bridge</a></li><li class="navelem"><a class="el" href="dir_dd9f05ab30428cf1d9e023fde78e85b3.html">src</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_2c4f51afc3968b6f8687747cc0d57353.html">ros_bridge</a></li><li class="navelem"><a class="el" href="dir_38ced3109d1af5325b0025a75dc6cce6.html">src</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -124,107 +124,117 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;utils.h&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;logger.h&quot;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;profiles.h&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/JointState.h&quot;</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">namespace </span>kaco {</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">   45</a></span>&#160;<a class="code" href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">JointStatePublisher::JointStatePublisher</a>(<a class="code" href="classkaco_1_1Device.html">Device</a>&amp; device, int32_t position_0_degree,</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    int32_t position_360_degree, <span class="keyword">const</span> std::string&amp; position_actual_field, <span class="keyword">const</span> std::string&amp; topic_name)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    : m_device(device), m_position_0_degree(position_0_degree),</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        m_position_360_degree(position_360_degree), m_position_actual_field(position_actual_field), m_topic_name(topic_name), m_initialized(false)</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">const</span> uint16_t profile = device.<a class="code" href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">get_device_profile_number</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordflow">if</span> (profile != 402) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;JointStatePublisher can only be used with a CiA 402 device.&quot;</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="stringliteral">&quot; You passed a device with profile number &quot;</span>+std::to_string(profile));</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a> operation_mode = device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Modes of operation display&quot;</span>);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// TODO: look into INTERPOLATED_POSITION_MODE</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keywordflow">if</span> (operation_mode != <a class="code" href="structkaco_1_1Profiles.html#afb3f207497922f722c568a4f12c2da7e">Profiles::constants</a>.at(402).at(<span class="stringliteral">&quot;profile_position_mode&quot;</span>)</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        &amp;&amp; operation_mode != <a class="code" href="structkaco_1_1Profiles.html#afb3f207497922f722c568a4f12c2da7e">Profiles::constants</a>.at(402).at(<span class="stringliteral">&quot;interpolated_position_mode&quot;</span>)) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[JointStatePublisher] Only position mode supported yet.&quot;</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <span class="stringliteral">&quot; Try device.set_entry(\&quot;modes_of_operation\&quot;, device.get_constant(\&quot;profile_position_mode\&quot;));&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    }</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (m_topic_name.empty()) {</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        uint8_t node_id = device.<a class="code" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">get_node_id</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        m_topic_name = <span class="stringliteral">&quot;device&quot;</span> + std::to_string(node_id) + <span class="stringliteral">&quot;/get_joint_state&quot;</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">   75</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">JointStatePublisher::advertise</a>() {</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    assert(!m_topic_name.empty());</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Advertising &quot;</span>&lt;&lt;m_topic_name);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    ros::NodeHandle nh;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    m_publisher = nh.advertise&lt;sensor_msgs::JointState&gt;(m_topic_name, queue_size);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    m_initialized = <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">   85</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">JointStatePublisher::publish</a>() {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordflow">if</span> (!m_initialized) {</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[JointStatePublisher] publish() called before advertise().&quot;</span>);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    sensor_msgs::JointState js;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    js.name.resize(1);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    js.position.resize(1);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;sdo_error.h&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#include &quot;ros/ros.h&quot;</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#include &quot;sensor_msgs/JointState.h&quot;</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">namespace </span>kaco {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">   46</a></span>&#160;<a class="code" href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">JointStatePublisher::JointStatePublisher</a>(<a class="code" href="classkaco_1_1Device.html">Device</a>&amp; device, int32_t position_0_degree,</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    int32_t position_360_degree, <span class="keyword">const</span> std::string&amp; position_actual_field, <span class="keyword">const</span> std::string&amp; topic_name)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    : m_device(device), m_position_0_degree(position_0_degree),</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        m_position_360_degree(position_360_degree), m_position_actual_field(position_actual_field), m_topic_name(topic_name), m_initialized(false)</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">const</span> uint16_t profile = device.<a class="code" href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">get_device_profile_number</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span> (profile != 402) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;JointStatePublisher can only be used with a CiA 402 device.&quot;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="stringliteral">&quot; You passed a device with profile number &quot;</span>+std::to_string(profile));</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a> operation_mode = device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Modes of operation display&quot;</span>);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="comment">// TODO: look into INTERPOLATED_POSITION_MODE</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (operation_mode != <a class="code" href="structkaco_1_1Profiles.html#afb3f207497922f722c568a4f12c2da7e">Profiles::constants</a>.at(402).at(<span class="stringliteral">&quot;profile_position_mode&quot;</span>)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        &amp;&amp; operation_mode != <a class="code" href="structkaco_1_1Profiles.html#afb3f207497922f722c568a4f12c2da7e">Profiles::constants</a>.at(402).at(<span class="stringliteral">&quot;interpolated_position_mode&quot;</span>)) {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[JointStatePublisher] Only position mode supported yet.&quot;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <span class="stringliteral">&quot; Try device.set_entry(\&quot;modes_of_operation\&quot;, device.get_constant(\&quot;profile_position_mode\&quot;));&quot;</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">if</span> (m_topic_name.empty()) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        uint8_t node_id = device.<a class="code" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">get_node_id</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        m_topic_name = <span class="stringliteral">&quot;device&quot;</span> + std::to_string(node_id) + <span class="stringliteral">&quot;/get_joint_state&quot;</span>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">   76</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">JointStatePublisher::advertise</a>() {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    assert(!m_topic_name.empty());</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Advertising &quot;</span>&lt;&lt;m_topic_name);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    ros::NodeHandle nh;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    m_publisher = nh.advertise&lt;sensor_msgs::JointState&gt;(m_topic_name, queue_size);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    m_initialized = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">   86</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">JointStatePublisher::publish</a>() {</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">if</span> (!m_initialized) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;[JointStatePublisher] publish() called before advertise().&quot;</span>);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        sensor_msgs::JointState js;</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    <span class="comment">// only position supported yet.</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    js.velocity.resize(0);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    js.effort.resize(0);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    js.name[0] = m_topic_name;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keyword">const</span> int32_t pos = m_device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(m_position_actual_field);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    js.header.stamp = ros::Time::now();</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    js.position[0] = pos_to_rad(pos);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    DEBUG_LOG(<span class="stringliteral">&quot;Sending JointState message&quot;</span>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    DEBUG_DUMP(pos);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    DEBUG_DUMP(js.position[0]);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    m_publisher.publish(js);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">double</span> JointStatePublisher::pos_to_rad(int32_t pos)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> p = pos;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> min = m_position_0_degree;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> max = m_position_360_degree;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> dist = max - min;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> result = ((p-min)/dist)*2*pi();</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    <span class="keywordflow">return</span> result;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a288880f4e42adc3b3059a9ab6f5bc8da"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">kaco::JointStatePublisher::JointStatePublisher</a></div><div class="ttdeci">JointStatePublisher(Device &amp;device, int32_t position_0_degree, int32_t position_360_degree, const std::string &amp;position_actual_field=&quot;Position actual value&quot;, const std::string &amp;topic_name=&quot;&quot;)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00045">joint_state_publisher.cpp:45</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_a89735b2ce6e84a5b95a48252bf5cca3f"><div class="ttname"><a href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">kaco::Device::get_device_profile_number</a></div><div class="ttdeci">uint16_t get_device_profile_number()</div><div class="ttdoc">Returns the CiA profile number. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00284">device.cpp:284</a></div></div>
-<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a8fb40c68554ce15de609c106b9d2454f"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">kaco::JointStatePublisher::advertise</a></div><div class="ttdeci">void advertise() override</div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00075">joint_state_publisher.cpp:75</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_aee57e882584ccf70748ae906c71af2ef"><div class="ttname"><a href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">kaco::Device::get_node_id</a></div><div class="ttdeci">uint8_t get_node_id() const </div><div class="ttdoc">Returns the node ID of the device. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00073">device.cpp:73</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_a5602593cc6999cfe2282499cbd0971a5"><div class="ttname"><a href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">kaco::Device::get_entry</a></div><div class="ttdeci">const Value &amp; get_entry(const std::string &amp;entry_name, uint8_t array_index=0, ReadAccessMethod access_method=ReadAccessMethod::use_default)</div><div class="ttdoc">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is ...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00091">device.cpp:91</a></div></div>
-<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a442575b2f2e3ce4eb16a8500ac480ce1"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">kaco::JointStatePublisher::publish</a></div><div class="ttdeci">void publish() override</div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00085">joint_state_publisher.cpp:85</a></div></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        js.name.resize(1);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        js.position.resize(1);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        <span class="comment">// only position supported yet.</span></div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        js.velocity.resize(0);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        js.effort.resize(0);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        js.name[0] = m_topic_name;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keyword">const</span> int32_t pos = m_device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(m_position_actual_field);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        js.header.stamp = ros::Time::now();</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        js.position[0] = pos_to_rad(pos);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        DEBUG_LOG(<span class="stringliteral">&quot;Sending JointState message&quot;</span>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        DEBUG_DUMP(pos);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        DEBUG_DUMP(js.position[0]);</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        m_publisher.publish(js);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    } <span class="keywordflow">catch</span> (<span class="keyword">const</span> <a class="code" href="classkaco_1_1sdo__error.html">sdo_error</a>&amp; error) {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="comment">// TODO: only catch timeouts?</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        ERROR(<span class="stringliteral">&quot;Exception in JointStatePublisher::publish(): &quot;</span>&lt;&lt;error.<a class="code" href="classkaco_1_1sdo__error.html#a3b973b3f8a61ec2ee94d01aeedf28a1d">what</a>());</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    }</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="keywordtype">double</span> JointStatePublisher::pos_to_rad(int32_t pos)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> p = pos;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> min = m_position_0_degree;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> max = m_position_360_degree;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> dist = max - min;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">double</span> result = ((p-min)/dist)*2*pi();</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> result;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;}</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="ttc" id="classkaco_1_1sdo__error_html_a3b973b3f8a61ec2ee94d01aeedf28a1d"><div class="ttname"><a href="classkaco_1_1sdo__error.html#a3b973b3f8a61ec2ee94d01aeedf28a1d">kaco::sdo_error::what</a></div><div class="ttdeci">virtual const char * what() const noexceptoverride</div><div class="ttdoc">Returns error description. </div><div class="ttdef"><b>Definition:</b> <a href="sdo__error_8cpp_source.html#l00105">sdo_error.cpp:105</a></div></div>
+<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a288880f4e42adc3b3059a9ab6f5bc8da"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a288880f4e42adc3b3059a9ab6f5bc8da">kaco::JointStatePublisher::JointStatePublisher</a></div><div class="ttdeci">JointStatePublisher(Device &amp;device, int32_t position_0_degree, int32_t position_360_degree, const std::string &amp;position_actual_field=&quot;Position actual value&quot;, const std::string &amp;topic_name=&quot;&quot;)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00046">joint_state_publisher.cpp:46</a></div></div>
+<div class="ttc" id="classkaco_1_1sdo__error_html"><div class="ttname"><a href="classkaco_1_1sdo__error.html">kaco::sdo_error</a></div><div class="ttdoc">This type of exception is thrown when there are problems while accessing devices via SDO...</div><div class="ttdef"><b>Definition:</b> <a href="sdo__error_8h_source.html#l00048">sdo_error.h:48</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_a89735b2ce6e84a5b95a48252bf5cca3f"><div class="ttname"><a href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">kaco::Device::get_device_profile_number</a></div><div class="ttdeci">uint16_t get_device_profile_number()</div><div class="ttdoc">Returns the CiA profile number. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00317">device.cpp:317</a></div></div>
+<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a8fb40c68554ce15de609c106b9d2454f"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a8fb40c68554ce15de609c106b9d2454f">kaco::JointStatePublisher::advertise</a></div><div class="ttdeci">void advertise() override</div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00076">joint_state_publisher.cpp:76</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_aee57e882584ccf70748ae906c71af2ef"><div class="ttname"><a href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">kaco::Device::get_node_id</a></div><div class="ttdeci">uint8_t get_node_id() const </div><div class="ttdoc">Returns the node ID of the device. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00075">device.cpp:75</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_a5602593cc6999cfe2282499cbd0971a5"><div class="ttname"><a href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">kaco::Device::get_entry</a></div><div class="ttdeci">const Value &amp; get_entry(const std::string &amp;entry_name, uint8_t array_index=0, ReadAccessMethod access_method=ReadAccessMethod::use_default)</div><div class="ttdoc">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is ...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00108">device.cpp:108</a></div></div>
+<div class="ttc" id="classkaco_1_1JointStatePublisher_html_a442575b2f2e3ce4eb16a8500ac480ce1"><div class="ttname"><a href="classkaco_1_1JointStatePublisher.html#a442575b2f2e3ce4eb16a8500ac480ce1">kaco::JointStatePublisher::publish</a></div><div class="ttdeci">void publish() override</div><div class="ttdef"><b>Definition:</b> <a href="joint__state__publisher_8cpp_source.html#l00086">joint_state_publisher.cpp:86</a></div></div>
 <div class="ttc" id="classkaco_1_1Device_html"><div class="ttname"><a href="classkaco_1_1Device.html">kaco::Device</a></div><div class="ttdoc">This class represents a CanOpen slave device in the network. </div><div class="ttdef"><b>Definition:</b> <a href="device_8h_source.html#l00083">device.h:83</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html"><div class="ttname"><a href="structkaco_1_1Value.html">kaco::Value</a></div><div class="ttdoc">This class contains a value to be stored in the object dictionary. The value can have one of the type...</div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00053">value.h:53</a></div></div>
 <div class="ttc" id="structkaco_1_1Profiles_html_afb3f207497922f722c568a4f12c2da7e"><div class="ttname"><a href="structkaco_1_1Profiles.html#afb3f207497922f722c568a4f12c2da7e">kaco::Profiles::constants</a></div><div class="ttdeci">static const std::map&lt; uint16_t, std::map&lt; std::string, const Value &gt; &gt; constants</div><div class="ttdoc">Constants for CiA profiles. Type: map < profile number , map < operation name , constant value > > ...</div><div class="ttdef"><b>Definition:</b> <a href="profiles_8h_source.html#l00060">profiles.h:60</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

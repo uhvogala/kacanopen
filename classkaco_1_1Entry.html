@@ -214,6 +214,10 @@ ReadAccessMethod&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 WriteAccessMethod&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a16a89b8aa5aef9efe38b9e14d7eee790">write_access_method</a> = WriteAccessMethod::sdo</td></tr>
 <tr class="memdesc:a16a89b8aa5aef9efe38b9e14d7eee790"><td class="mdescLeft">&#160;</td><td class="mdescRight">Standard method for writing this entry. Used by <a class="el" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad" title="Sets the value of a dictionary entry by name internally. If the entry is configured to send an SDO on...">Device::set_entry()</a>. <br /></td></tr>
 <tr class="separator:a16a89b8aa5aef9efe38b9e14d7eee790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7f05eb4cd4575e8ddc132dc2ad6065"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5c7f05eb4cd4575e8ddc132dc2ad6065"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Entry.html#a5c7f05eb4cd4575e8ddc132dc2ad6065">disabled</a></td></tr>
+<tr class="memdesc:a5c7f05eb4cd4575e8ddc132dc2ad6065"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disables this entry. This is used when a device reports "Object does not exist in the object dictionary". <br /></td></tr>
+<tr class="separator:a5c7f05eb4cd4575e8ddc132dc2ad6065"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -228,7 +232,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents an entry in the object dictionary of a device. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd><p class="startdd">Add missing fields like high and low limit. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd><p class="startdd">Add missing fields like high and low limit. </p>
 <p class="enddd">Array type entries are currently not used and may be deleted in future. </p>
 </dd></dl>
 
@@ -251,7 +255,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Registers a given function to be called when the value is changed. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00153">153</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00155">155</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +275,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Returns the data type. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00149">149</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00151">151</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -292,7 +296,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Returns the value. If the entry is an array, array_index can be specified. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00117">117</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00119">119</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -313,7 +317,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Compares entries by index and subindex. This can be used for sorting the dictionary. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00179">179</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00181">181</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -333,7 +337,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Prints relevant information concerning this entry on standard output - name, index, possibly value, ... This is used by <a class="el" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789" title="Prints the dictionary together with currently cached values to command line. ">Device::print_dictionary()</a> </p>
 <dl class="section remark"><dt>Remarks</dt><dd>not thread-safe due to std::cout </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00158">158</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00160">160</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -364,7 +368,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Sets the value. If the entry is an array, array_index can be specified. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00071">71</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00073">73</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -385,7 +389,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 <p>Returns if the value is set/valid. If the entry is an array, array_index can be specified. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00130">130</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry_8cpp_source.html#l00132">132</a> of file <a class="el" href="entry_8cpp_source.html">entry.cpp</a>.</p>
 
 </div>
 </div>
@@ -396,7 +400,7 @@ static const <a class="el" href="structkaco_1_1Entry_1_1ArrayTag.html">ArrayTag<
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 24 2016 23:12:50 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
