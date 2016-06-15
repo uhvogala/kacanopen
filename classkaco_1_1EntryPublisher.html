@@ -117,9 +117,9 @@ Collaboration diagram for kaco::EntryPublisher:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2877a7ef1c45ce8622494e80cc3b5486"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EntryPublisher.html#a2877a7ef1c45ce8622494e80cc3b5486">EntryPublisher</a> (<a class="el" href="classkaco_1_1Device.html">Device</a> &amp;device, std::string entry_name, uint8_t array_index=0, ReadAccessMethod access_method=ReadAccessMethod::use_default)</td></tr>
-<tr class="memdesc:a2877a7ef1c45ce8622494e80cc3b5486"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a2877a7ef1c45ce8622494e80cc3b5486">More...</a><br /></td></tr>
-<tr class="separator:a2877a7ef1c45ce8622494e80cc3b5486"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4441962d1d7464ae91ad4a7b34296828"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EntryPublisher.html#a4441962d1d7464ae91ad4a7b34296828">EntryPublisher</a> (<a class="el" href="classkaco_1_1Device.html">Device</a> &amp;device, const std::string &amp;entry_name, const ReadAccessMethod access_method=ReadAccessMethod::use_default)</td></tr>
+<tr class="memdesc:a4441962d1d7464ae91ad4a7b34296828"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a4441962d1d7464ae91ad4a7b34296828">More...</a><br /></td></tr>
+<tr class="separator:a4441962d1d7464ae91ad4a7b34296828"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4101eabe0e4b3a229d3a9aa03a61ee3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EntryPublisher.html#a4101eabe0e4b3a229d3a9aa03a61ee3d">advertise</a> () override</td></tr>
 <tr class="separator:a4101eabe0e4b3a229d3a9aa03a61ee3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba381d421dc99388531eabeb35e3f1a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EntryPublisher.html#aba381d421dc99388531eabeb35e3f1a1">publish</a> () override</td></tr>
@@ -130,7 +130,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="entry__publisher_8h_source.html#l00045">45</a> of file <a class="el" href="entry__publisher_8h_source.html">entry_publisher.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a2877a7ef1c45ce8622494e80cc3b5486"></a>
+<a class="anchor" id="a4441962d1d7464ae91ad4a7b34296828"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -143,19 +143,13 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>entry_name</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>array_index</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ReadAccessMethod&#160;</td>
+          <td class="paramtype">const ReadAccessMethod&#160;</td>
           <td class="paramname"><em>access_method</em> = <code>ReadAccessMethod::use_default</code>&#160;</td>
         </tr>
         <tr>
@@ -171,7 +165,6 @@ Public Member Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">device</td><td>The CanOpen device </td></tr>
     <tr><td class="paramname">entry_name</td><td>The name of the entry. See device profile. </td></tr>
-    <tr><td class="paramname">array_index</td><td>If the entry is not an array, this should be zero, otherwise it's the array index </td></tr>
     <tr><td class="paramname">access_method</td><td>You can choose default/sdo/pdo method. See <a class="el" href="classkaco_1_1Device.html" title="This class represents a CanOpen slave device in the network. ">kaco::Device</a> docs. </td></tr>
   </table>
   </dd>
@@ -206,7 +199,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classkaco_1_1Publisher.html#aee5d0605ee205cd34825d2ab59bb2a0d">kaco::Publisher</a>.</p>
 
-<p>Definition at line <a class="el" href="entry__publisher_8cpp_source.html#l00064">64</a> of file <a class="el" href="entry__publisher_8cpp_source.html">entry_publisher.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry__publisher_8cpp_source.html#l00063">63</a> of file <a class="el" href="entry__publisher_8cpp_source.html">entry_publisher.cpp</a>.</p>
 
 </div>
 </div>
@@ -234,7 +227,7 @@ Public Member Functions</h2></td></tr>
 
 <p>Implements <a class="el" href="classkaco_1_1Publisher.html#a2343f390c6fda8b0a890c51a4c6e4796">kaco::Publisher</a>.</p>
 
-<p>Definition at line <a class="el" href="entry__publisher_8cpp_source.html#l00101">101</a> of file <a class="el" href="entry__publisher_8cpp_source.html">entry_publisher.cpp</a>.</p>
+<p>Definition at line <a class="el" href="entry__publisher_8cpp_source.html#l00100">100</a> of file <a class="el" href="entry__publisher_8cpp_source.html">entry_publisher.cpp</a>.</p>
 
 </div>
 </div>
@@ -245,7 +238,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

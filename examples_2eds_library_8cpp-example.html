@@ -115,10 +115,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="preprocessor">#include &quot;logger.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;eds_library.h&quot;</span></div>
 <div class="line"></div>
-<div class="line"><span class="preprocessor">#include &lt;tuple&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> print_dictionary(<span class="keyword">const</span> std::map&lt;std::string, kaco::Entry&gt;&amp; map) {</div>
+<div class="line"><span class="keywordtype">void</span> print_dictionary(<span class="keyword">const</span> std::unordered_map&lt;kaco::Address, kaco::Entry&gt;&amp; map) {</div>
 <div class="line"></div>
 <div class="line">    PRINT(<span class="stringliteral">&quot;\nHere is the dictionary:&quot;</span>);</div>
 <div class="line"></div>
@@ -143,8 +143,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    PRINT(<span class="stringliteral">&quot;This example loads dictionaries from the EDS library.&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">    std::map&lt;std::string, kaco::Entry&gt; map;</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a> library(map);</div>
+<div class="line">    std::unordered_map&lt;kaco::Address, kaco::Entry&gt; dictionary;</div>
+<div class="line">    std::unordered_map&lt;std::string, kaco::Address&gt; name_to_address;</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a> library(dictionary, name_to_address);</div>
 <div class="line">    <span class="keywordtype">bool</span> success = library.lookup_library();</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (!success) {</div>
@@ -156,16 +157,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">if</span> (!success) {</div>
 <div class="line">        ERROR(<span class="stringliteral">&quot;load_default_eds(402) failed.&quot;</span>);</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
-<div class="line">        print_dictionary(map);</div>
+<div class="line">        print_dictionary(dictionary);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// This should fail.</span></div>
-<div class="line">    map.clear();</div>
+<div class="line">    dictionary.clear();</div>
+<div class="line">    name_to_address.clear();</div>
 <div class="line">    success = library.load_default_eds(405);</div>
 <div class="line">    <span class="keywordflow">if</span> (!success) {</div>
 <div class="line">        ERROR(<span class="stringliteral">&quot;load_default_eds(405) failed.&quot;</span>);</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
-<div class="line">        print_dictionary(map);</div>
+<div class="line">        print_dictionary(dictionary);</div>
 <div class="line">    }</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
@@ -174,7 +176,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

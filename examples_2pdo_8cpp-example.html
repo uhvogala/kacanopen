@@ -160,21 +160,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keyword">const</span> <span class="keyword">auto</span> node_id = device.<a class="code" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">get_node_id</a>();</div>
 <div class="line">    <span class="comment">// device.start(); // already started</span></div>
 <div class="line"></div>
-<div class="line">    success = device.<a name="a8"></a><a class="code" href="classkaco_1_1Device.html#a64fba4fc4667aace14f4f7520cf058b1">load_dictionary_from_library</a>();</div>
-<div class="line">    <span class="keywordflow">if</span> (!success) {</div>
-<div class="line">        ERROR(<span class="stringliteral">&quot;Specializing device failed.&quot;</span>);</div>
-<div class="line">        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line">    }</div>
+<div class="line">    device.<a name="a8"></a><a class="code" href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">load_dictionary_from_library</a>();</div>
 <div class="line"></div>
-<div class="line">    DUMP(device.<a name="a9"></a><a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Manufacturer device name&quot;</span>));</div>
+<div class="line">    DUMP(device.<a name="a9"></a><a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;Manufacturer device name&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// TODO: first configure PDO on device side?</span></div>
 <div class="line"></div>
-<div class="line">    device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x180+node_id, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0, 0); <span class="comment">// offset 0,</span></div>
-<div class="line">    device.<a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x180+node_id, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1, 0); <span class="comment">// offset 1</span></div>
+<div class="line">    device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x180+node_id, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0); <span class="comment">// offset 0,</span></div>
+<div class="line">    device.<a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x180+node_id, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1); <span class="comment">// offset 1</span></div>
 <div class="line">    </div>
 <div class="line">    <span class="comment">// transmit PDO on change</span></div>
-<div class="line">    device.<a name="a11"></a><a class="code" href="classkaco_1_1Device.html#aae404dcf7b86dd97b1fb1f389688525b">add_transmit_pdo_mapping</a>(0x200+node_id, {{<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, 0, 0}}); <span class="comment">// offset 0</span></div>
+<div class="line">    device.<a name="a11"></a><a class="code" href="classkaco_1_1Device.html#aae404dcf7b86dd97b1fb1f389688525b">add_transmit_pdo_mapping</a>(0x200+node_id, {{<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, 0}}); <span class="comment">// offset 0</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// transmit PDO every 500ms</span></div>
 <div class="line">    <span class="comment">//device.add_transmit_pdo_mapping(0x20A, {{&quot;write_output&quot;, 0, 0, 0}}, kaco::TransmissionType::PERIODIC, std::chrono::milliseconds(500));</span></div>
@@ -182,12 +178,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keywordflow">for</span> (uint8_t i=0; i&lt;10; ++i) {</div>
 <div class="line"></div>
 <div class="line">        PRINT(<span class="stringliteral">&quot;Set output to 0x&quot;</span>&lt;&lt;std::hex&lt;&lt;i&lt;&lt;<span class="stringliteral">&quot; (via cache!) and wait 1 second&quot;</span>);</div>
-<div class="line">        device.<a name="a12"></a><a class="code" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, i, 0, kaco::WriteAccessMethod::cache);</div>
+<div class="line">        device.<a name="a12"></a><a class="code" href="classkaco_1_1Device.html#a698efb893d6032ee700654c0cd82e710">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, i, kaco::WriteAccessMethod::cache);</div>
 <div class="line">        std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
-<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>,0,kaco::ReadAccessMethod::cache));</div>
-<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>,0,kaco::ReadAccessMethod::cache));</div>
-<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>,0,kaco::ReadAccessMethod::cache));</div>
+<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>,kaco::ReadAccessMethod::cache));</div>
+<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>,kaco::ReadAccessMethod::cache));</div>
+<div class="line">        DUMP_HEX(device.<a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>,kaco::ReadAccessMethod::cache));</div>
 <div class="line"></div>
 <div class="line">    }</div>
 <div class="line"></div>
@@ -195,7 +191,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

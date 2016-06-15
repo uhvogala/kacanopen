@@ -100,7 +100,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#aba9966408d2db59c77e858546410421c">repeat_time</a></td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a04ead930acc24bf8531a3894e23de854">send</a>() const </td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#aeddc5fa839602f52532a89adbd8c2152">transmission_type</a></td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a0b9e5f5f7aaab5b2c94f6f3337abef89">TransmitPDOMapping</a>(Core &amp;core, const std::map&lt; std::string, Entry &gt; &amp;dictionary, uint16_t cob_id_, TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector&lt; Mapping &gt; &amp;mappings_)</td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#afcd0382ee7df36d91bdded8cc7623504">TransmitPDOMapping</a>(Core &amp;core, const std::unordered_map&lt; Address, Entry &gt; &amp;dictionary, const std::unordered_map&lt; std::string, Address &gt; &amp;name_to_address, uint16_t cob_id_, TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector&lt; Mapping &gt; &amp;mappings_)</td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a5bea2a61c808fa4fd0e62c995a4b3bd6">TransmitPDOMapping</a>(const TransmitPDOMapping &amp;)=delete</td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#ac06a4fbf79d37ec8bc657e0c571b3276">TransmitPDOMapping</a>(TransmitPDOMapping &amp;&amp;)=delete</td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a45e8cbd9a304a7fe7f1ace2a285d3c4e">transmitter</a></td><td class="entry"><a class="el" href="classkaco_1_1TransmitPDOMapping.html">kaco::TransmitPDOMapping</a></td><td class="entry"></td></tr>
@@ -108,7 +108,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

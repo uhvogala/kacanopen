@@ -161,13 +161,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">        <a name="_a7"></a><a class="code" href="classkaco_1_1Device.html">kaco::Device</a>&amp; device = master.<a name="a8"></a><a class="code" href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">get_device</a>(i);</div>
 <div class="line">        device.<a name="a9"></a><a class="code" href="classkaco_1_1Device.html#a4da9e38f519e6351bab7ee1f4bb5525a">start</a>();</div>
 <div class="line"></div>
-<div class="line">        <span class="keywordflow">if</span> (!device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#a64fba4fc4667aace14f4f7520cf058b1">load_dictionary_from_library</a>()) {</div>
-<div class="line">            ERROR(<span class="stringliteral">&quot;No suitable EDS file found for this device.&quot;</span>);</div>
-<div class="line">            <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line">        }</div>
+<div class="line">        device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">load_dictionary_from_library</a>();</div>
 <div class="line"></div>
 <div class="line">        <span class="keyword">const</span> <span class="keyword">auto</span> profile = device.<a name="a11"></a><a class="code" href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">get_device_profile_number</a>();</div>
-<div class="line">        PRINT(<span class="stringliteral">&quot;Found CiA &quot;</span>&lt;&lt;std::dec&lt;&lt;(<span class="keywordtype">unsigned</span>)profile&lt;&lt;<span class="stringliteral">&quot; device with node ID &quot;</span>&lt;&lt;device.<a name="a12"></a><a class="code" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">get_node_id</a>()&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;device.<a name="a13"></a><a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;manufacturer_device_name&quot;</span>));</div>
+<div class="line">        PRINT(<span class="stringliteral">&quot;Found CiA &quot;</span>&lt;&lt;std::dec&lt;&lt;(<span class="keywordtype">unsigned</span>)profile&lt;&lt;<span class="stringliteral">&quot; device with node ID &quot;</span>&lt;&lt;device.<a name="a12"></a><a class="code" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef">get_node_id</a>()&lt;&lt;<span class="stringliteral">&quot;: &quot;</span>&lt;&lt;device.<a name="a13"></a><a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;manufacturer_device_name&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">        <span class="keywordflow">if</span> (profile==401) {</div>
 <div class="line"></div>
@@ -176,11 +173,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">            <span class="comment">// TODO: we should determine the number of input / output bytes fiŕst.</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// map PDOs (optional)</span></div>
-<div class="line">            device.<a name="a14"></a><a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0); <span class="comment">// offest 0</span></div>
-<div class="line">            device.<a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1); <span class="comment">// offset 1</span></div>
+<div class="line">            device.<a name="a14"></a><a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0); <span class="comment">// offest 0</span></div>
+<div class="line">            device.<a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1); <span class="comment">// offset 1</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// set some output (optional)</span></div>
-<div class="line">            device.<a name="a15"></a><a class="code" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, (uint8_t) 0xFF, 0);</div>
+<div class="line">            device.<a name="a15"></a><a class="code" href="classkaco_1_1Device.html#a698efb893d6032ee700654c0cd82e710">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, (uint8_t) 0xFF);</div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// create a publisher for reading second 8-bit input and add it to the bridge</span></div>
 <div class="line">            <span class="comment">// communication via POD</span></div>
@@ -197,7 +194,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">            found = <span class="keyword">true</span>;</div>
 <div class="line"></div>
 <div class="line">            PRINT(<span class="stringliteral">&quot;Set position mode&quot;</span>);</div>
-<div class="line">            device.<a class="code" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad">set_entry</a>(<span class="stringliteral">&quot;modes_of_operation&quot;</span>, device.<a name="a18"></a><a class="code" href="classkaco_1_1Device.html#ac8badd7c12208ebc46e6bd15914d338e">get_constant</a>(<span class="stringliteral">&quot;profile_position_mode&quot;</span>));</div>
+<div class="line">            device.<a class="code" href="classkaco_1_1Device.html#a698efb893d6032ee700654c0cd82e710">set_entry</a>(<span class="stringliteral">&quot;modes_of_operation&quot;</span>, device.<a name="a18"></a><a class="code" href="classkaco_1_1Device.html#ac8badd7c12208ebc46e6bd15914d338e">get_constant</a>(<span class="stringliteral">&quot;profile_position_mode&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">            PRINT(<span class="stringliteral">&quot;Enable operation&quot;</span>);</div>
 <div class="line">            device.<a name="a19"></a><a class="code" href="classkaco_1_1Device.html#af84e983eccacce0217eac6f2a3c34842">execute</a>(<span class="stringliteral">&quot;enable_operation&quot;</span>);</div>
@@ -205,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">            <span class="comment">// TODO: target_position should be mapped to a PDO</span></div>
 <div class="line"></div>
 <div class="line">            <span class="comment">// HACK</span></div>
-<div class="line">            <span class="keywordflow">if</span> (static_cast&lt;std::string&gt;(device.<a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;manufacturer_device_name&quot;</span>)).substr(0, 11) == <span class="stringliteral">&quot;SCHUNK ERBo&quot;</span>) {</div>
+<div class="line">            <span class="keywordflow">if</span> (static_cast&lt;std::string&gt;(device.<a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;manufacturer_device_name&quot;</span>)).substr(0, 11) == <span class="stringliteral">&quot;SCHUNK ERBo&quot;</span>) {</div>
 <div class="line">                PRINT(<span class="stringliteral">&quot;Creating special Schunk JointStatePublisher&quot;</span>);</div>
 <div class="line">                <span class="keyword">auto</span> jspub = std::make_shared&lt;kaco::JointStatePublisher&gt;(device, 0, 350000, <span class="stringliteral">&quot;Position actual value in user unit&quot;</span>);</div>
 <div class="line">                bridge.<a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">add_publisher</a>(jspub, loop_rate);</div>
@@ -232,7 +229,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

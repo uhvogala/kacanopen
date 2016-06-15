@@ -111,9 +111,9 @@ Collaboration diagram for kaco::TransmitPDOMapping:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0b9e5f5f7aaab5b2c94f6f3337abef89"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a0b9e5f5f7aaab5b2c94f6f3337abef89">TransmitPDOMapping</a> (<a class="el" href="classkaco_1_1Core.html">Core</a> &amp;core, const std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;dictionary, uint16_t cob_id_, TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt; &amp;mappings_)</td></tr>
-<tr class="memdesc:a0b9e5f5f7aaab5b2c94f6f3337abef89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a0b9e5f5f7aaab5b2c94f6f3337abef89">More...</a><br /></td></tr>
-<tr class="separator:a0b9e5f5f7aaab5b2c94f6f3337abef89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcd0382ee7df36d91bdded8cc7623504"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#afcd0382ee7df36d91bdded8cc7623504">TransmitPDOMapping</a> (<a class="el" href="classkaco_1_1Core.html">Core</a> &amp;core, const std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;dictionary, const std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;name_to_address, uint16_t cob_id_, TransmissionType transmission_type_, std::chrono::milliseconds repeat_time_, const std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt; &amp;mappings_)</td></tr>
+<tr class="memdesc:afcd0382ee7df36d91bdded8cc7623504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#afcd0382ee7df36d91bdded8cc7623504">More...</a><br /></td></tr>
+<tr class="separator:afcd0382ee7df36d91bdded8cc7623504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5bea2a61c808fa4fd0e62c995a4b3bd6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5bea2a61c808fa4fd0e62c995a4b3bd6"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1TransmitPDOMapping.html#a5bea2a61c808fa4fd0e62c995a4b3bd6">TransmitPDOMapping</a> (const <a class="el" href="classkaco_1_1TransmitPDOMapping.html">TransmitPDOMapping</a> &amp;)=delete</td></tr>
 <tr class="memdesc:a5bea2a61c808fa4fd0e62c995a4b3bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor deleted. <br /></td></tr>
@@ -156,9 +156,9 @@ std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt;
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents a mapping from one or more dictionary entries to one transmit <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a>, which will be sent by an instance of this class repeatedly. </p>
 
-<p>Definition at line <a class="el" href="transmit__pdo__mapping_8h_source.html#l00053">53</a> of file <a class="el" href="transmit__pdo__mapping_8h_source.html">transmit_pdo_mapping.h</a>.</p>
+<p>Definition at line <a class="el" href="transmit__pdo__mapping_8h_source.html#l00054">54</a> of file <a class="el" href="transmit__pdo__mapping_8h_source.html">transmit_pdo_mapping.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a0b9e5f5f7aaab5b2c94f6f3337abef89"></a>
+<a class="anchor" id="afcd0382ee7df36d91bdded8cc7623504"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -171,8 +171,14 @@ std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt;
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
+          <td class="paramtype">const std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
           <td class="paramname"><em>dictionary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>name_to_address</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -211,6 +217,7 @@ std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt;
   <table class="params">
     <tr><td class="paramname">core</td><td>Reference to the <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> instance (needed to send the <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a>). </td></tr>
     <tr><td class="paramname">dictionary</td><td>Reference to the object dictionary. </td></tr>
+    <tr><td class="paramname">name_to_address</td><td>Reference to name-address mapping. </td></tr>
     <tr><td class="paramname">cob_id_</td><td>COB-ID of the <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> </td></tr>
     <tr><td class="paramname">transmission_type_</td><td>Transmission type </td></tr>
     <tr><td class="paramname">repeat_time_</td><td>Send repeat time , in case transmission_type_==TransmissionType::PERIODIC </td></tr>
@@ -243,7 +250,7 @@ std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt;
 <p>The transmitter thread. </p>
 <dl class="section note"><dt>Note</dt><dd>This is a unique pointer because transmitter is optional. </dd></dl>
 
-<p>Definition at line <a class="el" href="transmit__pdo__mapping_8h_source.html#l00091">91</a> of file <a class="el" href="transmit__pdo__mapping_8h_source.html">transmit_pdo_mapping.h</a>.</p>
+<p>Definition at line <a class="el" href="transmit__pdo__mapping_8h_source.html#l00093">93</a> of file <a class="el" href="transmit__pdo__mapping_8h_source.html">transmit_pdo_mapping.h</a>.</p>
 
 </div>
 </div>
@@ -254,7 +261,7 @@ std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt;
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

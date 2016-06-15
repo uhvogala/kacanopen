@@ -1,6 +1,4 @@
 <map id="kaco::Entry" name="kaco::Entry">
-<area shape="rect" id="node2" href="$structkaco_1_1Entry_1_1VariableTag.html" title="Tag class for distinguishing constructors. " alt="" coords="5,99,171,125"/>
-<area shape="rect" id="node3" title="STL class. " alt="" coords="195,99,273,125"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="171,6,297,47"/>
-<area shape="rect" id="node5" href="$structkaco_1_1Entry_1_1ArrayTag.html" title="Tag class for distinguishing constructors. " alt="" coords="299,99,449,125"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="28,99,107,125"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,6,131,47"/>
 </map>

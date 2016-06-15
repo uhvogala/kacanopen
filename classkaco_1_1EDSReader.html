@@ -96,16 +96,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>This class allows reading EDS files (like standardized in CiA 306) and inserting all contained entries into a dictionary of type std::map&lt;std::string, Entry&gt;. It makes use of Boost's property_tree class.  
+<p>This class allows reading EDS files (like standardized in CiA 306) and inserting all contained entries into a dictionary of type std::unordered_map&lt;Address, Entry&gt; and a map std::unordered_map&lt;std::string, Address&gt; It makes use of Boost's property_tree class.  
  <a href="classkaco_1_1EDSReader.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="eds__reader_8h_source.html">eds_reader.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7ccabb78a63e20c879560c57774b156c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSReader.html#a7ccabb78a63e20c879560c57774b156c">EDSReader</a> (std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;target)</td></tr>
-<tr class="memdesc:a7ccabb78a63e20c879560c57774b156c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a7ccabb78a63e20c879560c57774b156c">More...</a><br /></td></tr>
-<tr class="separator:a7ccabb78a63e20c879560c57774b156c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c7ec2257b82fc502cbb3b9d6847e693"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSReader.html#a8c7ec2257b82fc502cbb3b9d6847e693">EDSReader</a> (std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;dictionary, std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;name_to_address)</td></tr>
+<tr class="memdesc:a8c7ec2257b82fc502cbb3b9d6847e693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a8c7ec2257b82fc502cbb3b9d6847e693">More...</a><br /></td></tr>
+<tr class="separator:a8c7ec2257b82fc502cbb3b9d6847e693"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4fddd9036dc11f7a8812b0dd05533435"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSReader.html#a4fddd9036dc11f7a8812b0dd05533435">load_file</a> (std::string filename)</td></tr>
 <tr class="memdesc:a4fddd9036dc11f7a8812b0dd05533435"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads an EDS file from file system.  <a href="#a4fddd9036dc11f7a8812b0dd05533435">More...</a><br /></td></tr>
 <tr class="separator:a4fddd9036dc11f7a8812b0dd05533435"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,21 +114,31 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a235b013dba934087b1d60ca4b9d09d71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class allows reading EDS files (like standardized in CiA 306) and inserting all contained entries into a dictionary of type std::map&lt;std::string, Entry&gt;. It makes use of Boost's property_tree class. </p>
+<div class="textblock"><p>This class allows reading EDS files (like standardized in CiA 306) and inserting all contained entries into a dictionary of type std::unordered_map&lt;Address, Entry&gt; and a map std::unordered_map&lt;std::string, Address&gt; It makes use of Boost's property_tree class. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2eds_reader_8cpp-example.html#_a0">examples/eds_reader.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="eds__reader_8h_source.html#l00049">49</a> of file <a class="el" href="eds__reader_8h_source.html">eds_reader.h</a>.</p>
+<p>Definition at line <a class="el" href="eds__reader_8h_source.html#l00050">50</a> of file <a class="el" href="eds__reader_8h_source.html">eds_reader.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7ccabb78a63e20c879560c57774b156c"></a>
+<a class="anchor" id="a8c7ec2257b82fc502cbb3b9d6847e693"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">kaco::EDSReader::EDSReader </td>
           <td>(</td>
-          <td class="paramtype">std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>target</em></td><td>)</td>
+          <td class="paramtype">std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dictionary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>name_to_address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -136,12 +146,13 @@ Public Member Functions</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">target</td><td>The dictionary, into which entries should be inserted. </td></tr>
+    <tr><td class="paramname">dictionary</td><td>The dictionary, into which entries should be inserted. </td></tr>
+    <tr><td class="paramname">name_to_address</td><td><a class="el" href="structkaco_1_1Mapping.html" title="This struct represents one mapped entry inside a TransmitPDOMapping. ">Mapping</a> from name to address in dictionary (to be created). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00049">49</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00050">50</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -163,7 +174,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2eds_reader_8cpp-example.html#a2">examples/eds_reader.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00066">66</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00067">67</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -185,7 +196,7 @@ Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2eds_reader_8cpp-example.html#a1">examples/eds_reader.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00053">53</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__reader_8cpp_source.html#l00054">54</a> of file <a class="el" href="master_2src_2eds__reader_8cpp_source.html">eds_reader.cpp</a>.</p>
 
 </div>
 </div>
@@ -196,7 +207,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

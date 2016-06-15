@@ -133,9 +133,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4da9e38f519e6351bab7ee1f4bb5525a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a4da9e38f519e6351bab7ee1f4bb5525a">start</a> ()</td></tr>
 <tr class="memdesc:a4da9e38f519e6351bab7ee1f4bb5525a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the node via <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> protocol and loads mandatory entries, operations, and constants.  <a href="#a4da9e38f519e6351bab7ee1f4bb5525a">More...</a><br /></td></tr>
 <tr class="separator:a4da9e38f519e6351bab7ee1f4bb5525a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64fba4fc4667aace14f4f7520cf058b1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a64fba4fc4667aace14f4f7520cf058b1">load_dictionary_from_library</a> ()</td></tr>
-<tr class="memdesc:a64fba4fc4667aace14f4f7520cf058b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to load the most specific EDS file available in KaCanOpen's internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301.  <a href="#a64fba4fc4667aace14f4f7520cf058b1">More...</a><br /></td></tr>
-<tr class="separator:a64fba4fc4667aace14f4f7520cf058b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadcbcc5f22aab1b65a7e18dc13593108"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">load_dictionary_from_library</a> ()</td></tr>
+<tr class="memdesc:aadcbcc5f22aab1b65a7e18dc13593108"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to load the most specific EDS file available in KaCanOpen's internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301.  <a href="#aadcbcc5f22aab1b65a7e18dc13593108">More...</a><br /></td></tr>
+<tr class="separator:aadcbcc5f22aab1b65a7e18dc13593108"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae872983a9ce91fe5fc0656581fa5d01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aae872983a9ce91fe5fc0656581fa5d01">load_dictionary_from_eds</a> (std::string path)</td></tr>
 <tr class="memdesc:aae872983a9ce91fe5fc0656581fa5d01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the dictionary from a custom EDS file.  <a href="#aae872983a9ce91fe5fc0656581fa5d01">More...</a><br /></td></tr>
 <tr class="separator:aae872983a9ce91fe5fc0656581fa5d01"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -157,15 +157,30 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a8cfcb1203f68dec2226105b964a068dc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a8cfcb1203f68dec2226105b964a068dc">has_entry</a> (const std::string &amp;entry_name)</td></tr>
 <tr class="memdesc:a8cfcb1203f68dec2226105b964a068dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the entry is contained in the device dictionary.  <a href="#a8cfcb1203f68dec2226105b964a068dc">More...</a><br /></td></tr>
 <tr class="separator:a8cfcb1203f68dec2226105b964a068dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae025b896174bde60d9111244512c97e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aae025b896174bde60d9111244512c97e">has_entry</a> (const uint16_t index, const uint8_t subindex=0)</td></tr>
+<tr class="memdesc:aae025b896174bde60d9111244512c97e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the entry is contained in the device dictionary.  <a href="#aae025b896174bde60d9111244512c97e">More...</a><br /></td></tr>
+<tr class="separator:aae025b896174bde60d9111244512c97e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaaca32ec0a8fc95e4230e892f468f3b0"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aaaca32ec0a8fc95e4230e892f468f3b0">get_entry_type</a> (const std::string &amp;entry_name)</td></tr>
 <tr class="memdesc:aaaca32ec0a8fc95e4230e892f468f3b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of a dictionary entry identified by name as it is defined in the local dictionary.  <a href="#aaaca32ec0a8fc95e4230e892f468f3b0">More...</a><br /></td></tr>
 <tr class="separator:aaaca32ec0a8fc95e4230e892f468f3b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5602593cc6999cfe2282499cbd0971a5"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a> (const std::string &amp;entry_name, uint8_t array_index=0, ReadAccessMethod access_method=ReadAccessMethod::use_default)</td></tr>
-<tr class="memdesc:a5602593cc6999cfe2282499cbd0971a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on request, the new value is fetched from the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. Otherwise it returns the cached value. This makes sense, if a Reveive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry.  <a href="#a5602593cc6999cfe2282499cbd0971a5">More...</a><br /></td></tr>
-<tr class="separator:a5602593cc6999cfe2282499cbd0971a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaba3e8cd8a74bc11d12c4cb1fe126ad"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad">set_entry</a> (const std::string &amp;entry_name, const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value, uint8_t array_index=0, WriteAccessMethod access_method=WriteAccessMethod::use_default)</td></tr>
-<tr class="memdesc:aeaba3e8cd8a74bc11d12c4cb1fe126ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of a dictionary entry by name internally. If the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on update, the new value is also sent to the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. If a <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry, it will from now on use the new value stored internally.  <a href="#aeaba3e8cd8a74bc11d12c4cb1fe126ad">More...</a><br /></td></tr>
-<tr class="separator:aeaba3e8cd8a74bc11d12c4cb1fe126ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab834ce306242bf22171850d616eba1f3"><td class="memItemLeft" align="right" valign="top">Type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#ab834ce306242bf22171850d616eba1f3">get_entry_type</a> (const uint16_t index, const uint8_t subindex=0)</td></tr>
+<tr class="memdesc:ab834ce306242bf22171850d616eba1f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the type of a dictionary entry identified by name as it is defined in the local dictionary.  <a href="#ab834ce306242bf22171850d616eba1f3">More...</a><br /></td></tr>
+<tr class="separator:ab834ce306242bf22171850d616eba1f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4645afaaf2d9b2847147ff72f7d0aa41"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a> (const std::string &amp;entry_name, const ReadAccessMethod access_method=ReadAccessMethod::use_default)</td></tr>
+<tr class="memdesc:a4645afaaf2d9b2847147ff72f7d0aa41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on request, the new value is fetched from the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. Otherwise it returns the cached value. This makes sense, if a Reveive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry.  <a href="#a4645afaaf2d9b2847147ff72f7d0aa41">More...</a><br /></td></tr>
+<tr class="separator:a4645afaaf2d9b2847147ff72f7d0aa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3164b0976ccc4f060c0cd9ce01234e55"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a3164b0976ccc4f060c0cd9ce01234e55">get_entry</a> (const uint16_t index, const uint8_t subindex=0, const ReadAccessMethod access_method=ReadAccessMethod::use_default)</td></tr>
+<tr class="memdesc:a3164b0976ccc4f060c0cd9ce01234e55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on request, the new value is fetched from the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. Otherwise it returns the cached value. This makes sense, if a Reveive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry.  <a href="#a3164b0976ccc4f060c0cd9ce01234e55">More...</a><br /></td></tr>
+<tr class="separator:a3164b0976ccc4f060c0cd9ce01234e55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a698efb893d6032ee700654c0cd82e710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a698efb893d6032ee700654c0cd82e710">set_entry</a> (const std::string &amp;entry_name, const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value, const WriteAccessMethod access_method=WriteAccessMethod::use_default)</td></tr>
+<tr class="memdesc:a698efb893d6032ee700654c0cd82e710"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of a dictionary entry by name internally. If the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on update, the new value is also sent to the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. If a <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry, it will from now on use the new value stored internally.  <a href="#a698efb893d6032ee700654c0cd82e710">More...</a><br /></td></tr>
+<tr class="separator:a698efb893d6032ee700654c0cd82e710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65337737a405400b25da6a3118d04203"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a65337737a405400b25da6a3118d04203">set_entry</a> (const uint16_t index, const uint8_t subindex, const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value, const WriteAccessMethod access_method=WriteAccessMethod::use_default)</td></tr>
+<tr class="memdesc:a65337737a405400b25da6a3118d04203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of a dictionary entry by name internally. If the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on update, the new value is also sent to the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. If a <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry, it will from now on use the new value stored internally.  <a href="#a65337737a405400b25da6a3118d04203">More...</a><br /></td></tr>
+<tr class="separator:a65337737a405400b25da6a3118d04203"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80da4d5b2c50caabdb7b2ed9997f6b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a80da4d5b2c50caabdb7b2ed9997f6b7f">add_entry</a> (const uint16_t index, const uint8_t subindex, const std::string &amp;name, const Type type, const AccessType access_type)</td></tr>
+<tr class="memdesc:a80da4d5b2c50caabdb7b2ed9997f6b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an entry to the dictionary. You have to take care that exactly this entry exists on the device for yourself!  <a href="#a80da4d5b2c50caabdb7b2ed9997f6b7f">More...</a><br /></td></tr>
+<tr class="separator:a80da4d5b2c50caabdb7b2ed9997f6b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89735b2ce6e84a5b95a48252bf5cca3f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">get_device_profile_number</a> ()</td></tr>
 <tr class="memdesc:a89735b2ce6e84a5b95a48252bf5cca3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the CiA profile number.  <a href="#a89735b2ce6e84a5b95a48252bf5cca3f">More...</a><br /></td></tr>
 <tr class="separator:a89735b2ce6e84a5b95a48252bf5cca3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -175,9 +190,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ac8badd7c12208ebc46e6bd15914d338e"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#ac8badd7c12208ebc46e6bd15914d338e">get_constant</a> (const std::string &amp;constant_name) const </td></tr>
 <tr class="memdesc:ac8badd7c12208ebc46e6bd15914d338e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns a constant. It must exist due to a previous <a class="el" href="classkaco_1_1Device.html#a95f671e8bc90bc94824b59766fd83af4" title="Loads constants associated with the device profile. ">load_constants()</a> or <a class="el" href="classkaco_1_1Device.html#a1d68ab02a9d63af513d3b6613c98bafd" title="Adds a constant. ">add_constant()</a> call.  <a href="#ac8badd7c12208ebc46e6bd15914d338e">More...</a><br /></td></tr>
 <tr class="separator:ac8badd7c12208ebc46e6bd15914d338e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16219865002f3dda93a2ea16e791d691"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a> (uint16_t cob_id, const std::string &amp;entry_name, uint8_t offset, uint8_t array_index=0)</td></tr>
-<tr class="memdesc:a16219865002f3dda93a2ea16e791d691"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a receive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> mapping. This means values sent by the device via <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> are saved into the dictionary cache.  <a href="#a16219865002f3dda93a2ea16e791d691">More...</a><br /></td></tr>
-<tr class="separator:a16219865002f3dda93a2ea16e791d691"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2aad4ba19ee1554ae8bda02b43769c0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a> (uint16_t cob_id, const std::string &amp;entry_name, uint8_t offset)</td></tr>
+<tr class="memdesc:ac2aad4ba19ee1554ae8bda02b43769c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a receive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> mapping. This means values sent by the device via <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> are saved into the dictionary cache.  <a href="#ac2aad4ba19ee1554ae8bda02b43769c0">More...</a><br /></td></tr>
+<tr class="separator:ac2aad4ba19ee1554ae8bda02b43769c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae404dcf7b86dd97b1fb1f389688525b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#aae404dcf7b86dd97b1fb1f389688525b">add_transmit_pdo_mapping</a> (uint16_t cob_id, const std::vector&lt; <a class="el" href="structkaco_1_1Mapping.html">Mapping</a> &gt; &amp;mappings, TransmissionType transmission_type=TransmissionType::ON_CHANGE, std::chrono::milliseconds repeat_time=std::chrono::milliseconds(0))</td></tr>
 <tr class="memdesc:aae404dcf7b86dd97b1fb1f389688525b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a transmit <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> mapping. This means values from the dictionary cache are sent to the device.  <a href="#aae404dcf7b86dd97b1fb1f389688525b">More...</a><br /></td></tr>
 <tr class="separator:aae404dcf7b86dd97b1fb1f389688525b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,13 +204,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a7194db502148640db62048b422d29488">read_complete_dictionary</a> ()</td></tr>
 <tr class="memdesc:a7194db502148640db62048b422d29488"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches all dictionary entries from the device. Afterwards, all values exist in cache and can for example be printed via <a class="el" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789" title="Prints the dictionary together with currently cached values to command line. ">print_dictionary()</a>. <br /></td></tr>
 <tr class="separator:a7194db502148640db62048b422d29488"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr><td colspan="2"><div class="groupHeader">(3) Methods which only access Core</div></td></tr>
-<tr class="memitem:a0a4e798551d56c6115621b9e5482c73d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structkaco_1_1Value.html">Value</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#a0a4e798551d56c6115621b9e5482c73d">get_entry_via_sdo</a> (uint32_t index, uint8_t subindex, Type type)</td></tr>
-<tr class="memdesc:a0a4e798551d56c6115621b9e5482c73d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the value of a dictionary entry by index via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> It does not change the corresponding internal value and therefore the new value cannot be used by Transmit PDOs.  <a href="#a0a4e798551d56c6115621b9e5482c73d">More...</a><br /></td></tr>
-<tr class="separator:a0a4e798551d56c6115621b9e5482c73d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad31582d7f70db8d9fa98d8a32ecd5081"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Device.html#ad31582d7f70db8d9fa98d8a32ecd5081">set_entry_via_sdo</a> (uint32_t index, uint8_t subindex, const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;value)</td></tr>
-<tr class="memdesc:ad31582d7f70db8d9fa98d8a32ecd5081"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the value of a dictionary entry by index via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> It does not change the corresponding internal value and therefore the new value cannot be used by Transmit PDOs.  <a href="#ad31582d7f70db8d9fa98d8a32ecd5081">More...</a><br /></td></tr>
-<tr class="separator:ad31582d7f70db8d9fa98d8a32ecd5081"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class represents a CanOpen slave device in the network. </p>
@@ -205,7 +213,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <p>There are three classes of methods:</p>
 <p>(1) Methods which manipulate the dictionary structure</p>
 <p>(2) Methods which access dictionary entries</p>
-<p>(3) Methods which only access <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a></p>
+<p>(3) Methods which only access <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> (private)</p>
 <p>Methods in (3) as well as <a class="el" href="classkaco_1_1Device.html#aee57e882584ccf70748ae906c71af2ef" title="Returns the node ID of the device. ">get_node_id()</a> are always thread-safe.</p>
 <p>Methods in (2) are thread-safe if they are not intermixed with methods in (1).</p>
 <p>Methods in (1) should be run in sequence before accessing dictionary entries (group 2). </p>
@@ -251,7 +259,71 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a16219865002f3dda93a2ea16e791d691"></a>
+<a class="anchor" id="a80da4d5b2c50caabdb7b2ed9997f6b7f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::Device::add_entry </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>subindex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const Type&#160;</td>
+          <td class="paramname"><em>type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const AccessType&#160;</td>
+          <td class="paramname"><em>access_type</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Adds an entry to the dictionary. You have to take care that exactly this entry exists on the device for yourself! </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index </td></tr>
+    <tr><td class="paramname">subindex</td><td>Sub-index </td></tr>
+    <tr><td class="paramname">name</td><td>Name </td></tr>
+    <tr><td class="paramname">type</td><td>Data type </td></tr>
+    <tr><td class="paramname">access_type</td><td>Access rights </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1canopen__error.html" title="This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. ">canopen_error</a></td><td>if entry with this name or index already exists. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00150">150</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2aad4ba19ee1554ae8bda02b43769c0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -271,13 +343,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>offset</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>array_index</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>offset</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -293,19 +359,19 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
     <tr><td class="paramname">cob_id</td><td>COB-ID of the <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> </td></tr>
     <tr><td class="paramname">entry_name</td><td>Name of the dictionary entry </td></tr>
     <tr><td class="paramname">offset</td><td>index of the first mapped byte in the <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> message </td></tr>
-    <tr><td class="paramname">array_index</td><td>Optional array index. Use 0 if the entry is no array. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name, or array_index!=0 for a non-array entry. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000019">Todo:</a></b></dt><dd>Add index/subindex overload? </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a10">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a14">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a10">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00202">202</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00164">164</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -370,7 +436,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a11">examples/pdo.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00243">243</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00201">201</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -415,7 +481,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a19">examples/ros/motor_and_io_bridge.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00407">407</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00422">422</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -442,7 +508,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a18">examples/ros/motor_and_io_bridge.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00432">432</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00447">447</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -466,13 +532,14 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>Make this an operation? </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a6">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a11">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a7">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00317">317</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00274">274</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a5602593cc6999cfe2282499cbd0971a5"></a>
+<a class="anchor" id="a4645afaaf2d9b2847147ff72f7d0aa41"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -485,13 +552,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>array_index</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">ReadAccessMethod&#160;</td>
+          <td class="paramtype">const ReadAccessMethod&#160;</td>
           <td class="paramname"><em>access_method</em> = <code>ReadAccessMethod::use_default</code>&#160;</td>
         </tr>
         <tr>
@@ -506,24 +567,73 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">entry_name</td><td>Name of the dictionary entry </td></tr>
-    <tr><td class="paramname">array_index</td><td>Optional array index. Use 0 if the entry is no array. </td></tr>
     <tr><td class="paramname">access_method</td><td>Method of value retrival </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name, or array_index!=0 for a non-array entry. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name. </td></tr>
     <tr><td class="paramname"><a class="el" href="classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO...">sdo_error</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd><p class="startdd">check access_type from dictionary </p>
-<p class="enddd">Overload with index+subindex. </p>
-</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo:</a></b></dt><dd>check access_type from dictionary </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a9">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a13">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a9">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00108">108</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00103">103</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3164b0976ccc4f060c0cd9ce01234e55"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp; kaco::Device::get_entry </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>subindex</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ReadAccessMethod&#160;</td>
+          <td class="paramname"><em>access_method</em> = <code>ReadAccessMethod::use_default</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on request, the new value is fetched from the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. Otherwise it returns the cached value. This makes sense, if a Reveive <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index of the dictionary entry. </td></tr>
+    <tr><td class="paramname">subindex</td><td>Sub-index of the dictionary entry. Default is zero. </td></tr>
+    <tr><td class="paramname">access_method</td><td>Method of value retrival </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO...">sdo_error</a></td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000015">Todo:</a></b></dt><dd>check access_type from dictionary </dd></dl>
+
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00112">112</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,35 +664,27 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd><p class="startdd">Missing array_index argument. </p>
-<p class="enddd">Overload with index+subindex. </p>
-</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Overload with index+subindex. </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00135">135</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00088">88</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0a4e798551d56c6115621b9e5482c73d"></a>
+<a class="anchor" id="ab834ce306242bf22171850d616eba1f3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structkaco_1_1Value.html">Value</a> kaco::Device::get_entry_via_sdo </td>
+          <td class="memname">Type kaco::Device::get_entry_type </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">const uint16_t&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>subindex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Type&#160;</td>
-          <td class="paramname"><em>type</em>&#160;</td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>subindex</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -592,24 +694,22 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
       </table>
 </div><div class="memdoc">
 
-<p>Gets the value of a dictionary entry by index via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> It does not change the corresponding internal value and therefore the new value cannot be used by Transmit PDOs. </p>
+<p>Returns the type of a dictionary entry identified by name as it is defined in the local dictionary. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>Dictionary index of the entry </td></tr>
-    <tr><td class="paramname">subindex</td><td>Subindex of the entry </td></tr>
-    <tr><td class="paramname">type</td><td>Data type of the entry </td></tr>
+    <tr><td class="paramname">index</td><td>Index of the dictionary entry. </td></tr>
+    <tr><td class="paramname">subindex</td><td>Sub-index of the dictionary entry. Default is zero. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO...">sdo_error</a></td><td></td></tr>
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00086">86</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00096">96</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -656,9 +756,47 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if entry_name is contained in the device dictionary. </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Overload with index+subindex. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Overload with index+subindex. </dd></dl>
 
 <p>Definition at line <a class="el" href="device_8cpp_source.html#l00079">79</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aae025b896174bde60d9111244512c97e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kaco::Device::has_entry </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t&#160;</td>
+          <td class="paramname"><em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t&#160;</td>
+          <td class="paramname"><em>subindex</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns true if the entry is contained in the device dictionary. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Index of the dictionary entry. </td></tr>
+    <tr><td class="paramname">subindex</td><td>Sub-index of the dictionary entry. Default is zero. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if entry_name is contained in the device dictionary. </dd></dl>
+
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00084">84</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -678,7 +816,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <p>Loads constants associated with the device profile. </p>
 <dl class="section return"><dt>Returns</dt><dd>true, if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00415">415</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00430">430</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -704,17 +842,18 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true, if successful </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>change error handling -&gt; exception </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00361">361</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00373">373</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a64fba4fc4667aace14f4f7520cf058b1"></a>
+<a class="anchor" id="aadcbcc5f22aab1b65a7e18dc13593108"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool kaco::Device::load_dictionary_from_library </td>
+          <td class="memname">void kaco::Device::load_dictionary_from_library </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -723,10 +862,15 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </div><div class="memdoc">
 
 <p>Tries to load the most specific EDS file available in KaCanOpen's internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301. </p>
-<dl class="section return"><dt>Returns</dt><dd>true, if successful </dd></dl>
+<dl class="exception"><dt>Exceptions</dt><dd>
+  <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1canopen__error.html" title="This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. ">canopen_error</a></td><td>if mandatory CiA 301 dictionary entries cannot be loaded. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2listdevices_8cpp-example.html#a7">examples/listdevices.cpp</a>, <a class="el" href="examples_2pdo_8cpp-example.html#a8">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a10">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a6">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00322">322</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00324">324</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -746,11 +890,11 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 <p>Loads convenience operations associated with the device profile. </p>
 <dl class="section return"><dt>Returns</dt><dd>true, if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00390">390</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00405">405</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aeaba3e8cd8a74bc11d12c4cb1fe126ad"></a>
+<a class="anchor" id="a698efb893d6032ee700654c0cd82e710"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -769,13 +913,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>array_index</em> = <code>0</code>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">WriteAccessMethod&#160;</td>
+          <td class="paramtype">const WriteAccessMethod&#160;</td>
           <td class="paramname"><em>access_method</em> = <code>WriteAccessMethod::use_default</code>&#160;</td>
         </tr>
         <tr>
@@ -791,48 +929,51 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
   <table class="params">
     <tr><td class="paramname">entry_name</td><td>Name of the dictionary entry </td></tr>
     <tr><td class="paramname">value</td><td>The value to write, wrapped in a <a class="el" href="structkaco_1_1Value.html" title="This class contains a value to be stored in the object dictionary. The value can have one of the type...">Value</a> object. The <a class="el" href="structkaco_1_1Value.html" title="This class contains a value to be stored in the object dictionary. The value can have one of the type...">Value</a> class has implicit cast constructors for all supported data types. </td></tr>
-    <tr><td class="paramname">array_index</td><td>Optional array index. Use 0 if the entry is no array. </td></tr>
     <tr><td class="paramname">access_method</td><td>How, where and when to write the value. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name, or array_index!=0 for a non-array entry. </td></tr>
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name. </td></tr>
     <tr><td class="paramname"><a class="el" href="classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO...">sdo_error</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo:</a></b></dt><dd><p class="startdd">check access_type from dictionary </p>
-<p class="enddd">Overload with index+subindex. </p>
-</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>check access_type from dictionary </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2pdo_8cpp-example.html#a12">examples/pdo.cpp</a>, <a class="el" href="examples_2ros_2motor_and_io_bridge_8cpp-example.html#a15">examples/ros/motor_and_io_bridge.cpp</a>, and <a class="el" href="examples_2ros_2ros_8cpp-example.html#a11">examples/ros/ros.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00170">170</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00124">124</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad31582d7f70db8d9fa98d8a32ecd5081"></a>
+<a class="anchor" id="a65337737a405400b25da6a3118d04203"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void kaco::Device::set_entry_via_sdo </td>
+          <td class="memname">void kaco::Device::set_entry </td>
           <td>(</td>
-          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramtype">const uint16_t&#160;</td>
           <td class="paramname"><em>index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramtype">const uint8_t&#160;</td>
           <td class="paramname"><em>subindex</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const <a class="el" href="structkaco_1_1Value.html">Value</a> &amp;&#160;</td>
-          <td class="paramname"><em>value</em>&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const WriteAccessMethod&#160;</td>
+          <td class="paramname"><em>access_method</em> = <code>WriteAccessMethod::use_default</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -842,24 +983,26 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
       </table>
 </div><div class="memdoc">
 
-<p>Sets the value of a dictionary entry by index via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> It does not change the corresponding internal value and therefore the new value cannot be used by Transmit PDOs. </p>
+<p>Sets the value of a dictionary entry by name internally. If the entry is configured to send an <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a> on update, the new value is also sent to the device via <a class="el" href="classkaco_1_1SDO.html" title="This class implements the CanOpen SDO protocol. ">SDO</a>. If a <a class="el" href="classkaco_1_1PDO.html" title="This class implements the CanOpen PDO protocol. ">PDO</a> is configured on the corresponding entry, it will from now on use the new value stored internally. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>Dictionary index of the entry </td></tr>
-    <tr><td class="paramname">subindex</td><td>Subindex of the entry </td></tr>
+    <tr><td class="paramname">index</td><td>Index of the dictionary entry. </td></tr>
+    <tr><td class="paramname">subindex</td><td>Sub-index of the dictionary entry. </td></tr>
     <tr><td class="paramname">value</td><td>The value to write, wrapped in a <a class="el" href="structkaco_1_1Value.html" title="This class contains a value to be stored in the object dictionary. The value can have one of the type...">Value</a> object. The <a class="el" href="structkaco_1_1Value.html" title="This class contains a value to be stored in the object dictionary. The value can have one of the type...">Value</a> class has implicit cast constructors for all supported data types. </td></tr>
+    <tr><td class="paramname">access_method</td><td>How, where and when to write the value. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="exception"><dt>Exceptions</dt><dd>
   <table class="exception">
+    <tr><td class="paramname"><a class="el" href="classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d...">dictionary_error</a></td><td>if there is no entry with the given name. </td></tr>
     <tr><td class="paramname"><a class="el" href="classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO...">sdo_error</a></td><td></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>check access_type from dictionary </dd></dl>
 
-<p>Definition at line <a class="el" href="device_8cpp_source.html#l00147">147</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
+<p>Definition at line <a class="el" href="device_8cpp_source.html#l00133">133</a> of file <a class="el" href="device_8cpp_source.html">device.cpp</a>.</p>
 
 </div>
 </div>
@@ -892,7 +1035,7 @@ device.add_transmit_pdo_mapping(0x206, {{"Controlword", 0, 0},{"Target Position"
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

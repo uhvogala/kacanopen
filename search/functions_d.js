@@ -14,7 +14,7 @@ var searchData=
   ['operator_21_3d',['operator!=',['../structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79',1,'kaco::Value']]],
   ['operator_3c',['operator&lt;',['../classkaco_1_1Entry.html#a93f4e85e1bb8f00975696961cbc95f04',1,'kaco::Entry']]],
   ['operator_3d',['operator=',['../classkaco_1_1Entry.html#a1bd67245a45734bfb490f28e25c2921f',1,'kaco::Entry::operator=(const Entry &amp;other)=delete'],['../classkaco_1_1Entry.html#a1afee46f00de49ff5eab2718c4294f0c',1,'kaco::Entry::operator=(Entry &amp;&amp;other)=default']]],
-  ['operator_3d_3d',['operator==',['../structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd',1,'kaco::Value']]],
+  ['operator_3d_3d',['operator==',['../structkaco_1_1Address.html#a83b738d30989b57ed481ff5320344016',1,'kaco::Address::operator==()'],['../structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd',1,'kaco::Value::operator==()']]],
   ['string',['string',['../structkaco_1_1Value.html#a3d2b865684b0fc0941183d7455995f74',1,'kaco::Value']]],
   ['vector_3c_20uint8_5ft_20_3e',['vector&lt; uint8_t &gt;',['../structkaco_1_1Value.html#a6a3f9cbb659351e9e9f7df2e6d60864b',1,'kaco::Value']]]
 ];

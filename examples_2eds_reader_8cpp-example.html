@@ -126,8 +126,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    PRINT(<span class="stringliteral">&quot;This example reads an EDS file and prints the resulting dictionary.&quot;</span>);</div>
 <div class="line"></div>
-<div class="line">    std::map&lt;std::string, kaco::Entry&gt; map;</div>
-<div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1EDSReader.html">kaco::EDSReader</a> reader(map);</div>
+<div class="line">    std::unordered_map&lt;kaco::Address, kaco::Entry&gt; dictionary;</div>
+<div class="line">    std::unordered_map&lt;std::string, kaco::Address&gt; name_to_address;</div>
+<div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1EDSReader.html">kaco::EDSReader</a> reader(dictionary, name_to_address);</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordtype">bool</span> success = <span class="keyword">false</span>;</div>
 <div class="line">    std::string path;</div>
@@ -170,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="keyword">using</span> EntryRef = std::reference_wrapper&lt;const kaco::Entry&gt;;</div>
 <div class="line">    std::vector&lt;EntryRef&gt; entries;</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pair : map) {</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pair : dictionary) {</div>
 <div class="line">        entries.push_back(std::ref(pair.second));</div>
 <div class="line">    }</div>
 <div class="line"></div>
@@ -188,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

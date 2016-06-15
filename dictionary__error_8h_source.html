@@ -139,44 +139,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            read_only,</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            write_only,</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            wrong_type,</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            no_array,</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            mapping_size,</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            mapping_overlap,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            unknown_operation,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            unknown_constant</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        };</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classkaco_1_1dictionary__error.html#a5a1ff35d35bf24790440be6c27abe314">dictionary_error</a>(<a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> error_type, <span class="keyword">const</span> std::string&amp; entry_name, <span class="keyword">const</span> std::string&amp; additional_information = <span class="stringliteral">&quot;&quot;</span>);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">   73</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">~dictionary_error</a>() { }</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classkaco_1_1dictionary__error.html#a17db6f9a6c8977737a20ac85da31e837">what</a>() const noexcept override;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> <a class="code" href="classkaco_1_1dictionary__error.html#a2e46221f7c988d39d147eb7e1a454c37">get_type</a>() const noexcept;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        std::<span class="keywordtype">string</span> <a class="code" href="classkaco_1_1dictionary__error.html#a893ba6eccccd75b182dddd849632c1e8">get_entry_name</a>() const noexcept;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    private:</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::<span class="keywordtype">string</span> m_message;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        std::<span class="keywordtype">string</span> m_entry_name;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> m_type;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    };</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            mapping_size,</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            mapping_overlap,</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            unknown_operation,</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            unknown_constant</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        };</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keyword">explicit</span> <a class="code" href="classkaco_1_1dictionary__error.html#a5a1ff35d35bf24790440be6c27abe314">dictionary_error</a>(<a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> error_type, <span class="keyword">const</span> std::string&amp; entry_name, <span class="keyword">const</span> std::string&amp; additional_information = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">   72</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">~dictionary_error</a>() { }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classkaco_1_1dictionary__error.html#a17db6f9a6c8977737a20ac85da31e837">what</a>() const noexcept override;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> <a class="code" href="classkaco_1_1dictionary__error.html#a2e46221f7c988d39d147eb7e1a454c37">get_type</a>() const noexcept;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        std::<span class="keywordtype">string</span> <a class="code" href="classkaco_1_1dictionary__error.html#a893ba6eccccd75b182dddd849632c1e8">get_entry_name</a>() const noexcept;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    private:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        std::<span class="keywordtype">string</span> m_message;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        std::<span class="keywordtype">string</span> m_entry_name;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <a class="code" href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">type</a> m_type;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    };</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;} <span class="comment">// end namespace kaco</span></div>
 <div class="ttc" id="classkaco_1_1dictionary__error_html"><div class="ttname"><a href="classkaco_1_1dictionary__error.html">kaco::dictionary_error</a></div><div class="ttdoc">This type of exception is thrown if there are problems accessing the object dictionary or arguments d...</div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8h_source.html#l00049">dictionary_error.h:49</a></div></div>
 <div class="ttc" id="classkaco_1_1dictionary__error_html_a5a1ff35d35bf24790440be6c27abe314"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a5a1ff35d35bf24790440be6c27abe314">kaco::dictionary_error::dictionary_error</a></div><div class="ttdeci">dictionary_error(type error_type, const std::string &amp;entry_name, const std::string &amp;additional_information=&quot;&quot;)</div><div class="ttdoc">Constructor. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00036">dictionary_error.cpp:36</a></div></div>
 <div class="ttc" id="classkaco_1_1canopen__error_html"><div class="ttname"><a href="classkaco_1_1canopen__error.html">kaco::canopen_error</a></div><div class="ttdoc">This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. </div><div class="ttdef"><b>Definition:</b> <a href="canopen__error_8h_source.html#l00043">canopen_error.h:43</a></div></div>
-<div class="ttc" id="classkaco_1_1dictionary__error_html_a893ba6eccccd75b182dddd849632c1e8"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a893ba6eccccd75b182dddd849632c1e8">kaco::dictionary_error::get_entry_name</a></div><div class="ttdeci">std::string get_entry_name() const noexcept</div><div class="ttdoc">Returns the name of the dictionary entry. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00088">dictionary_error.cpp:88</a></div></div>
+<div class="ttc" id="classkaco_1_1dictionary__error_html_a893ba6eccccd75b182dddd849632c1e8"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a893ba6eccccd75b182dddd849632c1e8">kaco::dictionary_error::get_entry_name</a></div><div class="ttdeci">std::string get_entry_name() const noexcept</div><div class="ttdoc">Returns the name of the dictionary entry. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00085">dictionary_error.cpp:85</a></div></div>
 <div class="ttc" id="classkaco_1_1dictionary__error_html_a9010d2b64adbaeeaea72012da98303f2"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a9010d2b64adbaeeaea72012da98303f2">kaco::dictionary_error::type</a></div><div class="ttdeci">type</div><div class="ttdoc">Exact type of the error. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8h_source.html#l00054">dictionary_error.h:54</a></div></div>
-<div class="ttc" id="classkaco_1_1dictionary__error_html_a87673dcb5e117749323575d7a32b507e"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">kaco::dictionary_error::~dictionary_error</a></div><div class="ttdeci">virtual ~dictionary_error()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8h_source.html#l00073">dictionary_error.h:73</a></div></div>
-<div class="ttc" id="classkaco_1_1dictionary__error_html_a17db6f9a6c8977737a20ac85da31e837"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a17db6f9a6c8977737a20ac85da31e837">kaco::dictionary_error::what</a></div><div class="ttdeci">virtual const char * what() const noexceptoverride</div><div class="ttdoc">Returns error description. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00080">dictionary_error.cpp:80</a></div></div>
-<div class="ttc" id="classkaco_1_1dictionary__error_html_a2e46221f7c988d39d147eb7e1a454c37"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a2e46221f7c988d39d147eb7e1a454c37">kaco::dictionary_error::get_type</a></div><div class="ttdeci">type get_type() const noexcept</div><div class="ttdoc">Returns type of the error. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00084">dictionary_error.cpp:84</a></div></div>
+<div class="ttc" id="classkaco_1_1dictionary__error_html_a87673dcb5e117749323575d7a32b507e"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a87673dcb5e117749323575d7a32b507e">kaco::dictionary_error::~dictionary_error</a></div><div class="ttdeci">virtual ~dictionary_error()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8h_source.html#l00072">dictionary_error.h:72</a></div></div>
+<div class="ttc" id="classkaco_1_1dictionary__error_html_a17db6f9a6c8977737a20ac85da31e837"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a17db6f9a6c8977737a20ac85da31e837">kaco::dictionary_error::what</a></div><div class="ttdeci">virtual const char * what() const noexceptoverride</div><div class="ttdoc">Returns error description. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00077">dictionary_error.cpp:77</a></div></div>
+<div class="ttc" id="classkaco_1_1dictionary__error_html_a2e46221f7c988d39d147eb7e1a454c37"><div class="ttname"><a href="classkaco_1_1dictionary__error.html#a2e46221f7c988d39d147eb7e1a454c37">kaco::dictionary_error::get_type</a></div><div class="ttdeci">type get_type() const noexcept</div><div class="ttdoc">Returns type of the error. </div><div class="ttdef"><b>Definition:</b> <a href="dictionary__error_8cpp_source.html#l00081">dictionary_error.cpp:81</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

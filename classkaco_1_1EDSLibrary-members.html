@@ -95,17 +95,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a746240d8ec4d2876a69feeec58a42a1c">EDSLibrary</a>(std::map&lt; std::string, Entry &gt; &amp;target)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a9dc900f41efee0aaa6389553e4d54c31">load_default_eds</a>(uint16_t device_profile_number)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#aafc12584558f96be8334988f0cd3b033">load_mandatory_entries</a>()</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a83f37f878b0f5151d105390396dcca0a">load_manufacturer_eds</a>(Device &amp;device)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a924fad8d5774b4db975cc25aeb51f1b7">load_manufacturer_eds_deprecated</a>(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4">lookup_library</a>(std::string path=&quot;&quot;)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">ready</a>() const </td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a903a6e41c5b3da383a1e268ae0ae4879">EDSLibrary</a>(std::unordered_map&lt; Address, Entry &gt; &amp;dictionary, std::unordered_map&lt; std::string, Address &gt; &amp;name_to_address)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#aacdffcf98e3ca8e4c0b814e4927e3db8">get_most_recent_eds_file_path</a>() const </td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a9dc900f41efee0aaa6389553e4d54c31">load_default_eds</a>(uint16_t device_profile_number)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#aafc12584558f96be8334988f0cd3b033">load_mandatory_entries</a>()</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a83f37f878b0f5151d105390396dcca0a">load_manufacturer_eds</a>(Device &amp;device)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a924fad8d5774b4db975cc25aeb51f1b7">load_manufacturer_eds_deprecated</a>(uint32_t vendor_id, uint32_t product_code, uint32_t revision_number)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4">lookup_library</a>(std::string path=&quot;&quot;)</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">ready</a>() const </td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html#a01bb679fa335abff9590de1c14b6575e">reset_dictionary</a>()</td><td class="entry"><a class="el" href="classkaco_1_1EDSLibrary.html">kaco::EDSLibrary</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

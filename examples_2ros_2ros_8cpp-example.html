@@ -144,7 +144,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">    <span class="comment">// should be a 401 device</span></div>
 <div class="line">    <a name="_a3"></a><a class="code" href="classkaco_1_1Device.html">kaco::Device</a>&amp; device = master.<a name="a4"></a><a class="code" href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">get_device</a>(0);</div>
 <div class="line">    device.<a name="a5"></a><a class="code" href="classkaco_1_1Device.html#a4da9e38f519e6351bab7ee1f4bb5525a">start</a>();</div>
-<div class="line">    device.<a name="a6"></a><a class="code" href="classkaco_1_1Device.html#a64fba4fc4667aace14f4f7520cf058b1">load_dictionary_from_library</a>();</div>
+<div class="line">    device.<a name="a6"></a><a class="code" href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">load_dictionary_from_library</a>();</div>
 <div class="line">    uint16_t profile = device.<a name="a7"></a><a class="code" href="classkaco_1_1Device.html#a89735b2ce6e84a5b95a48252bf5cca3f">get_device_profile_number</a>();</div>
 <div class="line"></div>
 <div class="line">    <span class="keywordflow">if</span> (profile != 401) {</div>
@@ -154,14 +154,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"></div>
 <div class="line">    device.<a name="a8"></a><a class="code" href="classkaco_1_1Device.html#a80ef09e9c89b9182ec7112d3df862789">print_dictionary</a>();</div>
 <div class="line"></div>
-<div class="line">    DUMP(device.<a name="a9"></a><a class="code" href="classkaco_1_1Device.html#a5602593cc6999cfe2282499cbd0971a5">get_entry</a>(<span class="stringliteral">&quot;Manufacturer device name&quot;</span>));</div>
+<div class="line">    DUMP(device.<a name="a9"></a><a class="code" href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">get_entry</a>(<span class="stringliteral">&quot;Manufacturer device name&quot;</span>));</div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// map PDOs (optional)</span></div>
-<div class="line">    device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0); <span class="comment">// offset 0</span></div>
-<div class="line">    device.<a class="code" href="classkaco_1_1Device.html#a16219865002f3dda93a2ea16e791d691">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1); <span class="comment">// offset 1</span></div>
+<div class="line">    device.<a name="a10"></a><a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 1-8&quot;</span>, 0); <span class="comment">// offset 0</span></div>
+<div class="line">    device.<a class="code" href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">add_receive_pdo_mapping</a>(0x188, <span class="stringliteral">&quot;Read input 8-bit/Digital Inputs 9-16&quot;</span>, 1); <span class="comment">// offset 1</span></div>
 <div class="line"></div>
 <div class="line">    <span class="comment">// set some output (optional)</span></div>
-<div class="line">    device.<a name="a11"></a><a class="code" href="classkaco_1_1Device.html#aeaba3e8cd8a74bc11d12c4cb1fe126ad">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, (uint8_t) 0xFF, 0);</div>
+<div class="line">    device.<a name="a11"></a><a class="code" href="classkaco_1_1Device.html#a698efb893d6032ee700654c0cd82e710">set_entry</a>(<span class="stringliteral">&quot;Write output 8-bit/Digital Outputs 1-8&quot;</span>, (uint8_t) 0xFF);</div>
 <div class="line"></div>
 <div class="line">    ros::init(argc, argv, <span class="stringliteral">&quot;canopen_bridge&quot;</span>);</div>
 <div class="line"></div>
@@ -188,7 +188,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

@@ -103,9 +103,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a746240d8ec4d2876a69feeec58a42a1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#a746240d8ec4d2876a69feeec58a42a1c">EDSLibrary</a> (std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;target)</td></tr>
-<tr class="memdesc:a746240d8ec4d2876a69feeec58a42a1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a746240d8ec4d2876a69feeec58a42a1c">More...</a><br /></td></tr>
-<tr class="separator:a746240d8ec4d2876a69feeec58a42a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a903a6e41c5b3da383a1e268ae0ae4879"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#a903a6e41c5b3da383a1e268ae0ae4879">EDSLibrary</a> (std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;dictionary, std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;name_to_address)</td></tr>
+<tr class="memdesc:a903a6e41c5b3da383a1e268ae0ae4879"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="#a903a6e41c5b3da383a1e268ae0ae4879">More...</a><br /></td></tr>
+<tr class="separator:a903a6e41c5b3da383a1e268ae0ae4879"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afff34ef5c42366cfd5136317d3cb6ab4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4">lookup_library</a> (std::string path=&quot;&quot;)</td></tr>
 <tr class="memdesc:afff34ef5c42366cfd5136317d3cb6ab4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds EDS library on disk.  <a href="#afff34ef5c42366cfd5136317d3cb6ab4">More...</a><br /></td></tr>
 <tr class="separator:afff34ef5c42366cfd5136317d3cb6ab4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -124,23 +124,41 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae85cb575606bb7cb357eb74e70691140"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140">ready</a> () const </td></tr>
 <tr class="memdesc:ae85cb575606bb7cb357eb74e70691140"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if <a class="el" href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4" title="Finds EDS library on disk. ">lookup_library()</a> was successful.  <a href="#ae85cb575606bb7cb357eb74e70691140">More...</a><br /></td></tr>
 <tr class="separator:ae85cb575606bb7cb357eb74e70691140"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01bb679fa335abff9590de1c14b6575e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a01bb679fa335abff9590de1c14b6575e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#a01bb679fa335abff9590de1c14b6575e">reset_dictionary</a> ()</td></tr>
+<tr class="memdesc:a01bb679fa335abff9590de1c14b6575e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the dictionary and the name-address mapping. <br /></td></tr>
+<tr class="separator:a01bb679fa335abff9590de1c14b6575e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacdffcf98e3ca8e4c0b814e4927e3db8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aacdffcf98e3ca8e4c0b814e4927e3db8"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1EDSLibrary.html#aacdffcf98e3ca8e4c0b814e4927e3db8">get_most_recent_eds_file_path</a> () const </td></tr>
+<tr class="memdesc:aacdffcf98e3ca8e4c0b814e4927e3db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the path to the most recently loaded EDS file. <br /></td></tr>
+<tr class="separator:aacdffcf98e3ca8e4c0b814e4927e3db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class provides access to KaCanOpen's EDS library. It manages device specific as well as generic CanOpen dictionaries. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2eds_library_8cpp-example.html#_a0">examples/eds_library.cpp</a>.</dd>
 </dl>
-<p>Definition at line <a class="el" href="eds__library_8h_source.html#l00045">45</a> of file <a class="el" href="eds__library_8h_source.html">eds_library.h</a>.</p>
+<p>Definition at line <a class="el" href="eds__library_8h_source.html#l00046">46</a> of file <a class="el" href="eds__library_8h_source.html">eds_library.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a746240d8ec4d2876a69feeec58a42a1c"></a>
+<a class="anchor" id="a903a6e41c5b3da383a1e268ae0ae4879"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">kaco::EDSLibrary::EDSLibrary </td>
           <td>(</td>
-          <td class="paramtype">std::map&lt; std::string, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
-          <td class="paramname"><em>target</em></td><td>)</td>
+          <td class="paramtype">std::unordered_map&lt; <a class="el" href="structkaco_1_1Address.html">Address</a>, <a class="el" href="classkaco_1_1Entry.html">Entry</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dictionary</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::unordered_map&lt; std::string, <a class="el" href="structkaco_1_1Address.html">Address</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>name_to_address</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -148,12 +166,13 @@ Public Member Functions</h2></td></tr>
 <p>Constructor. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">target</td><td>The dictionary, into which entries will be inserted. </td></tr>
+    <tr><td class="paramname">dictionary</td><td>The dictionary, into which entries will be inserted. </td></tr>
+    <tr><td class="paramname">name_to_address</td><td><a class="el" href="structkaco_1_1Mapping.html" title="This struct represents one mapped entry inside a TransmitPDOMapping. ">Mapping</a> from name to address in dictionary (to be created). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00056">56</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00057">57</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -181,7 +200,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00099">99</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00100">100</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,7 +220,7 @@ Public Member Functions</h2></td></tr>
 <p>Loads mandatory dictionary entries defined in CiA 301 standard. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00095">95</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00096">96</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -228,7 +247,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00130">130</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00136">136</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -272,8 +291,9 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000020">Todo:</a></b></dt><dd>Remove this! </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00219">219</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00229">229</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -300,7 +320,7 @@ Public Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00060">60</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00061">61</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -320,7 +340,7 @@ Public Member Functions</h2></td></tr>
 <p>Checks if <a class="el" href="classkaco_1_1EDSLibrary.html#afff34ef5c42366cfd5136317d3cb6ab4" title="Finds EDS library on disk. ">lookup_library()</a> was successful. </p>
 <dl class="section return"><dt>Returns</dt><dd>true if ready </dd></dl>
 
-<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00255">255</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
+<p>Definition at line <a class="el" href="master_2src_2eds__library_8cpp_source.html#l00269">269</a> of file <a class="el" href="master_2src_2eds__library_8cpp_source.html">eds_library.cpp</a>.</p>
 
 </div>
 </div>
@@ -331,7 +351,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 14 2016 10:48:59 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 12:05:12 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
