@@ -1,7 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title="STL class. " alt="" coords="5,31,109,57"/>
-<area shape="rect" id="node2" title="STL class. " alt="" coords="158,31,282,57"/>
-<area shape="rect" id="node3" href="$classkaco_1_1canopen__error.html" title="This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. " alt="" coords="331,31,471,57"/>
-<area shape="rect" id="node4" href="$classkaco_1_1dictionary__error.html" title="This type of exception is thrown if there are problems accessing the object dictionary or arguments d..." alt="" coords="520,5,667,32"/>
-<area shape="rect" id="node5" href="$classkaco_1_1sdo__error.html" title="This type of exception is thrown when there are problems while accessing devices via SDO..." alt="" coords="537,56,649,83"/>
+<area shape="rect" id="node1" href="$structcan__berr__counter.html" title="can_berr_counter" alt="" coords="5,5,128,32"/>
 </map>

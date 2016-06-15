@@ -81,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_860a43764a8c897ab964d75d7176c839.html">ros</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_7ed2fa8a581bc60c79682054065fd684.html">examples</a></li><li class="navelem"><a class="el" href="dir_0b3fc0ac7bea0d450083aeafcf5caf15.html">ros</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -209,37 +209,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="comment">// TODO: target_position should be mapped to a PDO</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="comment">// HACK</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            <span class="keywordflow">if</span> (static_cast&lt;std::string&gt;(device.get_entry(<span class="stringliteral">&quot;manufacturer_device_name&quot;</span>)).substr(0, 11) == <span class="stringliteral">&quot;SCHUNK ERBo&quot;</span>) {</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;                PRINT(<span class="stringliteral">&quot;Creating special Schunk JointStatePublisher&quot;</span>);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                <span class="keyword">auto</span> jspub = std::make_shared&lt;kaco::JointStatePublisher&gt;(device, 0, 350000, <span class="stringliteral">&quot;Position actual value in user unit&quot;</span>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;                bridge.<a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">add_publisher</a>(jspub, loop_rate);</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;                <span class="keyword">auto</span> jspub = std::make_shared&lt;kaco::JointStatePublisher&gt;(device, 0, 350000);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;                bridge.<a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">add_publisher</a>(jspub, loop_rate);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;            }</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;            <span class="keyword">auto</span> jspub = std::make_shared&lt;kaco::JointStatePublisher&gt;(device, 0, 350000);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            bridge.<a class="code" href="classkaco_1_1Bridge.html#a311a1df6d31180e596eab7b4f579e12f">add_publisher</a>(jspub, loop_rate);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            <span class="keyword">auto</span> jssub = std::make_shared&lt;kaco::JointStateSubscriber&gt;(device, 0, 350000);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;            bridge.<a class="code" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">add_subscriber</a>(jssub);</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        }</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;            <span class="keyword">auto</span> jssub = std::make_shared&lt;kaco::JointStateSubscriber&gt;(device, 0, 350000);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;            bridge.<a class="code" href="classkaco_1_1Bridge.html#af88bf1b04226aa80aa14299ee0eff4fe">add_subscriber</a>(jssub);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    <span class="keywordflow">if</span> (!found) {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        ERROR(<span class="stringliteral">&quot;This example is intended for use with a CiA 402 device but I can&#39;t find one.&quot;</span>);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;    }</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    bridge.<a class="code" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">run</a>();</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">if</span> (!found) {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        ERROR(<span class="stringliteral">&quot;This example is intended for use with a CiA 402 device but I can&#39;t find one.&quot;</span>);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    }</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    bridge.<a class="code" href="classkaco_1_1Bridge.html#a0c487871aa7ff8a4ae5f36f5cbed64c8">run</a>();</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;}</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;}</div>
 <div class="ttc" id="classkaco_1_1Master_html_a4431948c1f64d4ab144ede2355101aff"><div class="ttname"><a href="classkaco_1_1Master.html#a4431948c1f64d4ab144ede2355101aff">kaco::Master::get_device</a></div><div class="ttdeci">Device &amp; get_device(size_t index) const </div><div class="ttdoc">Returns a reference to a slave device object. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00074">master.cpp:74</a></div></div>
 <div class="ttc" id="classkaco_1_1Device_html_a4645afaaf2d9b2847147ff72f7d0aa41"><div class="ttname"><a href="classkaco_1_1Device.html#a4645afaaf2d9b2847147ff72f7d0aa41">kaco::Device::get_entry</a></div><div class="ttdeci">const Value &amp; get_entry(const std::string &amp;entry_name, const ReadAccessMethod access_method=ReadAccessMethod::use_default)</div><div class="ttdoc">Gets the value of a dictionary entry by name internally. If there is no cached value or the entry is ...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00102">device.cpp:102</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_ac951f47dd3a8ac036a4e47448ac9f5f1"><div class="ttname"><a href="classkaco_1_1Master.html#ac951f47dd3a8ac036a4e47448ac9f5f1">kaco::Master::start</a></div><div class="ttdeci">bool start(const std::string busname, unsigned baudrate)</div><div class="ttdoc">Starts master, creates Core and resets all nodes. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00053">master.cpp:53</a></div></div>
 <div class="ttc" id="classkaco_1_1Core_html_a9565e5e44dab134f6dc7e494bd290382"><div class="ttname"><a href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">kaco::Core::nmt</a></div><div class="ttdeci">NMT nmt</div><div class="ttdoc">The NMT sub-protocol. </div><div class="ttdef"><b>Definition:</b> <a href="core_8h_source.html#l00097">core.h:97</a></div></div>
 <div class="ttc" id="classkaco_1_1Bridge_html"><div class="ttname"><a href="classkaco_1_1Bridge.html">kaco::Bridge</a></div><div class="ttdoc">This class is a bridge between a ROS network and a CanOpen network. </div><div class="ttdef"><b>Definition:</b> <a href="bridge_8h_source.html#l00048">bridge.h:48</a></div></div>
-<div class="ttc" id="classkaco_1_1Device_html_aadcbcc5f22aab1b65a7e18dc13593108"><div class="ttname"><a href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">kaco::Device::load_dictionary_from_library</a></div><div class="ttdeci">void load_dictionary_from_library()</div><div class="ttdoc">Tries to load the most specific EDS file available in KaCanOpen&#39;s internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00324">device.cpp:324</a></div></div>
+<div class="ttc" id="classkaco_1_1Device_html_aadcbcc5f22aab1b65a7e18dc13593108"><div class="ttname"><a href="classkaco_1_1Device.html#aadcbcc5f22aab1b65a7e18dc13593108">kaco::Device::load_dictionary_from_library</a></div><div class="ttdeci">void load_dictionary_from_library()</div><div class="ttdoc">Tries to load the most specific EDS file available in KaCanOpen&#39;s internal EDS library. This is either device specific, CiA profile specific, or mandatory CiA 301. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00325">device.cpp:325</a></div></div>
 <div class="ttc" id="classkaco_1_1Device_html_ada13ce402ce5f1e7e043d5d4040cf2d3"><div class="ttname"><a href="classkaco_1_1Device.html#ada13ce402ce5f1e7e043d5d4040cf2d3">kaco::Device::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">Starts the node via NMT protocol and loads mandatory entries, operations, and constants. </div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00054">device.cpp:54</a></div></div>
 <div class="ttc" id="classkaco_1_1Master_html_a65216ea5835f864c776401e11ad7d2dd"><div class="ttname"><a href="classkaco_1_1Master.html#a65216ea5835f864c776401e11ad7d2dd">kaco::Master::num_devices</a></div><div class="ttdeci">size_t num_devices() const </div><div class="ttdoc">Returns the number of slave devices in the network. </div><div class="ttdef"><b>Definition:</b> <a href="master_8cpp_source.html#l00070">master.cpp:70</a></div></div>
 <div class="ttc" id="classkaco_1_1Device_html_ac2aad4ba19ee1554ae8bda02b43769c0"><div class="ttname"><a href="classkaco_1_1Device.html#ac2aad4ba19ee1554ae8bda02b43769c0">kaco::Device::add_receive_pdo_mapping</a></div><div class="ttdeci">void add_receive_pdo_mapping(uint16_t cob_id, const std::string &amp;entry_name, uint8_t offset)</div><div class="ttdoc">Adds a receive PDO mapping. This means values sent by the device via PDO are saved into the dictionar...</div><div class="ttdef"><b>Definition:</b> <a href="device_8cpp_source.html#l00163">device.cpp:163</a></div></div>
@@ -256,7 +249,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 15 2016 16:39:48 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 15 2016 17:52:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
