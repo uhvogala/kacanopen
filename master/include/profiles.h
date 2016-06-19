@@ -59,8 +59,6 @@ namespace kaco {
 		/// Type: map < profile number , map < operation name , constant value > >
 		static const std::map<uint16_t,std::map<std::string,const Value>> constants;
 
-	private:
-
 		static const bool debug = false;
 
 	};
