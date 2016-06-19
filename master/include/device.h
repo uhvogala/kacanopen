@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "core.h"
@@ -40,12 +40,15 @@
 #include "eds_library.h"
 #include "eds_reader.h"
 
+#include <forward_list>
 #include <vector>
 #include <unordered_map>
 #include <string>
 #include <chrono>
 #include <functional>
 #include <mutex>
+
+#include "_masterapi.h"
 
 namespace kaco {
 
@@ -80,12 +83,12 @@ namespace kaco {
 	///
 	///    Methods in (1) should be run in sequence before accessing
 	///    dictionary entries (group 2).
-	class Device {
+	class MASTER_API Device {
 
 	public:
 
 		/// Type of a operation. See Profiles::Operation in profiles.h.
-		using Operation = std::function<Value(Device&,const Value&)>;
+		using Operation = std::function<Value(Device&, const Value&)>;
 
 		/// Constructor.
 		/// \param core Reference of a Core instance
@@ -249,7 +252,7 @@ namespace kaco {
 		/// Adds a transmit PDO mapping. This means values from the dictionary cache are sent to the device.
 		///
 		/// Example:
-		/// 
+		///
 		/// 	The following command maps the "Controlword" entry (2 bytes, see CiA 402)
 		///		to the first two bytes of the PDO channel with cob_id 0x206 (RPDO1 of CANOpen device 6),
 		///		and the "Target Position" entry (4 bytes, see CiA 402) to bytes 2-5 of this PDO channel.
@@ -263,7 +266,8 @@ namespace kaco {
 		/// \param transmission_type Send PDO "ON_CHANGE" or "PERIODIC"
 		/// \param repeat_time If transmission_type==TransmissionType::PERIODIC, PDO is sent periodically according to repeat_time.
 		/// \throws dictionary_error
-		void add_transmit_pdo_mapping(uint16_t cob_id, const std::vector<Mapping>& mappings, TransmissionType transmission_type=TransmissionType::ON_CHANGE, std::chrono::milliseconds repeat_time=std::chrono::milliseconds(0));
+		void add_transmit_pdo_mapping(uint16_t cob_id, const std::vector<Mapping>& mappings, TransmissionType transmission_type = TransmissionType::ON_CHANGE,
+									  std::chrono::milliseconds repeat_time = std::chrono::milliseconds(0));
 
 		/// Prints the dictionary together with currently cached values to command line.
 		void print_dictionary() const;

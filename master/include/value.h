@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
@@ -37,6 +37,9 @@
 #include <limits>
 
 #include "utils.h"
+
+#include "_masterapi.h"
+
 
 namespace kaco {
 
@@ -50,12 +53,12 @@ namespace kaco {
 	///
 	/// \todo Maybe we should introduce a specific exception if types don't match.
 	/// \todo Maybe we could be less restrictive for integer types of different size (e.g casting uint16_t to uint32_t should be safe).
-	struct Value {
-		
+	struct MASTER_API Value {
+
 		// Check real32 / real64 support
 		static_assert(std::numeric_limits<float>::is_iec559, "Your machine doesn't use IEEE 754 compliant single-precision floating point numbers.");
-		static_assert(sizeof(float)==4, "sizeof(float)!=4 on your machine.");
-		static_assert(sizeof(double)==8, "sizeof(double)!=8 on your machine.");
+		static_assert(sizeof(float) == 4, "sizeof(float)!=4 on your machine.");
+		static_assert(sizeof(double) == 8, "sizeof(double)!=8 on your machine.");
 
 		/// Tyoe of the value
 		Type type;
@@ -82,7 +85,7 @@ namespace kaco {
 			double real64;
 			bool boolean;
 		};
-		
+
 		/// Constructs an invalid value.
 		Value();
 
@@ -206,7 +209,7 @@ namespace kaco {
 
 	namespace value_printer {
 		/// Prints a Value
-		std::ostream &operator<<(std::ostream &os, Value val);
+		MASTER_API std::ostream& operator<<(std::ostream& os, Value val);
 	}
 
 } // end namespace kaco

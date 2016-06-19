@@ -28,29 +28,27 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "message.h"
 
-#include <vector>
 #include <functional>
-#include <future>
-#include <forward_list>
-#include <mutex>
+
+#include "_coreapi.h"
 
 namespace kaco {
-	
+
 	// forward declaration
 	class Core;
 
 	/// \class NMT
 	///
 	/// This class implements the CanOpen NMT protocol
-	class NMT {
+	class CORE_API NMT {
 
 	public:
-		
+
 		/// Type of a new device callback function
 		/// Important: Never call register_new_device_callback()
 		///   from within (-> deadlock)!
@@ -71,6 +69,8 @@ namespace kaco {
 
 		/// Copy constructor deleted because of mutexes.
 		NMT(const NMT&) = delete;
+
+		virtual ~NMT();
 
 		/// Process incoming NMT message.
 		/// \param message The received CanOpen message.
@@ -99,20 +99,16 @@ namespace kaco {
 		/// Registers a callback which will be called when a new slave device is discovered.
 		/// \todo rename to device_alive_callback
 		/// \remark thread-safe
-		void register_new_device_callback(const NewDeviceCallback& callback);	
+		void register_new_device_callback(const NewDeviceCallback& callback);
 
 	private:
 
 		static const bool debug = false;
 		Core& m_core;
-
-		/// \todo rename to device_alive_callback
-		std::vector<NewDeviceCallback> m_new_device_callbacks;
-		mutable std::mutex m_new_device_callbacks_mutex;
+		struct Data;
+		Data* d;
 
 		static const bool m_cleanup_futures = true;
-		std::forward_list<std::future<void>> m_callback_futures; // forward_list because of remove_if
-		mutable std::mutex m_callback_futures_mutex;
 
 	};
 

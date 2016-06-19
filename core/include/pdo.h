@@ -38,6 +38,9 @@
 
 #include "message.h"
 
+#include "_coreapi.h"
+
+
 namespace kaco {
 
 	// forward declaration
@@ -48,7 +51,7 @@ namespace kaco {
 	/// This class implements the CanOpen PDO protocol
 	///
 	/// All methods are thread-safe.
-	class PDO {
+	class CORE_API PDO {
 
 	public:
 
@@ -76,6 +79,8 @@ namespace kaco {
 		/// Copy constructor deleted because of mutexes.
 		PDO(const PDO&) = delete;
 
+		virtual ~PDO();
+
 		/// Handler for an incoming PDO message
 		/// \param message The message from the network
 		/// \todo Rename this to process_incoming_tpdo() and add process_incoming_rpdo()
@@ -100,9 +105,8 @@ namespace kaco {
 		static const bool debug = false;
 		Core& m_core;
 
-		std::vector<PDOReceivedCallback> m_receive_callbacks;
-		mutable std::mutex m_receive_callbacks_mutex;
-
+		struct Data;
+		Data* d;
 	};
 
 } // end namespace kaco

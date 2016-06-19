@@ -1,10 +1,13 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.2)
+
+project(kacanopen C CXX)
 
 ### Compiler config ###
-
+ 
 # Use g++-4.9 if there is also an older g++ version on the system
-if("${CMAKE_CXX_COMPILER}" STREQUAL "" OR "${CMAKE_CXX_COMPILER}" STREQUAL "gcc" OR "${CMAKE_CXX_COMPILER}" STREQUAL "g++")
-	find_program(NEWER_GNU_CXX_COMPILER g++-4.9)
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
+	find_program(NEWER_GNU_CXX_COMPILER g++)
+
 	if (NOT "${NEWER_GNU_CXX_COMPILER}" STREQUAL "")
 		set(CMAKE_CXX_COMPILER ${NEWER_GNU_CXX_COMPILER})
 		message("Using ${CMAKE_CXX_COMPILER} as compiler.")
@@ -25,8 +28,9 @@ if("${CMAKE_CXX_COMPILER_VERSION}" STREQUAL "")
 	endif()
 endif()
 
-# GCC ist not supported until 4.9
-# Clang ist not supported until 3.6
+# GCC is not supported until 4.9
+# Clang is not supported until 3.6
+# MSVC is not supported until 19.0 (VS2015)
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.9)
 		message(FATAL_ERROR "GCC version must be at least 4.9. Earlier versions miss std::regex support.")
@@ -35,17 +39,27 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
 	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 3.6)
 		message(FATAL_ERROR "Clang version must be at least 3.6! Earlier versions don't support debug information for auto.")
 	endif()
+elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
+	if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 19.0)
+		message(FATAL_ERROR "MSVC version is ${CMAKE_CXX_COMPILER_VERSION}, but must be at least 19.0! Earlier versions don't support C++14.")
+	endif()
 else()
 	message(FATAL_ERROR "You are using an unsupported compiler! Compilation has only been tested with Clang and GCC.")
 endif()
 
-# Compiler flags
-# TOD0: -std=c++14 will be obsolete when reverting to minimum CMake version 3.2 and
-#       using set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 14) again.
-project(kacanopen C CXX)
+# Does not work with MSVC
+if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU"  OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
+    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -Wextra -Werror")
+endif()
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -Wall -Wextra") # -Werror
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra") # -Werror
+if(WIN32)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/out/")
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  "${CMAKE_CURRENT_BINARY_DIR}/out/")
+
+    message(STATUS "Will write binaries to:  ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}")
+    message(STATUS "Will write libraries to: ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}")
+endif()
 
 ### settings ###
 

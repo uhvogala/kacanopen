@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "core.h"
@@ -37,19 +37,22 @@
 #include <vector>
 #include <bitset>
 
+#include "_masterapi.h"
+
+
 namespace kaco {
 
 	/// \class Master
-	/// 
+	///
 	/// This class represents a master node. It listens
 	/// for new slaves and provides access to them
 	/// via get_slaves().
-	class Master {
+	class MASTER_API Master {
 
 	public:
 
 		/// Constructor.
-		/// Creates Core instance and adds NMT listener for new devices. 
+		/// Creates Core instance and adds NMT listener for new devices.
 		Master();
 
 		/// Copy constructor deleted because of callbacks with self-references.
@@ -66,7 +69,7 @@ namespace kaco {
 		///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
 		/// \returns true if successful
 		bool start(const std::string busname, unsigned baudrate);
-		
+
 		/// Stops master and core.
 		void stop();
 
