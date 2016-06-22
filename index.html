@@ -82,18 +82,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><p><a href="https://opensource.org/licenses/BSD-3-Clause">![Licence](https://img.shields.io/badge/licence-BSD%203--Clause-blue.svg)</a> <a href="https://opensource.org/licenses/LGPL-2.1">![drivers_lgpl Licence](https://img.shields.io/badge/drivers__lgpl%20licence-LGPL%202.1%2B-blue.svg)</a> <a href="https://travis-ci.org/KITmedical/kacanopen">![Build Status](https://api.travis-ci.org/KITmedical/kacanopen.svg?branch=master)</a></p>
 <h1>KaCanOpen</h1>
-<p>KaCanOpen is an easy-to-use <a href="https://en.wikipedia.org/wiki/CANopen">CanOpen</a> stack, which consists of four parts:</p>
+<p>KaCanOpen is an easy-to-use <a href="https://en.wikipedia.org/wiki/CANopen">CANopen</a> stack, which consists of four parts:</p>
 <ul>
 <li><b>Drivers:</b> A wide range of hardware is supported using different CAN drivers. They have been developed by the <a href="http://www.canfestival.org/">CanFestival project</a>. Read <a href="drivers_lgpl/README">this</a> for details.</li>
-<li><b>Core:</b> This is a library which implements basic CANOpen protocols like <a href="https://en.wikipedia.org/wiki/CANopen#Network_management_.28NMT.29_protocols">NMT</a>, <a href="https://en.wikipedia.org/wiki/CANopen#Service_Data_Object_.28SDO.29_protocol">SDO</a> and <a href="https://en.wikipedia.org/wiki/CANopen#Process_Data_Object_.28PDO.29_protocol">PDO</a>. As an example, you can easily fetch a value from a device (<em>uploading</em> in CanOpen terminology) via <code>core.sdo.upload(node_id, index, subindex)</code>. It furthermore allows you to register callbacks on certain events or any incoming messages, so one can build arbitrary CanOpen nodes (master or slave) using this library.</li>
-<li><b>Master:</b> This library is intended to be used for a master node. It detects all nodes in a network and allows to access them via standardized <a href="http://www.can-cia.org/can-knowledge/canopen/canopen-profiles/">CiA® profiles</a>. For example, on a motor device (profile CiA® 402) you can simply call <code>mymotor.set_entry("Target velocity", 500)</code>. A main feature of this library is transparent SDO/PDO access to dictionary entries: By default a value is fetched and set via SDO. But you can configure PDO mappings to instead keep the value up-to-date in background via (more lightweight) PDO messages. The call itself (<code>mymotor.set_entry("Target velocity", 500)</code>) keeps unchanged.</li>
-<li><b>ROS Bridge:</b> This library provides a bridge to a <a href="http://www.ros.org/">ROS</a> network, which makes KaCanOpen especially interesting for Robotics. After setting up the CanOpen network, the library can publish slave nodes so they are accessible through ROS messages. Special effort is put into the use of standardized message types which allows interaction with other software from the ROS universe. For example, motors can be operated using JointState messages.</li>
+<li><b>Core:</b> This is a library which implements basic CANopen protocols like <a href="https://en.wikipedia.org/wiki/CANopen#Network_management_.28NMT.29_protocols">NMT</a>, <a href="https://en.wikipedia.org/wiki/CANopen#Service_Data_Object_.28SDO.29_protocol">SDO</a> and <a href="https://en.wikipedia.org/wiki/CANopen#Process_Data_Object_.28PDO.29_protocol">PDO</a>. As an example, you can easily fetch a value from a device (<em>uploading</em> in CANopen terminology) via <code>core.sdo.upload(node_id, index, subindex)</code>. It furthermore allows you to register callbacks on certain events or any incoming messages, so one can build arbitrary CANopen nodes (master or slave) using this library.</li>
+<li><b>Master:</b> This library is intended to be used for a master node. It detects all nodes in a network and allows to access them via standardized <a href="http://www.can-cia.org/can-knowledge/canopen/canopen-profiles/">CiA® profiles</a>. For example, on a motor device (profile CiA® 402) you can simply call <code>mymotor.set_entry("Target velocity", 500)</code>. A main feature of this library is transparent SDO/PDO access to dictionary entries: By default a value is fetched and set via SDO, but you can configure PDO mappings to instead keep the value up-to-date in background via (more lightweight) PDO messages. The call itself (<code>mymotor.set_entry("Target velocity", 500)</code>) keeps unchanged. The dictionary structure of a device can be loaded automatically from a set of generic, CiA® profile-specific, or device-specific <a href="https://en.wikipedia.org/wiki/CANopen#Electronic_Data_Sheet">EDS</a> files which is distributed along with KaCanOpen. This allows you to write a meaningful Plug and Play master node with only a few lines of code.</li>
+<li><b>ROS Bridge:</b> This library provides a bridge to a <a href="http://www.ros.org/">ROS</a> network, which makes KaCanOpen especially interesting for robotics. After setting up the CANopen network, the library can publish slave nodes so they are accessible through ROS messages. Special effort is put into the use of standardized message types which allows interaction with other software from the ROS universe. For example, motors can be operated using JointState messages.</li>
 </ul>
 <p>KaCanOpen is designed to make use of modern C++11/14 features and to avoid redundant code on the user side wherever possible. This makes the interface neater than it is in other products on the market.</p>
 <h2>Quick start</h2>
 <p>First make sure you've got a recent C++ compiler with C++14 support (<a href="https://gcc.gnu.org/">GCC</a> &gt;= 4.9, <a href="http://clang.llvm.org/">Clang</a> &gt;= 3.6), as well as <a href="https://cmake.org/">CMake</a> &gt;= 3.2 and <a href="http://www.boost.org/">Boost</a> &gt;= 1.46.1.</p>
 <p>KaCanOpen without the ROS part can be built easily using CMake:</p>
-<div class="fragment"><div class="line">git clone git@github.com:KITmedical/kacanopen.git</div>
+<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/KITmedical/kacanopen.git</span></div>
 <div class="line">cd kacanopen</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
@@ -103,7 +103,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>The <code>examples</code> directory lists some examples on how to use KaCanOpen libraries. You can run them from the <code>build/examples</code> directory.</p>
 <p>KaCanOpen including the ROS part must be built using <a href="http://wiki.ros.org/catkin/Tutorials">Catkin</a>. Make sure you have <a href="http://www.ros.org/install/">ROS Jade</a> installed. Go to your <a href="http://wiki.ros.org/catkin/Tutorials/create_a_workspace">workspace</a> and clone the repository into <code>src</code>:</p>
 <div class="fragment"><div class="line">cd your_catkin_workspace/src</div>
-<div class="line">git clone git@github.com:KITmedical/kacanopen.git</div>
+<div class="line">git clone https:<span class="comment">//github.com/KITmedical/kacanopen.git</span></div>
 <div class="line">cd ..</div>
 <div class="line">catkin_make -DDRIVER=&lt;driver&gt;</div>
 </div><!-- fragment --><p>When building with Catkin, you can excute example programs like that:</p>
@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 17:20:23 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 18:29:58 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

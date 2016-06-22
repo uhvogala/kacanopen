@@ -16,5 +16,6 @@ var searchData=
   ['entrysubscriber',['EntrySubscriber',['../classkaco_1_1EntrySubscriber.html',1,'kaco']]],
   ['escape',['escape',['../structkaco_1_1Utils.html#ab5cea11e52ee7d6dc7eb5b4ae3729972',1,'kaco::Utils']]],
   ['examples',['Examples',['../examples.html',1,'']]],
-  ['execute',['execute',['../classkaco_1_1Device.html#af84e983eccacce0217eac6f2a3c34842',1,'kaco::Device']]]
+  ['execute',['execute',['../classkaco_1_1Device.html#af84e983eccacce0217eac6f2a3c34842',1,'kaco::Device']]],
+  ['eds_20library',['EDS Library',['../md_doc_EDSLibrary.html',1,'']]]
 ];

@@ -135,11 +135,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li><p class="startli"><code>-DSDO_RESPONSE_TIMEOUT_MS=&lt;timeout&gt;</code></p>
 <p class="startli">Timeout in milliseconds when waiting for an SDO response.</p>
 </li>
-<li><p class="startli"><code>-DBUSNAME=&lt;busname&gt;</code></p>
-<p class="startli">CAN driver busname used by the examples.</p>
-</li>
-<li><p class="startli"><code>-DBAUDRATE=&lt;baudrate&gt;</code></p>
-<p class="startli">CAN driver baudrate used by the examples.</p>
+<li><p class="startli"><code>-DCONSECUTIVE_SEND_PAUSE_MS=&lt;timeout&gt;</code></p>
+<p class="startli">Pause between two consecutively sent CAN frames in milliseconds.</p>
 </li>
 </ul>
 <h2>Initialize ROS and create Catkin workspace</h2>
@@ -156,7 +153,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line">catkin_init_workspace</div>
 </div><!-- fragment --><h2>Build process without ROS Bridge</h2>
 <p>KaCanOpen without the ROS part can be built easily using CMake:</p>
-<div class="fragment"><div class="line">git clone git@github.com:KITmedical/kacanopen.git</div>
+<div class="fragment"><div class="line">git clone https:<span class="comment">//github.com/KITmedical/kacanopen.git</span></div>
 <div class="line">cd kacanopen</div>
 <div class="line">mkdir build</div>
 <div class="line">cd build</div>
@@ -166,7 +163,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h2>Build process including ROS Bridge</h2>
 <p>Your KaCanOpen repository must reside or be symlinked inside src:</p>
 <div class="fragment"><div class="line">cd ~/arbitrary_path/catkin_ws/src</div>
-<div class="line">git clone git@github.com:KITmedical/kacanopen.git</div>
+<div class="line">git clone https:<span class="comment">//github.com/KITmedical/kacanopen.git</span></div>
 </div><!-- fragment --><p>Now you can build it:</p>
 <div class="fragment"><div class="line">catkin_make -DDRIVER=&lt;driver&gt;</div>
 </div><!-- fragment --><p>Replace <code>&lt;driver&gt;</code> by a CAN driver name (see section <a href="#drivers">Drivers</a>).</p>
@@ -183,15 +180,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <ul>
 <li><p class="startli">socket (default)</p>
 <p class="startli">For use with <a href="https://en.wikipedia.org/wiki/SocketCAN">SocketCAN</a>, formerly known as LLCF. It's a CAN networking stack being part of the Linux kernel. It's probably the most popular CAN driver infrastructure and there are many devices supporting SocketCAN.</p>
-<p class="startli">One of them is <a href="http://www.fischl.de/usbtin/">USBtin</a>, which we use for development purposes. If you want to use USBtin with KaCanOpen at baudrate 500kbps do the following: </p><pre class="fragment">git clone https://github.com/linux-can/can-utils
-cd can-utils
-make
-usb_device=$(dmesg | grep 'USBtin' | tail -1 | sed 's/.* usb \([0-9.-]*\): .*/\1/')
-tty_device=$(dmesg | grep "cdc_acm $usb_device" | tail -1 | sed 's/.*ttyACM\([0-9]*\):.*/ttyACM\1/')
-sudo ./slcan_attach -f -s6 -nslcan0 -o /dev/$tty_device
-sudo ./slcand $tty_device slcan0
-sudo ip link set slcan0 up
-</pre><p class="startli">Use "slcan0" and 500000 as arguments for Core.start(busname,baudrate) / Master.start(busname,baudrate).</p>
+<p class="startli">One of them is <a href="http://www.fischl.de/usbtin/">USBtin</a>, which we use for development purposes. If you want to use USBtin with KaCanOpen just run dev/init_usbtin.sh.</p>
+<p class="startli">Use "slcan0" and "500K" as arguments for Core.start(busname,baudrate) / Master.start(busname,baudrate).</p>
 </li>
 <li><p class="startli">serial</p>
 <p class="startli">Driver for use with serial character devices.</p>
@@ -215,7 +205,7 @@ make
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 17:20:23 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 18:29:58 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
