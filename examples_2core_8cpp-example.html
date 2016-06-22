@@ -80,8 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">examples/core.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<p>This example shows how to use the KaCanOpen Core library. It assumes that you have plugged in a CiA 401 device with node id 8, 16 digital outputs and 8 digital inputs.</p>
-<p>It starts the node via NMT, gets and sets values via SDO and determines device type and device name.</p>
+<p>This example shows how to use the KaCanOpen Core library. It starts the node via NMT, gets and sets values via SDO and determines device type and device name.</p>
 <div class="fragment"><div class="line"><span class="comment">/*</span></div>
 <div class="line"><span class="comment"> * Copyright (c) 2015-2016, Thomas Keh</span></div>
 <div class="line"><span class="comment"> * All rights reserved.</span></div>
@@ -113,67 +112,125 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><span class="comment"> * POSSIBILITY OF SUCH DAMAGE.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;thread&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#include &quot;core.h&quot;</span></div>
-<div class="line"><span class="preprocessor">#include &quot;logger.h&quot;</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">// #define BUSNAME ... // set by CMake</span></div>
-<div class="line"><span class="comment">// #define BAUDRATE ... // set by CMake</span></div>
 <div class="line"></div>
 <div class="line"><span class="keywordtype">int</span> main() {</div>
 <div class="line"></div>
+<div class="line">    <span class="comment">// ----------- //</span></div>
+<div class="line">    <span class="comment">// Preferences //</span></div>
+<div class="line">    <span class="comment">// ----------- //</span></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// The node ID of the slave we want to communicate with.</span></div>
+<div class="line">    <span class="keyword">const</span> uint8_t node_id = 2;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Set the name of your CAN bus. &quot;slcan0&quot; is a common bus name</span></div>
+<div class="line">    <span class="comment">// for the first SocketCAN device on a Linux system.</span></div>
+<div class="line">    <span class="keyword">const</span> std::string busname = <span class="stringliteral">&quot;slcan0&quot;</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Set the baudrate of your CAN bus. Most drivers support the values</span></div>
+<div class="line">    <span class="comment">// &quot;1M&quot;, &quot;500K&quot;, &quot;125K&quot;, &quot;100K&quot;, &quot;50K&quot;, &quot;20K&quot;, &quot;10K&quot; and &quot;5K&quot;.</span></div>
+<div class="line">    <span class="keyword">const</span> std::string baudrate = <span class="stringliteral">&quot;500K&quot;</span>;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Set the object dictionary index to write to (download).</span></div>
+<div class="line">    <span class="comment">// Here: CiA-401 (I/O device) digital output.</span></div>
+<div class="line">    <span class="keyword">const</span> uint16_t index = 0x6200;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Alternative: CiA-402 (motor) control word:</span></div>
+<div class="line">    <span class="comment">//const uint16_t index = 0x6040;</span></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Set the object dictionary sub-index to write to (download).</span></div>
+<div class="line">    <span class="comment">// Here: CiA-401 (I/O device) digital output - second byte.</span></div>
+<div class="line">    <span class="keyword">const</span> uint8_t subindex = 0x01;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Alternative: CiA-402 (motor) control word:</span></div>
+<div class="line">    <span class="comment">//const uint8_t subindex = 0x00;</span></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Set the data to write (download).</span></div>
+<div class="line">    <span class="keyword">const</span> std::vector&lt;uint8_t&gt; data { 0x7F };</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Alternative: CiA-402 (motor) control word has two bytes. Command: shutdown (little-endian!)</span></div>
+<div class="line">    <span class="comment">//const std::vector&lt;uint8_t&gt; data { 0x06, 0x00 };</span></div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// -------------- //</span></div>
+<div class="line">    <span class="comment">// Initialization //</span></div>
+<div class="line">    <span class="comment">// -------------- //</span></div>
+<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;This is an example which shows the usage of the Core library.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"></div>
+<div class="line">    <span class="comment">// Create core.</span></div>
 <div class="line">    <a name="_a0"></a><a class="code" href="classkaco_1_1Core.html">kaco::Core</a> core;</div>
-<div class="line">    <span class="keyword">const</span> uint8_t node_id = 10;</div>
 <div class="line"></div>
-<div class="line">    <span class="keyword">auto</span> callback = [] (<span class="keyword">const</span> uint8_t node_id) {</div>
-<div class="line">        PRINT(<span class="stringliteral">&quot;New device! ID = &quot;</span>&lt;&lt;(<span class="keywordtype">unsigned</span>)node_id);</div>
-<div class="line">    };</div>
-<div class="line">    core.<a name="a1"></a><a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a2"></a><a class="code" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a>(callback);</div>
+<div class="line">    <span class="comment">// This will be set to true by the callback below.</span></div>
+<div class="line">    <span class="keywordtype">bool</span> found_node = <span class="keyword">false</span>;</div>
 <div class="line"></div>
-<div class="line">    <span class="keywordtype">bool</span> success = core.<a name="a3"></a><a class="code" href="classkaco_1_1Core.html#a82dead6714733cb8772a1b072e19da6e">start</a>(BUSNAME, BAUDRATE);</div>
-<div class="line">    <span class="keywordflow">if</span> (!success) {</div>
-<div class="line">        ERROR(<span class="stringliteral">&quot;Starting core failed.&quot;</span>);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Registering a callback which is called when a device is detected via NMT...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    core.<a name="a1"></a><a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a2"></a><a class="code" href="classkaco_1_1NMT.html#a9815029869864475cd018766e0060cdc">register_device_alive_callback</a>([&amp;] (<span class="keyword">const</span> uint8_t new_node_id) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Device says it&#39;s alive! ID = &quot;</span> &lt;&lt; (unsigned) new_node_id &lt;&lt; std::endl;</div>
+<div class="line">        <span class="comment">// Check if this is the node we are looking for.</span></div>
+<div class="line">        <span class="keywordflow">if</span> (new_node_id == node_id) {</div>
+<div class="line">            found_node = <span class="keyword">true</span>;</div>
+<div class="line">        }</div>
+<div class="line">    });</div>
+<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Starting Core (connect to the driver and start the receiver thread)...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">if</span> (!core.<a name="a3"></a><a class="code" href="classkaco_1_1Core.html#adf610145710abdb1c03d0e3c2bed92ae">start</a>(busname, baudrate)) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Starting core failed.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
 <div class="line">    }</div>
 <div class="line"></div>
-<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
-<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Asking all devices to reset. You don&#39;t need to do that, but it makes&quot;</span></div>
+<div class="line">        &lt;&lt; <span class="stringliteral">&quot; sure all slaves are in a reproducible state.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a4"></a><a class="code" href="classkaco_1_1NMT.html#a10fcd018a1476c819873a60235bb2016">reset_all_nodes</a>();</div>
 <div class="line"></div>
+<div class="line">    <span class="comment">// As an alternative you can request the slaves to announce</span></div>
+<div class="line">    <span class="comment">// themselves:</span></div>
+<div class="line">    <span class="comment">// core.nmt.discover_nodes();</span></div>
+<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Giving the devices one second time to respond...&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
+<div class="line">    <span class="comment">// Check if the device has been detected (see the callback above).</span></div>
+<div class="line">    <span class="keywordflow">if</span> (!found_node) {</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;Node with ID &quot;</span> &lt;&lt; (unsigned) node_id &lt;&lt; <span class="stringliteral">&quot; has not been found.&quot;</span>&lt;&lt; std::endl;</div>
+<div class="line">        <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line">    }</div>
+<div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Asking the device to start up...&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    core.<a class="code" href="classkaco_1_1Core.html#a9565e5e44dab134f6dc7e494bd290382">nmt</a>.<a name="a5"></a><a class="code" href="classkaco_1_1NMT.html#aaa3a10b5f6157327490e30f75db7206a">send_nmt_message</a>(node_id,kaco::NMT::Command::start_node);</div>
 <div class="line"></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Giving the devices one second time to boot up...&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// set digital output</span></div>
-<div class="line">    core.<a name="a6"></a><a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a7"></a><a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">download</a>(node_id, 0x6200, 0x1, 1, {0x7F});</div>
+<div class="line">    <span class="comment">// ------------ //</span></div>
+<div class="line">    <span class="comment">// Device usage //</span></div>
+<div class="line">    <span class="comment">// ------------ //</span></div>
 <div class="line"></div>
-<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Writing to a dictionary entry (CANopen speech: \&quot;download\&quot;)...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    core.<a name="a6"></a><a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a7"></a><a class="code" href="classkaco_1_1SDO.html#aa5c425805390cf0fba8b357367295ddc">download</a>(node_id, index, subindex, data.size(), data);</div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// get device type (usually expedited transfer)</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Reading the device type (\&quot;upload\&quot; 0x1000)... Little-endian!&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::vector&lt;uint8_t&gt; device_type = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a name="a8"></a><a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(node_id,0x1000,0x0);</div>
 <div class="line">    <span class="keywordflow">for</span> (uint8_t device_type_byte : device_type) {</div>
-<div class="line">        DUMP_HEX(device_type_byte);</div>
+<div class="line">        std::cout &lt;&lt; <span class="stringliteral">&quot;  byte 0x&quot;</span> &lt;&lt; std::hex &lt;&lt; (unsigned) device_type_byte &lt;&lt; std::endl;</div>
 <div class="line">    }</div>
-<div class="line">    </div>
-<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(1));</div>
 <div class="line"></div>
-<div class="line">    <span class="comment">// get device name (usually segmented transfer)</span></div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Reading the device name (\&quot;upload\&quot; 0x1008 - usually using segmented transfer)...&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line">    std::vector&lt;uint8_t&gt; device_name = core.<a class="code" href="classkaco_1_1Core.html#a107572c3b5d4f8e580ab507fd01c96c4">sdo</a>.<a class="code" href="classkaco_1_1SDO.html#a61c08f4eccf09cf9d9f03ca92c1d692f">upload</a>(node_id,0x1008,0x0);</div>
 <div class="line">    std::string result(reinterpret_cast&lt;char const*&gt;(device_name.data()), device_name.size());</div>
-<div class="line">    PRINT(<span class="stringliteral">&quot;Device name: &quot;</span>&lt;&lt;result);</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;  &quot;</span> &lt;&lt; result &lt;&lt; std::endl;</div>
 <div class="line"></div>
-<div class="line">    std::this_thread::sleep_for(std::chrono::seconds(3));</div>
+<div class="line">    std::cout &lt;&lt; <span class="stringliteral">&quot;Finished.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line">    <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
 <div class="line"></div>
 <div class="line">}</div>
 </div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 12:39:41 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 17:20:23 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

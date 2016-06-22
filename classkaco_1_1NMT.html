@@ -115,10 +115,13 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:abbdee76a18089953243149c00577603a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> commands. <br /></td></tr>
 <tr class="separator:abbdee76a18089953243149c00577603a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a79e48b4e37a897aa0d2d00fce39c1c3c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> = std::function&lt; void(const uint8_t node_id) &gt;</td></tr>
-<tr class="memdesc:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a new device callback function Important: Never call <a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99" title="Registers a callback which will be called when a new slave device is discovered. ">register_new_device_callback()</a> from within (-&gt; deadlock)! <br /></td></tr>
-<tr class="separator:a79e48b4e37a897aa0d2d00fce39c1c3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05ba78842fa63f9b6b22db9d5d791a41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a05ba78842fa63f9b6b22db9d5d791a41"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41">DeviceAliveCallback</a> = std::function&lt; void(const uint8_t node_id) &gt;</td></tr>
+<tr class="memdesc:a05ba78842fa63f9b6b22db9d5d791a41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a device alive callback function Important: Never call <a class="el" href="classkaco_1_1NMT.html#a9815029869864475cd018766e0060cdc" title="Registers a callback which will be called when a slave sends it&#39;s state via NMT and the state indicat...">register_device_alive_callback()</a> from within (-&gt; deadlock)! <br /></td></tr>
+<tr class="separator:a05ba78842fa63f9b6b22db9d5d791a41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a834c810b4123840415d47430020c9f"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a8a834c810b4123840415d47430020c9f">NewDeviceCallback</a> = <a class="el" href="classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41">DeviceAliveCallback</a></td></tr>
+<tr class="memdesc:a8a834c810b4123840415d47430020c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type of a new device callback function.  <a href="#a8a834c810b4123840415d47430020c9f">More...</a><br /></td></tr>
+<tr class="separator:a8a834c810b4123840415d47430020c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -144,7 +147,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0cb3cf3b8f235efe2a97e17c72898215"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a0cb3cf3b8f235efe2a97e17c72898215">discover_nodes</a> ()</td></tr>
 <tr class="memdesc:a0cb3cf3b8f235efe2a97e17c72898215"><td class="mdescLeft">&#160;</td><td class="mdescRight">Discovers nodes in the network via node guard protocol.  <a href="#a0cb3cf3b8f235efe2a97e17c72898215">More...</a><br /></td></tr>
 <tr class="separator:a0cb3cf3b8f235efe2a97e17c72898215"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af59fcb150db4858240b12be9b4ba7a99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a> (const <a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> &amp;callback)</td></tr>
+<tr class="memitem:a9815029869864475cd018766e0060cdc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#a9815029869864475cd018766e0060cdc">register_device_alive_callback</a> (const <a class="el" href="classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41">DeviceAliveCallback</a> &amp;callback)</td></tr>
+<tr class="memdesc:a9815029869864475cd018766e0060cdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback which will be called when a slave sends it's state via <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> and the state indicates that the device is alive. This can be uses as a "new device" callback.  <a href="#a9815029869864475cd018766e0060cdc">More...</a><br /></td></tr>
+<tr class="separator:a9815029869864475cd018766e0060cdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af59fcb150db4858240b12be9b4ba7a99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99">register_new_device_callback</a> (const <a class="el" href="classkaco_1_1NMT.html#a8a834c810b4123840415d47430020c9f">NewDeviceCallback</a> &amp;callback)</td></tr>
 <tr class="memdesc:af59fcb150db4858240b12be9b4ba7a99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Registers a callback which will be called when a new slave device is discovered.  <a href="#af59fcb150db4858240b12be9b4ba7a99">More...</a><br /></td></tr>
 <tr class="separator:af59fcb150db4858240b12be9b4ba7a99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -152,7 +158,25 @@ Public Member Functions</h2></td></tr>
 <div class="textblock"><p>This class implements the CanOpen <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> protocol. </p>
 
 <p>Definition at line <a class="el" href="nmt_8h_source.html#l00050">50</a> of file <a class="el" href="nmt_8h_source.html">nmt.h</a>.</p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a class="anchor" id="a8a834c810b4123840415d47430020c9f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classkaco_1_1NMT.html#a8a834c810b4123840415d47430020c9f">kaco::NMT::NewDeviceCallback</a> =  <a class="el" href="classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41">DeviceAliveCallback</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Type of a new device callback function. </p>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000001">Deprecated:</a></b></dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="nmt_8h_source.html#l00061">61</a> of file <a class="el" href="nmt_8h_source.html">nmt.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aafd868d9b69778b3da4a5aeacb02267a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -255,6 +279,28 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a9815029869864475cd018766e0060cdc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void kaco::NMT::register_device_alive_callback </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41">DeviceAliveCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>callback</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Registers a callback which will be called when a slave sends it's state via <a class="el" href="classkaco_1_1NMT.html" title="This class implements the CanOpen NMT protocol. ">NMT</a> and the state indicates that the device is alive. This can be uses as a "new device" callback. </p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a2">examples/core.cpp</a>.</dd>
+</dl>
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00181">181</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="af59fcb150db4858240b12be9b4ba7a99"></a>
 <div class="memitem">
 <div class="memproto">
@@ -262,7 +308,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">void kaco::NMT::register_new_device_callback </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="classkaco_1_1NMT.html#a79e48b4e37a897aa0d2d00fce39c1c3c">NewDeviceCallback</a> &amp;&#160;</td>
+          <td class="paramtype">const <a class="el" href="classkaco_1_1NMT.html#a8a834c810b4123840415d47430020c9f">NewDeviceCallback</a> &amp;&#160;</td>
           <td class="paramname"><em>callback</em></td><td>)</td>
           <td></td>
         </tr>
@@ -270,11 +316,10 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Registers a callback which will be called when a new slave device is discovered. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>rename to device_alive_callback <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
-</dd></dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a2">examples/core.cpp</a>.</dd>
-</dl>
-<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00181">181</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
+<dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
+<dl class="deprecated"><dt><b><a class="el" href="deprecated.html#_deprecated000002">Deprecated:</a></b></dt><dd></dd></dl>
+
+<p>Definition at line <a class="el" href="nmt_8cpp_source.html#l00186">186</a> of file <a class="el" href="nmt_8cpp_source.html">nmt.cpp</a>.</p>
 
 </div>
 </div>
@@ -345,7 +390,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 12:39:41 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 17:20:23 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

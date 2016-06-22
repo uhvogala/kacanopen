@@ -5,6 +5,7 @@ var searchData=
   ['read_5fcomplete_5fdictionary',['read_complete_dictionary',['../classkaco_1_1Device.html#a7194db502148640db62048b422d29488',1,'kaco::Device']]],
   ['ready',['ready',['../classkaco_1_1EDSLibrary.html#ae85cb575606bb7cb357eb74e70691140',1,'kaco::EDSLibrary']]],
   ['receivepdomapping',['ReceivePDOMapping',['../structkaco_1_1ReceivePDOMapping.html',1,'kaco']]],
+  ['register_5fdevice_5falive_5fcallback',['register_device_alive_callback',['../classkaco_1_1NMT.html#a9815029869864475cd018766e0060cdc',1,'kaco::NMT']]],
   ['register_5fnew_5fdevice_5fcallback',['register_new_device_callback',['../classkaco_1_1NMT.html#af59fcb150db4858240b12be9b4ba7a99',1,'kaco::NMT']]],
   ['register_5freceive_5fcallback',['register_receive_callback',['../classkaco_1_1Core.html#a0a2ed3f743dc36df74ffbea1769709a2',1,'kaco::Core']]],
   ['repeat_5ftime',['repeat_time',['../classkaco_1_1TransmitPDOMapping.html#aba9966408d2db59c77e858546410421c',1,'kaco::TransmitPDOMapping']]],

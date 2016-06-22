@@ -131,9 +131,9 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#af0265594c6aec3f36a56a691ccd988fb">Core</a> (const <a class="el" href="classkaco_1_1Core.html">Core</a> &amp;)=delete</td></tr>
 <tr class="memdesc:af0265594c6aec3f36a56a691ccd988fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor deleted because of mutexes. <br /></td></tr>
 <tr class="separator:af0265594c6aec3f36a56a691ccd988fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82dead6714733cb8772a1b072e19da6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#a82dead6714733cb8772a1b072e19da6e">start</a> (const std::string busname, const std::string baudrate)</td></tr>
-<tr class="memdesc:a82dead6714733cb8772a1b072e19da6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#a82dead6714733cb8772a1b072e19da6e">More...</a><br /></td></tr>
-<tr class="separator:a82dead6714733cb8772a1b072e19da6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf610145710abdb1c03d0e3c2bed92ae"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#adf610145710abdb1c03d0e3c2bed92ae">start</a> (const std::string busname, const std::string &amp;baudrate)</td></tr>
+<tr class="memdesc:adf610145710abdb1c03d0e3c2bed92ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#adf610145710abdb1c03d0e3c2bed92ae">More...</a><br /></td></tr>
+<tr class="separator:adf610145710abdb1c03d0e3c2bed92ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a35cb8ea036a2410697db7b19c75b6723"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#a35cb8ea036a2410697db7b19c75b6723">start</a> (const std::string busname, const unsigned baudrate)</td></tr>
 <tr class="memdesc:a35cb8ea036a2410697db7b19c75b6723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#a35cb8ea036a2410697db7b19c75b6723">More...</a><br /></td></tr>
 <tr class="separator:a35cb8ea036a2410697db7b19c75b6723"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -164,7 +164,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class implements the <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> of KaCanOpen It communicates with the CAN driver, sends CAN messages and listens for incoming CAN messages. You can access CanOpen sub- protocols using public members nmt, sdo and pdo. </p>
-<p>All methods except <a class="el" href="classkaco_1_1Core.html#a82dead6714733cb8772a1b072e19da6e" title="Opens CAN driver and starts CAN message receive loop. ">start()</a> and <a class="el" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772" title="Stops the receive loop and closes the driver. ">stop()</a> are thread-safe. </p>
+<p>All methods except <a class="el" href="classkaco_1_1Core.html#adf610145710abdb1c03d0e3c2bed92ae" title="Opens CAN driver and starts CAN message receive loop. ">start()</a> and <a class="el" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772" title="Stops the receive loop and closes the driver. ">stop()</a> are thread-safe. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#_a0">examples/core.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="core_8h_source.html#l00059">59</a> of file <a class="el" href="core_8h_source.html">core.h</a>.</p>
@@ -211,7 +211,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a82dead6714733cb8772a1b072e19da6e"></a>
+<a class="anchor" id="adf610145710abdb1c03d0e3c2bed92ae"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -224,7 +224,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>baudrate</em>&#160;</td>
         </tr>
         <tr>
@@ -317,7 +317,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 12:39:41 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 17:20:23 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

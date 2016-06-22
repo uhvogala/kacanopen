@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messagereceivedcallback',['MessageReceivedCallback',['../classkaco_1_1Core.html#a8d9395addac47b2e921412aacc923d7e',1,'kaco::Core']]]
+  ['devicealivecallback',['DeviceAliveCallback',['../classkaco_1_1NMT.html#a05ba78842fa63f9b6b22db9d5d791a41',1,'kaco::NMT']]]
 ];

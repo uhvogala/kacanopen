@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sdoreceivedcallback',['SDOReceivedCallback',['../classkaco_1_1SDO.html#a3352b35151c25c0f47f5be15906a3caf',1,'kaco::SDO']]]
+  ['result_5ftype',['result_type',['../structstd_1_1hash_3_01kaco_1_1Address_01_4.html#aeb8272daea6f63b279b1e57843949762',1,'std::hash&lt; kaco::Address &gt;']]]
 ];
