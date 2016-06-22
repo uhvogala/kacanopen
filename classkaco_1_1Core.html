@@ -131,9 +131,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#af0265594c6aec3f36a56a691ccd988fb">Core</a> (const <a class="el" href="classkaco_1_1Core.html">Core</a> &amp;)=delete</td></tr>
 <tr class="memdesc:af0265594c6aec3f36a56a691ccd988fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy constructor deleted because of mutexes. <br /></td></tr>
 <tr class="separator:af0265594c6aec3f36a56a691ccd988fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae201c2d38fead33833b2cc9a3aae543a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#ae201c2d38fead33833b2cc9a3aae543a">start</a> (const std::string busname, unsigned baudrate)</td></tr>
-<tr class="memdesc:ae201c2d38fead33833b2cc9a3aae543a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#ae201c2d38fead33833b2cc9a3aae543a">More...</a><br /></td></tr>
-<tr class="separator:ae201c2d38fead33833b2cc9a3aae543a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82dead6714733cb8772a1b072e19da6e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#a82dead6714733cb8772a1b072e19da6e">start</a> (const std::string busname, const std::string baudrate)</td></tr>
+<tr class="memdesc:a82dead6714733cb8772a1b072e19da6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#a82dead6714733cb8772a1b072e19da6e">More...</a><br /></td></tr>
+<tr class="separator:a82dead6714733cb8772a1b072e19da6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35cb8ea036a2410697db7b19c75b6723"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#a35cb8ea036a2410697db7b19c75b6723">start</a> (const std::string busname, const unsigned baudrate)</td></tr>
+<tr class="memdesc:a35cb8ea036a2410697db7b19c75b6723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens CAN driver and starts CAN message receive loop.  <a href="#a35cb8ea036a2410697db7b19c75b6723">More...</a><br /></td></tr>
+<tr class="separator:a35cb8ea036a2410697db7b19c75b6723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a381bc436589b3709e644f2fd97ea9772"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772">stop</a> ()</td></tr>
 <tr class="memdesc:a381bc436589b3709e644f2fd97ea9772"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the receive loop and closes the driver.  <a href="#a381bc436589b3709e644f2fd97ea9772">More...</a><br /></td></tr>
 <tr class="separator:a381bc436589b3709e644f2fd97ea9772"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -161,7 +164,7 @@ Public Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class implements the <a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> of KaCanOpen It communicates with the CAN driver, sends CAN messages and listens for incoming CAN messages. You can access CanOpen sub- protocols using public members nmt, sdo and pdo. </p>
-<p>All methods except <a class="el" href="classkaco_1_1Core.html#ae201c2d38fead33833b2cc9a3aae543a" title="Opens CAN driver and starts CAN message receive loop. ">start()</a> and <a class="el" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772" title="Stops the receive loop and closes the driver. ">stop()</a> are thread-safe. </p>
+<p>All methods except <a class="el" href="classkaco_1_1Core.html#a82dead6714733cb8772a1b072e19da6e" title="Opens CAN driver and starts CAN message receive loop. ">start()</a> and <a class="el" href="classkaco_1_1Core.html#a381bc436589b3709e644f2fd97ea9772" title="Stops the receive loop and closes the driver. ">stop()</a> are thread-safe. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#_a0">examples/core.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="core_8h_source.html#l00059">59</a> of file <a class="el" href="core_8h_source.html">core.h</a>.</p>
@@ -183,7 +186,7 @@ Public Attributes</h2></td></tr>
 <p>Registers a callback function which is called when a message has been received. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe </dd></dl>
 
-<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00127">127</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
+<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00137">137</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,11 +207,11 @@ Public Attributes</h2></td></tr>
 <p>Sends a message. </p>
 <dl class="section remark"><dt>Remarks</dt><dd>thread-safe if m_lock_send==true or driver is thread-safe. </dd></dl>
 
-<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00233">233</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
+<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00243">243</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae201c2d38fead33833b2cc9a3aae543a"></a>
+<a class="anchor" id="a82dead6714733cb8772a1b072e19da6e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -221,7 +224,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramtype">const std::string&#160;</td>
           <td class="paramname"><em>baudrate</em>&#160;</td>
         </tr>
         <tr>
@@ -236,7 +239,7 @@ Public Attributes</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">busname</td><td>Name of the bus which will be passed to the CAN driver, e.g. slcan0 </td></tr>
-    <tr><td class="paramname">baudrate</td><td>Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000 </td></tr>
+    <tr><td class="paramname">baudrate</td><td>Baudrate as a string which will be passed to the CAN driver. Most drivers from the CanFestival project accept the following values: "1M", "500K", "125K", "100K", "50K", "20K", "10K" and "5K". </td></tr>
   </table>
   </dd>
 </dl>
@@ -245,6 +248,45 @@ Public Attributes</h2></td></tr>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="examples_2core_8cpp-example.html#a3">examples/core.cpp</a>.</dd>
 </dl>
 <p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00084">84</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a35cb8ea036a2410697db7b19c75b6723"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool kaco::Core::start </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>busname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned&#160;</td>
+          <td class="paramname"><em>baudrate</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens CAN driver and starts CAN message receive loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">busname</td><td>Name of the bus which will be passed to the CAN driver, e.g. slcan0 </td></tr>
+    <tr><td class="paramname">baudrate</td><td>Baudrate in 1/s. The value will be passed to the CAN driver in string representation. Attention: For full compatibility with CanFestival drivers, values &gt; 1000000 are postfixed with "M" and values &gt; 1000 are postfixed with "K". E.g. 1000000-&gt;"1M", 500000-&gt;"500K" and 5000-&gt;"5K". </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if successful </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> must not run yet. </dd></dl>
+
+<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00102">102</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
 
 </div>
 </div>
@@ -264,7 +306,7 @@ Public Attributes</h2></td></tr>
 <p>Stops the receive loop and closes the driver. </p>
 <dl class="section remark"><dt>Remarks</dt><dd><a class="el" href="classkaco_1_1Core.html" title="This class implements the Core of KaCanOpen It communicates with the CAN driver, sends CAN messages a...">Core</a> must be running. </dd></dl>
 
-<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00102">102</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
+<p>Definition at line <a class="el" href="core_2src_2core_8cpp_source.html#l00112">112</a> of file <a class="el" href="core_2src_2core_8cpp_source.html">core.cpp</a>.</p>
 
 </div>
 </div>
@@ -275,7 +317,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 15 2016 17:52:45 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 12:19:52 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>
