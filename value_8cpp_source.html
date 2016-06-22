@@ -491,7 +491,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        <span class="keywordflow">case</span> Type::octet_string: {</div>
 <div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;            <span class="comment">// reusing code from value_printer...</span></div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">return</span> to_string() == other.to_string();</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;            <span class="keywordflow">return</span> <a class="code" href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">to_string</a>() == other.<a class="code" href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">to_string</a>();</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;        }</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;        <span class="keywordflow">case</span> Type::invalid: {</div>
@@ -506,7 +506,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;    <span class="keywordflow">return</span> !(<a class="code" href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">operator==</a>(other));</div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;std::string Value::to_string()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00418"></a><span class="lineno"><a class="line" href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">  418</a></span>&#160;std::string <a class="code" href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">Value::to_string</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keyword">using namespace </span>value_printer;</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;    std::ostringstream stream;</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;    stream &lt;&lt; std::dec &lt;&lt; *<span class="keyword">this</span>;</div>
@@ -546,8 +546,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;<span class="comment">//-------------------//</span></div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;<span class="keyword">namespace </span>value_printer {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">Value</a> val) {</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keywordflow">switch</span>(val.type) {</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, <a class="code" href="structkaco_1_1Value.html">Value</a> val) {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        <span class="keywordflow">switch</span>(val.<a class="code" href="structkaco_1_1Value.html#a138244b24433baee213c66af60e86f91">type</a>) {</div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;                </div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;            <span class="keywordflow">case</span> Type::uint8: {</div>
 <div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;                <span class="comment">// 1-byte types are printed as char by default -&gt; double casting.</span></div>
@@ -623,6 +623,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;} <span class="comment">// end namespace kaco</span></div>
 <div class="ttc" id="structkaco_1_1Value_html_aa33d513aae7ad03543195d373641dc79"><div class="ttname"><a href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">kaco::Value::operator!=</a></div><div class="ttdeci">bool operator!=(const Value &amp;other) const </div><div class="ttdoc">Compares not equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00414">value.cpp:414</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a414258b408ef7cdacd86d9b683636d39"><div class="ttname"><a href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">kaco::Value::get_bytes</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; get_bytes() const </div><div class="ttdoc">Returns the byte representation (little-endian) as a vector. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00222">value.cpp:222</a></div></div>
+<div class="ttc" id="structkaco_1_1Value_html_a49b3f9d351ec06d26a4a76bd4c9087bb"><div class="ttname"><a href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">kaco::Value::to_string</a></div><div class="ttdeci">std::string to_string() const </div><div class="ttdoc">Returns the value as a printable string. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00418">value.cpp:418</a></div></div>
 <div class="ttc" id="classkaco_1_1canopen__error_html"><div class="ttname"><a href="classkaco_1_1canopen__error.html">kaco::canopen_error</a></div><div class="ttdoc">This is the base class of all types of exceptions thrown by the KaCanOpen library. It can be used directly like std::runtime_error if there isn&#39;t any more specific error class. </div><div class="ttdef"><b>Definition:</b> <a href="canopen__error_8h_source.html#l00043">canopen_error.h:43</a></div></div>
 <div class="ttc" id="structkaco_1_1Utils_html_a3f45db0094ede394d7959ede01ed3776"><div class="ttname"><a href="structkaco_1_1Utils.html#a3f45db0094ede394d7959ede01ed3776">kaco::Utils::type_to_string</a></div><div class="ttdeci">static std::string type_to_string(Type type)</div><div class="ttdoc">Converts data types to a string. </div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00042">utils.cpp:42</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a97016a283a1e13b608406f6b3d205f09"><div class="ttname"><a href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">kaco::Value::Value</a></div><div class="ttdeci">Value()</div><div class="ttdoc">Constructs an invalid value. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00041">value.cpp:41</a></div></div>
@@ -634,7 +635,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 12:33:49 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 12:39:41 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

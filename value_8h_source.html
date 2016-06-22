@@ -222,26 +222,27 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
 <div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">operator!=</a>(<span class="keyword">const</span> <a class="code" href="structkaco_1_1Value.html">Value</a>&amp; other) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        std::string to_string() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    };</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    <span class="keyword">namespace </span>value_printer {</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, Value val);</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    }</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;} <span class="comment">// end namespace kaco</span></div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="comment">// For correct usage of logger.h one should use the int8_printers, so</span></div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">// the int8_printers namespace is automatically included. Because of</span></div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">// this, logger.h should not be included in library headers.</span></div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="keyword">using namespace </span>kaco::value_printer;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;        std::string <a class="code" href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">to_string</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">bool</span> debug = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    };</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keyword">namespace </span>value_printer {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        std::ostream &amp;operator&lt;&lt;(std::ostream &amp;os, Value val);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    }</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;} <span class="comment">// end namespace kaco</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="comment">// For correct usage of logger.h one should use the int8_printers, so</span></div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="comment">// the int8_printers namespace is automatically included. Because of</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">// this, logger.h should not be included in library headers.</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="keyword">using namespace </span>kaco::value_printer;</div>
 <div class="ttc" id="structkaco_1_1Value_html_aa33d513aae7ad03543195d373641dc79"><div class="ttname"><a href="structkaco_1_1Value.html#aa33d513aae7ad03543195d373641dc79">kaco::Value::operator!=</a></div><div class="ttdeci">bool operator!=(const Value &amp;other) const </div><div class="ttdoc">Compares not equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00414">value.cpp:414</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a414258b408ef7cdacd86d9b683636d39"><div class="ttname"><a href="structkaco_1_1Value.html#a414258b408ef7cdacd86d9b683636d39">kaco::Value::get_bytes</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; get_bytes() const </div><div class="ttdoc">Returns the byte representation (little-endian) as a vector. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00222">value.cpp:222</a></div></div>
+<div class="ttc" id="structkaco_1_1Value_html_a49b3f9d351ec06d26a4a76bd4c9087bb"><div class="ttname"><a href="structkaco_1_1Value.html#a49b3f9d351ec06d26a4a76bd4c9087bb">kaco::Value::to_string</a></div><div class="ttdeci">std::string to_string() const </div><div class="ttdoc">Returns the value as a printable string. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00418">value.cpp:418</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a97016a283a1e13b608406f6b3d205f09"><div class="ttname"><a href="structkaco_1_1Value.html#a97016a283a1e13b608406f6b3d205f09">kaco::Value::Value</a></div><div class="ttdeci">Value()</div><div class="ttdoc">Constructs an invalid value. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00041">value.cpp:41</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a138244b24433baee213c66af60e86f91"><div class="ttname"><a href="structkaco_1_1Value.html#a138244b24433baee213c66af60e86f91">kaco::Value::type</a></div><div class="ttdeci">Type type</div><div class="ttdoc">Tyoe of the value. </div><div class="ttdef"><b>Definition:</b> <a href="value_8h_source.html#l00056">value.h:56</a></div></div>
 <div class="ttc" id="structkaco_1_1Value_html_a215bf4535d7a2f6144d52e8e485201fd"><div class="ttname"><a href="structkaco_1_1Value.html#a215bf4535d7a2f6144d52e8e485201fd">kaco::Value::operator==</a></div><div class="ttdeci">bool operator==(const Value &amp;other) const </div><div class="ttdoc">Compares equal. </div><div class="ttdef"><b>Definition:</b> <a href="value_8cpp_source.html#l00341">value.cpp:341</a></div></div>
@@ -251,7 +252,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jun 22 2016 12:33:49 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 22 2016 12:39:41 for KaCanOpen by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.7
 </small></address>

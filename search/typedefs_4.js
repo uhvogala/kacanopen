@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sdoreceivedcallback',['SDOReceivedCallback',['../classkaco_1_1SDO.html#a3352b35151c25c0f47f5be15906a3caf',1,'kaco::SDO']]]
+  ['operation',['Operation',['../classkaco_1_1Device.html#ac4e63da2436b91929fe74a82ba6da2bc',1,'kaco::Device::Operation()'],['../structkaco_1_1Profiles.html#ad35a9c2d35b3336db021f3025deaea94',1,'kaco::Profiles::Operation()']]]
 ];
