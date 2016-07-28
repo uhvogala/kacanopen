@@ -189,7 +189,7 @@ bool EDSReader::parse_var(const std::string& section, uint16_t index, uint8_t su
 				std::smatch matches;
 				if (std::regex_match(var_name, matches, std::regex("^(.+)_([[:xdigit:]]{1,3})$"))) {
 					assert(matches.size()>2);
-					uint8_t count = Utils::decstr_to_uint(matches[2]);
+					auto count = Utils::decstr_to_uint(matches[2]);
 					++count;
 					var_name = std::string(matches[1])+"_"+std::to_string(count);
 				} else {
@@ -297,8 +297,8 @@ bool EDSReader::parse_array_or_record(const std::string& section, uint16_t index
 
 					assert(matches.size()>2);
 					assert(Utils::hexstr_to_uint(matches[1])==index);
-					uint8_t subindex = Utils::hexstr_to_uint(matches[2]);
-					bool success = parse_var(section_name, index, subindex, array_name);
+					auto subindex = Utils::hexstr_to_uint(matches[2]);
+					bool success = subindex > std::numeric_limits<uint8_t>::max() ? false : parse_var(section_name, index, uint8_t(subindex), array_name);
 					if (!success) {
 						ERROR("[EDSReader::parse_array_or_record] Malformed variable entry: "<<section_name);
 						return false;
