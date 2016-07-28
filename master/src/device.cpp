@@ -256,7 +256,7 @@ void Device::pdo_received_callback(const ReceivePDOMapping& mapping, std::vector
 	const uint8_t offset = mapping.offset;
 	const uint8_t type_size = Utils::get_type_size(entry.type);
 
-	if (data.size() < offset+type_size) {
+	if (data.size() < size_t(offset+type_size)) {
 		// We don't throw an exception here, because this could be a network error.
 		WARN("[Device::pdo_received_callback] PDO has wrong size. Ignoring it...");
 		DUMP(data.size());
