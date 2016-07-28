@@ -1,6 +1,7 @@
 #pragma once
 // only relevant on Windows!
-#if defined (_WIN32) 
+#if defined (_WIN32)
+#  pragma warning (disable : 4251)
 #  if defined (EXPORT_MASTER_API)
 // when compiling for .DLL we must export
 #    define MASTER_API    __declspec(dllexport)

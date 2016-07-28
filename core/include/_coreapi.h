@@ -1,6 +1,7 @@
 #pragma once
 // only relevant on Windows!
 #if defined (_WIN32)
+#  pragma warning (disable : 4251 4275)
 #  if defined (EXPORT_CORE_API)
 // when compiling for .DLL we must export
 #    define CORE_API    __declspec(dllexport)
