@@ -83,6 +83,9 @@ void PDO::process_incoming_message(const Message& message) const
 		}
 	}
 
+	// value is not used if debug is false
+	(void)found_callback;
+
 	DEBUG(
 
 	if (!found_callback) {
