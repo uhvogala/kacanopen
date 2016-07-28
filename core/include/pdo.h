@@ -36,8 +36,6 @@
 #include <functional>
 #include <mutex>
 
-#include "message.h"
-
 #include "_coreapi.h"
 
 
@@ -45,6 +43,7 @@ namespace kaco {
 
 	// forward declaration
 	class Core;
+	struct Message;
 
 	/// \class PDO
 	///
@@ -74,7 +73,7 @@ namespace kaco {
 
 		/// Constructor
 		/// \param core Reference to the Core
-		PDO(Core& core);
+		explicit PDO(Core& core);
 
 		/// Copy constructor deleted because of mutexes.
 		PDO(const PDO&) = delete;
