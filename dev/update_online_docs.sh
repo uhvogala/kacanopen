@@ -5,6 +5,9 @@
 
 REPOSITORY="https://github.com/KITmedical/kacanopen.git"
 
+# Exit if any command fails.
+set -e
+
 command_exists(){
 	[ -x "$(command -v $1)" ]
 }
@@ -43,6 +46,8 @@ doxygen Doxyfile
 
 echo "Committing and pushing changes now."
 cd "$HTMLDIR"
+echo "> git pull"
+git pull
 echo "> git add *"
 git add *
 echo "> git commit -m \"Update via dev/update_online_docs.sh.\""

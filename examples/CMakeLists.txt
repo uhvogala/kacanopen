@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.2)
 
 message(STATUS "Configuring examples")
 
 file(GLOB TARGETS_SRC
 	"*.cpp"
+	"test/*.cpp"
 )
 
 if (NOT(${NO_ROS}))
@@ -19,7 +20,7 @@ foreach(TARGET_SRC ${TARGETS_SRC})
 	get_filename_component(TARGET_NAME ${TARGET_SRC} NAME_WE)
 	set(TARGET_NAME "kacanopen_example_${TARGET_NAME}")
 	add_executable(${TARGET_NAME} ${TARGET_SRC})
-	set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 11)
+	set_property(TARGET ${TARGET_NAME} PROPERTY CXX_STANDARD 14)
 	target_link_libraries(${TARGET_NAME} kacanopen_core)
 	target_link_libraries(${TARGET_NAME} kacanopen_master)
 

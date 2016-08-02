@@ -58,12 +58,17 @@ namespace kaco {
 // We put this into the header file because specialization must be parsed before any occurrence of std::unordered_map<Address,...>.
 namespace std {
 
-	// Specializing std::hash for kaco::Address for use as key type in std::unordered_map.
+	/// Specialization of std::hash for kaco::Address for use as key type in std::unordered_map.
 	template<> struct hash<kaco::Address> {
 
+		/// Argument type
 		typedef kaco::Address argument_type;
+
+		/// Result type
 		typedef std::size_t result_type;
 
+		/// Hasher
+		/// \param s the address to hash
 		result_type operator()(argument_type const& s) const {
 			const uint32_t a = static_cast<uint32_t>(s.index);
 			const uint32_t b = static_cast<uint32_t>(s.subindex);

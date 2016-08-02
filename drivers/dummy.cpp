@@ -44,10 +44,10 @@ using kaco::Message;
 struct CANBoard {
 
 	/// Bus name
-	const char * busname;
+	const char* busname;
 
 	/// Baudrate
-	const char * baudrate;
+	const char* baudrate;
 
 };
 
@@ -59,7 +59,8 @@ using CANHandle = void*;
 
 /// Initialize the driver and return some handle.
 /// The board argument can be used for configuration.
-extern "C" CANHandle canOpen_driver(CANBoard* board) {
+extern "C" CANHandle __declspec(dllexport) canOpen_driver(CANBoard* board)
+{
 	PRINT("canOpen_driver");
 	(void) board;
 	return (CANHandle) 1;
@@ -67,7 +68,8 @@ extern "C" CANHandle canOpen_driver(CANBoard* board) {
 
 /// Destruct the driver.
 /// Return 0 on success.
-extern "C" int32_t canClose_driver(CANHandle handle) {
+extern "C" int32_t __declspec(dllexport) canClose_driver(CANHandle handle)
+{
 	PRINT("canClose_driver");
 	(void) handle;
 	return 0;
@@ -76,7 +78,8 @@ extern "C" int32_t canClose_driver(CANHandle handle) {
 /// Receive a message.
 /// This should be a blocking call and wait for any message.
 /// Return 0 on success.
-extern "C" uint8_t canReceive_driver(CANHandle handle, Message* message) {
+extern "C" uint8_t __declspec(dllexport) canReceive_driver(CANHandle handle, Message* message)
+{
 	PRINT("canReceive_driver");
 	(void) handle;
 	(void) message;
@@ -85,7 +88,8 @@ extern "C" uint8_t canReceive_driver(CANHandle handle, Message* message) {
 
 /// Send a message
 /// Return 0 on success.
-extern "C" uint8_t canSend_driver(CANHandle handle, Message const* message) {
+extern "C" uint8_t __declspec(dllexport) canSend_driver(CANHandle handle, Message const* message)
+{
 	PRINT("canSend_driver");
 	(void) handle;
 	(void) message;
@@ -96,7 +100,8 @@ extern "C" uint8_t canSend_driver(CANHandle handle, Message const* message) {
 /// The baudrate is given as a C-string.
 /// Supported values are 1M, 500K, 250K, 125K, 100K, 50K, 20K, 10K, 5K, and none.
 /// Return 0 on success.
-extern "C" uint8_t canChangeBaudRate_driver(CANHandle handle, char* baudrate) {
+extern "C" uint8_t __declspec(dllexport) canChangeBaudRate_driver(CANHandle handle, char* baudrate)
+{
 	PRINT("canChangeBaudRate_driver");
 	(void) handle;
 	(void) baudrate;

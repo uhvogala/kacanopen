@@ -1,10 +1,18 @@
 cmake_minimum_required(VERSION 2.8)
 
-set(SUPPORTED_DRIVERS "lincan;peak_linux;serial;socket;virtual;dummy")
+set(SUPPORTED_DRIVERS "lincan;peak_linux;serial;socket;virtual;dummy;canusb")
 
 # CAN_DRIVER_NAME is deprecated and has been replaced by DRIVER.
 
-set(DRIVER "socket" CACHE STRING "The CAN driver to use. The following drivers are available: ${SUPPORTED_DRIVERS}.")
+if(WIN32)
+    set (DEFAULT_DRIVER "canusb")
+    set (DEFAULT_BUSNAME "COM4")
+else()
+    set (DEFAULT_DRIVER "socket")
+    set (DEFAULT_BUSNAME "can0")
+endif()
+
+set(DRIVER "${DEFAULT_DRIVER}" CACHE STRING "The CAN driver to use. The following drivers are available: ${SUPPORTED_DRIVERS}.")
 
 set(BUILD_DRIVERS "" CACHE STRING "Semicolon-separated list of additional CAN drivers to build. The following drivers are available: ${SUPPORTED_DRIVERS}.")
 
@@ -17,9 +25,5 @@ option(NO_ROS "Exclude anything depending on ROS" OFF)
 option(INSTALL_EXAMPLES "Install example programs when running make install" OFF)
 
 set(SDO_RESPONSE_TIMEOUT_MS "2000" CACHE STRING "Timeout in milliseconds when waiting for an SDO response.")
-
-set(BUSNAME "slcan0" CACHE STRING "CAN driver busname used by the examples.")
-
-set(BAUDRATE "500000" CACHE STRING "CAN driver baudrate used by the examples.")
 
 set(CONSECUTIVE_SEND_PAUSE_MS "2" CACHE STRING "Pause between two consecutively sent CAN frames in milliseconds.")

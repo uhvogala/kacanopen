@@ -45,19 +45,26 @@
 
 int main(int argc, char* argv[]) {
 
+	// Set the name of your CAN bus. "slcan0" is a common bus name
+	// for the first SocketCAN device on a Linux system.
+	const std::string busname = "slcan0";
+
+	// Set the baudrate of your CAN bus. Most drivers support the values
+	// "1M", "500K", "125K", "100K", "50K", "20K", "10K" and "5K".
+	const std::string baudrate = "500K";
+
 	PRINT("This example publishes and subscribes JointState messages for each connected CiA 402 device as well as"
 		<<"uint8 messages for each connected digital IO device (CiA 401).");
 
 	const double loop_rate = 10; // [Hz]
 
 	kaco::Master master;
-	bool success = master.start(BUSNAME, BAUDRATE);
-	//master.core.nmt.reset_all_nodes();
-
-	if (!success) {
+	if (!master.start(busname, baudrate)) {
 		ERROR("Starting master failed.");
 		return EXIT_FAILURE;
 	}
+
+	//master.core.nmt.reset_all_nodes();
 
 	std::this_thread::sleep_for(std::chrono::seconds(1));
 	size_t num_devices_required = 1;

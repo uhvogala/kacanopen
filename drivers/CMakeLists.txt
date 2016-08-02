@@ -19,3 +19,4 @@ endmacro()
 
 ### List of drivers ###
 driver_switch("dummy")
+driver_switch("canusb")

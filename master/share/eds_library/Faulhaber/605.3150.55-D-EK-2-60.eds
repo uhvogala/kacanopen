@@ -210,7 +210,7 @@ LowLimit=0
 HighLimit=100
 
 [1003sub2]
-ParameterName=Standard Error Field
+ParameterName=Standard Error Field 2
 ObjectType=0x7
 DataType=0x0007
 AccessType=ro
@@ -519,6 +519,7 @@ DataType=0x0005
 AccessType=ro
 DefaultValue=2
 PDOMapping=0
+
 LowLimit=0
 HighLimit=2
 

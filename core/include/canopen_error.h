@@ -28,11 +28,14 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <string>
 #include <stdexcept>
+
+#include "_coreapi.h"
+
 
 namespace kaco {
 
@@ -40,7 +43,7 @@ namespace kaco {
 	/// thrown by the KaCanOpen library. It can be used
 	/// directly like std::runtime_error if there isn't any
 	/// more specific error class.
-	class canopen_error : public std::runtime_error {
+	class CORE_API canopen_error : public std::runtime_error {
 
 	public:
 
@@ -48,7 +51,7 @@ namespace kaco {
 		/// \param what Error description
 		explicit canopen_error(std::string what)
 			: runtime_error(what)
-			{ }
+		{ }
 
 		/// Destructor
 		virtual ~canopen_error() { }
