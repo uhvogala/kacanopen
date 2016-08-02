@@ -110,13 +110,11 @@ Core::~Core()
 	delete d;
 }
 
-bool Core::start(const std::string busname, unsigned baudrate)
-{
+bool Core::start(const std::string busname, const std::string& baudrate) {
 
 	assert(!d->m_running);
 
-	auto baudrateAsString = std::to_string(baudrate);
-	CANBoard board = {busname.c_str(), baudrateAsString.c_str()} ;
+	CANBoard board = {busname.c_str(), baudrate.c_str()};
 	m_handle = canOpen_driver(&board);
 
 	if (!m_handle) {
@@ -130,8 +128,17 @@ bool Core::start(const std::string busname, unsigned baudrate)
 
 }
 
-void Core::stop()
-{
+bool Core::start(const std::string busname, const unsigned baudrate) {
+	if (baudrate>=1000000 && baudrate%1000000==0) {
+		return start(busname, std::to_string(baudrate/1000000)+"M");
+	} else if (baudrate>=1000 && baudrate%1000==0) {
+		return start(busname, std::to_string(baudrate/1000)+"K");
+	} else {
+		return start(busname, std::to_string(baudrate));
+	}
+}
+
+void Core::stop() {
 
 	assert(d->m_running);
 

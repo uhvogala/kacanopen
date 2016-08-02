@@ -213,7 +213,7 @@ DefaultValue=0
 PDOMapping=0
 
 [1003sub2]
-ParameterName=Standard Error Field
+ParameterName=Standard Error Field 2
 ObjectType=0x7
 DataType=0x0007
 AccessType=ro
@@ -2079,6 +2079,7 @@ ObjectType=0x7
 DataType=0x0006
 AccessType=rw
 DefaultValue=0
+
 PDOMapping=0
 LowLimit=0
 HighLimit=1

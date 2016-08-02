@@ -119,8 +119,9 @@ namespace kaco {
 
 		/// Tries to load the most specific EDS file available in KaCanOpen's internal EDS library.
 		/// This is either device specific, CiA profile specific, or mandatory CiA 301.
+		/// \returns Path to the loaded EDS file.
 		/// \throws canopen_error if mandatory CiA 301 dictionary entries cannot be loaded.
-		void load_dictionary_from_library();
+		std::string load_dictionary_from_library();
 
 		/// Loads the dictionary from a custom EDS file.
 		/// \param path A filesystem path where the EDS library can be found.

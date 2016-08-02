@@ -36,6 +36,25 @@ namespace kaco {
 
 \page examples Examples
 
+\example examples/core.cpp
+
+	This example shows how to use the KaCanOpen Core library.
+
+	It starts the node via NMT, gets and sets values via SDO and determines
+	device type and device name.
+
+\example examples/master.cpp
+
+	This example shows how to use the KaCanOpen Master library.
+
+	It waits for a device with a specific ID, loads a dictionary from the EDS library and reads and writes various dictionary entries
+	like mandatory and optional CiA-301 entries. If possible, it controls a CiA-402 motor or it handles digital I/Os of a CiA-401
+	I/O device. Furthermore it shows how to use profile-specific operations and constants.
+
+\example examples/listdevices.cpp
+
+	This example lists all connected devices and prints their manufacturer device name.
+
 \example examples/pdo.cpp
 	
 	This example runs a counter completely without SDO transfers.
@@ -43,27 +62,10 @@ namespace kaco {
 	There must be a CiA 401 device which is configured to send 'Read input 8-bit/Digital Inputs 1-8'
 	and 'Read input 8-bit/Digital Inputs 9-16' via TPDO1 and to receive 'Write output 8-bit/Digital Outputs 1-8' via RPDO1.
 
-\example examples/core.cpp
+\example examples/ros/motor_and_io_bridge.cpp
 
-	This example shows how to use the KaCanOpen Core library.
-
-	It assumes that you have plugged in a CiA 401 device with node id 8, 16 digital outputs
-	and 8 digital inputs.
-
-	It starts the node via NMT, gets and sets values via SDO and determines
-	device type and device name.
-
-\example examples/listdevices.cpp
-
-	This example lists all connected devices and prints their manufacturer device name.
-
-\example examples/eds_library.cpp
-
-	This example loads dictionaries from the EDS library.
-
-\example examples/eds_reader.cpp
-
-	This example reads an EDS file and prints the resulting dictionary.
+	This example publishes and subscribes JointState messages for each connected CiA 402 device as well as
+	uint8 messages for each connected digital IO device (CiA 401).
 
 \example examples/ros/ros.cpp
 
@@ -73,10 +75,13 @@ namespace kaco {
 	It requires that you have plugged in a CiA 401 device with 16 digital outputs
 	and 8 digital inputs.
 
-\example examples/ros/motor_and_io_bridge.cpp
+\example examples/test/eds_library.cpp
 
-	This example publishes and subscribes JointState messages for each connected CiA 402 device as well as
-	uint8 messages for each connected digital IO device (CiA 401).
+	Just for testing purposes: This example loads dictionaries from the EDS library.
+
+\example examples/test/eds_reader.cpp
+
+	Just for testing purposes: This example reads an EDS file and prints the resulting dictionary.
 
 */
 // end doxygen

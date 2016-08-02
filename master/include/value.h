@@ -199,6 +199,7 @@ namespace kaco {
 		/// \throws canopen_error if types don't match.
 		bool operator!=(const Value& other) const;
 
+		/// Returns the value as a printable string.
 		std::string to_string() const;
 
 	private:

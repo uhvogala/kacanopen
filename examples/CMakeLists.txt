@@ -4,6 +4,7 @@ message(STATUS "Configuring examples")
 
 file(GLOB TARGETS_SRC
 	"*.cpp"
+	"test/*.cpp"
 )
 
 if (NOT(${NO_ROS}))

@@ -65,11 +65,11 @@ namespace kaco {
 		Entry();
 
 		/// Standard constructor
-		/// \param index Index
-		/// \param subindex Sub-index
-		/// \param name Name
-		/// \param type Data type
-		/// \param access_type Access rights
+		/// \param _index Index
+		/// \param _subindex Sub-index
+		/// \param _name Name
+		/// \param _type Data type
+		/// \param _access_type Access rights
 		Entry(const uint16_t _index, const uint8_t _subindex, const std::string& _name, const Type _type, const AccessType _access_type);
 
 		/// copy constructor
