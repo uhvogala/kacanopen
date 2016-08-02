@@ -38,14 +38,21 @@
 
 int main() {
 
+	// Set the name of your CAN bus. "slcan0" is a common bus name
+	// for the first SocketCAN device on a Linux system.
+	const std::string busname = "slcan0";
+
+	// Set the baudrate of your CAN bus. Most drivers support the values
+	// "1M", "500K", "125K", "100K", "50K", "20K", "10K" and "5K".
+	const std::string baudrate = "500K";
+
 	PRINT("This example runs a counter completely without SDO transfers.");
 	PRINT("There must be a CiA 401 device which is configured to send 'Read input 8-bit/Digital Inputs 1-8'");
 	PRINT("and 'Read input 8-bit/Digital Inputs 9-16' via TPDO1 and to receive 'Write output 8-bit/Digital Outputs 1-8' via RPDO1.");
 
 	kaco::Master master;
-	bool success = master.start(BUSNAME, BAUDRATE);
-	if (!success) {
-		ERROR("Starting master failed.");
+	if (!master.start(busname, baudrate)) {
+		PRINT("Starting Master failed.");
 		return EXIT_FAILURE;
 	}
 

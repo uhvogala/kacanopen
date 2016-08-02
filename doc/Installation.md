@@ -73,13 +73,9 @@ The following CMake/Catkin arguments are available:
 
 	Timeout in milliseconds when waiting for an SDO response.
 
-- `-DBUSNAME=<busname>`
+- `-DCONSECUTIVE_SEND_PAUSE_MS=<timeout>`
 
-	CAN driver busname used by the examples.
-
-- `-DBAUDRATE=<baudrate>`
-
-	CAN driver baudrate used by the examples.
+	Pause between two consecutively sent CAN frames in milliseconds.
 
 
 ## Initialize ROS and create Catkin workspace
@@ -108,7 +104,7 @@ catkin_init_workspace
 KaCanOpen without the ROS part can be built easily using CMake:
 
 ~~~bash
-git clone git@github.com:KITmedical/kacanopen.git
+git clone https://github.com/KITmedical/kacanopen.git
 cd kacanopen
 mkdir build
 cd build
@@ -124,7 +120,7 @@ Your KaCanOpen repository must reside or be symlinked inside src:
 
 ~~~bash
 cd ~/arbitrary_path/catkin_ws/src
-git clone git@github.com:KITmedical/kacanopen.git
+git clone https://github.com/KITmedical/kacanopen.git
 ~~~
 
 Now you can build it:
@@ -161,19 +157,9 @@ KaCanOpen provides several CAN drivers (currently only for Linux).
 
 	For use with [SocketCAN](https://en.wikipedia.org/wiki/SocketCAN), formerly known as LLCF. It's a CAN networking stack being part of the Linux kernel. It's probably the most popular CAN driver infrastructure and there are many devices supporting SocketCAN.
 
-	One of them is [USBtin](http://www.fischl.de/usbtin/), which we use for development purposes. If you want to use USBtin with KaCanOpen at baudrate 500kbps do the following:
+	One of them is [USBtin](http://www.fischl.de/usbtin/), which we use for development purposes. If you want to use USBtin with KaCanOpen just run dev/init_usbtin.sh.
 
-		git clone https://github.com/linux-can/can-utils
-		cd can-utils
-		make
-		usb_device=$(dmesg | grep 'USBtin' | tail -1 | sed 's/.* usb \([0-9.-]*\): .*/\1/')
-		tty_device=$(dmesg | grep "cdc_acm $usb_device" | tail -1 | sed 's/.*ttyACM\([0-9]*\):.*/ttyACM\1/')
-		sudo ./slcan_attach -f -s6 -nslcan0 -o /dev/$tty_device
-		sudo ./slcand $tty_device slcan0
-		sudo ip link set slcan0 up
-
-
-	Use "slcan0" and 500000 as arguments for Core.start(busname,baudrate) / Master.start(busname,baudrate).
+	Use "slcan0" and "500K" as arguments for Core.start(busname,baudrate) / Master.start(busname,baudrate).
 
 - serial
 

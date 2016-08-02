@@ -38,7 +38,7 @@ AccessType=rw
 # DefaultValue=00h
 PDOMapping=0 # No
  
-[1003sub01]
+[1003sub01] # repeat until 1003subFE
 ParameterName=Standard error field
 ObjectType=0x007 # VAR
 DataType=0x0007 # UNSIGNED32
@@ -46,8 +46,24 @@ AccessType=ro
 # DefaultValue=No
 PDOMapping=0 # No
  
-[1003sub02] # repeat until 1003subFE
-ParameterName=Standard error field
+[1003sub02]
+ParameterName=Standard error field 2
+ObjectType=0x007 # VAR
+DataType=0x0007 # UNSIGNED32
+AccessType=ro
+# DefaultValue=No
+PDOMapping=0 # No
+ 
+[1003sub03]
+ParameterName=Standard error field 3
+ObjectType=0x007 # VAR
+DataType=0x0007 # UNSIGNED32
+AccessType=ro
+# DefaultValue=No
+PDOMapping=0 # No
+ 
+[1003sub04]
+ParameterName=Standard error field 4
 ObjectType=0x007 # VAR
 DataType=0x0007 # UNSIGNED32
 AccessType=ro
@@ -265,7 +281,7 @@ AccessType=const
 # DefaultValue=profile- or manufacturer-specific
 PDOMapping=0 # No
  
-[1016sub01]
+[1016sub01] # repeat until 1016sub7F
 ParameterName=Consumer heartbeat time
 ObjectType=0x007 # VAR
 DataType=0x0007 # UNSIGNED32
@@ -273,8 +289,24 @@ AccessType=rw
 # DefaultValue=0000 0000h
 PDOMapping=0 # No
  
-[1016sub02] # repeat until 1016sub7F
-ParameterName=Consumer heartbeat time
+[1016sub02]
+ParameterName=Consumer heartbeat time 2
+ObjectType=0x007 # VAR
+DataType=0x0007 # UNSIGNED32
+AccessType=rw
+# DefaultValue=0000 0000h
+PDOMapping=0 # No
+ 
+[1016sub03]
+ParameterName=Consumer heartbeat time 3
+ObjectType=0x007 # VAR
+DataType=0x0007 # UNSIGNED32
+AccessType=rw
+# DefaultValue=0000 0000h
+PDOMapping=0 # No
+ 
+[1016sub04]
+ParameterName=Consumer heartbeat time 4
 ObjectType=0x007 # VAR
 DataType=0x0007 # UNSIGNED32
 AccessType=rw
@@ -373,14 +405,14 @@ AccessType=rw
 # DefaultValue=Manufacturer-specific
 PDOMapping=0 # No
  
-[1021]
-ParameterName=Store EDS
-ObjectType=0x07 # VAR
-DataType=0x000F # DOMAIN
+#[1021]
+#ParameterName=Store EDS
+#ObjectType=0x07 # VAR
+#DataType=0x000F # DOMAIN
 # Category: Optional
-AccessType=ro
-DefaultValue=No
-PDOMapping=0 # No
+#AccessType=ro
+#DefaultValue=No
+#PDOMapping=0 # No
  
 [1022]
 ParameterName=Store format

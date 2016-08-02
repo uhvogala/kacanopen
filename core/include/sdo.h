@@ -41,8 +41,10 @@
 #include "message.h"
 #include "sdo_response.h"
 
+#include "_coreapi.h"
+
 namespace kaco {
-	
+
 	// forward declaration
 	class Core;
 
@@ -56,7 +58,7 @@ namespace kaco {
 	/// \todo Add abort_transfer(node_id, index, subindex, errorcode).
 	///
 	/// All methods are thread-safe.
-	class SDO {
+	class CORE_API SDO {
 
 	public:
 
@@ -71,7 +73,7 @@ namespace kaco {
 
 		/// Copy constructor deleted because of mutexes.
 		SDO(const SDO&) = delete;
-		
+
 		/// SDO download: Write value into remote device's object dictionary.
 		/// \param node_id Node id of remote device
 		/// \param index Dictionary index
@@ -80,7 +82,7 @@ namespace kaco {
 		/// \param bytes Vector containing the data bytes of the value in little-endian order. Vector size must be equal to size argument.
 		/// \remark thread-safe
 		void download(uint8_t node_id, uint16_t index, uint8_t subindex, uint32_t size, const std::vector<uint8_t>& bytes);
-		
+
 		/// SDO download: Get value from remote device's object dictionary.
 		/// \param node_id Node id of remote device
 		/// \param index Dictionary index
@@ -103,7 +105,7 @@ namespace kaco {
 		/// \param data bytes to send in little endian order
 		/// \returns The response message.
 		/// \remark thread-safe
-		SDOResponse send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array<uint8_t,4>& data);
+		SDOResponse send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array<uint8_t, 4>& data);
 
 	private:
 
@@ -131,20 +133,20 @@ namespace kaco {
 		};
 
 		static const bool debug = false;
-		
+
 		Core& m_core;
 
 		// Recevicers on per-node basis. Never call send_sdo_and_wait() from inside!
 		// TODO: Add m_server_sdo_callbacks and add m_client_sdo_callbacks for custom usage.
 		// IDEA: We could store the promise directly, but this won't obviate synchronization...
-		std::array<SDOReceivedCallback,256> m_send_and_wait_receivers;
+		std::array<SDOReceivedCallback, 256> m_send_and_wait_receivers;
 
 		// We must synchronize access to the m_send_and_wait_receivers array entries.
-		mutable std::array<std::mutex,256> m_send_and_wait_receiver_mutexes;
+		mutable std::array<std::mutex, 256> m_send_and_wait_receiver_mutexes;
 
 		// We lock send_sdo_and_wait() on per-node basis because concurrent responses could be confused
 		// and because m_receivers manipulation must be synchronized
-		mutable std::array<std::mutex,256> m_send_and_wait_mutex;
+		mutable std::array<std::mutex, 256> m_send_and_wait_mutex;
 
 		uint8_t size_flag(uint8_t size);
 

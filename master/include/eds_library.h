@@ -28,13 +28,16 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <unordered_map>
 
 #include "entry.h"
 #include "address.h"
+
+#include "_masterapi.h"
+
 
 namespace kaco {
 
@@ -43,7 +46,7 @@ namespace kaco {
 	/// This class provides access to KaCanOpen's EDS library.
 	/// It manages device specific as well as generic CanOpen
 	/// dictionaries.
-	class EDSLibrary {
+	class MASTER_API EDSLibrary {
 
 	public:
 

@@ -28,90 +28,130 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include <iostream>
-#include <chrono>
-#include <future>
-#include <string>
 #include <cassert>
+#include <chrono>
+#include <forward_list>
+#include <future>
+#include <thread>
+#include <mutex>
+#include <vector>
+
 
 #include "logger.h"
 #include "core.h"
 
 namespace kaco {
 
-//-------------------------------------------//
-// Linkage to the CAN driver.                //
-// Needs to be in lobal scope!               //
-// TODO: Maybe encapsulate in a driver class //
-//-------------------------------------------//
+	//-------------------------------------------//
+	// Linkage to the CAN driver.                //
+	// Needs to be in lobal scope!               //
+	// TODO: Maybe encapsulate in a driver class //
+	//-------------------------------------------//
 
-/// This struct contains C-strings for
-/// busname and baudrate and is passed
-/// to a CAN driver
-struct CANBoard {
+	/// This struct contains C-strings for
+	/// busname and baudrate and is passed
+	/// to a CAN driver
+	struct CANBoard {
 
-	/// Bus name
-	const char * busname;
+		/// Bus name
+		const char* busname;
 
-	/// Baudrate
-	const char * baudrate;
-	
+		/// Baudrate
+		const char* baudrate;
+
+	};
+
+	/// This type is returned by the CAN driver
+	/// to identify the driver instance.
+	typedef void* CANHandle;
+
+	extern "C" uint8_t canReceive_driver(CANHandle, Message*);
+	extern "C" uint8_t canSend_driver(CANHandle, Message const*);
+	extern "C" CANHandle canOpen_driver(CANBoard*);
+	extern "C" int32_t canClose_driver(CANHandle);
+	extern "C" uint8_t canChangeBaudRate_driver(CANHandle, char*);
+} // namespace co
+
+
+
+using kaco::Core;
+using kaco::CANBoard;
+using kaco::Message;
+
+
+struct Core::Data {
+	std::atomic<bool> m_running{ false };
+	std::thread m_loop_thread;
+
+	std::vector<MessageReceivedCallback> m_receive_callbacks;
+	std::mutex m_receive_callbacks_mutex;
+
+	std::forward_list<std::future<void>> m_callback_futures;
+	std::mutex m_callback_futures_mutex;
+
+	std::mutex m_send_mutex;
 };
-
-/// This type is returned by the CAN driver
-/// to identify the driver instance.
-typedef void* CANHandle;
-
-extern "C" uint8_t canReceive_driver(CANHandle, Message *);
-extern "C" uint8_t canSend_driver(CANHandle, Message const *);
-extern "C" CANHandle canOpen_driver(CANBoard *);
-extern "C" int32_t canClose_driver(CANHandle);
-extern "C" uint8_t canChangeBaudRate_driver(CANHandle, char *);
 
 Core::Core()
 	: nmt(*this),
-		sdo(*this),
-		pdo(*this)
-	{ }
-	
-Core::~Core() {
-	if (m_running) {
+	  sdo(*this),
+	  pdo(*this),
+	  d(new Data)
+{ }
+
+Core::~Core()
+{
+	if (d->m_running) {
 		stop();
 	}
+
+	delete d;
 }
 
-bool Core::start(const std::string busname, unsigned baudrate) {
+bool Core::start(const std::string busname, const std::string& baudrate) {
 
-	assert(!m_running);
+	assert(!d->m_running);
 
-	CANBoard board = {busname.c_str(), std::to_string(baudrate).c_str()} ;
+	CANBoard board = {busname.c_str(), baudrate.c_str()};
 	m_handle = canOpen_driver(&board);
 
-	if(!m_handle) {
+	if (!m_handle) {
 		ERROR("Cannot open the CANOpen device.");
 		return false;
 	}
 
-	m_running = true;
-	m_loop_thread = std::thread(&Core::receive_loop, this, std::ref(m_running));
+	d->m_running = true;
+	d->m_loop_thread = std::thread(&Core::receive_loop, this, std::ref(d->m_running));
 	return true;
 
 }
 
+bool Core::start(const std::string busname, const unsigned baudrate) {
+	if (baudrate>=1000000 && baudrate%1000000==0) {
+		return start(busname, std::to_string(baudrate/1000000)+"M");
+	} else if (baudrate>=1000 && baudrate%1000==0) {
+		return start(busname, std::to_string(baudrate/1000)+"K");
+	} else {
+		return start(busname, std::to_string(baudrate));
+	}
+}
+
 void Core::stop() {
 
-	assert(m_running);
+	assert(d->m_running);
 
-	m_running = false;
-	m_loop_thread.detach();
+	d->m_running = false;
+	d->m_loop_thread.detach();
 
 	DEBUG_LOG("Calling canClose.");
 	canClose_driver(m_handle);
 
 }
 
-void Core::receive_loop(std::atomic<bool>& running) {
+void Core::receive_loop(std::atomic<bool>& running)
+{
 
 	Message message;
 
@@ -121,37 +161,39 @@ void Core::receive_loop(std::atomic<bool>& running) {
 		received_message(message);
 
 	}
-
 }
 
-void Core::register_receive_callback(const MessageReceivedCallback& callback) {
-	std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
-	m_receive_callbacks.push_back(callback);
+void Core::register_receive_callback(const MessageReceivedCallback& callback)
+{
+	std::lock_guard<std::mutex> scoped_lock(d->m_receive_callbacks_mutex);
+	d->m_receive_callbacks.push_back(callback);
 }
 
-void Core::received_message(const Message& message) {
+void Core::received_message(const Message& message)
+{
 
 	DEBUG_LOG(" ");
 	DEBUG_LOG("Received message:");
 
 	// cleaning up old futures
 	if (m_cleanup_futures) {
-		std::lock_guard<std::mutex> scoped_lock(m_callback_futures_mutex);
-		m_callback_futures.remove_if([](const std::future<void>& f) {
+		std::lock_guard<std::mutex> scoped_lock(d->m_callback_futures_mutex);
+		d->m_callback_futures.remove_if([](const std::future<void>& f) {
 			// return true if callback has finished it's computation.
-			return (f.wait_for(std::chrono::steady_clock::duration::zero())==std::future_status::ready);
+			return (f.wait_for(std::chrono::steady_clock::duration::zero()) == std::future_status::ready);
 		});
 	}
 
 	// first call registered callbacks
 	{
-		std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
-		for (const MessageReceivedCallback& callback : m_receive_callbacks) {
+		std::lock_guard<std::mutex> scoped_lock(d->m_receive_callbacks_mutex);
+
+		for (const MessageReceivedCallback& callback : d->m_receive_callbacks) {
 			// The future returned by std::async has to be stored,
 			// otherwise the immediately called future destructor
 			// blocks until callback has finished.
-			std::lock_guard<std::mutex> scoped_lock(m_callback_futures_mutex);
-			m_callback_futures.push_front(
+			std::lock_guard<std::mutex> scoped_lock(d->m_callback_futures_mutex);
+			d->m_callback_futures.push_front(
 				std::async(std::launch::async, callback, message)
 			);
 		}
@@ -159,7 +201,7 @@ void Core::received_message(const Message& message) {
 
 	// sencondly process known message types
 	switch (message.get_function_code()) {
-		
+
 		case 0: {
 			DEBUG_LOG("NMT Module Control");
 			DEBUG(message.print();)
@@ -186,7 +228,7 @@ void Core::received_message(const Message& message) {
 			pdo.process_incoming_message(message);
 			break;
 		}
-		
+
 		case 4:
 		case 6:
 		case 8:
@@ -197,13 +239,13 @@ void Core::received_message(const Message& message) {
 			DEBUG(message.print();)
 			break;
 		}
-		
+
 		case 11: {
 			// TODO: This will be process_incoming_server_sdo()
 			sdo.process_incoming_message(message);
 			break;
 		}
-		
+
 		case 12: {
 			// TODO: Implement this for slave functionality
 			// 	-> delegate to sdo.process_incoming_client_sdo()
@@ -211,7 +253,7 @@ void Core::received_message(const Message& message) {
 			DEBUG(message.print();)
 			break;
 		}
-		
+
 		case 14: {
 			// NMT Error Control
 			nmt.process_incoming_message(message);
@@ -230,20 +272,19 @@ void Core::received_message(const Message& message) {
 
 }
 
-void Core::send(const Message& message) {
-	
+void Core::send(const Message& message)
+{
+
 	if (m_lock_send) {
-		m_send_mutex.lock();
+		d->m_send_mutex.lock();
 	}
-	
+
 	DEBUG_LOG_EXHAUSTIVE("Sending message:");
 	DEBUG_EXHAUSTIVE(message.print();)
 	canSend_driver(m_handle, &message);
-	
+
 	if (m_lock_send) {
-		m_send_mutex.unlock();
+		d->m_send_mutex.unlock();
 	}
 
 }
-
-} // namespace co

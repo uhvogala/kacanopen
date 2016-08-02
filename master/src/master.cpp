@@ -38,10 +38,8 @@
 namespace kaco {
 
 Master::Master() {
-
-	m_new_device_callback_functional = std::bind(&Master::new_device_callback, this, std::placeholders::_1);
-	core.nmt.register_new_device_callback(m_new_device_callback_functional);
-
+	m_device_alive_callback_functional = std::bind(&Master::device_alive_callback, this, std::placeholders::_1);
+	core.nmt.register_device_alive_callback(m_device_alive_callback_functional);
 }
 
 Master::~Master() {
@@ -50,7 +48,19 @@ Master::~Master() {
 	}
 }
 
-bool Master::start(const std::string busname, unsigned baudrate) {
+bool Master::start(const std::string busname, const std::string& baudrate) {
+	bool success = core.start(busname, baudrate);
+	if (!success) {
+		return false;
+	}
+	m_running = true;
+	//core.nmt.reset_all_nodes();
+	// TODO: let user do this explicitly?
+	core.nmt.discover_nodes();
+	return true;
+}
+
+bool Master::start(const std::string busname, const unsigned baudrate) {
 	bool success = core.start(busname, baudrate);
 	if (!success) {
 		return false;
@@ -76,7 +86,7 @@ Device& Master::get_device(size_t index) const {
 	return *(m_devices.at(index).get());
 }
 
-void Master::new_device_callback(uint8_t node_id) {
+void Master::device_alive_callback(const uint8_t node_id) {
 	if (!m_device_alive.test(node_id)) {
 		m_device_alive.set(node_id);
 		m_devices.emplace_back(new Device(core, node_id));

@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
@@ -42,6 +42,8 @@
 #include "value.h"
 #include "access_method.h"
 
+#include "_masterapi.h"
+
 namespace kaco {
 
 	/// \class Entry
@@ -50,7 +52,7 @@ namespace kaco {
 	///
 	/// \todo Add missing fields like high and low limit.
 	/// \todo Array type entries are currently not used and may be deleted in future.
-	class Entry {
+	class MASTER_API Entry {
 
 	public:
 
@@ -63,11 +65,11 @@ namespace kaco {
 		Entry();
 
 		/// Standard constructor
-		/// \param index Index
-		/// \param subindex Sub-index
-		/// \param name Name
-		/// \param type Data type
-		/// \param access_type Access rights
+		/// \param _index Index
+		/// \param _subindex Sub-index
+		/// \param _name Name
+		/// \param _type Data type
+		/// \param _access_type Access rights
 		Entry(const uint16_t _index, const uint8_t _subindex, const std::string& _name, const Type _type, const AccessType _access_type);
 
 		/// copy constructor
@@ -128,7 +130,7 @@ namespace kaco {
 		/// Data type of the value.
 		Type type;
 
-		/// Accessibility of the entry 
+		/// Accessibility of the entry
 		AccessType access_type;
 
 		/// Standard method for reading this entry.
@@ -138,7 +140,7 @@ namespace kaco {
 		/// Standard method for writing this entry.
 		/// Used by Device::set_entry().
 		WriteAccessMethod write_access_method = WriteAccessMethod::sdo;
-		
+
 		/// Disables this entry.
 		/// This is used when a device reports "Object does not exist in the object dictionary".
 		bool disabled;

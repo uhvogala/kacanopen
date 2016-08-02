@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #include "pdo.h"
 #include "logger.h"
 #include "core.h"
@@ -36,59 +36,82 @@
 #include <iostream>
 #include <cassert>
 
-namespace kaco {
+using kaco::PDO;
+using kaco::Core;
+using kaco::Message;
 
-PDO::PDO(Core& core) 
-	: m_core(core)
-	{ }
+struct PDO::Data {
+	std::vector<PDO::PDOReceivedCallback> m_receive_callbacks;
+	std::mutex m_receive_callbacks_mutex;
+};
 
-void PDO::process_incoming_message(const Message& message) const {
+PDO::PDO(Core& core)
+	: m_core(core),
+	  d(new Data)
+{ }
+
+PDO::~PDO()
+{
+	delete d;
+}
+
+void PDO::process_incoming_message(const Message& message) const
+{
 
 	uint16_t cob_id = message.cob_id;
 	uint8_t node_id = message.get_node_id();
 	std::vector<uint8_t> data;
 
-	DEBUG_LOG("Received transmit PDO with cob_id 0x"<<std::hex<<cob_id<<" (usually from node 0x"<<node_id<<") length = "<<message.len);
+	DEBUG_LOG("Received transmit PDO with cob_id 0x" << std::hex << cob_id << " (usually from node 0x" << node_id << ") length = " << message.len);
 
-	for (unsigned i=0; i<message.len; ++i) {
+	for (unsigned i = 0; i < message.len; ++i) {
 		data.push_back(message.data[i]);
 	}
 
 	// call registered callbacks
 	bool found_callback = false;
 	{
-		std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
-		for (const PDOReceivedCallback& callback : m_receive_callbacks) {
+		std::lock_guard<std::mutex> scoped_lock(d->m_receive_callbacks_mutex);
+
+		for (const PDOReceivedCallback& callback : d->m_receive_callbacks) {
 			if (callback.cob_id == cob_id) {
 				found_callback = true;
 				// This is not async because callbacks are only registered internally.
 				// Copy data vector because there can be multiple callbacks for this PDO.
-				callback.callback(data); 
+				callback.callback(data);
 			}
 		}
 	}
 
+	// value is not used if debug is false
+	(void)found_callback;
+
 	DEBUG(
-		if (!found_callback) {
-			PRINT("PDO is unassigned. Here is the data (LSB):");
-			for (unsigned i=0; i<data.size(); ++i) {
-				std::cout << std::hex << (unsigned)data[i] << " ";
-			}
-			std::cout << std::endl;
+
+	if (!found_callback) {
+	PRINT("PDO is unassigned. Here is the data (LSB):");
+
+		for (unsigned i = 0; i < data.size(); ++i) {
+			std::cout << std::hex << (unsigned)data[i] << " ";
 		}
+
+		std::cout << std::endl;
+	}
 	)
 
 }
 
-void PDO::send(uint16_t cob_id, const std::vector<uint8_t>& data) {
-	
-	assert(data.size()<=8 && "[PDO::send] A PDO message can have at most 8 data bytes.");
+void PDO::send(uint16_t cob_id, const std::vector<uint8_t>& data)
+{
+
+	assert(data.size() <= 8 && "[PDO::send] A PDO message can have at most 8 data bytes.");
 
 	Message message;
 	message.cob_id = cob_id;
 	message.rtr = false;
-	message.len = data.size();
-	for (uint8_t i=0; i<data.size(); ++i) {
+	message.len = static_cast<decltype(message.len)>(data.size());
+
+	for (uint8_t i = 0; i < data.size(); ++i) {
 		message.data[i] = data[i];
 	}
 
@@ -99,9 +122,8 @@ void PDO::send(uint16_t cob_id, const std::vector<uint8_t>& data) {
 
 }
 
-void PDO::add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Callback callback) {
-	std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
-	m_receive_callbacks.push_back({cob_id,callback});
+void PDO::add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Callback callback)
+{
+	std::lock_guard<std::mutex> scoped_lock(d->m_receive_callbacks_mutex);
+	d->m_receive_callbacks.push_back({cob_id, callback});
 }
-
-} // end namespace kaco

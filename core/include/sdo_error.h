@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include <cstdint>
@@ -36,6 +36,8 @@
 #include <stdexcept>
 
 #include "canopen_error.h"
+
+#include "_coreapi.h"
 
 namespace kaco {
 
@@ -45,7 +47,7 @@ namespace kaco {
 	/// protocol. There are also some internal errors like
 	/// timeout while waiting for response.
 	/// You can get the type of error via get_type()
-	class sdo_error : public canopen_error {
+	class CORE_API sdo_error : public canopen_error {
 
 	public:
 

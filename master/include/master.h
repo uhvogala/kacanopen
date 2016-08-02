@@ -28,7 +28,7 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
- 
+
 #pragma once
 
 #include "core.h"
@@ -37,19 +37,22 @@
 #include <vector>
 #include <bitset>
 
+#include "_masterapi.h"
+
+
 namespace kaco {
 
 	/// \class Master
-	/// 
+	///
 	/// This class represents a master node. It listens
 	/// for new slaves and provides access to them
 	/// via get_slaves().
-	class Master {
+	class MASTER_API Master {
 
 	public:
 
 		/// Constructor.
-		/// Creates Core instance and adds NMT listener for new devices. 
+		/// Creates Core instance and adds NMT listener for new devices.
 		Master();
 
 		/// Copy constructor deleted because of callbacks with self-references.
@@ -60,12 +63,25 @@ namespace kaco {
 
 		/// Destructor.
 		~Master();
-
-		/// Starts master, creates Core and resets all nodes.
+		
+		/// Starts master and creates Core.
 		///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
-		///	\param baudrate Baudrate in 1/s, will be passed to the CAN driver, e.g. 500000
+		///	\param baudrate Baudrate as a string which will be passed to the CAN driver. Most
+		///                 drivers from the CanFestival project accept the following values:
+		///                 "1M", "500K", "125K", "100K", "50K", "20K", "10K" and "5K".
 		/// \returns true if successful
-		bool start(const std::string busname, unsigned baudrate);
+		/// \remark Master must not run yet.
+		bool start(const std::string busname, const std::string& baudrate);
+
+		/// Starts master and creates Core.
+		///	\param busname Name of the bus which will be passed to the CAN driver, e.g. slcan0
+		///	\param baudrate Baudrate in 1/s. The value will be passed to the CAN driver in string
+		///                 representation. Attention: For full compatibility with CanFestival
+		///                 drivers, values > 1000000 are postfixed with "M" and values > 1000
+		///                 are postfixed with "K". E.g. 1000000->"1M", 500000->"500K" and 5000->"5K".
+		/// \returns true if successful
+		/// \remark Master must not run yet.
+		bool start(const std::string busname, const unsigned baudrate);
 		
 		/// Stops master and core.
 		void stop();
@@ -89,10 +105,10 @@ namespace kaco {
 		std::vector<std::unique_ptr<Device>> m_devices;
 		std::bitset<265> m_device_alive;
 
-		NMT::NewDeviceCallback m_new_device_callback_functional;
+		NMT::DeviceAliveCallback m_device_alive_callback_functional;
 		bool m_running{false};
 
-		void new_device_callback(uint8_t node_id);
+		void device_alive_callback(const uint8_t node_id);
 
 	};
 
