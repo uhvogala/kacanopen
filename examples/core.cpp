@@ -32,6 +32,7 @@
 #include <chrono>
 #include <vector>
 #include <iostream>
+#include <thread>
 
 #include "core.h"
 

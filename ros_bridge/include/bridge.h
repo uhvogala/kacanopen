@@ -40,6 +40,7 @@
 #include <memory>
 #include <forward_list>
 #include <mutex>
+#include <future>
 
 
 namespace kaco {
