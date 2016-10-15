@@ -5,6 +5,7 @@
 - a recent C++ compiler with C++14 support:
 	- [GCC](https://gcc.gnu.org/) >= 4.9
 	- [Clang](http://clang.llvm.org/) >= 3.6
+	- [MSVC](https://www.visualstudio.com/) >= 19.0
 	- others may work though not tested
 
 - [CMake](https://cmake.org/) >= 3.2
@@ -25,15 +26,20 @@
 	
 	This is only needed for compiling the documentation.
 
-If your OS is Ubuntu 14.04 / Linux Mint 17.3 or newer, you can install all requirements with the following commands:
+If your OS is based on Ubuntu 16.04, you can install all requirements with the following command:
+
+~~~bash
+sudo apt install build-essential cmake libboost-system-dev libboost-filesystem-dev ros-base-dev rosbash python-sensor-msgs python-nose doxygen graphviz
+~~~
+
+If your OS is Ubuntu 14.04 / Linux Mint 17.3, you'll need these commands:
 
 ~~~bash
 sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -usc) main" > /etc/apt/sources.list.d/ros-latest.list'
 sudo apt-key adv --keyserver hkp://pool.sks-keyservers.net:80 --recv-key 0xB01FA116
 sudo apt-add-repository ppa:george-edison55/cmake-3.x
 sudo apt-get update
-sudo apt-get install ros-jade-ros-base cmake clang-3.6 libboost-all-dev doxygen graphviz
-sudo apt-get install cmake clang-3.6 libboost-system-dev libboost-filesystem-dev ros-jade-catkin ros-jade-roscpp ros-jade-std-msgs ros-jade-sensor-msgs ros-jade-message-runtime doxygen graphviz
+sudo apt-get install cmake clang-3.6 libboost-system-dev libboost-filesystem-dev ros-jade-ros-base ros-jade-catkin ros-jade-roscpp ros-jade-std-msgs ros-jade-sensor-msgs ros-jade-message-runtime doxygen graphviz
 ~~~
 
 
@@ -151,9 +157,9 @@ Otherwise just run them from `build/examples/`:
 
 ## Drivers
 
-KaCanOpen provides several CAN drivers (currently only for Linux).
+KaCanOpen provides several CAN drivers:
 
-- socket (default)
+- socket (default on Linux)
 
 	For use with [SocketCAN](https://en.wikipedia.org/wiki/SocketCAN), formerly known as LLCF. It's a CAN networking stack being part of the Linux kernel. It's probably the most popular CAN driver infrastructure and there are many devices supporting SocketCAN.
 
@@ -161,15 +167,19 @@ KaCanOpen provides several CAN drivers (currently only for Linux).
 
 	Use "slcan0" and "500K" as arguments for Core.start(busname,baudrate) / Master.start(busname,baudrate).
 
-- serial
+- canusb (default on Windows)
+
+	Driver for FTDI-based CAN <-> USB devices.
+
+- serial (Unix/Linux)
 
 	Driver for use with serial character devices.
 
-- virtual
+- virtual (Unix/Linux)
 
 	This driver can be used without any CAN hardware. It spans a virtual CAN network using POSIX pipes.
 
-- peak_linux
+- peak_linux (Linux)
 
 	For use with CAN hardware by [PEAK-System](http://www.peak-system.com/fileadmin/media/linux/index.htm). You will need [PCAN drivers](http://www.peak-system.com/fileadmin/media/linux/index.htm#download) installed for successful compilation:
 
@@ -181,8 +191,8 @@ KaCanOpen provides several CAN drivers (currently only for Linux).
 
 	Then build KaCanOpen with the CMake/Catkin flag `-DPCAN_PREFIX="~/peak"`. You can replace `~/peak` as you wish.
 
-- lincan
+- lincan (Linux)
 
-	For use with [LinCan](http://ortcan.sourceforge.net/lincan/) kernel drivers.
+	For use with [LinCAN](http://ortcan.sourceforge.net/lincan/) kernel drivers.
 
-You can also use any driver from the [CanFestival](http://www.canfestival.org/), as they are binary-compatible. They also have Windows drivers.
+You can also use any driver from the [CANFestival](http://www.canfestival.org/), as they are binary-compatible. They also have some more Windows drivers.
