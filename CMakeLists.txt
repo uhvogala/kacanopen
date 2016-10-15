@@ -3,30 +3,6 @@ cmake_minimum_required(VERSION 3.2)
 project(kacanopen C CXX)
 
 ### Compiler config ###
- 
-# Use g++-4.9 if there is also an older g++ version on the system
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-	find_program(NEWER_GNU_CXX_COMPILER g++)
-
-	if (NOT "${NEWER_GNU_CXX_COMPILER}" STREQUAL "")
-		set(CMAKE_CXX_COMPILER ${NEWER_GNU_CXX_COMPILER})
-		message("Using ${CMAKE_CXX_COMPILER} as compiler.")
-	endif()
-endif()
-
-if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "")
-	if("${CMAKE_CXX_COMPILER}" MATCHES ".*g[+][+].*")
-		set(CMAKE_CXX_COMPILER_ID "GNU")
-	endif()
-endif()
-
-if("${CMAKE_CXX_COMPILER_VERSION}" STREQUAL "")
-	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-		execute_process(COMMAND ${CMAKE_CXX_COMPILER} --version COMMAND head -1 COMMAND awk "{ print $NF }" OUTPUT_VARIABLE CMAKE_CXX_COMPILER_VERSION)
-	elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-		message(FATAL_ERROR "Setting CMAKE_CXX_COMPILER_ID not implemented.")
-	endif()
-endif()
 
 # GCC is not supported until 4.9
 # Clang is not supported until 3.6
