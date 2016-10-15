@@ -20,13 +20,13 @@ elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
 		message(FATAL_ERROR "MSVC version is ${CMAKE_CXX_COMPILER_VERSION}, but must be at least 19.0! Earlier versions don't support C++14.")
 	endif()
 else()
-	message(FATAL_ERROR "You are using an unsupported compiler! Compilation has only been tested with Clang and GCC.")
+	message(WARNING "You are using an unsupported compiler! Compilation has only been tested with Clang, GCC, and MSVC.")
 endif()
 
 # Does not work with MSVC
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU"  OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Werror")
-    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -Wextra -Werror")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+    SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra")
 endif()
 
 if(WIN32)
