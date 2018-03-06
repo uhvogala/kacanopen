@@ -19,3 +19,5 @@ option(INSTALL_EXAMPLES "Install example programs when running make install" OFF
 set(SDO_RESPONSE_TIMEOUT_MS "2000" CACHE STRING "Timeout in milliseconds when waiting for an SDO response.")
 
 set(CONSECUTIVE_SEND_PAUSE_MS "2" CACHE STRING "Pause between two consecutively sent CAN frames in milliseconds.")
+
+option(KACANOPEN_INCLUDE_DIRS_WITHOUT_PREFIX "Make KaCanOpen headers available in your Catkin workspace without any prefix. If turned off, the directory structure follows ROS Best Practices." ON)

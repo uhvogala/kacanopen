@@ -134,9 +134,15 @@ if (NOT(${NO_ROS}))
 		sensor_msgs
 		# message_generation
 	)
-
+	
+	if(KACANOPEN_INCLUDE_DIRS_WITHOUT_PREFIX)
+		set(KACANOPEN_CATKIN_INCLUDE_DIRS core/include master/include ros_bridge/include)
+	else()
+		set(KACANOPEN_CATKIN_INCLUDE_DIRS include)
+	endif()
+	
 	catkin_package(
-		INCLUDE_DIRS core/include master/include ros_bridge/include
+		INCLUDE_DIRS ${KACANOPEN_CATKIN_INCLUDE_DIRS}
 		LIBRARIES ${CAN_DRIVER} kacanopen_core kacanopen_master kacanopen_ros_bridge
 		CATKIN_DEPENDS message_runtime
 	)
