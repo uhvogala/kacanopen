@@ -139,6 +139,18 @@ void Core::register_receive_callback(const MessageReceivedCallback& callback) {
 	m_receive_callbacks.push_back(callback);
 }
 
+void Core::unregister_receive_callback(const MessageReceivedCallback& callback) {
+	std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
+	int i = 0;
+	for (const MessageReceivedCallback cb : m_receive_callbacks) {
+		if (cb.target<MessageReceivedCallback>() == callback.target<MessageReceivedCallback>()) {
+			m_receive_callbacks.erase(m_receive_callbacks.begin() + i);
+			return;
+		}
+		i++;
+	}
+}
+
 void Core::received_message(const Message& message) {
 
 	DEBUG_LOG(" ");

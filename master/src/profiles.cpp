@@ -76,6 +76,14 @@ namespace kaco {
 						device.execute("unset_controlword_flag","controlword_pp_new_set_point");
 						return Value();
 					}
+				},
+				{
+					"set_target_velocity",
+					[](Device& device,const Value& target_velocity) -> Value {
+						DEBUG_LOG("Set target vel to "<<target_velocity);
+						device.set_entry("Target velocity", target_velocity);
+						return Value();
+					}
 				}
 			}
 		}

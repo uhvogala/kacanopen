@@ -46,10 +46,13 @@
 namespace kaco {
 
 Device::Device(Core& core, uint8_t node_id)
-	: m_core(core), m_node_id(node_id), m_eds_library(m_dictionary, m_name_to_address) { }
+	: m_core(core), m_node_id(node_id), m_eds_library(m_dictionary, m_name_to_address) { 
+	m_repeats = Config::repeats_on_sdo_timeout;
+}
 
 Device::~Device() 
-	{ }
+{ 
+}
 
 void Device::start() {
 
@@ -282,22 +285,22 @@ Value Device::get_entry_via_sdo(uint32_t index, uint8_t subindex, Type type) {
 
 	sdo_error last_error(sdo_error::type::unknown);
 
-	for (size_t i=0; i<Config::repeats_on_sdo_timeout+1; ++i) {
+	for (size_t i=0; i<m_repeats+1; ++i) {
 		try {
 			std::vector<uint8_t> data = m_core.sdo.upload(m_node_id, index, subindex);
 			return Value(type, data);
 		} catch (const sdo_error& error) {
 			last_error = error;
-			if (i<Config::repeats_on_sdo_timeout) {
+			if (i<m_repeats) {
 				DEBUG_LOG("[Device::get_entry_via_sdo] device " << std::to_string(m_node_id) << " " << error.what() <<" -> Repetition "<<std::to_string(i+1)
-					<<" of "<<std::to_string(Config::repeats_on_sdo_timeout+1)<<".");
-				std::this_thread::sleep_for(std::chrono::milliseconds(kaco::Config::sdo_response_timeout_ms));
+					<<" of "<<std::to_string(m_repeats+1)<<".");
+				//std::this_thread::sleep_for(std::chrono::milliseconds(kaco::Config::sdo_response_timeout_ms));
 			}
 		}
 	}
 	
 	throw sdo_error(sdo_error::type::response_timeout, "Device::get_entry_via_sdo() device " + std::to_string(m_node_id) + " failed after "
-		+std::to_string(Config::repeats_on_sdo_timeout+1)+" repeats. Last error: "+std::string(last_error.what()));
+		+std::to_string(m_repeats+1)+" repeats. Last error: "+std::string(last_error.what()));
 
 }
 
@@ -305,23 +308,23 @@ void Device::set_entry_via_sdo(uint32_t index, uint8_t subindex, const Value& va
 
 	sdo_error last_error(sdo_error::type::unknown);
 
-	for (size_t i=0; i<Config::repeats_on_sdo_timeout+1; ++i) {
+	for (size_t i=0; i<m_repeats+1; ++i) {
 		try {
 			const auto& bytes = value.get_bytes();
 			m_core.sdo.download(m_node_id,index,subindex,bytes.size(),bytes);
 			return;
 		} catch (const sdo_error& error) {
 			last_error = error;
-			if (i<Config::repeats_on_sdo_timeout) {
+			if (i<m_repeats) {
 				DEBUG_LOG("[Device::set_entry_via_sdo] device " << std::to_string(m_node_id) << " " <<  error.what() << " -> Repetition "<<std::to_string(i+1)
-					<<" of "<<std::to_string(Config::repeats_on_sdo_timeout+1)<<".");
+					<<" of "<<std::to_string(m_repeats+1)<<".");
 				std::this_thread::sleep_for(std::chrono::milliseconds(kaco::Config::sdo_response_timeout_ms));
 			}
 		}
 	}
 
 	throw sdo_error(sdo_error::type::response_timeout, "Device::set_entry_via_sdo() device " + std::to_string(m_node_id) + " failed after "
-		+std::to_string(Config::repeats_on_sdo_timeout+1)+" repeats. Last error: "+std::string(last_error.what()));
+		+std::to_string(m_repeats+1)+" repeats. Last error: "+std::string(last_error.what()));
 
 }
 
@@ -489,6 +492,10 @@ void Device::read_complete_dictionary() {
 			DEBUG_LOG("[Device::read_complete_dictionary] SDO error for field "<<pair.second.name<<": "<<error.what()<<" -> disable entry.");
 		}
 	}
+}
+
+void Device::setNumberOfRepeats(const unsigned repeats) {
+	m_repeats = repeats;
 }
 
 

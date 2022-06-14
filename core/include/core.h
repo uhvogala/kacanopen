@@ -106,6 +106,10 @@ namespace kaco {
 		/// \remark thread-safe
 		void register_receive_callback(const MessageReceivedCallback& callback);
 
+		/// Registers a callback function which is called when a message has been received.
+		/// \remark thread-safe
+		void unregister_receive_callback(const MessageReceivedCallback& callback);
+
 		/// The NMT sub-protocol
 		NMT nmt;
 

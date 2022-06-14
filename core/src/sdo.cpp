@@ -44,6 +44,7 @@ namespace kaco {
 
 SDO::SDO(Core& core)
 	: m_core(core) {
+	m_timeout = Config::sdo_response_timeout_ms;
 	m_send_and_wait_receivers.fill(received_unassigned_sdo);
 }
 
@@ -213,12 +214,12 @@ SDOResponse SDO::send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t in
 	message.data[5] = data[1];
 	message.data[6] = data[2];
 	message.data[7] = data[3];
-	m_core.send(message);
+	m_core.send(message);	
 
 	DEBUG_LOG_EXHAUSTIVE("SDO::send_sdo_and_wait: thread=" << std::this_thread::get_id() << " node_id=" << node_id
 		<< " command=" << command << " index=" << index << " subindex=" << subindex << " WAIT.");
 
-	const auto timeout = std::chrono::milliseconds(Config::sdo_response_timeout_ms);
+	const auto timeout = std::chrono::milliseconds(m_timeout);
 	const auto status = received_future.wait_for(timeout);
 
 	// remove receiver
@@ -257,6 +258,10 @@ uint8_t SDO::size_flag(uint8_t size) {
 	}
 	assert(false && "Dead code!");
 	return 0;
+}
+
+void SDO::setTimeout(const unsigned timeout) {
+	m_timeout = timeout;
 }
 
 }

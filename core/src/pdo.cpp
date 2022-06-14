@@ -104,4 +104,24 @@ void PDO::add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Callba
 	m_receive_callbacks.push_back({cob_id,callback});
 }
 
+void PDO::remove_pdo_received_callback(uint16_t cob_id) {
+	for (size_t i = 0; i < m_receive_callbacks.size(); i++) {
+		PDOReceivedCallback p = m_receive_callbacks[i];
+		if (p.cob_id == cob_id) {
+			std::lock_guard<std::mutex> scoped_lock(m_receive_callbacks_mutex);
+			m_receive_callbacks.erase(m_receive_callbacks.begin() + i);
+			return;
+		}
+	}
+}
+
+void PDO::sync() {
+	Message message;
+	message.cob_id = 0x80;
+	message.rtr = false;
+	message.len = 0;
+
+	m_core.send(message);
+}
+
 } // end namespace kaco

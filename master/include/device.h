@@ -274,6 +274,8 @@ namespace kaco {
 		/// example be printed via print_dictionary().
 		void read_complete_dictionary();
 
+		void setNumberOfRepeats(const unsigned repeats);
+
 		///@}
 
 	private:
@@ -312,6 +314,7 @@ namespace kaco {
 
 		Core& m_core;
 		uint8_t m_node_id;
+		unsigned m_repeats;
 
 		std::unordered_map<Address, Entry> m_dictionary;
 		std::unordered_map<std::string, Address> m_name_to_address;
@@ -324,7 +327,7 @@ namespace kaco {
 		std::mutex m_transmit_pdo_mappings_mutex;
 		static const Value m_dummy_value;
 		EDSLibrary m_eds_library;
-
+		
 	};
 
 } // end namespace kaco

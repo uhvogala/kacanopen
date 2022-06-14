@@ -38,7 +38,7 @@ namespace kaco {
 
 	size_t Config::sdo_response_timeout_ms = SDO_RESPONSE_TIMEOUT_MS;
 		
-	size_t Config::repeats_on_sdo_timeout = 0;
+	size_t Config::repeats_on_sdo_timeout = 1;
 
 	bool Config::eds_reader_mark_entries_as_generic = false;
 	

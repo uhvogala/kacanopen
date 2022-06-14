@@ -137,7 +137,7 @@ if (NOT(${NO_ROS}))
 
 	catkin_package(
 		INCLUDE_DIRS core/include master/include ros_bridge/include
-		LIBRARIES ${CAN_DRIVER} kacanopen_core kacanopen_master kacanopen_ros_bridge
+		LIBRARIES ${CAN_DRIVER} kacanopen_core kacanopen_master kacanopen_ros_bridge can_socket
 		CATKIN_DEPENDS message_runtime
 	)
 
@@ -146,10 +146,10 @@ endif()
 
 ### includes ###
 
-include_directories(SYSTEM ${Boost_INCLUDE_DIRS})
+include_directories(${Boost_INCLUDE_DIRS})
 
 if (NOT(${NO_ROS}))
-	include_directories(SYSTEM ${catkin_INCLUDE_DIRS})
+	include_directories(${catkin_INCLUDE_DIRS})
 endif()
 
 include_directories(${CMAKE_CURRENT_LIST_DIR}/core/include)
@@ -208,6 +208,6 @@ add_subdirectory(drivers_lgpl)
 add_subdirectory(drivers)
 add_subdirectory(core)
 add_subdirectory(master)
-add_subdirectory(examples)
+# add_subdirectory(examples)
 
 

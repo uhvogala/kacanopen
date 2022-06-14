@@ -48,7 +48,11 @@
 
 // This is set by CMake...
 //#define SHARE_SOURCE_PATH ...
-//#define SHARE_INSTALLED_PATH ...
+
+#ifdef SHARE_INSTALLED_PATH
+#undef SHARE_INSTALLED_PATH
+#endif
+#define SHARE_INSTALLED_PATH "/opt/ros/melodic/share/kacanopen"
 
 namespace kaco {
 
@@ -67,7 +71,6 @@ namespace kaco {
 			paths.push_back(path+"/eds_files.json");
 		}
 
-		paths.push_back(SHARE_SOURCE_PATH "/eds_library/eds_files.json");
 		paths.push_back(SHARE_INSTALLED_PATH "/eds_library/eds_files.json");
 		paths.push_back("/usr/local/share/kacanopen/eds_library/eds_files.json");
 		paths.push_back("/usr/share/kacanopen/eds_library/eds_files.json");

@@ -103,6 +103,10 @@ namespace kaco {
 		/// \returns The response message.
 		/// \remark thread-safe
 		SDOResponse send_sdo_and_wait(uint8_t command, uint8_t node_id, uint16_t index, uint8_t subindex, const std::array<uint8_t,4>& data);
+		
+		/// Set timeout for read sdo 
+		/// \param timeout timeout in ms
+		void setTimeout(const unsigned timeout);
 
 	private:
 
@@ -149,6 +153,8 @@ namespace kaco {
 
 		/// Dummy callback. Prints a debug message.
 		static void received_unassigned_sdo(SDOResponse);
+		
+		unsigned m_timeout;
 
 	};
 

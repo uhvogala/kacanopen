@@ -50,7 +50,7 @@ namespace kaco {
 
 		/// Constructor.
 		/// Creates Core instance and adds NMT listener for new devices. 
-		Master();
+		Master(const bool add_alive_callback = true);
 
 		/// Copy constructor deleted because of callbacks with self-references.
 		Master(const Master&) = delete;
@@ -91,13 +91,27 @@ namespace kaco {
 		/// \param index Index of the device. Must be smaller than num_devices().
 		/// \remark thread-safe
 		Device& get_device(size_t index) const;
+		
+		/// Adds a device if it's not already registered
+		// \param device* pointer to the device
+		void addDevice(Device* device, const bool overwrite = false);
+
+		/// Removes a device if it's registered
+		// \param node_id node_id of device
+		void removeDevice(const size_t node_id);
 
 		/// Core instance.
 		Core core;
-
+		
+		/// Discovers nodes in the network via node guard protocol.
+		/// \remark thread-safe
+		std::vector<uint8_t>& discover_nodes(const size_t id_first, const size_t id_last);
+		
 	private:
 
 		static const bool debug = false;
+		
+		bool m_aliveCallbackRegistered;
 
 		std::vector<std::unique_ptr<Device>> m_devices;
 		std::bitset<265> m_device_alive;
@@ -107,6 +121,12 @@ namespace kaco {
 
 		void device_alive_callback(const uint8_t node_id);
 
+		Core::MessageReceivedCallback m_device_callback_functional;
+		void device_callback(const Message& message);		
+		std::vector<uint8_t> m_discoveredNodes;
+		
+		size_t m_id_first;
+		size_t m_id_last;
 	};
 
 } // end namespace kaco

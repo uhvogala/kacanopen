@@ -95,6 +95,13 @@ namespace kaco {
 		/// \todo Rename this to add_tpdo_received_callback() and add add_rpdo_received_callback()
 		/// \remark thread-safe
 		void add_pdo_received_callback(uint16_t cob_id, PDOReceivedCallback::Callback callback);
+		
+		/// Removes a callback with the given COB-ID.
+		/// \param cob_id COB-ID to listen for
+		void remove_pdo_received_callback(uint16_t cob_id);
+
+		/// Synchronizes PDOs
+		void sync();
 
 	private:
 

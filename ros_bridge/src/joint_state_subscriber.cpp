@@ -92,6 +92,7 @@ void JointStateSubscriber::receive(const sensor_msgs::JointState& msg) {
 		DEBUG_DUMP(pos);
 		DEBUG_DUMP(msg.position[0]);
 
+		m_device.set_entry("profile_velocity", static_cast<uint32_t>(msg.velocity[0]));
 		m_device.execute("set_target_position",pos);
 		
 	} catch (const sdo_error& error) {
