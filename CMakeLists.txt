@@ -183,7 +183,7 @@ macro(kacanopen_install)
 			RUNTIME DESTINATION bin
 		)
 		if (${ARGV1})
-			install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include
+			install(DIRECTORY ${CMAKE_CURRENT_LIST_DIR}/include/
 				DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
 			)
 			endif()
